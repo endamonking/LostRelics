@@ -32,6 +32,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("Character Selection");
+        
     }
    
     public void Quit()

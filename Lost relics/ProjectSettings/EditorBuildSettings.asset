@@ -18,6 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Character Selection.unity
     guid: 44d9f909751708c4091c04dd014b8a5d
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Scenes/Login.unity
     guid: 59b8d396a98bd0e4c8b5f35bb3c8bde5
+=======
+    path: Assets/Scenes/TestRoom.unity
+    guid: 26773bd8b12e21645b20443ac75242db
+>>>>>>> Stashed changes
   m_configObjects: {}
