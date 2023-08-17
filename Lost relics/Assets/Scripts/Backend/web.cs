@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using UnityEngine.SceneManagement;
 public class web : MonoBehaviour
 {
 
@@ -48,6 +48,8 @@ public class web : MonoBehaviour
             else
             {
                 Debug.Log(www.downloadHandler.text);
+                if (www.downloadHandler.text == "LoginSuccess")
+                    SceneManager.LoadScene("MainMenu");
             }
         }
     }

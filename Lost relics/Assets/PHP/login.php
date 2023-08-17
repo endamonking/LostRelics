@@ -16,7 +16,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+
 //Add user part
 $sql = "SELECT password, username FROM users WHERE username = '". $loginUsername . "'";
 
@@ -29,7 +29,7 @@ if ($result->num_rows > 0)
     {
       if ($row["password"] == $loginPassword)
       {
-        echo "Login success ". $row["username"] . "<br>";
+        echo "LoginSuccess";
       }
       else 
         echo "wrong password";
