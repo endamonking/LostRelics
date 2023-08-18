@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public enum BattleState 
 { 
-    NORMAL, PLAYER, ENEMY, WON, LOST
+    START, NORMAL, PLAYER, ENEMY, WON, LOST
 }
 public enum stance
 {
@@ -14,24 +14,27 @@ public class combatManager : MonoBehaviour
 {
     public BattleState state;
     public static combatManager Instance;
-    public List<Card> inUseCard; // using card or trying to use 
+    public List<GameObject> inUseCard; // using card or trying to use 
     public GameObject currentObjTurn;
-
+    [SerializeField]
+    private TextMeshProUGUI _stateText;
     private void Awake()
     {
         Instance = this;
-        state = BattleState.NORMAL;
+        state = BattleState.START;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _stateText.text = state.ToString();
+        StartCoroutine(startTurn());
     }
 
-    public void myTurn()
+    public void changeTurn(BattleState newState)
     {
-
+        state = newState;
+        _stateText.text = state.ToString();
     }
 
     public void endTurn()
@@ -40,14 +43,29 @@ public class combatManager : MonoBehaviour
             return;
         cardHandler user = currentObjTurn.GetComponent<cardHandler>();
         //Do card action
-        foreach (Card card in combatManager.Instance.inUseCard)
+        foreach (GameObject card in inUseCard)
         {
-            card.changeStanceInto(user);
+            card.GetComponent<cardDisplay>().card.changeStanceInto(user);
         }
+        foreach(GameObject card in inUseCard)
+        {
+            user.discardedDeck.Add(card.GetComponent<cardDisplay>().card);
+            user.cardInHand.Remove(card.GetComponent<cardDisplay>().card);
+        }
+        inUseCard.Clear();
+        user.destroyInHandCard();
         user.turnGauge = 100f;
         currentObjTurn = null;
         state = BattleState.NORMAL;
     }
+
+    IEnumerator startTurn()
+    {
+        yield return new WaitForSeconds(1.0f);
+        changeTurn(BattleState.NORMAL);
+    }
+
+
 
 }
 
