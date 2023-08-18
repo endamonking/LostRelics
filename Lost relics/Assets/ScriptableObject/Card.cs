@@ -9,16 +9,37 @@ public class Card : ScriptableObject
     public int stamina;
     public Sprite artwork;
     public stance cardStance;
-    public stance changIntoStance;
+    [SerializeField]
+    private stance intoStance;
+    private bool isUsing;
+    public GameObject thisObg;
+    //cardFunction
 
     public void changeStanceInto(cardHandler handler)
     {
-        handler.myStatnce = changIntoStance;
+        Debug.Log(cardName); // Simmulate use function
+        handler.myStatnce = intoStance;
     }
 
-    public void usingCard()
+
+    public void destroyThisCard()
     {
-        combatManager.Instance.inUseCard.Add(this);
+        Destroy(this);
     }
 
+  /*  public void usingCard()
+    {
+        if (isUsing == false)
+        {
+            combatManager.Instance.inUseCard.Add(this.);
+            isUsing = true;
+        }
+        else
+        {
+            combatManager.Instance.inUseCard.Remove(this);
+            isUsing = false;
+        }
+        
+    }*/
 }
+
