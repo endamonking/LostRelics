@@ -13,10 +13,12 @@ public class cardHandler : MonoBehaviour
     private GameObject cardTemplate;
     public List<Card> playerDeck;
     public List<Card> discardedDeck;
+    [SerializeField]
     private List<Card> _currentDeck;
     public List<Card> cardInHand;
 
-
+    [SerializeField]
+    private int handLimit = 7;
     private combatManager comIns;
     private player player;
     // Start is called before the first frame update
@@ -61,7 +63,7 @@ public class cardHandler : MonoBehaviour
 
     private void initCard()
     {
-        _currentDeck = playerDeck;
+        _currentDeck.AddRange(playerDeck);
 
         for (int i = 0; i < player.maxPlayerHand; i++)
         {
@@ -73,18 +75,34 @@ public class cardHandler : MonoBehaviour
 
     private void drawCard()
     {
+        if (cardInHand.Count >= handLimit) // card in hand reach hand limit
+        {
+            discardedDeck.Add(cardInHand[0]);
+            cardInHand.RemoveAt(0);
+            addCardTohand();
+        }
+        else
+        {
+            addCardTohand();
+
+        }
+    
+    }
+    
+    private void addCardTohand()
+    {
         if (_currentDeck.Count <= 0)
         {
             resetCurrentDeck();
         }
-
         cardInHand.Add(_currentDeck[0]);
         _currentDeck.RemoveAt(0);
     }
-    
+
     private void resetCurrentDeck()
     {
-        _currentDeck = discardedDeck;
+        _currentDeck.AddRange(discardedDeck);
+        discardedDeck.Clear();
         //shuffle
     }
 
