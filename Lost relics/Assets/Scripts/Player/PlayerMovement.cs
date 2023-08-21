@@ -24,12 +24,15 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-       
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
     }
     private void FixedUpdate()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        
+        Vector2 position = body.position;
+        position.x += horizontal * runSpeed * Time.deltaTime;
+        position.y += vertical * runSpeed * Time.deltaTime;
+        body.MovePosition(position);
     }
 }
