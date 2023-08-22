@@ -7,27 +7,27 @@ public class MainMenu : MonoBehaviour
 {
     public Button OptionsButton;
     public Button Back;
-    public GameObject StartMenu;
-    public GameObject OptionMenu;
+    public GameObject StartButton;
+    public GameObject OptionButton;
 
     private void Start()
     {
         OptionsButton.onClick.AddListener(ShowOptionMenu);
-        Back.onClick.AddListener(ShowStartMenu);
-        OptionMenu.SetActive(false);
+        Back.onClick.AddListener(ShowStartButton);
+        OptionButton.SetActive(false);
     }
     private void ShowOptionMenu()
     {
          
-        StartMenu.SetActive(false);
-        OptionMenu.SetActive(true);
+        StartButton.SetActive(false);
+        OptionButton.SetActive(true);
     }
 
-    private void ShowStartMenu()
+    private void ShowStartButton()
     {
         
-        OptionMenu.SetActive(false);
-        StartMenu.SetActive(true);
+        OptionButton.SetActive(false);
+        StartButton.SetActive(true);
     }
     public void PlayGame()
     {
