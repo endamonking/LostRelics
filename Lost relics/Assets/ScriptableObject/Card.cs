@@ -21,12 +21,6 @@ public class Card : ScriptableObject
         handler.myStatnce = intoStance;
     }
 
-
-    public void destroyThisCard()
-    {
-        Destroy(this);
-    }
-
   /*  public void usingCard()
     {
         if (isUsing == false)

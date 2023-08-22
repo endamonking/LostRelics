@@ -53,7 +53,8 @@ public class cardHandler : MonoBehaviour
     {  
         for (int i = 0; i < cardInHand.Count; i++)
         {
-            GameObject pCard = Instantiate(cardTemplate, cardParent.position + new Vector3(-i*100,0,0), Quaternion.identity, cardParent);
+            GameObject pCard = Instantiate(cardTemplate, cardParent);
+            pCard.transform.position = pCard.transform.position + new Vector3(-i*110, 0,0);
             pCard.GetComponent<cardDisplay>().card = cardInHand[i];
             //cardInHandObj.Add(pCard.gameObject);
             pCard.name = pCard.name + " " + i.ToString();
@@ -110,7 +111,8 @@ public class cardHandler : MonoBehaviour
     {
         for (int i =0; i < cardParent.childCount; i++)
         {
-            Destroy(cardParent.GetChild(i).gameObject);
+            if (cardParent.GetChild(i).tag == "Card")
+                Destroy(cardParent.GetChild(i).gameObject);
         }
     }
 

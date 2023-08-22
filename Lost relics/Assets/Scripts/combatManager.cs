@@ -59,6 +59,7 @@ public class combatManager : MonoBehaviour
         state = BattleState.NORMAL;
     }
 
+
     IEnumerator startTurn()
     {
         yield return new WaitForSeconds(1.0f);
