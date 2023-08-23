@@ -410,7 +410,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnGauge: 100
-  myStatnce: 0
   cardParent: {fileID: 1631222658}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
@@ -518,6 +517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlayerHand: 3
+  maxMana: 10
+  currentMana: 0
+  myStatnce: 0
 --- !u!1 &931585047
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,8 +565,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  inUseCard: []
   currentObjTurn: {fileID: 0}
+  isAction: 0
   _stateText: {fileID: 429618496}
 --- !u!1 &934057952
 GameObject:

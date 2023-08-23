@@ -5,7 +5,6 @@ using UnityEngine;
 public class cardHandler : MonoBehaviour
 {
     public float turnGauge = 100f;
-    public stance myStatnce;
     [Header("Card")]
     [SerializeField]
     private Transform cardParent;
@@ -16,16 +15,19 @@ public class cardHandler : MonoBehaviour
     [SerializeField]
     private List<Card> _currentDeck;
     public List<Card> cardInHand;
+    [Header("Attribute")]
+    public int currentMana;
 
     [SerializeField]
     private int handLimit = 7;
     private combatManager comIns;
-    private player player;
+    private Character player;
     // Start is called before the first frame update
     void Start()
     {
         comIns = combatManager.Instance;
-        player = GetComponent<player>();
+        player = GetComponent<Character>();
+        currentMana = player.maxMana;
 
         if (comIns.state == BattleState.START)
         {
@@ -42,7 +44,7 @@ public class cardHandler : MonoBehaviour
         }
         if (turnGauge <= 0 && comIns.state == BattleState.NORMAL)
         {
-            comIns.state = BattleState.PLAYER;
+            comIns.changeTurn(BattleState.PLAYER);
             comIns.currentObjTurn = this.gameObject;
             drawCard();
             displayInhandCard();

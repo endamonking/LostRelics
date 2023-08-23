@@ -6,16 +6,16 @@ using UnityEngine;
 public class Card : ScriptableObject
 {
     public string cardName;
-    public int stamina;
+    public int cardCost;
     public Sprite artwork;
     public stance cardStance;
+    public int delayAction;
     [SerializeField]
     private stance intoStance;
     private bool isUsing;
-    public GameObject thisObg;
-    //cardFunction
+    //cardFunction script
 
-    public void changeStanceInto(cardHandler handler)
+    public void changeStanceInto(Character handler)
     {
         Debug.Log(cardName); // Simmulate use function
         handler.myStatnce = intoStance;

@@ -12,7 +12,6 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     [SerializeField]
     private TextMeshProUGUI _cardName, _sta;
 
-    private bool isUsing;
     private RectTransform rectTransform;
     private Canvas canvas;
     private Vector2 originalPosition;
@@ -21,7 +20,7 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
        // Button myButton = GetComponent<Button>();
         _cardName.text = card.cardName;
-        _sta.text = card.stamina.ToString();
+        _sta.text = card.cardCost.ToString();
         rectTransform = GetComponent<RectTransform>();
         canvas = transform.parent.GetComponent<Canvas>();
         originalPosition = rectTransform.localPosition;
@@ -29,15 +28,22 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void usingCard()
     {
-        if (isUsing == false)
+        combatManager comIns = combatManager.Instance;
+        if (combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana >= card.cardCost)
         {
-            combatManager.Instance.inUseCard.Add(this.gameObject);
-            isUsing = true;
+            combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana - card.cardCost;
+            comIns.inUseCard.Enqueue(this.gameObject);
+            if (comIns.isAction == false) // Not actioning
+            {
+                comIns.isAction = true;
+                comIns.StartCoroutine(comIns.startAction());
+            }
+
         }
         else
         {
-            combatManager.Instance.inUseCard.Remove(this.gameObject);
-            isUsing = false;
+            Debug.Log("No mana");
+            returnOriginPosition();
         }
     }
 
@@ -62,14 +68,32 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         // Finalize dragging behavior, e.g., releasing the UI Image, resetting cursor, etc.
         if (rectTransform.localPosition.y - originalPosition.y >= 200)
         {
-            Debug.Log("Doaction");
             usingCard();
+            deactivatedComponent();
         }
         else //cancel
         {
-            rectTransform.localPosition = originalPosition;
+            returnOriginPosition();
+        }
+    }
+    
+    //To make card look invisible by setActive false image and collider
+    private void deactivatedComponent()
+    {
+        GetComponent<Image>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            Transform child = gameObject.transform.GetChild(i);
+            child.gameObject.SetActive(false);
         }
 
+    }
+
+    private void returnOriginPosition()
+    {
+        rectTransform.localPosition = originalPosition;
     }
 
 

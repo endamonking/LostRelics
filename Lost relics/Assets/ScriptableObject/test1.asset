@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: test1
   m_EditorClassIdentifier: 
   cardName: test1
-  stamina: 3
+  cardCost: 3
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
   cardStance: 0
-  changIntoStance: 0
+  delayAction: 1
+  intoStance: 0
