@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelection : MonoBehaviour
 {
-    public GameObject player;
-    public Sprite First;
-    public Sprite Second;
-    public Sprite Third;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Sprite First;
+    [SerializeField] private Sprite Second;
+    [SerializeField] private Sprite Third;
+     private SpriteRenderer spriteRenderer;
     public void Awake()
     {
          spriteRenderer =  player.GetComponentInChildren<SpriteRenderer>();

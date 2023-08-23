@@ -5,29 +5,29 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class InGameMenu : MonoBehaviour
 {
-    public GameObject Menu;
-    public GameObject Canvas;
-    public GameObject Player;
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject player;
     private void Start(){
-        Canvas.SetActive(false);   
+        canvas.SetActive(false);   
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)){
-            //Debug.Log("Escape Button");
+             
             MenuControl();
         }
     }
 
     private void MenuControl(){
-        Debug.Log(Menu.activeSelf);
-        if (Canvas.activeSelf){
-            Canvas.SetActive(false);
-            Player.GetComponent<PlayerMovement>().enabled=true;
+        Debug.Log(menu.activeSelf);
+        if (canvas.activeSelf){
+            canvas.SetActive(false);
+            player.GetComponent<PlayerMovement>().enabled=true;
         }
         else{
-            Canvas.SetActive(true);
-            Player.GetComponent<PlayerMovement>().enabled = false;
+            canvas.SetActive(true);
+            player.GetComponent<PlayerMovement>().enabled = false;
         }     
     }
   

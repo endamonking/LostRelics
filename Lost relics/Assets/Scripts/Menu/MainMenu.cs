@@ -5,37 +5,40 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI; 
 public class MainMenu : MonoBehaviour
 {
-    public Button OptionsButton;
-    public Button Back;
-    public GameObject StartButton;
-    public GameObject OptionButton;
+    [SerializeField] private Button optionsButton;
+    [SerializeField] private Button back;
+    [SerializeField] private Button start;
+    [SerializeField] private Button quit;
+    [SerializeField] private GameObject startMenu;
+    [SerializeField] private GameObject optionMenu;
 
     private void Start()
     {
-        OptionsButton.onClick.AddListener(ShowOptionMenu);
-        Back.onClick.AddListener(ShowStartButton);
-        OptionButton.SetActive(false);
+        start.onClick.AddListener(PlayGame);
+        quit.onClick.AddListener(Quit);
+        optionsButton.onClick.AddListener(ShowOptionMenu);
+        back.onClick.AddListener(ShowStartMenu);
+        optionMenu.SetActive(false);
     }
     private void ShowOptionMenu()
     {
          
-        StartButton.SetActive(false);
-        OptionButton.SetActive(true);
+        startMenu.SetActive(false);
+        optionMenu.SetActive(true);
     }
 
-    private void ShowStartButton()
+    private void ShowStartMenu()
     {
         
-        OptionButton.SetActive(false);
-        StartButton.SetActive(true);
+        optionMenu.SetActive(false);
+        startMenu.SetActive(true);
     }
-    public void PlayGame()
+    private void PlayGame()
     {
         SceneManager.LoadScene("Character Selection");
-        
     }
-   
-    public void Quit()
+
+    private void Quit()
     {
         Application.Quit();
     }

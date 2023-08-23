@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D body;
-    float horizontal;
-    float vertical;
-    public float runSpeed = 20.0f;
+    
+    private float horizontal;
+    private float vertical;
+    [SerializeField] private Rigidbody2D body;
+    [SerializeField] private  float runSpeed = 20.0f;
 
 
     void OnCollisionEnter2D(Collision2D collision)

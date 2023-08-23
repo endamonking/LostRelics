@@ -5,24 +5,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class InGameMenuButton : MonoBehaviour{
-    public Button OptionsButton;
-    public Button BackButton;
-    public Button ResumeButton;
-    public Button ExitButton;
-    public Button MainMenuButton;
-    public GameObject Menu;
-    public GameObject Option;
-    public GameObject Canvas;
-    public GameObject Player;
+    public Button optionsButton;
+    public Button backButton;
+    public Button resumeButton;
+    public Button exitButton;
+    public Button mainMenuButton;
+    public GameObject menu;
+    public GameObject option;
+    public GameObject canvas;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start(){
-        Option.SetActive(false);
-        ResumeButton.onClick.AddListener(Resume);
-        OptionsButton.onClick.AddListener(ShowOptionMenu);
-        BackButton.onClick.AddListener(BackToMenu);
-        ExitButton.onClick.AddListener(Exit);
-        MainMenuButton.onClick.AddListener(MainMenu);
+        option.SetActive(false);
+        resumeButton.onClick.AddListener(Resume);
+        optionsButton.onClick.AddListener(ShowOptionMenu);
+        backButton.onClick.AddListener(BackToMenu);
+        exitButton.onClick.AddListener(Exit);
+        mainMenuButton.onClick.AddListener(MainMenu);
     }
 
     // Update is called once per frame
@@ -30,17 +30,17 @@ public class InGameMenuButton : MonoBehaviour{
         
     }
     private void ShowOptionMenu(){
-        Menu.SetActive(false);
-        Option.SetActive(true);
+        menu.SetActive(false);
+        option.SetActive(true);
     }
 
     private void BackToMenu(){
-        Menu.SetActive(true);
-        Option.SetActive(false);
+        menu.SetActive(true);
+        option.SetActive(false);
     }
     private void Resume(){
-        Canvas.SetActive(false);
-        Player.GetComponent<PlayerMovement>().enabled = true;
+        canvas.SetActive(false);
+        player.GetComponent<PlayerMovement>().enabled = true;
     }
     private void MainMenu(){
         Debug.Log("MainMenu");
