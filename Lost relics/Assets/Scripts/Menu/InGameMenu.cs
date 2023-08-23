@@ -5,37 +5,30 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class InGameMenu : MonoBehaviour
 {
-    public Button OptionsButton;
-    public Button Back;
-    public Button Resume;
     public GameObject Menu;
-    public GameObject OptionButton;
+    public GameObject Canvas;
     public GameObject Player;
     private void Start(){
-        Menu.SetActive(false);
-        OptionButton.SetActive(false);
-        Resume.onClick.AddListener(MenuControl);
-        OptionsButton.onClick.AddListener(ShowOptionMenu);
-        OptionsButton.onClick.AddListener(ShowOptionMenu);
-        Back.onClick.AddListener(ShowMenu);
-        
+        Canvas.SetActive(false);   
     }
-    private void ShowOptionMenu(){
-        Menu.SetActive(false);
-        OptionButton.SetActive(true);
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            //Debug.Log("Escape Button");
+            MenuControl();
+        }
     }
 
-    private void ShowMenu(){
-        Menu.SetActive(true);
-        OptionButton.SetActive(false);
+    private void MenuControl(){
+        Debug.Log(Menu.activeSelf);
+        if (Canvas.activeSelf){
+            Canvas.SetActive(false);
+            Player.GetComponent<PlayerMovement>().enabled=true;
+        }
+        else{
+            Canvas.SetActive(true);
+            Player.GetComponent<PlayerMovement>().enabled = false;
+        }     
     }
-    public void MenuControl(){
   
-    }
-    public void MainMenu(){
-        SceneManager.LoadScene("MainMenu");
-    }
-    public void Quit(){
-        Application.Quit();
-    }
 }
