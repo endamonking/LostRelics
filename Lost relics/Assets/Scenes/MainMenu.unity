@@ -245,8 +245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OptionsButton: {fileID: 1989898163}
   Back: {fileID: 214326902}
-  StartMenu: {fileID: 203947904}
-  OptionMenu: {fileID: 1521228139}
+  StartButton: {fileID: 966660887}
+  OptionButton: {fileID: 1989898161}
 --- !u!1 &214326900
 GameObject:
   m_ObjectHideFlags: 0
