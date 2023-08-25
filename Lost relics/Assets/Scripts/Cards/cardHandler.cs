@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cardHandler : MonoBehaviour
+public abstract class cardHandler : MonoBehaviour
 {
     public float turnGauge = 100f;
     [Header("Card")]
@@ -20,13 +20,14 @@ public class cardHandler : MonoBehaviour
 
     [SerializeField]
     private int handLimit = 7;
-    private combatManager comIns;
-    private Character player;
+    public combatManager comIns;
+    public Character player;
+
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         comIns = combatManager.Instance;
-        player = GetComponent<Character>();
+        player = this.gameObject.GetComponent<Character>();
         currentMana = player.maxMana;
 
         if (comIns.state == BattleState.START)
@@ -38,21 +39,19 @@ public class cardHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (comIns.state == BattleState.NORMAL)
-        {
-            turnGauge = turnGauge - Time.deltaTime * 30;
-        }
-        if (turnGauge <= 0 && comIns.state == BattleState.NORMAL)
-        {
-            comIns.changeTurn(BattleState.PLAYER);
-            comIns.currentObjTurn = this.gameObject;
-            drawCard();
-            displayInhandCard();
-        }
+
     }
 
-    private void displayInhandCard()
-    {  
+    public void updateTurnGuage()
+    {
+        if (comIns.state == BattleState.NORMAL)
+        {
+            turnGauge = turnGauge - Time.deltaTime * 10 * player.currentSPD;
+        }
+    } 
+
+    protected virtual void displayInhandCard()
+    {
         for (int i = 0; i < cardInHand.Count; i++)
         {
             GameObject pCard = Instantiate(cardTemplate, cardParent);
@@ -76,7 +75,7 @@ public class cardHandler : MonoBehaviour
 
     }
 
-    private void drawCard()
+    public void drawCard()
     {
         if (cardInHand.Count >= handLimit) // card in hand reach hand limit
         {

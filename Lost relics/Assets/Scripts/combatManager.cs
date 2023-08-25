@@ -17,6 +17,7 @@ public class combatManager : MonoBehaviour
     public Queue<GameObject> inUseCard = new Queue<GameObject>(); // using card or trying to use 
     public GameObject currentObjTurn;
     public bool isAction = false;
+    public GameObject endTurnButton;
     [SerializeField]
     private TextMeshProUGUI _stateText;
     private void Awake()
@@ -64,6 +65,8 @@ public class combatManager : MonoBehaviour
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
         currentObjTurn = null;
         changeTurn(BattleState.NORMAL);
+        if (endTurnButton.activeSelf)
+            endTurnButton.SetActive(false);
     }
 
     IEnumerator startTurn()
