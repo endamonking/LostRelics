@@ -671,15 +671,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cad035f92c93b54d83836f79529594a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OptionsButton: {fileID: 1917458146100173370}
-  BackButton: {fileID: 6581659366806085944}
-  ResumeButton: {fileID: 956383909178277594}
-  ExitButton: {fileID: 0}
-  MainMenuButton: {fileID: 0}
-  Menu: {fileID: 4829170974694832087}
-  Option: {fileID: 1302893500676258600}
-  Canvas: {fileID: 1718968033771890108}
-  Player: {fileID: 0}
+  optionsButton: {fileID: 1917458146100173370}
+  backButton: {fileID: 6581659366806085944}
+  resumeButton: {fileID: 956383909178277594}
+  exitButton: {fileID: 3128325070834715549}
+  mainMenuButton: {fileID: 1139278583}
+  menu: {fileID: 4829170974694832087}
+  option: {fileID: 1302893500676258600}
+  canvas: {fileID: 1718968033771890108}
+  player: {fileID: 0}
 --- !u!1 &1763526593226218040
 GameObject:
   m_ObjectHideFlags: 0

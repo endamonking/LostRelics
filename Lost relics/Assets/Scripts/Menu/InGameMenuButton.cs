@@ -40,7 +40,7 @@ public class InGameMenuButton : MonoBehaviour{
     }
     private void Resume(){
         canvas.SetActive(false);
-        player.GetComponent<PlayerMovement>().enabled = true;
+        player.GetComponent<PlayerControl>().enabled = true;
     }
     private void MainMenu(){
         Debug.Log("MainMenu");

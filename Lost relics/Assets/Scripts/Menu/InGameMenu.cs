@@ -6,29 +6,48 @@ using UnityEngine.UI;
 public class InGameMenu : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
-    [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject menuCanvas;
+    [SerializeField] private GameObject PlayerCanvas;
     [SerializeField] private GameObject player;
     private void Start(){
-        canvas.SetActive(false);   
+        menuCanvas.SetActive(false);
+        PlayerCanvas.SetActive(false);
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)){
-             
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+
             MenuControl();
+        }
+        else if(Input.GetKeyDown(KeyCode.B))
+        {
+            PlayerInventory();
         }
     }
 
     private void MenuControl(){
-        Debug.Log(menu.activeSelf);
-        if (canvas.activeSelf){
-            canvas.SetActive(false);
-            player.GetComponent<PlayerMovement>().enabled=true;
+         
+        if (menuCanvas.activeSelf){
+            menuCanvas.SetActive(false);
+            player.GetComponent<PlayerControl>().enabled=true;
         }
         else{
-            canvas.SetActive(true);
-            player.GetComponent<PlayerMovement>().enabled = false;
+            menuCanvas.SetActive(true);
+            player.GetComponent<PlayerControl>().enabled = false;
         }     
     }
-  
+    private void PlayerInventory()
+    {
+
+        if (PlayerCanvas.activeSelf)
+        {
+            PlayerCanvas.SetActive(false);
+            player.GetComponent<PlayerControl>().enabled = true;
+        }
+        else
+        {
+            PlayerCanvas.SetActive(true);
+            player.GetComponent<PlayerControl>().enabled = false;
+        }
+    }
 }

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
     
     private float horizontal;
     private float vertical;
+    public Stats stats;
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private  float runSpeed = 20.0f;
 
