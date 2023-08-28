@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cardEffect : MonoBehaviour
+public abstract class cardEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private stance intoStance;
+
     void Start()
     {
-        
+
     }
 
-    
+    public abstract void applyEffect(Character character);
 
 }

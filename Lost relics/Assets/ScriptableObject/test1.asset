@@ -17,4 +17,5 @@ MonoBehaviour:
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
   cardStance: 0
   delayAction: 1
+  effect: {fileID: 8313418428189112671, guid: c079a9dae3a5bf64a968dff4fa2e1bc3, type: 3}
   intoStance: 0

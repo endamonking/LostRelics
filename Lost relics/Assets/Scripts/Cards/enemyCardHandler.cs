@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class enemyCardHandler : cardHandler
 {
-
-    private bool test = true;
+    private bool isAction = false;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        StartCoroutine(test1());
+
     }
 
     // Update is called once per frame
@@ -18,36 +17,47 @@ public class enemyCardHandler : cardHandler
     {
         updateTurnGuage();
         if (turnGauge <= 0 && comIns.state == BattleState.NORMAL)
-        {
+        {       
+            Debug.Log(this.gameObject.name);
             comIns.changeTurn(BattleState.ENEMY);
             comIns.currentObjTurn = this.gameObject;
             drawCard();
-            //displayInhandCard();
-            doAction();
+            if (isAction == false)
+                StartCoroutine(doAction());
         }
 
     }
 
-    private void doAction()
+    private IEnumerator doAction()
     {
-        Debug.Log(this.gameObject.name);
-        if (test == false)
+        isAction = true;
+        List<Card> currentCardInHand = new List<Card>(cardInHand);
+        while (currentMana > 0)
         {
-            test = true;
-            StartCoroutine(test1());
-        }
-    }
+            foreach (Card card in currentCardInHand)
+            {
+                if (currentMana >= card.cardCost)
+                {
+                    GameObject target = GameObject.FindWithTag("Player");
 
-    IEnumerator test1()
-    {
-        while (test == true)
-        {
-            yield return new WaitForSeconds(2.0f);
-            test = false;
+                    currentMana = currentMana - card.cardCost;
+                    card.doCardEffect(this.player, target.GetComponent<Character>());
+                    discardedDeck.Add(card);
+                    cardInHand.Remove(card);
+                    yield return new WaitForSeconds(card.delayAction);
+                }
+            }
+            break;
         }
 
+        isAction = false;
         comIns.endTurn();
+    }
 
+    IEnumerator delayAction(float time)
+    {
+        Debug.Log("delayed");
+        yield return new WaitForSeconds(time);
     }
 
 }

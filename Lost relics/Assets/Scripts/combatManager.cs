@@ -18,6 +18,7 @@ public class combatManager : MonoBehaviour
     public GameObject currentObjTurn;
     public bool isAction = false;
     public GameObject endTurnButton;
+    public Character target;
     [SerializeField]
     private TextMeshProUGUI _stateText;
     private void Awake()
@@ -64,6 +65,7 @@ public class combatManager : MonoBehaviour
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
         currentObjTurn = null;
+        target = null;
         changeTurn(BattleState.NORMAL);
         if (endTurnButton.activeSelf)
             endTurnButton.SetActive(false);
@@ -81,8 +83,14 @@ public class combatManager : MonoBehaviour
         {
             GameObject card = inUseCard.Dequeue();
             Card cardData = card.GetComponent<cardDisplay>().card;
+            //Check target
+            if (target == null)
+            {
+                card.GetComponent<cardDisplay>().undoCard();
+                continue;
+            }
             //Using card function
-            cardData.changeStanceInto(currentObjTurn.GetComponent<Character>());
+            cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), target);
             currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
             currentObjTurn.GetComponent<cardHandler>().cardInHand.Remove(cardData);
             yield return new WaitForSeconds(cardData.delayAction); 

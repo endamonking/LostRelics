@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
 
     public int currentDefpoint;
     public int currentHP, currentSPD;
+
     void Start()
     {
         currentSPD = baseSPD;
@@ -33,12 +34,25 @@ public class Character : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-
+        currentHP = currentHP - damage;
+        Debug.Log(this.gameObject.name + "take " +damage+" "+ currentHP);
+        if (currentHP <= 0)
+            died();
     }
 
     private void died()
     {
+        combatManager.Instance.target = null;
         Destroy(this.gameObject);
+    }
+
+    private void OnMouseDown()
+    {
+        if (combatManager.Instance.state != BattleState.PLAYER)
+            return;
+
+        Debug.Log(this.gameObject.name + "Clicked");
+        combatManager.Instance.target = this;
     }
 
 }

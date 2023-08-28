@@ -44,6 +44,7 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         {
             Debug.Log("No mana");
             returnOriginPosition();
+            activatedComponent();
         }
     }
 
@@ -66,10 +67,10 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public void OnEndDrag(PointerEventData eventData)
     {
         // Finalize dragging behavior, e.g., releasing the UI Image, resetting cursor, etc.
-        if (rectTransform.localPosition.y - originalPosition.y >= 200)
+        if (rectTransform.localPosition.y - originalPosition.y >= 200 && combatManager.Instance.tag != null)
         {
-            usingCard();
             deactivatedComponent();
+            usingCard();
         }
         else //cancel
         {
@@ -89,6 +90,26 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             child.gameObject.SetActive(false);
         }
 
+    }
+
+    private void activatedComponent()
+    {
+        GetComponent<Image>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            Transform child = gameObject.transform.GetChild(i);
+            child.gameObject.SetActive(true);
+        }
+
+    }
+
+    public void undoCard()
+    {
+        combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana + card.cardCost;
+        activatedComponent();
+        returnOriginPosition();
     }
 
     private void returnOriginPosition()

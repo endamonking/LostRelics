@@ -9,15 +9,19 @@ public class Card : ScriptableObject
     public int cardCost;
     public Sprite artwork;
     public stance cardStance;
-    public int delayAction;
+    public float delayAction;
+    public cardEffect effect;
     [SerializeField]
     private stance intoStance;
     private bool isUsing;
     //cardFunction script
 
-    public void changeStanceInto(Character handler)
+
+    //This will do card effect from CardEffect script then will change into stance 
+    public void doCardEffect(Character handler, Character target)
     {
         Debug.Log(cardName); // Simmulate use function
+        effect.applyEffect(target);
         handler.myStatnce = intoStance;
     }
 

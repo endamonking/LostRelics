@@ -16,5 +16,6 @@ MonoBehaviour:
   cardCost: 3
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
   cardStance: 1
-  delayAction: 2
+  delayAction: 5
+  effect: {fileID: 8313418428189112671, guid: 4ea2292ba5b4acb419423213d09e7fdd, type: 3}
   intoStance: 0
