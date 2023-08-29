@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class cardHandler : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public abstract class cardHandler : MonoBehaviour
     public combatManager comIns;
     public Character player;
 
+    [SerializeField]
+    private Scrollbar turnGuagePrefab;
+    public Scrollbar turnGuageUI;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -33,7 +37,11 @@ public abstract class cardHandler : MonoBehaviour
         if (comIns.state == BattleState.START)
         {
             initCard();
+            turnGuageUI = Instantiate(turnGuagePrefab, cardParent);
+            turnGuageUI.name = this.gameObject.name + " Bar";
+            turnGuageUI.value = 1.0f;
         }
+
     }
 
     // Update is called once per frame
@@ -46,7 +54,8 @@ public abstract class cardHandler : MonoBehaviour
     {
         if (comIns.state == BattleState.NORMAL)
         {
-            turnGauge = turnGauge - Time.deltaTime * 10 * player.currentSPD;
+            turnGauge = turnGauge -  10 * player.currentSPD * Time.deltaTime;
+            turnGuageUI.value = Mathf.InverseLerp(0f, 100f, turnGauge);
         }
     } 
 

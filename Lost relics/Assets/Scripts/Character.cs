@@ -14,16 +14,19 @@ public class Character : MonoBehaviour
     public int maxMana = 10;
     public stance myStatnce;
 
-
     public int currentDefpoint;
     public int currentHP, currentSPD;
+    private cardHandler cardHandler;
+
+    private CharacterBar hpBar;
 
     void Start()
     {
         currentSPD = baseSPD;
         currentHP = maxHP;
         currentDefpoint = basedefPoint;
-        
+        cardHandler = GetComponent<cardHandler>();
+        hpBar = GetComponentInChildren<CharacterBar>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class Character : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHP = currentHP - damage;
+        hpBar.updateHPBar(maxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " +damage+" "+ currentHP);
         if (currentHP <= 0)
             died();
@@ -43,6 +47,8 @@ public class Character : MonoBehaviour
     private void died()
     {
         combatManager.Instance.target = null;
+        combatManager.Instance.returnEffectPosition();
+        Destroy(cardHandler.turnGuageUI.gameObject);
         Destroy(this.gameObject);
     }
 
@@ -52,7 +58,7 @@ public class Character : MonoBehaviour
             return;
 
         Debug.Log(this.gameObject.name + "Clicked");
-        combatManager.Instance.target = this;
+        combatManager.Instance.selectedTarget(this.gameObject);
     }
 
 }

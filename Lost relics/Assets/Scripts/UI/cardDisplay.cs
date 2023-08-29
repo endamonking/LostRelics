@@ -32,6 +32,7 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         if (combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana >= card.cardCost)
         {
             combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana - card.cardCost;
+            combatManager.Instance.updateManaText();
             comIns.inUseCard.Enqueue(this.gameObject);
             if (comIns.isAction == false) // Not actioning
             {
@@ -108,6 +109,7 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public void undoCard()
     {
         combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana + card.cardCost;
+        combatManager.Instance.updateManaText();
         activatedComponent();
         returnOriginPosition();
     }

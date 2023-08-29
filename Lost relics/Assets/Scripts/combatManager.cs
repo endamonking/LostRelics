@@ -21,6 +21,13 @@ public class combatManager : MonoBehaviour
     public Character target;
     [SerializeField]
     private TextMeshProUGUI _stateText;
+    public TextMeshProUGUI currentManaText;
+
+    [Header("Effect")]
+    [SerializeField]
+    private GameObject selectedEffectPrefabe;
+    private GameObject _selectedEffect;
+    private Vector3 _selectedEffectPostion;
     private void Awake()
     {
         Instance = this;
@@ -31,6 +38,8 @@ public class combatManager : MonoBehaviour
     void Start()
     {
         _stateText.text = state.ToString();
+        _selectedEffectPostion = new Vector3(0, -20f, 0);
+        _selectedEffect = Instantiate(selectedEffectPrefabe, _selectedEffectPostion, Quaternion.identity);
         StartCoroutine(startTurn());
     }
 
@@ -50,25 +59,18 @@ public class combatManager : MonoBehaviour
         if (currentObjTurn == null || isAction == true)
             return;
         cardHandler user = currentObjTurn.GetComponent<cardHandler>();
-        //Do card action
-        /*foreach (GameObject card in inUseCard)
-        {
-            card.GetComponent<cardDisplay>().card.changeStanceInto(user);
-        }*/
-        /*foreach(GameObject card in inUseCard)
-        {
-            user.discardedDeck.Add(card.GetComponent<cardDisplay>().card);
-            user.cardInHand.Remove(card.GetComponent<cardDisplay>().card);
-        }*/
         inUseCard.Clear();
         user.destroyInHandCard();
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
         currentObjTurn = null;
         target = null;
-        changeTurn(BattleState.NORMAL);
         if (endTurnButton.activeSelf)
             endTurnButton.SetActive(false);
+        if (currentManaText.gameObject.activeSelf == true)
+            currentManaText.gameObject.SetActive(false);
+        returnEffectPosition();
+        changeTurn(BattleState.NORMAL);
     }
 
     IEnumerator startTurn()
@@ -99,7 +101,23 @@ public class combatManager : MonoBehaviour
         isAction = false;
     }
 
+    public void updateManaText()
+    {
+        if (currentManaText.gameObject.activeSelf == false)
+            currentManaText.gameObject.SetActive(true);
+        currentManaText.text = "Mana " + currentObjTurn.GetComponent<cardHandler>().currentMana.ToString();
+    }
 
+    public void selectedTarget(GameObject Objtarget)
+    {
+        target = Objtarget.GetComponent<Character>();
+        _selectedEffect.transform.position = Objtarget.transform.position + new Vector3(0, -1, 0);
+    }
+
+    public void returnEffectPosition()
+    {
+        _selectedEffect.transform.position = _selectedEffectPostion;
+    }
 
 }
 

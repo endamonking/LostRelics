@@ -28,6 +28,7 @@ public class playerCarHandler : cardHandler
     {
         base.displayInhandCard();
         comIns.endTurnButton.SetActive(true);
+        comIns.updateManaText();
     }
 
 }
