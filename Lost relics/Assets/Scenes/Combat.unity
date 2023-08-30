@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 241764306}
   m_Layer: 0
   m_Name: Enemy (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1230,23 +1230,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757132823}
   m_CullTransparentMesh: 1
---- !u!1 &775640015 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 775640015, guid: b020a9aedf4aace4ab3a8e9966159b47, type: 3}
-  m_PrefabInstance: {fileID: 9149397429937489883}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &775640018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775640015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d20c523f81e38b428dfc36b1575dd96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &931585047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1500,7 @@ GameObject:
   - component: {fileID: 1149267123}
   m_Layer: 0
   m_Name: Enemy (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2794,6 +2777,10 @@ PrefabInstance:
     - target: {fileID: 1900938340, guid: 8f8a5a15c5c78f04c97e05dd3dc237a1, type: 3}
       propertyPath: m_TargetGraphic
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9047056346979240656, guid: 8f8a5a15c5c78f04c97e05dd3dc237a1, type: 3}
+      propertyPath: maxMana
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9047056346979240657, guid: 8f8a5a15c5c78f04c97e05dd3dc237a1, type: 3}
       propertyPath: m_RootOrder

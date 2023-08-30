@@ -33,7 +33,8 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         {
             combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana - card.cardCost;
             combatManager.Instance.updateManaText();
-            comIns.inUseCard.Enqueue(this.gameObject);
+            usingCardQ usedCard = new usingCardQ { card = this.gameObject, cardTarget = comIns.target };
+            comIns.inUseCard.Enqueue(usedCard);
             if (comIns.isAction == false) // Not actioning
             {
                 comIns.isAction = true;
@@ -68,7 +69,7 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public void OnEndDrag(PointerEventData eventData)
     {
         // Finalize dragging behavior, e.g., releasing the UI Image, resetting cursor, etc.
-        if (rectTransform.localPosition.y - originalPosition.y >= 200 && combatManager.Instance.tag != null)
+        if (rectTransform.localPosition.y - originalPosition.y >= 200 && combatManager.Instance.tag != null && combatManager.Instance.target != null)
         {
             deactivatedComponent();
             usingCard();

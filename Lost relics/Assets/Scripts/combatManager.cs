@@ -10,11 +10,18 @@ public enum stance
 {
     Guarding, Agg
 }
+
+public class usingCardQ
+{
+    public GameObject card { get; set; }
+    public Character cardTarget { get; set; }
+}
+
 public class combatManager : MonoBehaviour
 {
     public BattleState state;
     public static combatManager Instance;
-    public Queue<GameObject> inUseCard = new Queue<GameObject>(); // using card or trying to use 
+    public Queue<usingCardQ> inUseCard = new Queue<usingCardQ>(); // using card or trying to use 
     public GameObject currentObjTurn;
     public bool isAction = false;
     public GameObject endTurnButton;
@@ -83,16 +90,16 @@ public class combatManager : MonoBehaviour
     {
         while (inUseCard.Count > 0)
         {
-            GameObject card = inUseCard.Dequeue();
-            Card cardData = card.GetComponent<cardDisplay>().card;
+            usingCardQ dequeueCard = inUseCard.Dequeue();
+            Card cardData = dequeueCard.card.GetComponent<cardDisplay>().card;
             //Check target
-            if (target == null)
+            if (dequeueCard.cardTarget == null)
             {
-                card.GetComponent<cardDisplay>().undoCard();
+                dequeueCard.card.GetComponent<cardDisplay>().undoCard();
                 continue;
             }
             //Using card function
-            cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), target);
+            cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget);
             currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
             currentObjTurn.GetComponent<cardHandler>().cardInHand.Remove(cardData);
             yield return new WaitForSeconds(cardData.delayAction); 
@@ -118,6 +125,27 @@ public class combatManager : MonoBehaviour
     {
         _selectedEffect.transform.position = _selectedEffectPostion;
     }
+
+    public void checkWinLose()
+    {
+        GameObject[] found = GameObject.FindGameObjectsWithTag("Enemy");
+        Debug.Log(found.Length);
+        if (found.Length == 1) //Playerwin
+        {
+            changeTurn(BattleState.WON);
+            return;
+        }
+
+        found = GameObject.FindGameObjectsWithTag("Player");
+
+        if (found.Length == 1) //Player lost
+        {
+            changeTurn(BattleState.LOST);
+            return;
+        }
+
+    }
+
 
 }
 
