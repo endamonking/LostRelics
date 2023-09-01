@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -7,10 +8,12 @@ public class PlayerControl : MonoBehaviour
     
     private float horizontal;
     private float vertical;
-    public Stats stats;
-    [SerializeField] private Rigidbody2D body;
+   
+     private Rigidbody2D body;
     [SerializeField] private  float runSpeed = 20.0f;
-
+    [SerializeField] private Inventory inventory;
+   
+ 
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,6 +24,12 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        Item item = AssetDatabase.LoadAssetAtPath<Item>($"Assets/Items/Helmet.asset");
+        inventory.AddItem(item);
+        inventory.EquipItem(item);
+        
+        
+       
     }
 
     

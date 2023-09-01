@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ca95b9b96e24c48ad1e8b898f84dae, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 11400000, guid: 26c1eafd57ec5434897e33600c29549d, type: 2}
-  - {fileID: 11400000, guid: a8e526976ee651340a132671651c969c, type: 2}
-  - {fileID: 11400000, guid: 3dd2bd254782be94db423dc5c3894690, type: 2}
-  - {fileID: 11400000, guid: addeb30375be08b48abfb57953ccc619, type: 2}
-  - {fileID: 11400000, guid: addeb30375be08b48abfb57953ccc619, type: 2}
-  - {fileID: 11400000, guid: addeb30375be08b48abfb57953ccc619, type: 2}
-  equippedArmor: {fileID: 11400000, guid: 26c1eafd57ec5434897e33600c29549d, type: 2}
-  equippedHelmet: {fileID: 11400000, guid: 3dd2bd254782be94db423dc5c3894690, type: 2}
-  equippedBoot: {fileID: 11400000, guid: a8e526976ee651340a132671651c969c, type: 2}
+  itemList: []
+  equippedArmor: {fileID: 0}
+  equippedHelmet: {fileID: 0}
+  equippedBoot: {fileID: 0}

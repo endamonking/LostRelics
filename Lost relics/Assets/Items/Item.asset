@@ -10,10 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae60f2c1034348344bafe7dbccd3d2f6, type: 3}
-  m_Name: Helmet
+  m_Name: Item
   m_EditorClassIdentifier: 
   itemName: 
   itemType: 0
   icon: {fileID: 0}
   description: 
-  ItemStateDataList: []
+  ItemStateDataList:
+  - key: HP
+    value: 1
+  - key: ATK
+    value: 1
+  - key: Healing
+    value: 1
+  - key: DEF
+    value: 1
+  - key: SPD
+    value: 1
+  - key: Resistance
+    value: 1
+  - key: Evade
+    value: 0
+  - key: Crit
+    value: 0
+  - key: Crit DMG
+    value: 0

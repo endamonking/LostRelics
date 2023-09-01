@@ -17,15 +17,9 @@ public class Inventory : ScriptableObject
     public void AddItem(Item item)
     {
 
-        Item newItem = ScriptableObject.CreateInstance<Item>();
-        newItem.itemName = "MyItem";
-        AssetDatabase.CreateAsset(newItem, $"Assets/Items/ItemInInventory/{newItem.itemName}.asset");
-
-        newItem.itemName = item.itemName;
-        newItem.itemType = item.itemType;
-        newItem.icon = item.icon;
-        newItem.description = item.description;
-        newItem.ItemStateDataList = new List<ItemStateData>(item.ItemStateDataList);
+        Item newItem = Instantiate(item);
+        newItem.name = item.name;
+        AssetDatabase.CreateAsset(newItem, $"Assets/Inventory/{newItem.itemName}.asset");
         itemList.Add(newItem);
     }
 
@@ -36,17 +30,21 @@ public class Inventory : ScriptableObject
 
     public void EquipItem(Item item)
     {
-        switch (item.itemType)
+        if (itemList.Contains(item))
         {
-            case ItemType.Armor:
-                equippedArmor = item;
-                break;
-            case ItemType.Helmet:
-                equippedHelmet = item;
-                break;
-            case ItemType.Boot:
-                equippedBoot = item;
-                break;
+            // Equip the item
+            switch (item.itemType)
+            {
+                case ItemType.Armor:
+                    equippedArmor = item;
+                    break;
+                case ItemType.Helmet:
+                    equippedHelmet = item;
+                    break;
+                case ItemType.Boot:
+                    equippedBoot = item;
+                    break;
+            }
         }
     }
 }

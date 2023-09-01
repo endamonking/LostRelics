@@ -11,9 +11,10 @@ public class ItemStateData
 }
 public enum ItemType
 {
-    Boot,
+
     Armor,
-    Helmet
+    Helmet,
+    Boot
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item")]
