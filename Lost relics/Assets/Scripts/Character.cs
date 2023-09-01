@@ -48,6 +48,7 @@ public class Character : MonoBehaviour
     {
         combatManager.Instance.target = null;
         combatManager.Instance.returnEffectPosition();
+        combatManager.Instance.checkWinLose();
         Destroy(cardHandler.turnGuageUI.gameObject);
         Destroy(this.gameObject);
     }

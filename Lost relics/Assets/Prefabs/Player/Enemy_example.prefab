@@ -148,6 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 775640016}
   - component: {fileID: 775640017}
+  - component: {fileID: 775640018}
   m_Layer: 5
   m_Name: HPBar
   m_TagString: Untagged
@@ -228,6 +229,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &775640018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775640015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d20c523f81e38b428dfc36b1575dd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &819011019
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +409,7 @@ GameObject:
   - component: {fileID: 9149397430665950267}
   m_Layer: 0
   m_Name: Enemy_example
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -494,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basedefPoint: 100
-  maxHP: 30
+  maxHP: 50
   baseSPD: 5
   maxPlayerHand: 3
   maxMana: 10
