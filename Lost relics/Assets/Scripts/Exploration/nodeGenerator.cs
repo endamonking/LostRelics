@@ -7,21 +7,19 @@ public class nodeGenerator : MonoBehaviour
     public int maxNodeLayer = 10;
 
     [SerializeField]
-    private GameObject nodePrefab;
-
+    private GameObject normalNodePrefab;
+    [SerializeField]
+    private GameObject startNodePrefab;
+    [SerializeField]
+    private GameObject bossNodePrefab;
 
     private Dictionary<int, List<node>> nodeList = new Dictionary<int, List<node>>();
 
     // Start is called before the first frame update
     void Start()
     {
-        generateNode(1,0);
-        generateNode(3, 1);
-        generateNode(5, 2);
-        generateNode(3, 3);
-        generateNode(1, 4);
+        createMap();
         connectNode();
-        //VisualizeConnections();
     }
 
     // Update is called once per frame
@@ -30,18 +28,40 @@ public class nodeGenerator : MonoBehaviour
         
     }
 
-    private void generateNode(int numNodeInLayer, int layer)
+    private void generateNode(int numNodeInLayer, int layer, GameObject nodePrefab)
     {
+        int verticalLayer = 0;
+
         for (int i = 0; i < numNodeInLayer; i++)
         {
-            Vector3 newPosition = new Vector3(layer * 3, i * 1.5f, 0);
+            Vector3 newPosition = new Vector3(layer * 3, verticalLayer * 1.5f * Mathf.Pow(-1,i) , 0);
             GameObject node = Instantiate(nodePrefab, newPosition, Quaternion.identity);
             node.name = "Node " + i.ToString() + " Layer " + layer.ToString();
             node.GetComponent<node>().position = newPosition;
             addList(layer, node.GetComponent<node>());
+            if (i % 2 == 0)
+                verticalLayer++;
 
         }
     }
+
+
+    private void createMap()
+    {
+        //generater town node
+        generateNode(1, 0, startNodePrefab);
+        int totalLayer = maxNodeLayer + 1;
+        for (int i = 1; i < totalLayer; i++)
+        {
+            if (i == totalLayer - 1) // last node
+            {
+                generateNode(1, i ,bossNodePrefab);
+                break;
+            }
+            generateNode(Random.Range(1,4), i, normalNodePrefab);
+        }
+    }
+
 
     private void addList(int layer, node newNode)
     {
@@ -55,44 +75,15 @@ public class nodeGenerator : MonoBehaviour
             nodeList[layer] = new List<node>();
             nodeList[layer].Add(newNode);
         }
-
-
     }
 
     private void connectNode()
     {
         for (int i = 0; i < nodeList.Count; i++) 
         {
-            /*if (i == 0) // Start node
-            {
-                foreach (node nextNode in nodeList[i + 1])
-                {
-                    nodeList[i][0].connect(nextNode);
-                }
-                continue;
-            }*/
             if (i - nodeList.Count == -1) //last node
                 break;
-            /*else if (i - nodeList.Count == -2)
-            {
-                foreach (node node1 in nodeList[i])
-                {
-                    node1.connect(nodeList[i + 1][0]); // connect with first node
-                }
-                continue;
-            }*/
-
-            /* foreach (node node1 in nodeList[i])
-             {
-
-                 if (nodeList[i].IndexOf(node1) < nodeList[i + 1].Count)
-                     node1.connect(nodeList[i + 1][nodeList[i].IndexOf(node1)]);
-             }*/
-
             randomConnectNodeToNode(nodeList[i], nodeList[i + 1]);
-
-
-
         }
 
     }

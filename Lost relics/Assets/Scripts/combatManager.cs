@@ -133,6 +133,7 @@ public class combatManager : MonoBehaviour
         if (found.Length == 1) //Playerwin
         {
             changeTurn(BattleState.WON);
+            StartCoroutine(delay());
             return;
         }
 
@@ -144,6 +145,12 @@ public class combatManager : MonoBehaviour
             return;
         }
 
+    }
+
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(3.0f);
+        exploration_sceneManager.Instance.ReturnToExplorationScene();
     }
 
 

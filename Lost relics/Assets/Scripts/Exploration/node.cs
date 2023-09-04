@@ -49,5 +49,10 @@ public class node : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        exploration_sceneManager.Instance.loadCombatScene();
+    }
+
 
 }
