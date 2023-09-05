@@ -39,7 +39,8 @@ public class enemyCardHandler : cardHandler
                 if (currentMana >= card.cardCost)
                 {
                     GameObject target = GameObject.FindWithTag("Player");
-
+                    if (target == null)
+                        continue;
                     currentMana = currentMana - card.cardCost;
                     card.doCardEffect(this.player, target.GetComponent<Character>());
                     discardedDeck.Add(card);

@@ -35,9 +35,14 @@ public class combatManager : MonoBehaviour
     private GameObject selectedEffectPrefabe;
     private GameObject _selectedEffect;
     private Vector3 _selectedEffectPostion;
+
+    private List<GameObject> remainingPlayers = new List<GameObject>();
+    private List<GameObject> playersPool;
     private void Awake()
     {
         Instance = this;
+        playersPool = exploration_sceneManager.Instance.playerPool;
+
         state = BattleState.START;
     }
 
@@ -47,12 +52,26 @@ public class combatManager : MonoBehaviour
         _stateText.text = state.ToString();
         _selectedEffectPostion = new Vector3(0, -20f, 0);
         _selectedEffect = Instantiate(selectedEffectPrefabe, _selectedEffectPostion, Quaternion.identity);
+        initPlayers();
         StartCoroutine(startTurn());
     }
 
     void Update()
     {
 
+    }
+
+    private void initPlayers()
+    {
+        int i = 0;
+        foreach (GameObject player in playersPool)
+        {
+            GameObject playerObj = Instantiate(player, transform.position, Quaternion.identity);
+            playerObj.transform.position = new Vector3(-3, 0, -2 + (i * 2));
+            playerObj.SetActive(true);
+            remainingPlayers.Add(playerObj);
+            i++;
+        }
     }
 
     public void changeTurn(BattleState newState)
@@ -149,6 +168,9 @@ public class combatManager : MonoBehaviour
 
     IEnumerator delay()
     {
+        
+        foreach (GameObject player in remainingPlayers)
+            Destroy(player);
         yield return new WaitForSeconds(3.0f);
         exploration_sceneManager.Instance.ReturnToExplorationScene();
     }

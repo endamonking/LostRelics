@@ -21,7 +21,7 @@ public class CharacterBar : MonoBehaviour
         
     }
 
-    public void updateHPBar(int maxHP, int currentHP)
+    public void updateHPBar(float maxHP, float currentHP)
     {
         slider.value = currentHP / maxHP;
     }

@@ -7,7 +7,7 @@ public class exploration_sceneManager : MonoBehaviour
 {
     public static exploration_sceneManager Instance;
 
-
+    public List<GameObject> playerPool = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +30,8 @@ public class exploration_sceneManager : MonoBehaviour
 
             foreach (GameObject obj in mainSceneObjects)
             {
+                if (obj.tag == "Player")
+                    continue;
                 obj.SetActive(true);
             }
         }

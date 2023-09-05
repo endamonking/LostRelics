@@ -51,7 +51,10 @@ public class node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        exploration_sceneManager.Instance.loadCombatScene();
+        exploration_sceneManager.Instance.playerPool[0].name = "test";
+        exploration_sceneManager.Instance.playerPool[0].GetComponent<Character>().baseSPD = 10;
+        exploration_sceneManager.Instance.loadCombatScene();   
+
     }
 
 
