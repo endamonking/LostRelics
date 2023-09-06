@@ -153,9 +153,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNodeLayer: 10
-  normalNodePrefab: {fileID: 3390338112532922942, guid: 2025488c24bb7734db7ee776b8bfbe5c, type: 3}
-  startNodePrefab: {fileID: 3390338112532922942, guid: 2025488c24bb7734db7ee776b8bfbe5c, type: 3}
-  bossNodePrefab: {fileID: 7110000656317466310, guid: fae8bb1840b75c8439b8c20271f1a2f3, type: 3}
+  normalNodePrefab:
+  - {fileID: 1869140847928047323, guid: ddf53778ee15e51499142f11d647ff02, type: 3}
+  - {fileID: 6277428939473586405, guid: 3e43fdb8e84324d498e3c002e1269159, type: 3}
+  startNodePrefab:
+  - {fileID: 1869140847928047323, guid: ddf53778ee15e51499142f11d647ff02, type: 3}
+  bossNodePrefab:
+  - {fileID: 5049140864421204178, guid: fae8bb1840b75c8439b8c20271f1a2f3, type: 3}
 --- !u!4 &1186080996
 Transform:
   m_ObjectHideFlags: 0
@@ -488,3 +492,5 @@ MonoBehaviour:
   playerPool:
   - {fileID: 2061923070}
   - {fileID: 1231979374}
+  enemyPool: []
+  playerLocation: {fileID: 0}

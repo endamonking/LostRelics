@@ -7,11 +7,11 @@ public class nodeGenerator : MonoBehaviour
     public int maxNodeLayer = 10;
 
     [SerializeField]
-    private GameObject normalNodePrefab;
+    private List<GameObject> normalNodePrefab = new List<GameObject>();
     [SerializeField]
-    private GameObject startNodePrefab;
+    private List<GameObject> startNodePrefab;
     [SerializeField]
-    private GameObject bossNodePrefab;
+    private List<GameObject> bossNodePrefab;
 
     private Dictionary<int, List<node>> nodeList = new Dictionary<int, List<node>>();
 
@@ -28,14 +28,14 @@ public class nodeGenerator : MonoBehaviour
         
     }
 
-    private void generateNode(int numNodeInLayer, int layer, GameObject nodePrefab)
+    private void generateNode(int numNodeInLayer, int layer, List<GameObject> nodePrefab)
     {
         int verticalLayer = 0;
 
         for (int i = 0; i < numNodeInLayer; i++)
         {
             Vector3 newPosition = new Vector3(layer * 3, verticalLayer * 1.5f * Mathf.Pow(-1,i) , 0);
-            GameObject node = Instantiate(nodePrefab, newPosition, Quaternion.identity);
+            GameObject node = Instantiate(nodePrefab[Random.Range(0,nodePrefab.Count)], newPosition, Quaternion.identity);
             node.name = "Node " + i.ToString() + " Layer " + layer.ToString();
             node.GetComponent<node>().position = newPosition;
             addList(layer, node.GetComponent<node>());
@@ -79,6 +79,8 @@ public class nodeGenerator : MonoBehaviour
 
     private void connectNode()
     {
+        exploration_sceneManager.Instance.playerLocation = nodeList[0][0]; //frist node
+
         for (int i = 0; i < nodeList.Count; i++) 
         {
             if (i - nodeList.Count == -1) //last node

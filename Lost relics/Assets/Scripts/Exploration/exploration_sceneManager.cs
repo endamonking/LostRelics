@@ -8,10 +8,19 @@ public class exploration_sceneManager : MonoBehaviour
     public static exploration_sceneManager Instance;
 
     public List<GameObject> playerPool = new List<GameObject>();
+    public List<GameObject> enemyPool = new List<GameObject>();
+
+    public node playerLocation;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Instance = this;
+
     }
 
     // Update is called once per frame
@@ -61,11 +70,12 @@ public class exploration_sceneManager : MonoBehaviour
         DisableMainSceneObjects();
     }
 
+    [System.Obsolete]
     public void ReturnToExplorationScene()
     {
         // Unload the additional scene
         SceneManager.UnloadScene("Combat");
-
+        enemyPool.Clear();
         // Enable all GameObjects in the main scene
         EnableMainSceneObjects();
     }

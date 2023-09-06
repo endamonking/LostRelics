@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class node : MonoBehaviour
+public abstract class node : MonoBehaviour
 {
     public Vector3 position;
     public List<node> nextNode = new List<node>();
@@ -10,10 +10,11 @@ public class node : MonoBehaviour
     [SerializeField]
     private LineRenderer linePrefab;
     private LineRenderer lineRend;
+    private Camera mainCamera;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        //position = transform.position;
+        mainCamera = Camera.main;
         createConnectionLine();
 
     }
@@ -49,12 +50,10 @@ public class node : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
-        exploration_sceneManager.Instance.playerPool[0].name = "test";
-        exploration_sceneManager.Instance.playerPool[0].GetComponent<Character>().baseSPD = 10;
-        exploration_sceneManager.Instance.loadCombatScene();   
-
+        exploration_sceneManager.Instance.playerLocation = this;
+        mainCamera.transform.position = this.transform.position + new Vector3(0, 0, -10);
     }
 
 

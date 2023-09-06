@@ -38,10 +38,13 @@ public class combatManager : MonoBehaviour
 
     private List<GameObject> remainingPlayers = new List<GameObject>();
     private List<GameObject> playersPool;
+    private List<GameObject> remainingEnemies = new List<GameObject>();
+    private List<GameObject> enemiesPool;
     private void Awake()
     {
         Instance = this;
         playersPool = exploration_sceneManager.Instance.playerPool;
+        enemiesPool = exploration_sceneManager.Instance.enemyPool;
 
         state = BattleState.START;
     }
@@ -53,6 +56,7 @@ public class combatManager : MonoBehaviour
         _selectedEffectPostion = new Vector3(0, -20f, 0);
         _selectedEffect = Instantiate(selectedEffectPrefabe, _selectedEffectPostion, Quaternion.identity);
         initPlayers();
+        initEnemies();
         StartCoroutine(startTurn());
     }
 
@@ -70,6 +74,19 @@ public class combatManager : MonoBehaviour
             playerObj.transform.position = new Vector3(-3, 0, -2 + (i * 2));
             playerObj.SetActive(true);
             remainingPlayers.Add(playerObj);
+            i++;
+        }
+    }
+
+    private void initEnemies()
+    {
+        int i = 0;
+        foreach (GameObject enemy in enemiesPool)
+        {
+            GameObject enemyObj = Instantiate(enemy, transform.position, Quaternion.identity);
+            enemyObj.transform.position = new Vector3(3, 0, -2 + (i * 2));
+            enemyObj.SetActive(true);
+            remainingEnemies.Add(enemyObj);
             i++;
         }
     }
@@ -145,6 +162,7 @@ public class combatManager : MonoBehaviour
         _selectedEffect.transform.position = _selectedEffectPostion;
     }
 
+    [System.Obsolete]
     public void checkWinLose()
     {
         GameObject[] found = GameObject.FindGameObjectsWithTag("Enemy");
@@ -166,6 +184,7 @@ public class combatManager : MonoBehaviour
 
     }
 
+    [System.Obsolete]
     IEnumerator delay()
     {
         
