@@ -22,6 +22,7 @@ public class eventNode : node
         {
             Debug.Log("EventNode");
             base.OnMouseDown();
+            StartCoroutine(lerpingNode(2));
         }
     }
 

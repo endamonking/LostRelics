@@ -53,8 +53,24 @@ public abstract class node : MonoBehaviour
     protected virtual void OnMouseDown()
     {
         exploration_sceneManager.Instance.playerLocation = this;
-        mainCamera.transform.position = this.transform.position + new Vector3(0, 0, -10);
+
     }
 
+    protected virtual IEnumerator lerpingNode(float duration)
+    {
+        float startTime = Time.time;
+        float elapsedTime = 0f;
+        GameObject effect = exploration_sceneManager.Instance.currentNodeEffect;
+
+        while (elapsedTime < duration)
+        {
+            
+            float t = elapsedTime / duration;
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, this.transform.position + new Vector3(0, 0, -10), t);
+            effect.transform.position = Vector3.Lerp(effect.transform.position, this.transform.position, t);
+            elapsedTime = Time.time - startTime;
+            yield return null;
+        }
+    }
 
 }

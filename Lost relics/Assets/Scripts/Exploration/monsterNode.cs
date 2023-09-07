@@ -25,7 +25,15 @@ public class monsterNode : node
         {
             exploration_sceneManager.Instance.enemyPool.AddRange(enemies);
             base.OnMouseDown();
-            exploration_sceneManager.Instance.loadCombatScene();
+            StartCoroutine(lerpingNode(2));
         }
     }
+
+    protected override IEnumerator lerpingNode(float duration)
+    {
+        yield return base.lerpingNode(duration);
+        exploration_sceneManager.Instance.loadCombatScene();
+
+    }
+
 }
