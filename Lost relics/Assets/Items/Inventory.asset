@@ -12,7 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ca95b9b96e24c48ad1e8b898f84dae, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  itemList: []
+  itemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   equippedArmor: {fileID: 0}
   equippedHelmet: {fileID: 0}
   equippedBoot: {fileID: 0}

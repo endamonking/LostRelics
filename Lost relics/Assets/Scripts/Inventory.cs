@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Inventory", menuName = "ScriptableObjects/Inventory")]
 public class Inventory : ScriptableObject
 {
-    public List<Item> itemList;
-    
+    public List<Item> itemList = new List<Item>(20);
+
     public Item equippedArmor;
     public Item equippedHelmet;
     public Item equippedBoot;
@@ -26,6 +26,8 @@ public class Inventory : ScriptableObject
     public void RemoveItem(Item item)
     {
         itemList.Remove(item);
+        string assetPath = AssetDatabase.GetAssetPath(item);
+        AssetDatabase.DeleteAsset(assetPath);
     }
 
     public void EquipItem(Item item)

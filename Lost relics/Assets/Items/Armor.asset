@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Armor
   itemType: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d92322fae3f2ec44c925028e5b9f07ff, type: 3}
+  stable: 1
   description: 
   ItemStateDataList:
   - key: HP

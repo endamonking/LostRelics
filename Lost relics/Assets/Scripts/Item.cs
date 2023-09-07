@@ -11,7 +11,6 @@ public class ItemStateData
 }
 public enum ItemType
 {
-
     Armor,
     Helmet,
     Boot
@@ -23,6 +22,9 @@ public class Item : ScriptableObject
     public string itemName;
     public ItemType itemType;
     public Sprite icon;
+    [Header("Only UI")]
+    public bool stable = true;
+
     [TextArea]
     public string description;
     public List<ItemStateData> ItemStateDataList;

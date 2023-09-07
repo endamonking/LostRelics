@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Boot
   itemType: 2
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b18732bef90ff6a409e2b56017fa335a, type: 3}
+  stable: 1
   description: 
   ItemStateDataList:
   - key: HP
