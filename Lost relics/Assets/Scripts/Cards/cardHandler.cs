@@ -31,6 +31,10 @@ public abstract class cardHandler : MonoBehaviour
     protected virtual void Start()
     {
         comIns = combatManager.Instance;
+        if (comIns == null)
+            return;
+
+        cardParent = GameObject.FindGameObjectWithTag("MainCanvas").gameObject.transform;
         player = this.gameObject.GetComponent<Character>();
         currentMana = player.maxMana;
 
@@ -52,6 +56,9 @@ public abstract class cardHandler : MonoBehaviour
 
     public void updateTurnGuage()
     {
+        if (comIns == null)
+            return;
+
         if (comIns.state == BattleState.NORMAL)
         {
             turnGauge = turnGauge -  10 * player.currentSPD * Time.deltaTime;
