@@ -18,7 +18,7 @@ public enum ItemType
 
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item")]
 public class Item : ScriptableObject
-{
+{   public int currentSlot;
     public string itemName;
     public ItemType itemType;
     public Sprite icon;

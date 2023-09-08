@@ -24,9 +24,9 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        Item item = AssetDatabase.LoadAssetAtPath<Item>($"Assets/Items/Helmet.asset");
-        inventory.AddItem(item);
-        inventory.EquipItem(item);
+       // Item item = AssetDatabase.LoadAssetAtPath<Item>($"Assets/Items/Helmet.asset");
+ 
+       // inventory.EquipItem(item);
         
         
        
