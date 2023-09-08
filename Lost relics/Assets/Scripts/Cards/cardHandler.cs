@@ -126,6 +126,9 @@ public abstract class cardHandler : MonoBehaviour
 
     public void destroyInHandCard()
     {
+        if (cardParent == null)
+            return;
+
         for (int i =0; i < cardParent.childCount; i++)
         {
             if (cardParent.GetChild(i).tag == "Card")

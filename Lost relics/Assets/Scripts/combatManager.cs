@@ -163,20 +163,22 @@ public class combatManager : MonoBehaviour
     }
 
     [System.Obsolete]
-    public void checkWinLose()
+    public void checkWinLose(GameObject character)
     {
-        GameObject[] found = GameObject.FindGameObjectsWithTag("Enemy");
-        Debug.Log(found.Length);
-        if (found.Length == 1) //Playerwin
+        if (remainingEnemies.Contains(character))
+            remainingEnemies.Remove(character);
+        if (remainingPlayers.Contains(character))
+            remainingPlayers.Remove(character);
+
+        if (remainingEnemies.Count == 0) //Playerwin
         {
             changeTurn(BattleState.WON);
+            Destroy(_selectedEffect);
             StartCoroutine(delay());
             return;
         }
 
-        found = GameObject.FindGameObjectsWithTag("Player");
-
-        if (found.Length == 1) //Player lost
+        if (remainingPlayers.Count == 0) //Player lost
         {
             changeTurn(BattleState.LOST);
             return;

@@ -35,6 +35,7 @@ public class Character : MonoBehaviour
         
     }
 
+    [System.Obsolete]
     public void takeDamage(int damage)
     {
         currentHP = currentHP - damage;
@@ -44,11 +45,12 @@ public class Character : MonoBehaviour
             died();
     }
 
+    [System.Obsolete]
     private void died()
     {
         combatManager.Instance.target = null;
         combatManager.Instance.returnEffectPosition();
-        combatManager.Instance.checkWinLose();
+        combatManager.Instance.checkWinLose(this.gameObject);
         Destroy(cardHandler.turnGuageUI.gameObject);
         Destroy(this.gameObject);
     }

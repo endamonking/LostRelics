@@ -14,12 +14,16 @@ public class nodeGenerator : MonoBehaviour
     private List<GameObject> bossNodePrefab;
 
     private Dictionary<int, List<node>> nodeList = new Dictionary<int, List<node>>();
+    [SerializeField]
+    private explorationCam explorCam;
 
     // Start is called before the first frame update
     void Start()
     {
         createMap();
         connectNode();
+        explorCam.initMinCam(nodeList[0][0].position);
+        explorCam.initMaxCam(nodeList[10][0].position);
     }
 
     // Update is called once per frame
@@ -121,8 +125,9 @@ public class nodeGenerator : MonoBehaviour
 
     }
 
-    /*              use to connect same line
-     *              if (nodeList[i + 1].IndexOf(node1) < nodeList[i].Count)
-                    nodeList[i][nodeList[i + 1].IndexOf(node1)].connect(node1);*/
+    public Vector3 getNodePosition(int layer, int index)
+    {
+        return nodeList[layer][index].position;
+    }
 
 }

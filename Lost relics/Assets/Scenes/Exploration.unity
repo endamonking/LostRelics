@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 1869140847928047323, guid: ddf53778ee15e51499142f11d647ff02, type: 3}
   bossNodePrefab:
   - {fileID: 5049140864421204178, guid: fae8bb1840b75c8439b8c20271f1a2f3, type: 3}
+  explorCam: {fileID: 1427813116}
 --- !u!4 &1186080996
 Transform:
   m_ObjectHideFlags: 0
@@ -261,6 +262,7 @@ GameObject:
   - component: {fileID: 1427813113}
   - component: {fileID: 1427813112}
   - component: {fileID: 1427813115}
+  - component: {fileID: 1427813116}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -367,6 +369,19 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1427813116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427813111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4389180cf37a8143b98673d05cee226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camSpeed: 0.05
 --- !u!1001 &2061923069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,6 +396,10 @@ PrefabInstance:
     - target: {fileID: 482151159, guid: 8f8a5a15c5c78f04c97e05dd3dc237a1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9047056346979240656, guid: 8f8a5a15c5c78f04c97e05dd3dc237a1, type: 3}
+      propertyPath: maxHP
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9047056346979240656, guid: 8f8a5a15c5c78f04c97e05dd3dc237a1, type: 3}
       propertyPath: baseSPD
@@ -494,3 +513,5 @@ MonoBehaviour:
   - {fileID: 1231979374}
   enemyPool: []
   playerLocation: {fileID: 0}
+  currentNodeEffectPrefab: {fileID: 6098138057546378294, guid: 0b5ac772ef1420242a3dfc7da727d08d, type: 3}
+  currentNodeEffect: {fileID: 0}

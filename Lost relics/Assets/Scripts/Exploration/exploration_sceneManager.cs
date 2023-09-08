@@ -12,6 +12,9 @@ public class exploration_sceneManager : MonoBehaviour
 
     public node playerLocation;
 
+    [SerializeField]
+    private GameObject currentNodeEffectPrefab;
+    public GameObject currentNodeEffect;
     private void Awake()
     {
         Instance = this;
@@ -20,7 +23,7 @@ public class exploration_sceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        currentNodeEffect = Instantiate(currentNodeEffectPrefab, playerLocation.position, Quaternion.identity);
     }
 
     // Update is called once per frame
