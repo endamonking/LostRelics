@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "Inventory", menuName = "ScriptableObjects/Inventory")]
 public class Inventory : ScriptableObject
@@ -9,22 +10,50 @@ public class Inventory : ScriptableObject
     public List<Item> itemList = new List<Item>(20);
 
     [Header("Player Equipment")]
-    public Item PlayerEquippedArmor;
-    public Item PlayerEquippedHelmet;
-    public Item PlayerEquippedBoot;
+    public Item playerEquippedArmor;
+    public Item playerEquippedHelmet;
+    public Item playerEquippedBoot;
 
     [Header("Character Equipment")]
     public Item equippedArmor;
     public Item equippedHelmet;
     public Item equippedBoot;
 
-
+  
     public void MoveItem(Item item, int newSlot)
     {
-        if (itemList.Contains(item))
-        {
+        Debug.Log("Moving item to slot: " + newSlot);
 
-            item.currentSlot = newSlot;
+         
+            int oldSlot = itemList.IndexOf(item);
+            if (newSlot >= 0 && newSlot < itemList.Count)
+            {
+                // If the new slot already contains an item, swap them
+                if (itemList[newSlot] != null)
+                {
+                    Item tempItem = itemList[newSlot];
+                    tempItem.currentSlot = oldSlot;
+                    itemList[oldSlot] = tempItem;
+                }
+
+                // Move the item to the new slot
+                itemList[newSlot] = item;
+                item.currentSlot = newSlot;
+            }
+            else
+            {
+                Debug.LogError("New slot index is out of range");
+            }
+         
+
+    }
+ 
+    public void RemoveItem(Item item)
+    {
+        int index = itemList.IndexOf(item);
+        if (index != -1)
+        {
+            itemList[index] = null;   
         }
     }
     public void EquipHelmet(Item helmet, int character)
@@ -34,12 +63,14 @@ public class Inventory : ScriptableObject
             // Equip the helmet for the specified character
             if (character == 0)
             {
-                PlayerEquippedHelmet = helmet;
+                playerEquippedHelmet = helmet;
             }
             else if (character == 1)
             {
                 equippedHelmet = helmet;
             }
+            
+
         }
     }
     public void EquipArmor(Item armor, int character)
@@ -49,7 +80,7 @@ public class Inventory : ScriptableObject
                 // Equip the helmet for the specified character
                 if (character == 0)
                 {
-                    PlayerEquippedArmor = armor;
+                    playerEquippedArmor = armor;
                 }
                 else if (character == 1)
                 {
@@ -64,7 +95,7 @@ public class Inventory : ScriptableObject
             // Equip the helmet for the specified character
             if (character == 0)
             {
-                PlayerEquippedBoot = boot;
+                playerEquippedBoot = boot;
             }
             else if (character == 1)
             {

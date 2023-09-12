@@ -7,7 +7,7 @@ using UnityEngine;
 public class ItemStateData
 {
     public string key;
-    public float value;
+    public int value;
 }
 public enum ItemType
 {
@@ -28,7 +28,7 @@ public class Item : ScriptableObject
     [TextArea]
     public string description;
     public List<ItemStateData> ItemStateDataList;
-    private Dictionary<string, float> itemStateDictionary;
+    private Dictionary<string, int> itemStateDictionary;
 
     private void OnEnable()
     {
@@ -41,12 +41,12 @@ public class Item : ScriptableObject
             new ItemStateData { key = "DEF", value = 1 },
             new ItemStateData { key = "SPD", value = 1 },
             new ItemStateData { key = "Resistance", value = 1 },
-            new ItemStateData { key = "Evade", value = 0f },
-            new ItemStateData { key = "Crit", value = 0f },
-            new ItemStateData { key = "Crit DMG", value = 0f }
+            new ItemStateData { key = "Evade", value = 0 },
+            new ItemStateData { key = "Crit", value = 0 },
+            new ItemStateData { key = "Crit DMG", value = 0 }
         };
 
-        itemStateDictionary = new Dictionary<string, float>();
+        itemStateDictionary = new Dictionary<string, int>();
         foreach (ItemStateData data in ItemStateDataList)
         {
             itemStateDictionary.Add(data.key, data.value);

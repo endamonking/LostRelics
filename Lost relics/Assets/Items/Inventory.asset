@@ -33,6 +33,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerEquippedArmor: {fileID: 0}
+  playerEquippedHelmet: {fileID: 0}
+  playerEquippedBoot: {fileID: 0}
   equippedArmor: {fileID: 0}
   equippedHelmet: {fileID: 0}
   equippedBoot: {fileID: 0}
