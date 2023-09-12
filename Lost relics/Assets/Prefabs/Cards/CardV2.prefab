@@ -231,6 +231,7 @@ MonoBehaviour:
   card: {fileID: 0}
   _cardName: {fileID: 2407097319868667808}
   _sta: {fileID: 2407097319111216893}
+  originalPosition: {x: 0, y: 0}
 --- !u!61 &6056766569966168439
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -14,7 +14,9 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     private RectTransform rectTransform;
     private Canvas canvas;
-    private Vector2 originalPosition;
+    public Vector2 originalPosition;
+
+    public bool showOnly = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,11 +54,16 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (showOnly == true || combatManager.Instance.isShowDiscard == true)
+            return;
+
         //originalPosition = rectTransform.localPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (showOnly == true || combatManager.Instance.isShowDiscard == true)
+            return;
         // Update the position of the UI Image based on the pointer's movement
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform, eventData.position, canvas.worldCamera, out Vector2 localPoint))
@@ -68,6 +75,8 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (showOnly == true || combatManager.Instance.isShowDiscard == true)
+            return;
         // Finalize dragging behavior, e.g., releasing the UI Image, resetting cursor, etc.
         if (rectTransform.localPosition.y - originalPosition.y >= 200 && combatManager.Instance.tag != null && combatManager.Instance.target != null)
         {

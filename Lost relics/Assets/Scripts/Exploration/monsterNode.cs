@@ -25,7 +25,7 @@ public class monsterNode : node
         {
             exploration_sceneManager.Instance.enemyPool.AddRange(enemies);
             base.OnMouseDown();
-            StartCoroutine(lerpingNode(2));
+            StartCoroutine(lerpingNode(1));
         }
     }
 

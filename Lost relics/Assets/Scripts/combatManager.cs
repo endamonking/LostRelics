@@ -25,10 +25,15 @@ public class combatManager : MonoBehaviour
     public GameObject currentObjTurn;
     public bool isAction = false;
     public GameObject endTurnButton;
+    public GameObject showDiscardButton;
     public Character target;
     [SerializeField]
     private TextMeshProUGUI _stateText;
     public TextMeshProUGUI currentManaText;
+    public TextMeshProUGUI cardLeftText;
+
+    [SerializeField]
+    private GameObject discardBox;
 
     [Header("Effect")]
     [SerializeField]
@@ -40,6 +45,9 @@ public class combatManager : MonoBehaviour
     private List<GameObject> playersPool;
     private List<GameObject> remainingEnemies = new List<GameObject>();
     private List<GameObject> enemiesPool;
+
+    public bool isShowDiscard = false;
+
     private void Awake()
     {
         Instance = this;
@@ -110,8 +118,14 @@ public class combatManager : MonoBehaviour
         target = null;
         if (endTurnButton.activeSelf)
             endTurnButton.SetActive(false);
+        if (showDiscardButton.activeSelf)
+            showDiscardButton.SetActive(false);
+        if (discardBox.activeSelf)
+            discardBox.SetActive(false);
         if (currentManaText.gameObject.activeSelf == true)
             currentManaText.gameObject.SetActive(false);
+        if (cardLeftText.gameObject.activeSelf == true)
+            cardLeftText.gameObject.SetActive(false);
         returnEffectPosition();
         changeTurn(BattleState.NORMAL);
     }
@@ -151,6 +165,13 @@ public class combatManager : MonoBehaviour
         currentManaText.text = "Mana " + currentObjTurn.GetComponent<cardHandler>().currentMana.ToString();
     }
 
+    public void updateCardRemaining(int number)
+    {
+        if (cardLeftText.gameObject.activeSelf == false)
+            cardLeftText.gameObject.SetActive(true);
+        cardLeftText.text = number.ToString();
+    }
+
     public void selectedTarget(GameObject Objtarget)
     {
         target = Objtarget.GetComponent<Character>();
@@ -182,6 +203,28 @@ public class combatManager : MonoBehaviour
         {
             changeTurn(BattleState.LOST);
             return;
+        }
+
+    }
+
+    public void displayDiscardCard()
+    {
+        if (discardBox.activeSelf != true)
+            discardBox.SetActive(true);
+
+        if (isShowDiscard == false)
+        {
+            currentObjTurn.GetComponent<cardHandler>().displayDiscardedCard(discardBox);
+            isShowDiscard = true;
+        }
+        else
+        {
+            foreach (Transform child in discardBox.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            discardBox.SetActive(false);
+            isShowDiscard = false;
         }
 
     }

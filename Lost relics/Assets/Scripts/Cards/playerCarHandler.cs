@@ -28,7 +28,9 @@ public class playerCarHandler : cardHandler
     {
         base.displayInhandCard();
         comIns.endTurnButton.SetActive(true);
+        comIns.showDiscardButton.SetActive(true);
         comIns.updateManaText();
+        comIns.updateCardRemaining(_currentDeck.Count);
     }
 
 }

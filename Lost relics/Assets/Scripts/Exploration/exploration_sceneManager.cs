@@ -15,6 +15,9 @@ public class exploration_sceneManager : MonoBehaviour
     [SerializeField]
     private GameObject currentNodeEffectPrefab;
     public GameObject currentNodeEffect;
+
+    public bool isLerping = false;
+
     private void Awake()
     {
         Instance = this;
