@@ -57,7 +57,7 @@ public class Character : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (combatManager.Instance.state != BattleState.PLAYER)
+        if (combatManager.Instance.state != BattleState.PLAYER || combatManager.Instance.isShowDiscard == true)
             return;
 
         Debug.Log(this.gameObject.name + "Clicked");
