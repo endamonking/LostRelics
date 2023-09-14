@@ -34,6 +34,8 @@ public class combatManager : MonoBehaviour
 
     [SerializeField]
     private GameObject discardBox;
+    [SerializeField]
+    private GameObject discardScreen;
 
     [Header("Effect")]
     [SerializeField]
@@ -120,8 +122,8 @@ public class combatManager : MonoBehaviour
             endTurnButton.SetActive(false);
         if (showDiscardButton.activeSelf)
             showDiscardButton.SetActive(false);
-        if (discardBox.activeSelf)
-            discardBox.SetActive(false);
+        if (discardScreen.activeSelf)
+            discardScreen.SetActive(false);
         if (currentManaText.gameObject.activeSelf == true)
             currentManaText.gameObject.SetActive(false);
         if (cardLeftText.gameObject.activeSelf == true)
@@ -209,8 +211,8 @@ public class combatManager : MonoBehaviour
 
     public void displayDiscardCard()
     {
-        if (discardBox.activeSelf != true)
-            discardBox.SetActive(true);
+        if (discardScreen.activeSelf != true)
+            discardScreen.SetActive(true);
 
         if (isShowDiscard == false)
         {
@@ -221,13 +223,26 @@ public class combatManager : MonoBehaviour
         {
             foreach (Transform child in discardBox.transform)
             {
-                Destroy(child.gameObject);
+                if (child.tag == "Card")
+                    Destroy(child.gameObject);
             }
-            discardBox.SetActive(false);
+            discardScreen.SetActive(false);
             isShowDiscard = false;
         }
 
     }
+
+    public void cancelDiscardScren() 
+    {
+        foreach (Transform child in discardBox.transform)
+        {
+            if (child.tag == "Card")
+                Destroy(child.gameObject);
+        }
+        discardScreen.SetActive(false);
+        isShowDiscard = false;
+    }
+
 
     [System.Obsolete]
     IEnumerator delay()

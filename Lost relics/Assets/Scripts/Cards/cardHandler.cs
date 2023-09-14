@@ -73,7 +73,6 @@ public abstract class cardHandler : MonoBehaviour
             GameObject pCard = Instantiate(cardTemplate, cardParent);
             pCard.transform.position = pCard.transform.position + new Vector3(-i*110, 0,0);
             pCard.GetComponent<cardDisplay>().card = cardInHand[i];
-
             //cardInHandObj.Add(pCard.gameObject);
             pCard.name = pCard.name + " " + i.ToString();
         }
@@ -84,18 +83,6 @@ public abstract class cardHandler : MonoBehaviour
     {
         if (discardedDeck.Count == 0)
             return;
-        RectTransform containerRect = box.GetComponent<RectTransform>();
-        int columns = Mathf.CeilToInt(Mathf.Sqrt(discardedDeck.Count));
-        Debug.Log(columns);
-        int rows = Mathf.CeilToInt((float)discardedDeck.Count / columns);
-        Debug.Log(rows);
-
-        Vector2 newCellSize = new Vector2( (containerRect.rect.width / columns),
-            (containerRect.rect.height / rows));
-
-        newCellSize = newCellSize - box.GetComponent<GridLayoutGroup>().spacing;
-
-        box.GetComponent<GridLayoutGroup>().cellSize = newCellSize;
 
         for (int i = 0; i < discardedDeck.Count; i++)
         {
