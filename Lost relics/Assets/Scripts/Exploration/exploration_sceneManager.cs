@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class exploration_sceneManager : MonoBehaviour
 {
@@ -10,13 +12,20 @@ public class exploration_sceneManager : MonoBehaviour
     public List<GameObject> playerPool = new List<GameObject>();
     public List<GameObject> enemyPool = new List<GameObject>();
 
+    [Header("Node")]
     public node playerLocation;
-
     [SerializeField]
     private GameObject currentNodeEffectPrefab;
     public GameObject currentNodeEffect;
+    
+    [Header("Event")]
+    public GameObject EventCanvas;
+    public TextMeshProUGUI eventNameText;
+    public TextMeshProUGUI eventDescText;
+    public Transform answerContainer;
 
     public bool isLerping = false;
+    public bool isEvent = false;
 
     private void Awake()
     {
@@ -45,7 +54,7 @@ public class exploration_sceneManager : MonoBehaviour
 
             foreach (GameObject obj in mainSceneObjects)
             {
-                if (obj.tag == "Player")
+                if (obj.tag == "Player" || obj.tag == "EventCanvas")
                     continue;
                 obj.SetActive(true);
             }
@@ -67,6 +76,17 @@ public class exploration_sceneManager : MonoBehaviour
         }
     }
 
+    public void updateEventCanvas(string name, string description)
+    {
+        if (EventCanvas.activeSelf != true)
+            EventCanvas.SetActive(true);
+
+        eventNameText.text = name;
+        eventDescText.text = description;
+
+
+    }
+
     public void loadCombatScene()
     {
         // Load the additional scene additively
@@ -85,5 +105,4 @@ public class exploration_sceneManager : MonoBehaviour
         // Enable all GameObjects in the main scene
         EnableMainSceneObjects();
     }
-
 }

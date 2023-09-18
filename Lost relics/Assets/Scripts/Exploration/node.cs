@@ -52,7 +52,6 @@ public abstract class node : MonoBehaviour
 
     protected virtual void OnMouseDown()
     {
-        //exploration_sceneManager.Instance.playerLocation = this;
 
     }
 

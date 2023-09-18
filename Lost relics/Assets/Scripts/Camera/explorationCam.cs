@@ -22,8 +22,7 @@ public class explorationCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (exploration_sceneManager.Instance.isLerping == true)
+        if (exploration_sceneManager.Instance.isLerping == true || exploration_sceneManager.Instance.isEvent == true)
             return;
 
         if (Input.GetMouseButtonDown(0))

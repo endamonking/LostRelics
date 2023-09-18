@@ -21,6 +21,9 @@ public class monsterNode : node
 
     protected override void OnMouseDown()
     {
+        if (exploration_sceneManager.Instance.isLerping == true || exploration_sceneManager.Instance.isEvent == true)
+            return;
+
         if (exploration_sceneManager.Instance.playerLocation.nextNode.Contains(this))
         {
             exploration_sceneManager.Instance.enemyPool.AddRange(enemies);

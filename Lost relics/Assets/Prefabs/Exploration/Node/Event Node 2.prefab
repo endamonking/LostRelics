@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1737406498241442419}
   - component: {fileID: 5768749186372349868}
   m_Layer: 0
-  m_Name: Event Node
+  m_Name: Event Node 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,10 +127,9 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   nextNode: []
   linePrefab: {fileID: 4884272530443238322, guid: e5fe689a9df66dc4e917ea32b4e921cf, type: 3}
-  nodeName: Node1
-  description: EEEEEEEEEEEEEEEEEE
+  nodeName: Node2
+  description: DDDDDDDDDDDDDDDDDDDD
   answerList:
-  - Ehe
-  - No
+  - Nu
   - Yus
   buttonPrefab: {fileID: 8142424949879169981, guid: 893afe3816621fb418980d336b86b6eb, type: 3}
