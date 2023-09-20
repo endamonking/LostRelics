@@ -28,9 +28,12 @@ public class InventoryManager : MonoBehaviour
             {
                 succes++;
                 SpawnNewItem(item, slot);
- 
+               
             }
         }
+        LoadItemInInventory();
+      
+
     }
     public void start()
     {
@@ -52,37 +55,38 @@ public class InventoryManager : MonoBehaviour
         if(inventory.playerEquippedArmor != null)
         {
             Item item = inventory.playerEquippedArmor;
-            
-            SpawnEquipedArmor(item, PlayerArmorSlot);
+            if(item.itemType == ItemType.Armor)
+                SpawnEquipedArmor(item, PlayerArmorSlot);
         }
         if(inventory.playerEquippedHelmet != null)
         {
             Item item = inventory.playerEquippedHelmet;
-        
-            SpawnEquipedHelmet(item, PlayerHelmetSlot);
+            if (item.itemType == ItemType.Helmet)
+                SpawnEquipedHelmet(item, PlayerHelmetSlot);
         }
         if(inventory.playerEquippedBoot != null)
         {
-            Item item = inventory.playerEquippedHelmet;
-            
-            SpawnEquipedBoot(item, PlayerBootSlot);
+            Item item = inventory.playerEquippedBoot;
+            if (item.itemType == ItemType.Boot)
+                SpawnEquipedBoot(item, PlayerBootSlot);
         }
         if(inventory.equippedHelmet != null)
         {
             Item item = inventory.equippedHelmet;
-             
-            SpawnEquipedHelmet(item, helmetSlot);
+            if (item.itemType == ItemType.Helmet)
+                SpawnEquipedHelmet(item, helmetSlot);
         }
         if(inventory.equippedArmor != null)
         {
             Item item = inventory.equippedArmor;
-
-            SpawnEquipedArmor(item, armorSlot);
+            if (item.itemType == ItemType.Armor)
+                SpawnEquipedArmor(item, armorSlot);
         }
         if(inventory.equippedBoot != null)
         {
             Item item = inventory.equippedBoot;
-            SpawnEquipedBoot(item, bootSlot);
+            if (item.itemType == ItemType.Boot)
+                SpawnEquipedBoot(item, bootSlot);
         }
     }
 
