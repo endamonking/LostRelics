@@ -7,7 +7,7 @@ using UnityEngine.UI;
  
 public class PlayerStatsUI : MonoBehaviour
 {
-    public Character character;
+    public int character;
     public Inventory inventory;
     public object player;
     public TextMeshProUGUI hpText; 
@@ -15,24 +15,25 @@ public class PlayerStatsUI : MonoBehaviour
     //public TextMeshProUGUI healingText;
     public TextMeshProUGUI defText;
     public TextMeshProUGUI spdText;
-    // Use the correct type for TextMesh Pro objects 
+    public GameObject PlayerSlot;
     //public TextMeshProUGUI resistanceText;
     //public TextMeshProUGUI evadeText;
     //public TextMeshProUGUI critText;
     //public TextMeshProUGUI critDmgText;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-          
-
-    }
-
+   
     // Update is called once per frame
     void Update()
     {
-         
+        if (PlayerSlot.activeSelf)
+        {
+            character = 0;
+        }
+        else if (!PlayerSlot.activeSelf)
+        {
+            character = 1;
+        }
 
         Item equippedArmor = inventory.playerEquippedArmor;
         Item equippedHelmet = inventory.playerEquippedHelmet;
@@ -44,9 +45,13 @@ public class PlayerStatsUI : MonoBehaviour
         int HP=0;
         int SPD=0;
         int DEF=0;
+        int ATK = 0;    
+       // int Evade = 0;
+        
         if (equippedArmor != null)
         {
             HP += (int)equippedArmor.GetItemStateValue("HP");
+            ATK += (int)equippedArmor.GetItemStateValue("ATK");
             DEF += (int)equippedArmor.GetItemStateValue("DEF");
             SPD += (int)equippedArmor.GetItemStateValue("SPD");
              
@@ -54,6 +59,7 @@ public class PlayerStatsUI : MonoBehaviour
 
         if (equippedHelmet != null)
         {
+            ATK += (int)equippedHelmet.GetItemStateValue("ATK");
 
             HP += (int)equippedHelmet.GetItemStateValue("HP");
 
@@ -63,13 +69,22 @@ public class PlayerStatsUI : MonoBehaviour
 
         if (equippedBoot != null)
         {
+            ATK += (int)equippedBoot.GetItemStateValue("ATK");
             HP += (int)equippedBoot.GetItemStateValue("HP");
             DEF += (int)equippedBoot.GetItemStateValue("DEF");
             SPD += (int)equippedBoot.GetItemStateValue("SPD");
 
         }
+        else
+        {
+            ATK += 0;
+            HP += 0;
+            DEF += 0;
+            SPD += 0;
+        }
 
         // Update the UI text
+        atkText.text = $"ATK: {ATK}";
         hpText.text = $"HP: {HP}";
         defText.text = $"DEF: {DEF}";
         spdText.text = $"SPD: {SPD}";

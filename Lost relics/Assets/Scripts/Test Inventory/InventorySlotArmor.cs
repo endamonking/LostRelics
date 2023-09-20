@@ -37,31 +37,11 @@ public class InventorySlotArmor : MonoBehaviour, IDropHandler
                     currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
                     currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
                     droppedItem.parentAfterDrag = transform;
-                    inventory.EquipArmor(droppedItem.item, character);
-                    inventoryManager.UpdateInventoryItems();
-                    inventory.MoveItem(droppedItem.item, GetSlotIndex());
+                   
+                    
                 }
             }
         }
     }
-    int GetSlotIndex()
-    {
-
-
-        //Debug.Log("This: " + this);
-        // Find the index of this slot in the inventorySlots array
-        for (int i = 0; i < inventoryManager.inventorySlots.Length; i++)
-        {
-            //Debug.Log("ReferenceEquals(inventoryManager.inventorySlots[i], this)" + ReferenceEquals(inventoryManager.inventorySlots[i], this) + this + inventoryManager.inventorySlots[i] + i);
-            if (inventoryManager.inventorySlots[i] == this)
-            {
-               // Debug.Log("Found slot at index: " + i);
-                return i;
-            }
-        }
-
-        // Slot not found
-      //  Debug.LogError("Slot not found in inventorySlots array");
-        return -1;
-    }
+ 
 }

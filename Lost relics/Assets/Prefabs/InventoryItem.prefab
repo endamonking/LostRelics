@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   image: {fileID: 3295386786620613606}
+  inventoryManager: {fileID: 0}
   parentAfterDrag: {fileID: 0}
   parentBeforeDrag: {fileID: 0}
 --- !u!114 &3295386786620613606

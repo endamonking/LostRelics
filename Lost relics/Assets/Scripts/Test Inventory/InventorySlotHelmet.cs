@@ -27,60 +27,27 @@ public class InventorySlotHelmet : MonoBehaviour, IDropHandler
  
                 inventoryItem.parentAfterDrag = transform;
                 inventory.EquipHelmet(inventoryItem.item, character);
-                inventory.RemoveItem(inventoryItem.item);
             }
 
             else if (transform.childCount == 1)
             {
-               
-                InventoryItem droppedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
+
                 InventoryItem currentItem = transform.GetChild(0).GetComponent<InventoryItem>();
-               // Debug.Log(currentItem.item.itemType == ItemType.Helmet);
-                if ( currentItem.item.itemType == ItemType.Helmet)
+                if (currentItem.item.itemType == ItemType.Helmet)
                 {
-                   // Debug.Log("currentItem.item.itemName" + currentItem.item.itemName);
-                   // Debug.Log("droppedItem " + droppedItem.item.itemName);
+                    // Swap the dropped item with the current item in this slot
+                    InventoryItem droppedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
 
-
-                    int previousParentSlotIndex = GetSlotIndex(droppedItem.parentBeforeDrag);
                     currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
                     currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
-                    
                     droppedItem.parentAfterDrag = transform;
 
 
-
-                    //   Debug.Log("From Inventory to  Equip");
-                    //   Debug.Log("currentItem.item.itemName" + currentItem.item.itemName);
-                    //  Debug.Log("droppedItem " + droppedItem.item.itemName);
-
-                    Item swappedItem = droppedItem.item;
-                    inventory.EquipHelmet(droppedItem.item, character);
-
-                    inventory.MoveItem(currentItem.item, previousParentSlotIndex);
-
-                    //inventory.RemoveItem(currentItem.item);
-                    //inventory.EquipHelmet(droppedItem.item, character);
-
-                    inventoryManager.UpdateInventoryItems();
                 }
             }
         }
     }
-    int GetSlotIndex(Transform slotTransform)
-    {
-        // Find the index of the given slot in the inventorySlots array
-        for (int i = 0; i < inventoryManager.inventorySlots.Length; i++)
-        {
-            if (inventoryManager.inventorySlots[i].transform == slotTransform)
-            {
-                return i;
-            }
-        }
 
-        // Slot not found
-        Debug.LogError("Slot not found in inventorySlots array");
-        return -1;
-    }
+ 
 
 }

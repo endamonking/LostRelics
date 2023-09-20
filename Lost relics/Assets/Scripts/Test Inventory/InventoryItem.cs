@@ -8,11 +8,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     public Item item;
     [Header("UI")]
-    public Image image; 
-  
+    public Image image;
+    public InventoryManager inventoryManager;
 
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform parentBeforeDrag;
+    private void Awake()
+    {
+        inventoryManager = FindObjectOfType<InventoryManager>();
+    }
 
     public void InitialiseItem(Item newItem) {
         item= newItem;
@@ -34,5 +38,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {   image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
+        inventoryManager.UpdateInventoryItems();
     }
 }

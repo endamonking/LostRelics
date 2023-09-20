@@ -19,47 +19,11 @@ public class Inventory : ScriptableObject
     public Item equippedHelmet;
     public Item equippedBoot;
 
-  
-    public void MoveItem(Item item, int newSlot)
-    {
-        Debug.Log("Moving item to slot: " + newSlot);
+     
 
-         
-            int oldSlot = itemList.IndexOf(item);
-            if (newSlot >= 0 && newSlot < itemList.Count)
-            {
-                // If the new slot already contains an item, swap them
-                if (itemList[newSlot] != null)
-                {
-                    Item tempItem = itemList[newSlot];
-                    tempItem.currentSlot = oldSlot;
-                    itemList[oldSlot] = tempItem;
-                }
-
-                // Move the item to the new slot
-                itemList[newSlot] = item;
-                item.currentSlot = newSlot;
-            }
-            else
-            {
-                Debug.LogError("New slot index is out of range");
-            }
-         
-
-    }
- 
-    public void RemoveItem(Item item)
-    {
-        int index = itemList.IndexOf(item);
-        if (index != -1)
-        {
-            itemList[index] = null;   
-        }
-    }
     public void EquipHelmet(Item helmet, int character)
     {
-        if (itemList.Contains(helmet))
-        {
+       
             // Equip the helmet for the specified character
             if (character == 0)
             {
@@ -71,12 +35,11 @@ public class Inventory : ScriptableObject
             }
             
 
-        }
+        
     }
     public void EquipArmor(Item armor, int character)
     {
-            if (itemList.Contains(armor))
-            {
+            
                 // Equip the helmet for the specified character
                 if (character == 0)
                 {
@@ -86,12 +49,12 @@ public class Inventory : ScriptableObject
                 {
                     equippedArmor = armor;
                 }
-            }
+            
+         
     }
     public void EquipBoot(Item boot, int character)
     {
-        if (itemList.Contains(boot))
-        {
+        
             // Equip the helmet for the specified character
             if (character == 0)
             {
@@ -101,7 +64,7 @@ public class Inventory : ScriptableObject
             {
                equippedBoot = boot;
             }
-        }
+         
     }
 
 }

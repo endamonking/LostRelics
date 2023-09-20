@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   itemList:
+  - {fileID: 11400000, guid: 3dd2bd254782be94db423dc5c3894690, type: 2}
+  - {fileID: 11400000, guid: addeb30375be08b48abfb57953ccc619, type: 2}
+  - {fileID: 11400000, guid: 3dd2bd254782be94db423dc5c3894690, type: 2}
+  - {fileID: 11400000, guid: addeb30375be08b48abfb57953ccc619, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 26c1eafd57ec5434897e33600c29549d, type: 2}
+  - {fileID: 11400000, guid: addeb30375be08b48abfb57953ccc619, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 26c1eafd57ec5434897e33600c29549d, type: 2}
+  - {fileID: 11400000, guid: 26c1eafd57ec5434897e33600c29549d, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -21,19 +33,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerEquippedArmor: {fileID: 0}
+  playerEquippedArmor: {fileID: 11400000, guid: 26c1eafd57ec5434897e33600c29549d, type: 2}
   playerEquippedHelmet: {fileID: 0}
   playerEquippedBoot: {fileID: 0}
   equippedArmor: {fileID: 0}
