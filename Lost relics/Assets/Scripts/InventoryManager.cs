@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
       
 
     }
-    public void start()
+    void Start()
     {
         LoadItemInInventory();
     }
