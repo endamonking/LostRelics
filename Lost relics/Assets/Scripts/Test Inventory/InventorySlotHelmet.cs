@@ -5,7 +5,7 @@ using System;
 public class InventorySlotHelmet : MonoBehaviour, IDropHandler
 {
     public Inventory inventory;
-
+    private EquipmentStats equipmentStats;
     public InventoryManager inventoryManager;
     public int character;
     public GameObject PlayerSlot;
@@ -27,6 +27,7 @@ public class InventorySlotHelmet : MonoBehaviour, IDropHandler
  
                 inventoryItem.parentAfterDrag = transform;
                 inventory.EquipHelmet(inventoryItem.item, character);
+                equipmentStats.UpdateStat();
             }
 
             else if (transform.childCount == 1)
@@ -42,7 +43,7 @@ public class InventorySlotHelmet : MonoBehaviour, IDropHandler
                     currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
                     droppedItem.parentAfterDrag = transform;
 
-
+                    equipmentStats.UpdateStat();
                 }
             }
         }

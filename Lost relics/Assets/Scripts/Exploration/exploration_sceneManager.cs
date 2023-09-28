@@ -18,7 +18,7 @@ public class exploration_sceneManager : MonoBehaviour
     private GameObject currentNodeEffectPrefab;
     public GameObject currentNodeEffect;
     
-    [Header("Event")]
+    [Header("Event")] 
     public GameObject EventCanvas;
     public TextMeshProUGUI eventNameText;
     public TextMeshProUGUI eventDescText;

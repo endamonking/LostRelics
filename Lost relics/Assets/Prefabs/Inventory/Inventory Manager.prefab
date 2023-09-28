@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: c287389b628a68b46877d86d19a8505a, type: 2}
-  inventoryItemPrefab: {fileID: 0}
+  inventoryItemPrefab: {fileID: 3976915456615689015, guid: b37f6584d0640be4b84ff6d18315f874, type: 3}
   inventorySlots:
   - {fileID: 0}
   - {fileID: 0}
@@ -73,6 +73,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  PlayerHelmetSlot: {fileID: 0}
+  PlayerArmorSlot: {fileID: 0}
+  PlayerBootSlot: {fileID: 0}
+  helmetSlot: {fileID: 0}
+  armorSlot: {fileID: 0}
+  bootSlot: {fileID: 0}
 --- !u!114 &9194790408368717525
 MonoBehaviour:
   m_ObjectHideFlags: 0

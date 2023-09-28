@@ -20,11 +20,14 @@ public class Character : MonoBehaviour
 
     private CharacterBar hpBar;
 
+    EquipmentStats equipmentStats;
+
     void Start()
-    {
-        currentSPD = baseSPD;
-        currentHP = maxHP;
-        currentDefpoint = basedefPoint;
+    {  
+        equipmentStats = GetComponent<EquipmentStats>();
+        currentSPD = baseSPD + equipmentStats.SPD;
+        currentHP = maxHP + equipmentStats.HP; 
+        currentDefpoint = basedefPoint + equipmentStats.Def;
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();
     }

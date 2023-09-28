@@ -132,7 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eebdb79c4e4298447a657289fd48e617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followTransform: {fileID: 0}
+  player: {fileID: 0}
+  offset: {x: 0, y: 8, z: -9}
 --- !u!114 &2038368818
 MonoBehaviour:
   m_ObjectHideFlags: 0
