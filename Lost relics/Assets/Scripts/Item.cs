@@ -13,7 +13,8 @@ public enum ItemType
 {
     Armor,
     Helmet,
-    Boot
+    Boot,
+    Quest
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item")]

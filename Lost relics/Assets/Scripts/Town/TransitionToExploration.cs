@@ -2,64 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class TransitionToExploration : MonoBehaviour
 {
-
-    public GameObject[] players;
+    public GameObject playerPrefabTown;
+    public GameObject playerPrefabExploration;
+    public GameObject companionPrefabTown;
+    public GameObject companionPrefabExploration;
+   // public Transform playerSpawnPoint; // Reference to the player spawn point in "Exploration" scene
+   // public Transform companionSpawnPoint; // Reference to the companion spawn point in "Exploration" scene
 
     private void OnTriggerEnter(Collider other)
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log("Player entered trigger. Number of players: " + players.Length);
+        Debug.Log("Player entered trigger.");
 
-        // Deactivate the player GameObjects in the current scene
-        DeactivatePlayers();
+        // Load the "Exploration" scene without additive loading
+        SceneManager.LoadScene("Exploration", LoadSceneMode.Single);
 
-        // Load the "Exploration" scene additively
-        SceneManager.LoadScene("Exploration", LoadSceneMode.Additive);
-
-        // Wait until the "Exploration" scene is loaded before moving the players
-        StartCoroutine(MovePlayersWhenSceneLoaded());
+        // Subscribe to the scene loaded event to enable objects when the scene is fully loaded
+        SceneManager.sceneLoaded += OnSceneLoaded; 
     }
 
-    private void DeactivatePlayers()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        for (int i = 0; i < players.Length; i++)
+        // Check if the loaded scene is "Exploration"
+        if (scene.name == "Exploration")
         {
-            players[i].SetActive(false);
+            // Instantiate and position the player and companion in the "Exploration" scene
+            InstantiateAndPositionCharacters();
+
+            // Unsubscribe from the scene loaded event to avoid duplicate calls
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
 
-    IEnumerator MovePlayersWhenSceneLoaded()
+    private void InstantiateAndPositionCharacters()
     {
-        // Wait until the "Exploration" scene is loaded
-        yield return new WaitUntil(() => SceneManager.GetSceneByName("Exploration").isLoaded);
+        // Determine the active prefabs based on the current scene
+        GameObject activePlayerPrefab = null;
+        GameObject activeCompanionPrefab = null;
 
-        // Move all player GameObjects to the "Exploration" scene and make them persistent
-        for (int i = 0; i < players.Length; i++)
+        if (SceneManager.GetActiveScene().name == "TestRoom")
         {
-            DontDestroyOnLoad(players[i]);
-            SceneManager.MoveGameObjectToScene(players[i], SceneManager.GetSceneByName("Exploration"));
-            RemoveSpecificChild(players[i], "InteractionPoint");
-            RemoveSpecificChild(players[i], "Canvas");
+            activePlayerPrefab = playerPrefabTown;
+            activeCompanionPrefab = companionPrefabTown;
+        }
+        else if (SceneManager.GetActiveScene().name == "Exploration")
+        {
+            activePlayerPrefab = playerPrefabExploration;
+            activeCompanionPrefab = companionPrefabExploration;
         }
 
-        // Unload the "TestRoom" scene asynchronously
-        SceneManager.UnloadSceneAsync("TestRoom");
-
-        // Set the "Exploration" scene as the active scene
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Exploration"));
-    }
-
-    void RemoveSpecificChild(GameObject parent, string childName)
-    {
-        // Find the child GameObject
-        Transform child = parent.transform.Find(childName);
-
-        // If the child was found, destroy it
-        if (child != null)
+        // Instantiate and position characters at their respective spawn points
+        if (activePlayerPrefab != null)
         {
-            Destroy(child.gameObject);
+            GameObject player = Instantiate(activePlayerPrefab, Vector3.zero, Quaternion.identity);
+            // Deactivate the player in the "Exploration" scene
+            player.SetActive(false);
+        }
+
+        if (activeCompanionPrefab != null)
+        {
+            GameObject companion = Instantiate(activeCompanionPrefab, Vector3.zero, Quaternion.identity);
+            // Deactivate the companion in the "Exploration" scene
+            companion.SetActive(false);
         }
     }
 }

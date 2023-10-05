@@ -37,7 +37,6 @@ public class Interactor : MonoBehaviour
                 if (_interactionPromptUI.IsDisplayed) _interactionPromptUI.Close();
             }
 
-
         }
         else
         {
