@@ -10,7 +10,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private float _interactionPointRadius = 0.5f;
     [SerializeField] private LayerMask _interactableMask;
     [SerializeField] private InteractionPromptUI _interactionPromptUI;
-
+    [SerializeField] private DialogControl _dialog;
     private readonly Collider[] _colliders = new Collider[3];
     [SerializeField] private int _numfoud;
 
@@ -29,7 +29,7 @@ public class Interactor : MonoBehaviour
             {
                 // interactable.Interact(this);
                 if (!_interactionPromptUI.IsDisplayed) _interactionPromptUI.SetUp(_Interactable.InteractionPrompt);
-                if (Keyboard.current.zKey.wasPressedThisFrame) _Interactable.Interact(this);
+                if (Keyboard.current.zKey.wasPressedThisFrame  ) _Interactable.Interact(this);
             }
             else
             {

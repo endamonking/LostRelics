@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour
    
     public GameObject inventoryItemPrefab;
     public InventorySlot[] inventorySlots;
+    public Bin binSlot;
     public InventorySlotHelmet PlayerHelmetSlot;
     public InventorySlotArmor PlayerArmorSlot;
     public InventorySlotBoot PlayerBootSlot;
@@ -20,6 +21,7 @@ public class InventoryManager : MonoBehaviour
     public void AddItem(Item item)
     {
         int succes = 0;
+         
         for(int i=0; i<inventorySlots.Length && succes ==0;i++)
         {
             InventorySlot slot = inventorySlots[i];
