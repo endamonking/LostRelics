@@ -58,14 +58,14 @@ public class TransitionToExploration : MonoBehaviour
         {
             GameObject player = Instantiate(activePlayerPrefab, Vector3.zero, Quaternion.identity);
             // Deactivate the player in the "Exploration" scene
-            player.SetActive(false);
+           // player.SetActive(false); Uan mnodify
         }
 
         if (activeCompanionPrefab != null)
         {
             GameObject companion = Instantiate(activeCompanionPrefab, Vector3.zero, Quaternion.identity);
             // Deactivate the companion in the "Exploration" scene
-            companion.SetActive(false);
+            //companion.SetActive(false);Uan mnodify
         }
     }
 }

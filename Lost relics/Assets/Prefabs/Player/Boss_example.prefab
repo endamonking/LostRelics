@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 9149397430665950215}
   - component: {fileID: 9149397430665950209}
   - component: {fileID: 9149397430665950267}
+  - component: {fileID: 1227239014478608296}
   m_Layer: 0
   m_Name: Boss_example
   m_TagString: Enemy
@@ -547,3 +548,20 @@ MonoBehaviour:
   player: {fileID: 0}
   turnGuagePrefab: {fileID: 270276827906435083, guid: 30c75ed653a5164459a5d6c2f30e16a3, type: 3}
   turnGuageUI: {fileID: 0}
+--- !u!114 &1227239014478608296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149397430665950210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e01d082d71cff24dba746d23451efc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: c287389b628a68b46877d86d19a8505a, type: 2}
+  character: 0
+  Def: 0
+  HP: 0
+  SPD: 0

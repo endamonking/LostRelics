@@ -10,6 +10,7 @@ public class exploration_sceneManager : MonoBehaviour
     public static exploration_sceneManager Instance;
 
     public List<GameObject> playerPool = new List<GameObject>();
+    private GameObject[] playerPoolDummy;
     public List<GameObject> enemyPool = new List<GameObject>();
 
     [Header("Node")]
@@ -36,6 +37,14 @@ public class exploration_sceneManager : MonoBehaviour
     void Start()
     {
         currentNodeEffect = Instantiate(currentNodeEffectPrefab, playerLocation.position, Quaternion.identity);
+        playerPoolDummy = GameObject.FindGameObjectsWithTag("Player");
+        playerPool.Clear();
+        foreach (GameObject obj in playerPoolDummy)
+        {
+            playerPool.Add(obj);
+            obj.SetActive(false);
+        }
+
     }
 
     // Update is called once per frame
