@@ -73,7 +73,6 @@ public class exploration_sceneManager : MonoBehaviour
     private void DisableMainSceneObjects()
     {
         Scene mainScene = SceneManager.GetSceneByName("Exploration");
-
         if (mainScene.IsValid())
         {
             GameObject[] mainSceneObjects = mainScene.GetRootGameObjects();
@@ -100,7 +99,6 @@ public class exploration_sceneManager : MonoBehaviour
     {
         // Load the additional scene additively
         SceneManager.LoadScene("Combat", LoadSceneMode.Additive);
-
         // Disable all GameObjects in the main scene
         DisableMainSceneObjects();
     }
