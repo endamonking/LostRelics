@@ -59,7 +59,6 @@ public class eventNode : node
 
     private void nodeEffect()
     {
-        Debug.Log("test");
         foreach (Button thisButton in buttonList)
             Destroy(thisButton.gameObject);
         exploration_sceneManager.Instance.EventCanvas.SetActive(false);

@@ -193,6 +193,8 @@ public class combatManager : MonoBehaviour
         if (remainingPlayers.Contains(character))
             remainingPlayers.Remove(character);
 
+        Debug.Log(remainingEnemies.Count);
+        Debug.Log(remainingPlayers.Count);
         if (remainingEnemies.Count == 0) //Playerwin
         {
             changeTurn(BattleState.WON);

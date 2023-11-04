@@ -20,10 +20,10 @@ public class Character : MonoBehaviour
 
     private CharacterBar hpBar;
 
-    EquipmentStats equipmentStats;
+    private EquipmentStats equipmentStats;
 
     void Start()
-    {  
+    {
         equipmentStats = GetComponent<EquipmentStats>();
         currentSPD = baseSPD + equipmentStats.SPD;
         currentHP = maxHP + equipmentStats.HP; 
