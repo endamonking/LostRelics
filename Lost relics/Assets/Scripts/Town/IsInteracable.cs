@@ -9,4 +9,5 @@ public interface IsInteractable
     public bool Interact(Interactor interactor);
 
 
+
 }

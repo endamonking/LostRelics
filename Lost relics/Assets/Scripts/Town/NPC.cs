@@ -17,7 +17,7 @@ public class NPC : MonoBehaviour, IsInteractable
         _dialogControl.GetDialog(text);
         _dialogControl.StartDialog();
 
-        Debug.Log("NPC");
+      
         return true;
     }
 }

@@ -9,14 +9,14 @@ public class DialogControl : MonoBehaviour
 {
     public TextMeshProUGUI _dialogText;
     public GameObject _dialogBox;
-    public int check;
-    public string[] dialogLines;
+    private int check;
+    private string[] dialogLines;
     private int currentIndex;
-    public bool inDialog; 
+    public bool inDialog { get; set; }
 
     private void Start()
     {
-        check = 1;
+      
         inDialog = false;
          CloseDialog();
     }
@@ -48,44 +48,35 @@ public class DialogControl : MonoBehaviour
 
     public void StartDialog() 
     {
-        Debug.Log(check);
-        if (!_dialogBox.activeSelf && check == 1)
+        DisplayCurrentDialogLine();
+        if (Keyboard.current.zKey.wasPressedThisFrame)
         {
-            Debug.Log("open dialog");
-
-            OpenDialog();
-        }
-
-        check--;
-
-    }
-    private void Update()
-    {  if (inDialog)
-        {
-            DisplayCurrentDialogLine();
-            if (Keyboard.current.zKey.wasPressedThisFrame)
+            if (_dialogBox.activeSelf)
             {
-
                 currentIndex++;
-
                 if (currentIndex < dialogLines.Length)
                 {
                     DisplayCurrentDialogLine();
                 }
-                else if(currentIndex >= dialogLines.Length )
+                else if (currentIndex >= dialogLines.Length)
                 {
                     check = 2;
                     CloseDialog();
-                    
+
                 }
             }
-            
-        } 
-         
-    }
+            else
+            {   
+                OpenDialog();
+                DisplayCurrentDialogLine();
+            }
+        }
 
+
+    }
+ 
     private void DisplayCurrentDialogLine()
-    {
+    { 
         if (currentIndex >= 0 && currentIndex < dialogLines.Length)
         {
             _dialogText.text = dialogLines[currentIndex];
