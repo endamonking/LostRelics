@@ -22,14 +22,26 @@ public class Character : MonoBehaviour
 
     private EquipmentStats equipmentStats;
 
-    void Start()
+    private void Awake()
     {
+        
+    }
+
+    void Start()
+    {        
         equipmentStats = GetComponent<EquipmentStats>();
         currentSPD = baseSPD + equipmentStats.SPD;
-        currentHP = maxHP + equipmentStats.HP; 
+        //currentHP = maxHP + equipmentStats.HP; 
         currentDefpoint = basedefPoint + equipmentStats.Def;
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();
+        hpBar.updateHPBar(maxHP, currentHP);
+    }
+    
+    public void characterSetup()
+    {
+        equipmentStats = GetComponent<EquipmentStats>();
+        currentHP = maxHP + equipmentStats.HP;
     }
 
     // Update is called once per frame

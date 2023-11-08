@@ -41,6 +41,7 @@ public class exploration_sceneManager : MonoBehaviour
         playerPool.Clear();
         foreach (GameObject obj in playerPoolDummy)
         {
+            obj.GetComponent<Character>().characterSetup();
             playerPool.Add(obj);
             obj.SetActive(false);
         }

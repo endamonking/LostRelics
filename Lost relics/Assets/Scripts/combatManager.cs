@@ -45,6 +45,7 @@ public class combatManager : MonoBehaviour
 
     private List<GameObject> remainingPlayers = new List<GameObject>();
     private List<GameObject> playersPool;
+    private List<GameObject> playersInitPool = new List<GameObject>();
     private List<GameObject> remainingEnemies = new List<GameObject>();
     private List<GameObject> enemiesPool;
 
@@ -86,6 +87,7 @@ public class combatManager : MonoBehaviour
             remainingPlayers.Add(playerObj);
             i++;
         }
+        playersInitPool.AddRange(remainingPlayers);
     }
 
     private void initEnemies()
@@ -189,12 +191,16 @@ public class combatManager : MonoBehaviour
     public void checkWinLose(GameObject character)
     {
         if (remainingEnemies.Contains(character))
+        {
             remainingEnemies.Remove(character);
+        }
         if (remainingPlayers.Contains(character))
+        {
+            int index = playersInitPool.IndexOf(character);
+            playersPool[index].GetComponent<Character>().currentHP = character.GetComponent<Character>().currentHP;
             remainingPlayers.Remove(character);
+        }
 
-        Debug.Log(remainingEnemies.Count);
-        Debug.Log(remainingPlayers.Count);
         if (remainingEnemies.Count == 0) //Playerwin
         {
             changeTurn(BattleState.WON);
@@ -249,9 +255,13 @@ public class combatManager : MonoBehaviour
     [System.Obsolete]
     IEnumerator delay()
     {
-        
+
         foreach (GameObject player in remainingPlayers)
+        {
+            int index = playersInitPool.IndexOf(player);
+            playersPool[index].GetComponent<Character>().currentHP = player.GetComponent<Character>().currentHP;
             Destroy(player);
+        }
         yield return new WaitForSeconds(3.0f);
         exploration_sceneManager.Instance.ReturnToExplorationScene();
     }

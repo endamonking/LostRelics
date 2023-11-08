@@ -11,6 +11,11 @@ public class monsterNode : node
     protected override void Start()
     {
         base.Start();
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<Character>().characterSetup();
+
+        }
     }
 
     // Update is called once per frame

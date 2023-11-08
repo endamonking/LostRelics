@@ -5523,8 +5523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e811b741ebd810e458f32c8c73fff982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefabTown: {fileID: 730697893}
-  playerPrefabExploration: {fileID: 3336933688504186699, guid: f0d190aea4dce5a47b2a3e562bda460a, type: 3}
+  playerPrefabTown: {fileID: 0}
+  playerPrefabExploration: {fileID: 0}
   companionPrefabTown: {fileID: 0}
   companionPrefabExploration: {fileID: 2274425546472292543, guid: 011d24b9d4a5a6840a8efdccc2eb59e4, type: 3}
 --- !u!1 &1692319053 stripped
