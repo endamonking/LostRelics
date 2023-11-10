@@ -61,7 +61,7 @@ public abstract class cardHandler : MonoBehaviour
 
         if (comIns.state == BattleState.NORMAL)
         {
-            turnGauge = turnGauge -  10 * player.currentSPD * Time.deltaTime;
+            turnGauge = turnGauge -  10 * player.inComSPD * Time.deltaTime;
             turnGuageUI.value = Mathf.InverseLerp(0f, 100f, turnGauge);
         }
     } 

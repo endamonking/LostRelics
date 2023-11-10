@@ -8,7 +8,7 @@ public enum BattleState
 }
 public enum stance
 {
-    Guarding, Agg
+    Guarding, Agg, None
 }
 
 public class usingCardQ
@@ -197,7 +197,7 @@ public class combatManager : MonoBehaviour
         if (remainingPlayers.Contains(character))
         {
             int index = playersInitPool.IndexOf(character);
-            playersPool[index].GetComponent<Character>().currentHP = character.GetComponent<Character>().currentHP;
+            playersPool[index].GetComponent<Character>().currentHP = 1;
             remainingPlayers.Remove(character);
         }
 

@@ -6,23 +6,23 @@ using UnityEngine;
 public class Card : ScriptableObject
 {
     public string cardName;
+    public string description;
+    public string effectString;
     public int cardCost;
     public Sprite artwork;
-    public stance cardStance;
     public float delayAction;
     public cardEffect effect;
-    [SerializeField]
-    private stance intoStance;
     private bool isUsing;
-    //cardFunction script
 
 
     //This will do card effect from CardEffect script then will change into stance 
     public void doCardEffect(Character handler, Character target)
     {
         Debug.Log(cardName); // Simmulate use function
-        effect.applyEffect(target);
-        handler.myStatnce = intoStance;
+        effect.applyEffect(target, handler);
+
+        if (effect.intoStance != stance.None)
+            handler.myStatnce = effect.intoStance;
     }
 
   /*  public void usingCard()

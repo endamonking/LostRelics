@@ -4,14 +4,13 @@ using UnityEngine;
 
 public abstract class cardEffect : MonoBehaviour
 {
-    [SerializeField]
-    private stance intoStance;
+    public stance intoStance;
 
     void Start()
     {
 
     }
 
-    public abstract void applyEffect(Character character);
+    public abstract void applyEffect(Character target, Character user);
 
 }

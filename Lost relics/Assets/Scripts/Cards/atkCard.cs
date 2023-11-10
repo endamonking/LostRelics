@@ -13,9 +13,9 @@ public class atkCard : cardEffect
         
     }
 
-    public override void applyEffect(Character character)
+    public override void applyEffect(Character target, Character user)
     {
-        character.takeDamage(damageAmount);
+        
     }
 
 }
