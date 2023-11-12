@@ -7,12 +7,14 @@ using UnityEngine.InputSystem;
 
 public class DialogControl : MonoBehaviour
 {
+   
     public TextMeshProUGUI _dialogText;
     public GameObject _dialogBox;
     private int check;
     private string[] dialogLines;
     private int currentIndex;
     public bool inDialog { get; set; }
+    [SerializeField] private GameObject player;
 
     private void Start()
     {
@@ -38,7 +40,8 @@ public class DialogControl : MonoBehaviour
       
         _dialogBox.SetActive(false);
         inDialog = false;
-       
+        player.GetComponent<PlayerControl>().enabled = true;
+
     }
 
     public void GetDialog(string[] strings)
@@ -46,8 +49,9 @@ public class DialogControl : MonoBehaviour
         dialogLines = strings;
     }
 
-    public void StartDialog() 
+    public void StartDialog()
     {
+        player.GetComponent<PlayerControl>().enabled = false;
         DisplayCurrentDialogLine();
         if (Keyboard.current.zKey.wasPressedThisFrame)
         {

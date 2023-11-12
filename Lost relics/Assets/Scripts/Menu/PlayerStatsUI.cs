@@ -10,49 +10,72 @@ public class PlayerStatsUI : MonoBehaviour
 {
     public int character;
     public Inventory inventory;
-    public object player;
+    public GameObject slot_1;
+
+    public GameObject slot_2;
+    public GameObject slot_3;
+    public GameObject slot_4;
     public TextMeshProUGUI hpText; 
     public TextMeshProUGUI atkText;
     //public TextMeshProUGUI healingText;
     public TextMeshProUGUI defText;
     public TextMeshProUGUI spdText;
-    public GameObject PlayerSlot;
+
     //public TextMeshProUGUI resistanceText;
     //public TextMeshProUGUI evadeText;
     //public TextMeshProUGUI critText;
     //public TextMeshProUGUI critDmgText;
 
-  
 
-// Update is called once per frame
+
+    // Update is called once per frame
     void Update()
         {
              Item equippedArmor = null;
              Item equippedHelmet=null;
              Item equippedBoot=null;
-        if (PlayerSlot.activeSelf)
+        if (slot_1.activeSelf)
             {
                 character = 0;
             }
-            else if (!PlayerSlot.activeSelf)
+        else if (slot_2.activeSelf)
             {
                 character = 1;
             }
-
-            if (character == 0)
+        else if (slot_3.activeSelf)
             {
-                equippedArmor = inventory.playerEquippedArmor;
-                equippedHelmet = inventory.playerEquippedHelmet;
-                equippedBoot = inventory.playerEquippedBoot;
+                character = 2;
+            }
+        else if (slot_4.activeSelf)
+            {
+                character = 3;
+            }
+
+        if (character == 0)
+            {
+            equippedArmor = inventory.equippedArmor_1;
+                equippedHelmet = inventory.equippedHelmet_1;
+                equippedBoot = inventory.equippedBoot_1;
             }
             if(character ==1) 
             {
-                equippedArmor = inventory.equippedArmor;
-                equippedHelmet = inventory.equippedHelmet;
-                equippedBoot = inventory.equippedBoot;
+                equippedArmor = inventory.equippedArmor_2;
+                equippedHelmet = inventory.equippedHelmet_2;
+                equippedBoot = inventory.equippedBoot_2;
             }
-            ;
-            int HP=0;
+            if (character == 2)
+            {
+                equippedArmor = inventory.equippedArmor_3;
+                equippedHelmet = inventory.equippedHelmet_3;
+                equippedBoot = inventory.equippedBoot_3;
+            }
+            if (character == 3)
+            {
+                equippedArmor = inventory.equippedArmor_4;
+                equippedHelmet = inventory.equippedHelmet_4;
+                equippedBoot = inventory.equippedBoot_4;
+            }
+        int HP=0;
             int SPD=0;
             int DEF=0;
             int ATK = 0;    

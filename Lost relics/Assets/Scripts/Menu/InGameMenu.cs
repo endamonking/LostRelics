@@ -9,6 +9,7 @@ public class InGameMenu : MonoBehaviour
     [SerializeField] private GameObject menuCanvas;
     [SerializeField] private GameObject PlayerCanvas;
     [SerializeField] private GameObject player;
+
     private void Start(){
         menuCanvas.SetActive(false);
         PlayerCanvas.SetActive(false);

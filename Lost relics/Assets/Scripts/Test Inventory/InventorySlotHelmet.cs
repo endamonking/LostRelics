@@ -8,17 +8,11 @@ public class InventorySlotHelmet : MonoBehaviour, IDropHandler
     private EquipmentStats equipmentStats;
     public InventoryManager inventoryManager;
     public int character;
-    public GameObject PlayerSlot;
+    public GameObject PlayerUI;
     public void OnDrop(PointerEventData eventData)
     {
-        if (PlayerSlot.activeSelf)
-        {
-            character = 0;
-        }
-        else if (!PlayerSlot.activeSelf)
-        {
-            character = 1;
-        }
+        PlayerStatsUI UI = PlayerUI.GetComponent<PlayerStatsUI>();
+        character = UI.character;
         InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
         if (inventoryItem.item.itemType == ItemType.Helmet)
         {
