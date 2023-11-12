@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
+  m_Name: stanceDefence
+  m_EditorClassIdentifier: 
+  cardName: 'Stance : Defence'
+  description: "\u201CBetter be ready, before it\u2019s too late\u201D "
+  effectString: "change stance to \u201CDefence\u201D, Buff Def+20% to self for 1
+    turn"
+  cardCost: 1
+  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  delayAction: 1
+  effect: {fileID: 4289621139271024520, guid: ffc6a05fb11b02c45aa0b65b24409114, type: 3}

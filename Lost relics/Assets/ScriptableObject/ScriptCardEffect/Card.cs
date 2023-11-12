@@ -22,7 +22,7 @@ public class Card : ScriptableObject
         effect.applyEffect(target, handler);
 
         if (effect.intoStance != stance.None)
-            handler.myStatnce = effect.intoStance;
+            handler.changingStance(effect.intoStance);
     }
 
   /*  public void usingCard()

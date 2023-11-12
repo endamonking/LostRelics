@@ -6,15 +6,16 @@ public enum BattleState
 { 
     START, NORMAL, PLAYER, ENEMY, WON, LOST
 }
-public enum stance
-{
-    Guarding, Agg, None
-}
 
 public class usingCardQ
 {
     public GameObject card { get; set; }
     public Character cardTarget { get; set; }
+}
+
+public enum stance
+{
+    None, Defence
 }
 
 public class combatManager : MonoBehaviour
@@ -118,6 +119,7 @@ public class combatManager : MonoBehaviour
         user.destroyInHandCard();
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
+        currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
         currentObjTurn = null;
         target = null;
         if (endTurnButton.activeSelf)
