@@ -8,11 +8,15 @@ public class CharacterBar : MonoBehaviour
 
     private Slider slider;
 
+    private void Awake()
+    {
+        slider = GetComponent<Slider>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        slider = GetComponent<Slider>();
+       
     }
 
     // Update is called once per frame

@@ -516,6 +516,11 @@ MonoBehaviour:
   currentDefpoint: 0
   currentHP: 0
   currentSPD: 0
+  baseArmorPen: 0
+  baseCritChance: 20
+  baseCritDMG: 0
+  baseATK: 30
+  activeBuffs: []
 --- !u!114 &9149397430665950267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,13 +537,13 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
-  - {fileID: 11400000, guid: ff8f990ca7333eb4ebec0b26a59856f2, type: 2}
-  - {fileID: 11400000, guid: ff8f990ca7333eb4ebec0b26a59856f2, type: 2}
-  - {fileID: 11400000, guid: 5e6c1f18c1918564b9b135374093efa4, type: 2}
-  - {fileID: 11400000, guid: 5e6c1f18c1918564b9b135374093efa4, type: 2}
-  - {fileID: 11400000, guid: ff8f990ca7333eb4ebec0b26a59856f2, type: 2}
-  - {fileID: 11400000, guid: 5e6c1f18c1918564b9b135374093efa4, type: 2}
-  - {fileID: 11400000, guid: 5e6c1f18c1918564b9b135374093efa4, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
   discardedDeck: []
   _currentDeck: []
   cardInHand: []
