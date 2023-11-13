@@ -419,11 +419,11 @@ PrefabInstance:
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+      objectReference: {fileID: 11400000, guid: 2d3e24d386d12c64b9c6fa884dc73c96, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+      objectReference: {fileID: 11400000, guid: fe192f2866af78c41b99efef11a74440, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[2]
       value: 
@@ -431,7 +431,7 @@ PrefabInstance:
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+      objectReference: {fileID: 11400000, guid: 554b1e5a8c13a4a49adbdccf80fad3ca, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[4]
       value: 

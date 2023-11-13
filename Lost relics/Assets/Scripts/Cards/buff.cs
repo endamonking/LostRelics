@@ -8,8 +8,6 @@ public class buff
     public string buffName;
     public int duration = 0; // Turn unit
     public Dictionary<string, int> buffs;
-    private string v1;
-    private int v2;
 
 
     // Start is called before the first frame update

@@ -45,8 +45,16 @@ public class Character : MonoBehaviour
                     totalAttack = totalAttack + (buff.buffs["ATK"] * baseATK / 100.0f);
                 }
             }
+            foreach (buff buff in activeDeBuffs)
+            {
+                if (buff.buffs.ContainsKey("ATK"))
+                {
+                    totalAttack = totalAttack + (buff.buffs["ATK"] * baseATK / 100.0f);
+                }
+            }
 
             int finalValue = Mathf.FloorToInt(totalAttack);
+            Debug.Log(finalValue);
             return finalValue;
         }
     }
@@ -61,6 +69,13 @@ public class Character : MonoBehaviour
                 totalDEF = ( stanceValue["DEF"] * currentDefpoint /100.0f) + totalDEF;
             }
             foreach (buff buff in activeBuffs)
+            {
+                if (buff.buffs.ContainsKey("DEF"))
+                {
+                    totalDEF = totalDEF + (buff.buffs["DEF"] * currentDefpoint / 100.0f);
+                }
+            }
+            foreach (buff buff in activeDeBuffs)
             {
                 if (buff.buffs.ContainsKey("DEF"))
                 {
@@ -89,6 +104,13 @@ public class Character : MonoBehaviour
                     totalValue = totalValue + (buff.buffs["SPD"]*currentSPD/100.0f);
                 }
             }
+            foreach (buff buff in activeDeBuffs)
+            {
+                if (buff.buffs.ContainsKey("SPD"))
+                {
+                    totalValue = totalValue + (buff.buffs["SPD"] * currentSPD / 100.0f);
+                }
+            }
             int finalValue = Mathf.FloorToInt(totalValue);
 
             return finalValue;
@@ -104,6 +126,13 @@ public class Character : MonoBehaviour
                 totalValue = totalValue + (stanceValue["AP"] * baseArmorPen / 100.0f);
             }
             foreach (buff buff in activeBuffs)
+            {
+                if (buff.buffs.ContainsKey("AP"))
+                {
+                    totalValue = totalValue + (buff.buffs["AP"] * baseArmorPen / 100.0f);
+                }
+            }
+            foreach (buff buff in activeDeBuffs)
             {
                 if (buff.buffs.ContainsKey("AP"))
                 {
@@ -131,6 +160,13 @@ public class Character : MonoBehaviour
                     totalValue = totalValue + (buff.buffs["CRITChance"] * baseCritChance / 100.0f);
                 }
             }
+            foreach (buff buff in activeDeBuffs)
+            {
+                if (buff.buffs.ContainsKey("CRITChance"))
+                {
+                    totalValue = totalValue + (buff.buffs["CRITChance"] * baseCritChance / 100.0f);
+                }
+            }
             int finalValue = Mathf.FloorToInt(totalValue);
             return finalValue;
         }
@@ -150,6 +186,42 @@ public class Character : MonoBehaviour
                 if (buff.buffs.ContainsKey("CRITDMG"))
                 {
                     totalValue = totalValue + (buff.buffs["CRITDMG"] * baseCritDMG / 100.0f);
+                }
+            }
+            foreach (buff buff in activeDeBuffs)
+            {
+                if (buff.buffs.ContainsKey("CRITDMG"))
+                {
+                    totalValue = totalValue + (buff.buffs["CRITDMG"] * baseCritDMG / 100.0f);
+                }
+            }
+            int finalValue = Mathf.FloorToInt(totalValue);
+            return finalValue;
+        }
+    }
+
+    public int inComMaxHP
+    {
+        get
+        {
+            int characterMaxHP = maxHP + equipmentStats.HP;
+            float totalValue = characterMaxHP;
+            if (stanceValue.ContainsKey("MAXHP"))
+            {
+                totalValue = totalValue + (stanceValue["MAXHP"] * characterMaxHP / 100.0f);
+            }
+            foreach (buff buff in activeBuffs)
+            {
+                if (buff.buffs.ContainsKey("MAXHP"))
+                {
+                    totalValue = totalValue + (buff.buffs["MAXHP"] * characterMaxHP / 100.0f);
+                }
+            }
+            foreach (buff buff in activeDeBuffs)
+            {
+                if (buff.buffs.ContainsKey("MAXHP"))
+                {
+                    totalValue = totalValue + (buff.buffs["MAXHP"] * characterMaxHP / 100.0f);
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
@@ -195,17 +267,36 @@ public class Character : MonoBehaviour
     
     public void changingStance(stance inTo)
     {
+        //Do leave stance effect
+        switch (myStance)
+        {
+            case stance.Exhausted:
+                buff deBuff = new buff("Exhausted", 2);
+                deBuff.AddBuff("SPD", -10);
+                deBuff.AddBuff("ATK", -10);
+                deBuff.AddBuff("DEF", -20);
+                applyActiveDeBuff(deBuff);
+                break;
+
+        }
         myPreviousStance = myStance;
         myStance = inTo;
         stanceValue.Clear();
         switch (myStance)
         {
             case stance.None:
-                return;
+                break;
             case stance.Defence:
                 stanceValue.Add("DEF", 30);
-                return;
-
+                break;
+            case stance.Disarm:
+                stanceValue.Add("ATK", -35);
+                break;
+            case stance.Exhausted:
+                stanceValue.Add("ATK", -20);
+                stanceValue.Add("DEF", -30);
+                stanceValue.Add("SPD", -25);
+                break;
         }
 
     }
@@ -232,9 +323,32 @@ public class Character : MonoBehaviour
         activeDeBuffs.Add(activeDeBuff);
     }
 
+    public void removeActiveBuff(int number)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            if (i >= activeBuffs.Count)
+                break;
+            activeBuffs.Remove(activeBuffs[i]);
+        }
+    }
+
+    public void removeActiveDeBuff(int number)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            if (i >= activeDeBuffs.Count)
+            {
+                Debug.Log("No");
+                break;
+            }
+            Debug.Log("remove " + activeDeBuffs[i].buffName);
+            activeDeBuffs.Remove(activeDeBuffs[i]);
+        }
+    }
+
     public void updateBuffAndDebuff()
     {
-
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
             buff buff = activeBuffs[i];
@@ -250,8 +364,23 @@ public class Character : MonoBehaviour
         for (int i = activeDeBuffs.Count - 1; i >= 0; i--)
         {
             buff debuff = activeDeBuffs[i];
-            debuff.duration--;
+            if (debuff.buffs.Count > 0)
+            {
+                foreach (string key in debuff.buffs.Keys) // Do effect
+                {
+                    switch (key)
+                    {
+                        case "Poison":
+                            takeTrueDamage(debuff.buffs[key]);
+                            break;
 
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            debuff.duration--;
             if (debuff.duration <= 0)
             {
                 activeDeBuffs.RemoveAt(i);
@@ -297,6 +426,18 @@ public class Character : MonoBehaviour
         currentHP = currentHP - damage;
         hpBar.updateHPBar(maxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " +damage+" "+ currentHP);
+        if (currentHP <= 0)
+            died();
+    }
+
+    //Usally use for turn base damage like poison
+    public void takeTrueDamage(int damageAmount)
+    {
+        if (damageAmount <= 0)
+            damageAmount = 0;
+        currentHP = currentHP - damageAmount;
+        hpBar.updateHPBar(maxHP, currentHP);
+        Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);
         if (currentHP <= 0)
             died();
     }

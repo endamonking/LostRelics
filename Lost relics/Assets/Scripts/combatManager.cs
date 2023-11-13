@@ -15,7 +15,7 @@ public class usingCardQ
 
 public enum stance
 {
-    None, Defence
+    None, Defence, Disarm, Exhausted
 }
 
 public class combatManager : MonoBehaviour

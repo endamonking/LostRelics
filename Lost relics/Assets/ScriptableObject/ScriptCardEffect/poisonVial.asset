@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
+  m_Name: poisonVial
+  m_EditorClassIdentifier: 
+  cardName: 'Poison vial '
+  description: "\u201CI prepared this, just in case\u201D"
+  effectString: 'poison a target for 3 turns (100% hit rate) (poison does 100% atk
+    as true '
+  cardCost: 1
+  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  delayAction: 1
+  effect: {fileID: 7869478783887775538, guid: 6f71202f5f6e02c41bb7fdcdcaacad60, type: 3}
