@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
-  m_Name: sweepKick
+  m_Name: take_aim
   m_EditorClassIdentifier: 
-  cardName: Sweep Kick
-  description: "\u201CI learned this from a book somewhere\u201D"
-  effectString: deal 80% atk to a selected target, SPD -10% to the target for 2 turns
+  cardName: 'Stance : Take aim'
+  description: "\u201CI won\u2019t miss\u201D"
+  effectString: "change stance to \u201CTake aim\u201D, draw 1 card"
   cardCost: 1
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
   delayAction: 1
-  effect: {fileID: 2121442899277344988, guid: e0a44e9bab2785142b3172f69da1b5b7, type: 3}
+  effect: {fileID: 509824571743264035, guid: dc8a4f5bafd2f8141b29ceb11494c914, type: 3}

@@ -12,7 +12,7 @@ public class basicAttack : cardEffect
         
     }
 
-    public override void applyEffect(Character target, Character user)
+    public override bool applyEffect(Character target, Character user)
     {
         int userDamage = user.inComATK;
         int userAP = user.inComArmorPen;
@@ -20,5 +20,6 @@ public class basicAttack : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti);
+        return true;
     }
 }

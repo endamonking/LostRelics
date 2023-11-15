@@ -11,6 +11,7 @@ public abstract class cardEffect : MonoBehaviour
 
     }
 
-    public abstract void applyEffect(Character target, Character user);
+    //return true if do succes
+    public abstract bool applyEffect(Character target, Character user);
 
 }

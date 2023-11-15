@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Alloutstrike : cardEffect
+public class sprint : cardEffect
 {
-    [SerializeField]
-    int skillMultiplier = 200;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,16 +15,11 @@ public class Alloutstrike : cardEffect
     {
         
     }
-
     public override bool applyEffect(Character target, Character user)
     {
-        int userDamage = user.inComATK;
-        int userAP = user.inComArmorPen;
-        int userDMGBonus = user.inComDMGBonus;
-        float skillMulti = skillMultiplier / 100.0f;
-
-        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti);
-
+        GameObject player = combatManager.Instance.currentObjTurn;
+        cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
+        playerCardHanlder.drawCard();
         return true;
     }
 }

@@ -15,7 +15,7 @@ public class usingCardQ
 
 public enum stance
 {
-    None, Defence, Disarm, Exhausted
+    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation
 }
 
 public class combatManager : MonoBehaviour
@@ -25,6 +25,7 @@ public class combatManager : MonoBehaviour
     public Queue<usingCardQ> inUseCard = new Queue<usingCardQ>(); // using card or trying to use 
     public GameObject currentObjTurn;
     public bool isAction = false;
+    public bool isForceEndturn = false;
     public GameObject endTurnButton;
     public GameObject showDiscardButton;
     public Character target;
@@ -133,6 +134,43 @@ public class combatManager : MonoBehaviour
         if (cardLeftText.gameObject.activeSelf == true)
             cardLeftText.gameObject.SetActive(false);
         returnEffectPosition();
+        isForceEndturn = false;
+        changeTurn(BattleState.NORMAL);
+    }
+
+    public void forceEndTurn()
+    {
+        if (currentObjTurn == null)
+            return;
+        while (inUseCard.Count > 0)
+        {
+            usingCardQ dequeueCard = inUseCard.Dequeue();
+            if (dequeueCard == null)
+                continue;
+            dequeueCard.card.GetComponent<cardDisplay>().undoCard();
+            if (currentObjTurn.tag == "Player")
+                currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
+        }
+        cardHandler user = currentObjTurn.GetComponent<cardHandler>();
+        inUseCard.Clear();
+        user.destroyInHandCard();
+        user.turnGauge = 100f;
+        user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
+        currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
+        currentObjTurn = null;
+        target = null;
+        if (endTurnButton.activeSelf)
+            endTurnButton.SetActive(false);
+        if (showDiscardButton.activeSelf)
+            showDiscardButton.SetActive(false);
+        if (discardScreen.activeSelf)
+            discardScreen.SetActive(false);
+        if (currentManaText.gameObject.activeSelf == true)
+            currentManaText.gameObject.SetActive(false);
+        if (cardLeftText.gameObject.activeSelf == true)
+            cardLeftText.gameObject.SetActive(false);
+        returnEffectPosition();
+        isForceEndturn = false;
         changeTurn(BattleState.NORMAL);
     }
 
@@ -147,17 +185,36 @@ public class combatManager : MonoBehaviour
         while (inUseCard.Count > 0)
         {
             usingCardQ dequeueCard = inUseCard.Dequeue();
+            if (dequeueCard == null)
+                continue;
             Card cardData = dequeueCard.card.GetComponent<cardDisplay>().card;
             //Check target
             if (dequeueCard.cardTarget == null)
             {
                 dequeueCard.card.GetComponent<cardDisplay>().undoCard();
+                if (currentObjTurn.tag == "Player")
+                    currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
                 continue;
             }
             //Using card function
-            cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget);
-            currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
-            currentObjTurn.GetComponent<cardHandler>().cardInHand.Remove(cardData);
+            if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget))
+            {
+                currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
+                if (isForceEndturn)
+                {
+                    forceEndTurn();
+                    break;
+                }
+            }
+            else
+            {
+                dequeueCard.card.GetComponent<cardDisplay>().undoCard();
+                if (currentObjTurn.tag == "Player")
+                    currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
+            }
+            //currentObjTurn.GetComponent<cardHandler>().cardInHand.Remove(cardData);
+            if (currentObjTurn.tag == "Player")
+                currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
             yield return new WaitForSeconds(cardData.delayAction); 
         }
 

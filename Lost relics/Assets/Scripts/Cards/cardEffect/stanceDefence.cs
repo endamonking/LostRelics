@@ -17,13 +17,13 @@ public class stanceDefence : cardEffect
         
     }
 
-    public override void applyEffect(Character target, Character user)
+    public override bool applyEffect(Character target, Character user)
     {
         buff stanceDefence = new buff("Stance Defence", 2);
         stanceDefence.AddBuff("DEF", skillMuliplier);
 
         user.applyActiveBuff(stanceDefence);
-
+        return true;
     }
 
 }

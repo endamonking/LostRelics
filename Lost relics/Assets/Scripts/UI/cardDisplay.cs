@@ -33,10 +33,11 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         combatManager comIns = combatManager.Instance;
         if (combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana >= card.cardCost)
         {
-            combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana - card.cardCost;
-            combatManager.Instance.updateManaText();
+            comIns.currentObjTurn.GetComponent<cardHandler>().currentMana = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana - card.cardCost;
+            comIns.updateManaText();
             usingCardQ usedCard = new usingCardQ { card = this.gameObject, cardTarget = comIns.target };
             comIns.inUseCard.Enqueue(usedCard);
+            comIns.currentObjTurn.GetComponent<cardHandler>().cardInHand.Remove(this.card);
             if (comIns.isAction == false) // Not actioning
             {
                 comIns.isAction = true;
@@ -120,6 +121,7 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().currentMana + card.cardCost;
         combatManager.Instance.updateManaText();
+        combatManager.Instance.currentObjTurn.GetComponent<cardHandler>().cardInHand.Add(this.card);
         activatedComponent();
         returnOriginPosition();
     }

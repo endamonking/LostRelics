@@ -18,7 +18,7 @@ public class disarm : cardEffect
         
     }
 
-    public override void applyEffect(Character target, Character user)
+    public override bool applyEffect(Character target, Character user)
     {
         int userDamage = user.inComATK;
         int userAP = user.inComArmorPen;
@@ -27,6 +27,7 @@ public class disarm : cardEffect
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti);
         target.changingStance(stance.Disarm);
-        
+
+        return true;
     }
 }

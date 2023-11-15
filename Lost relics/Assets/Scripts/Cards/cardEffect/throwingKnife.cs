@@ -18,7 +18,7 @@ public class throwingKnife : cardEffect
         
     }
 
-    public override void applyEffect(Character target, Character user)
+    public override bool applyEffect(Character target, Character user)
     {
         int userDamage = user.inComATK;
         int userAP = user.inComArmorPen;
@@ -36,5 +36,6 @@ public class throwingKnife : cardEffect
         skillMulti = skillMulti / 100.0f;
         Debug.Log(skillMulti);
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti);
+        return true;
     }
 }

@@ -16,13 +16,14 @@ public class Card : ScriptableObject
 
 
     //This will do card effect from CardEffect script then will change into stance 
-    public void doCardEffect(Character handler, Character target)
+    public bool doCardEffect(Character handler, Character target)
     {
         Debug.Log(cardName); // Simmulate use function
-        effect.applyEffect(target, handler);
+        bool result = effect.applyEffect(target, handler);
 
         if (effect.intoStance != stance.None)
             handler.changingStance(effect.intoStance);
+        return result;
     }
 
   /*  public void usingCard()

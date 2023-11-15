@@ -13,9 +13,9 @@ public class atkCard : cardEffect
         
     }
 
-    public override void applyEffect(Character target, Character user)
+    public override bool applyEffect(Character target, Character user)
     {
-        
+        return true;
     }
 
 }

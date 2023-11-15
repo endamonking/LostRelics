@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     public int maxMana = 10;
     public int currentDefpoint;
     public int currentHP, currentSPD;
-    public int baseArmorPen = 0, baseCritChance = 20, baseCritDMG = 0, baseATK = 30;
+    public int baseArmorPen = 0, baseCritRate = 20, baseCritDMG = 0, baseATK = 30;
 
     public List<buff> activeBuffs = new List<buff>();
     public List<buff> activeDeBuffs = new List<buff>();
@@ -143,28 +143,28 @@ public class Character : MonoBehaviour
             return finalValue;
         }
     }
-    public int inComCritChance
+    public int inComCritRate
     {
         
         get
         {
-            float totalValue = baseCritChance;
-            if (stanceValue.ContainsKey("CRITChance"))
+            float totalValue = baseCritRate;
+            if (stanceValue.ContainsKey("CRITRate"))
             {
-                totalValue = totalValue + (stanceValue["CRITChance"] * baseCritChance / 100.0f);
+                totalValue = totalValue + (stanceValue["CRITRate"] * baseCritRate / 100.0f);
             }
             foreach (buff buff in activeBuffs)
             {
-                if (buff.buffs.ContainsKey("CRITChance"))
+                if (buff.buffs.ContainsKey("CRITRate"))
                 {
-                    totalValue = totalValue + (buff.buffs["CRITChance"] * baseCritChance / 100.0f);
+                    totalValue = totalValue + (buff.buffs["CRITRate"] * baseCritRate / 100.0f);
                 }
             }
             foreach (buff buff in activeDeBuffs)
             {
-                if (buff.buffs.ContainsKey("CRITChance"))
+                if (buff.buffs.ContainsKey("CRITRate"))
                 {
-                    totalValue = totalValue + (buff.buffs["CRITChance"] * baseCritChance / 100.0f);
+                    totalValue = totalValue + (buff.buffs["CRITRate"] * baseCritRate / 100.0f);
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
@@ -277,6 +277,11 @@ public class Character : MonoBehaviour
                 deBuff.AddBuff("DEF", -20);
                 applyActiveDeBuff(deBuff);
                 break;
+            case stance.Panic:
+                buff panic = new buff("Panic", 2);
+                panic.AddBuff("DEF", -20);
+                applyActiveDeBuff(panic);
+                break;
 
         }
         myPreviousStance = myStance;
@@ -296,6 +301,21 @@ public class Character : MonoBehaviour
                 stanceValue.Add("ATK", -20);
                 stanceValue.Add("DEF", -30);
                 stanceValue.Add("SPD", -25);
+                break;
+            case stance.Sprinting:
+                stanceValue.Add("SPD", 25);
+                break;
+            case stance.Take_aim:
+                stanceValue.Add("CRITRate", 20);
+                stanceValue.Add("CRITDMG", 30);
+                break;
+            case stance.Panic:
+                stanceValue.Add("DEF", -30);
+                stanceValue.Add("SPD", -20);
+                break;
+            case stance.Preparation:
+                stanceValue.Add("ATK", 50);
+                stanceValue.Add("DEF", -20);
                 break;
         }
 

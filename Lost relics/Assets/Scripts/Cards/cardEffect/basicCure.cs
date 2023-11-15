@@ -16,9 +16,10 @@ public class basicCure : cardEffect
         
     }
 
-    public override void applyEffect(Character target, Character user)
+    public override bool applyEffect(Character target, Character user)
     {
         int number = 1;
         target.removeActiveDeBuff(number);
+        return true;
     }
 }

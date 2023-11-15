@@ -18,7 +18,7 @@ public class sweepKick : cardEffect
         
     }
 
-    public override void applyEffect(Character target, Character user)
+    public override bool applyEffect(Character target, Character user)
     {
         int userDamage = user.inComATK;
         int userAP = user.inComArmorPen;
@@ -31,5 +31,6 @@ public class sweepKick : cardEffect
         deBuff.AddBuff("SPD", -10);
 
         target.applyActiveDeBuff(deBuff);
+        return true;
     }
 }

@@ -73,10 +73,27 @@ public abstract class cardHandler : MonoBehaviour
             GameObject pCard = Instantiate(cardTemplate, cardParent);
             pCard.transform.position = pCard.transform.position + new Vector3(-i*110, 0,0);
             pCard.GetComponent<cardDisplay>().card = cardInHand[i];
-            //cardInHandObj.Add(pCard.gameObject);
             pCard.name = pCard.name + " " + i.ToString();
         }
 
+    }
+
+    public void updateCardInhand()
+    {
+        setFalseCard();
+        displayInhandCard();
+    }
+
+    public void setFalseCard()
+    {
+        if (cardParent == null)
+            return;
+
+        for (int i = 0; i < cardParent.childCount; i++)
+        {
+            if (cardParent.GetChild(i).tag == "Card")
+                cardParent.GetChild(i).gameObject.SetActive(false);
+        }
     }
 
     public void displayDiscardedCard(GameObject box)
@@ -100,6 +117,8 @@ public abstract class cardHandler : MonoBehaviour
 
         for (int i = 0; i < player.maxPlayerHand; i++)
         {
+            if (_currentDeck.Count <= i)
+                break;
             cardInHand.Add(_currentDeck[i]);
             _currentDeck.RemoveAt(i);       
         }
@@ -126,17 +145,34 @@ public abstract class cardHandler : MonoBehaviour
     {
         if (_currentDeck.Count <= 0)
         {
-            resetCurrentDeck();
+            if (resetCurrentDeck())
+            {
+                cardInHand.Add(_currentDeck[0]);
+                _currentDeck.RemoveAt(0);
+                return;
+            }
+            else
+                return;
         }
+        //normal draw case
         cardInHand.Add(_currentDeck[0]);
         _currentDeck.RemoveAt(0);
     }
 
-    private void resetCurrentDeck()
+    // use to restore current deck
+    // True = when successfull restrore (There is discared deck)
+    // false = no discard deck
+    private bool resetCurrentDeck()
     {
+        if (discardedDeck.Count <= 0)
+        {
+            return false;
+        }
         _currentDeck.AddRange(discardedDeck);
         discardedDeck.Clear();
         //shuffle
+
+        return true;
     }
 
     public void destroyInHandCard()
