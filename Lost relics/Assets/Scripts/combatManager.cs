@@ -34,6 +34,7 @@ public class combatManager : MonoBehaviour
     public TextMeshProUGUI currentManaText;
     public TextMeshProUGUI cardLeftText;
 
+
     [SerializeField]
     private GameObject discardBox;
     [SerializeField]
@@ -244,6 +245,13 @@ public class combatManager : MonoBehaviour
     public void returnEffectPosition()
     {
         _selectedEffect.transform.position = _selectedEffectPostion;
+    }
+
+    public List<usingCardQ> getInUseCard()
+    {
+        List<usingCardQ> usingCard = new List<usingCardQ>(inUseCard);
+
+        return usingCard;
     }
 
     [System.Obsolete]

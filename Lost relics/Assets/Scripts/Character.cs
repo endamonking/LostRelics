@@ -249,6 +249,26 @@ public class Character : MonoBehaviour
         }
     }
 
+    public int inComCritRes
+    {
+        get
+        {
+            int totalValue = 0;
+            if (stanceValue.ContainsKey("CRITRes"))
+            {
+                totalValue += stanceValue["CRITRes"];
+            }
+            foreach (buff buff in activeBuffs)
+            {
+                if (buff.buffs.ContainsKey("CRITRes"))
+                {
+                    totalValue += buff.buffs["CRITRes"];
+                }
+            }
+            return totalValue;
+        }
+    }
+
     private void Awake()
     {
         
@@ -440,9 +460,9 @@ public class Character : MonoBehaviour
     }
 
     [System.Obsolete]
-    public void takeDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier)
+    public void takeDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
-        int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier);
+        int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         currentHP = currentHP - damage;
         hpBar.updateHPBar(maxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " +damage+" "+ currentHP);
@@ -463,13 +483,19 @@ public class Character : MonoBehaviour
     }
 
 
-    private int calcualteDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier)
+    private int calcualteDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
         int finalDamage = 0;
         float damage = 0;
         int defReduction = GetDeBuffValue("DEFReduction");
         int damageReduction = GetBuffValue("DMGReduction");
-        damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100)) * (1 - (defReduction / 100))) * (1 + (enemyDamageBonus/100) - (damageReduction/100)) * skillMutiplier;
+        float randomNumber = Random.value;
+        Debug.Log(randomNumber);
+        if (randomNumber < enemyCritRate / 100.0f) //Critical hit
+            damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus / 100.0f) - (damageReduction / 100.0f)) * skillMutiplier * (1.5f + (enemyCritDMG/100.0f) - (inComCritRes/100.0f));
+        else
+            damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus/ 100.0f) - (damageReduction/ 100.0f)) * skillMutiplier;
+
 
         finalDamage = Mathf.FloorToInt(damage);
         if (finalDamage <= (enemyATK * 0.2f))

@@ -23,6 +23,8 @@ public class endOfTheline : cardEffect
         int userDamage = user.inComATK;
         int userAP = user.inComArmorPen;
         int userDMGBonus = user.inComDMGBonus;
+        int userCritRate = user.inComCritRate;
+        int userCritDMG = user.inComCritDMG;
         float skillMulti = 0;
 
         if (user.currentHP >= (user.inComMaxHP * 35 / 100.0f))
@@ -35,7 +37,7 @@ public class endOfTheline : cardEffect
             skillMulti = (skillMultiplier + 50) / 100.0f;
         }
 
-        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti);
+        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         return true;
     }
 

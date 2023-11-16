@@ -414,32 +414,32 @@ PrefabInstance:
       objectReference: {fileID: 6915900519548540408, guid: 47cbf52627f730441b8b0a5b97f0aabb, type: 3}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.size
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 2d3e24d386d12c64b9c6fa884dc73c96, type: 2}
+      objectReference: {fileID: 11400000, guid: 554b1e5a8c13a4a49adbdccf80fad3ca, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: fe192f2866af78c41b99efef11a74440, type: 2}
+      objectReference: {fileID: 11400000, guid: 554b1e5a8c13a4a49adbdccf80fad3ca, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: b221157a72453484495bf89e5f8f08ac, type: 2}
+      objectReference: {fileID: 11400000, guid: 554b1e5a8c13a4a49adbdccf80fad3ca, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: bb7aef336e6aa7a44bb10ad9c64d586a, type: 2}
+      objectReference: {fileID: 11400000, guid: 554b1e5a8c13a4a49adbdccf80fad3ca, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+      objectReference: {fileID: 11400000, guid: 554b1e5a8c13a4a49adbdccf80fad3ca, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+      objectReference: {fileID: 11400000, guid: 554b1e5a8c13a4a49adbdccf80fad3ca, type: 2}
     - target: {fileID: 2958676841159209180, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: playerDeck.Array.data[6]
       value: 
@@ -459,6 +459,10 @@ PrefabInstance:
     - target: {fileID: 2958676841159209181, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: maxHP
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958676841159209181, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
+      propertyPath: baseATK
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2958676841159209181, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: baseSPD

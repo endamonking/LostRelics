@@ -23,9 +23,19 @@ public class throwingKnife : cardEffect
         int userDamage = user.inComATK;
         int userAP = user.inComArmorPen;
         int userDMGBonus = user.inComDMGBonus;
-        float skillMulti = skillMultiplier - 20.0f;
+        int userCritRate = user.inComCritRate;
+        int userCritDMG = user.inComCritDMG;
+        float skillMulti = skillMultiplier;
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
+        List<usingCardQ> usingCard = combatManager.Instance.getInUseCard();
+        foreach (usingCardQ obj in usingCard)
+        {
+            if (obj.card.GetComponent<cardDisplay>().card.effect == this)
+            {
+                skillMulti = skillMulti + 20;
+            }
+        }
         foreach (Card card in playerCardHanlder.cardInHand)
         {
             if (card.effect == this)
@@ -35,7 +45,7 @@ public class throwingKnife : cardEffect
         }
         skillMulti = skillMulti / 100.0f;
         Debug.Log(skillMulti);
-        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti);
+        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         return true;
     }
 }
