@@ -9,21 +9,25 @@ public class InventoryManager : MonoBehaviour
 {
     public Inventory inventory;
 
-    [SerializeField] private GameObject inventoryItemPrefab;
-    [SerializeField] private InventorySlot[] inventorySlots;
-    [SerializeField] private Bin binSlot;
-    [SerializeField] private InventorySlotHelmet helmetSlot_1;
-    [SerializeField] private InventorySlotArmor armorSlot_1;
-    [SerializeField] private InventorySlotBoot bootSlot_1;
-    [SerializeField] private InventorySlotHelmet  helmetSlot_2;
-    [SerializeField] private InventorySlotArmor  armorSlot_2;
-    [SerializeField] private InventorySlotBoot  bootSlot_2;
-    [SerializeField] private InventorySlotHelmet helmetSlot_3;
-    [SerializeField] private InventorySlotArmor armorSlot_3;
-    [SerializeField] private InventorySlotBoot bootSlot_3;
-    [SerializeField] private InventorySlotHelmet helmetSlot_4;
-    [SerializeField] private InventorySlotArmor armorSlot_4;
-    [SerializeField] private InventorySlotBoot bootSlot_4;
+   public GameObject inventoryItemPrefab;
+   public InventorySlot[] inventorySlots;
+   public Bin binSlot;
+    
+    public InventorySlotHelmet helmetSlot_1;
+    public InventorySlotArmor armorSlot_1;
+    public InventorySlotBoot bootSlot_1;
+
+    public InventorySlotHelmet  helmetSlot_2;
+    public InventorySlotArmor  armorSlot_2;
+   public InventorySlotBoot  bootSlot_2;
+
+   public InventorySlotHelmet helmetSlot_3;
+   public InventorySlotArmor armorSlot_3;
+   public InventorySlotBoot bootSlot_3;
+
+   public InventorySlotHelmet helmetSlot_4;
+   public InventorySlotArmor armorSlot_4;
+   public InventorySlotBoot bootSlot_4;
 
 
 

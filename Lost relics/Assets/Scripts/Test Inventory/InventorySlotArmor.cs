@@ -21,7 +21,7 @@ public class InventorySlotArmor : MonoBehaviour, IDropHandler
                 // Move the dropped item to this slot
                 inventoryItem.parentAfterDrag = transform;
                 inventory.EquipArmor(inventoryItem.item, character);
-                equipmentStats.UpdateStat();
+                UI.UpdateStat( );
             }
             else if (transform.childCount == 1)
             {
@@ -34,7 +34,7 @@ public class InventorySlotArmor : MonoBehaviour, IDropHandler
                     currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
                     currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
                     droppedItem.parentAfterDrag = transform;
-                    equipmentStats.UpdateStat();
+                    UI.UpdateStat( );
                 }
             }
         }

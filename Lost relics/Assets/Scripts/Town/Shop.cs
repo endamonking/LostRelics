@@ -14,12 +14,10 @@ public class Shop : MonoBehaviour, IsInteractable
         _shopUI.SetActive(false);
     }
     public bool Interact(Interactor interactor)
-    
-    {
-        string[] text = new string[2]; 
-        text[0] = "test";
-        text[1] = "next";
 
+    {
+       
+         
         if (_shopUI.activeSelf)
         {
          

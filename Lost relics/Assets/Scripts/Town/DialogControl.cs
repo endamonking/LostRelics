@@ -15,6 +15,7 @@ public class DialogControl : MonoBehaviour
     private int currentIndex;
     public bool inDialog { get; set; }
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject Choice;
 
     private void Start()
     {
@@ -53,10 +54,9 @@ public class DialogControl : MonoBehaviour
     {
         player.GetComponent<PlayerControl>().enabled = false;
         DisplayCurrentDialogLine();
-        if (Keyboard.current.zKey.wasPressedThisFrame)
-        {
-            if (_dialogBox.activeSelf)
+          if (_dialogBox.activeSelf)
             {
+             
                 currentIndex++;
                 if (currentIndex < dialogLines.Length)
                 {
@@ -74,7 +74,7 @@ public class DialogControl : MonoBehaviour
                 OpenDialog();
                 DisplayCurrentDialogLine();
             }
-        }
+        
 
 
     }

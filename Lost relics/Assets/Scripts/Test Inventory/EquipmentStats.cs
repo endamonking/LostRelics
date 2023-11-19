@@ -5,18 +5,16 @@ using UnityEngine;
 public class EquipmentStats : MonoBehaviour
 {
     public Inventory inventory;
-    public int character;
     
-    
-    public int  Def;
-    public int  HP;
-    public int  SPD;
-    public void UpdateStat()
+    public int Def;
+    public int HP;
+    public int SPD;
+    public void UpdateStat(int character)
     {
-  
-         Def = 0;
-         HP = 0;
-         SPD = 0;
+
+        Def = 0;
+        HP = 0;
+        SPD = 0;
         if (character == 0)
         {
             if (inventory.equippedArmor_1 != null)
@@ -38,7 +36,7 @@ public class EquipmentStats : MonoBehaviour
                 Def += (int)inventory.equippedHelmet_1.GetItemStateValue("DEF");
             }
 
-     
+
 
         }
         else if (character == 1)
@@ -93,13 +91,13 @@ public class EquipmentStats : MonoBehaviour
                 SPD += (int)inventory.equippedArmor_4.GetItemStateValue("SPD");
                 Def += (int)inventory.equippedArmor_4.GetItemStateValue("DEF");
             }
-            if (inventory.equippedBoot_3 != null)
+            if (inventory.equippedBoot_4 != null)
             {
                 HP += (int)inventory.equippedBoot_4.GetItemStateValue("HP");
                 SPD += (int)inventory.equippedBoot_4.GetItemStateValue("SPD");
                 Def += (int)inventory.equippedBoot_4.GetItemStateValue("DEF");
             }
-            if (inventory.equippedHelmet_3 != null)
+            if (inventory.equippedHelmet_4 != null)
             {
                 HP += (int)inventory.equippedHelmet_4.GetItemStateValue("HP");
                 SPD += (int)inventory.equippedHelmet_4.GetItemStateValue("SPD");
@@ -108,7 +106,4 @@ public class EquipmentStats : MonoBehaviour
 
         }
     }
-
-  
-   
 }

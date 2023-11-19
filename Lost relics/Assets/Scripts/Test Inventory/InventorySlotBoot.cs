@@ -6,7 +6,7 @@ public class InventorySlotBoot : MonoBehaviour, IDropHandler
 {
     public Inventory inventory;
     public int character;
-    private EquipmentStats equipmentStats;
+    private EquipmentStats stats;
     public InventoryManager inventoryManager;
     public GameObject PlayerUI;
 
@@ -23,7 +23,8 @@ public class InventorySlotBoot : MonoBehaviour, IDropHandler
                 // Move the dropped item to this slot
                 inventoryItem.parentAfterDrag = transform;
                 inventory.EquipBoot(inventoryItem.item, character);
-                equipmentStats.UpdateStat();
+
+                UI.UpdateStat( );
             }
             else if (transform.childCount == 1)
             {
@@ -36,9 +37,7 @@ public class InventorySlotBoot : MonoBehaviour, IDropHandler
                     currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
                     currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
                     droppedItem.parentAfterDrag = transform;
-                    equipmentStats.UpdateStat();   //inventory.EquipBoot(droppedItem.item, character);
-                    //inventoryManager.UpdateInventoryItems();
-                    //inventory.MoveItem(droppedItem.item, GetSlotIndex());
+                    UI.UpdateStat( );   
                 }
             }
         }
