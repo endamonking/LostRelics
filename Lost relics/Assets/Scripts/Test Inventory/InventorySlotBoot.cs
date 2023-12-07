@@ -4,16 +4,28 @@ using System.Threading;
 
 public class InventorySlotBoot : MonoBehaviour, IDropHandler
 {
-    public Inventory inventory;
-    public int character;
-    private EquipmentStats stats;
-    public InventoryManager inventoryManager;
+   
+    private int character;
+ 
+    
     public GameObject PlayerUI;
+    private InventoryManager inventoryManager;
 
+    void Start()
+    {
+
+        inventoryManager = FindObjectOfType<InventoryManager>();
+
+        if (inventoryManager == null)
+        {
+            Debug.LogError("No InventoryManager found in the scene.");
+        }
+    }
     public void OnDrop(PointerEventData eventData)
     {
 
         PlayerStatsUI UI = PlayerUI.GetComponent<PlayerStatsUI>();
+        EquipmentStats stats = PlayerUI.GetComponent<EquipmentStats>();
         character = UI.character;
         InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
         if (inventoryItem.item.itemType == ItemType.Boot)
@@ -22,9 +34,10 @@ public class InventorySlotBoot : MonoBehaviour, IDropHandler
             {
                 // Move the dropped item to this slot
                 inventoryItem.parentAfterDrag = transform;
-                inventory.EquipBoot(inventoryItem.item, character);
+                inventoryManager.inventory.EquipBoot(inventoryItem.item, character);
 
-                UI.UpdateStat( );
+                
+                stats.UpdateStat(character);
             }
             else if (transform.childCount == 1)
             {
@@ -37,7 +50,7 @@ public class InventorySlotBoot : MonoBehaviour, IDropHandler
                     currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
                     currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
                     droppedItem.parentAfterDrag = transform;
-                    UI.UpdateStat( );   
+                    stats.UpdateStat(character);
                 }
             }
         }

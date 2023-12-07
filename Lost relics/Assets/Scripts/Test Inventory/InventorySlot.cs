@@ -3,83 +3,89 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    public Inventory inventory;
-    public InventoryManager inventoryManager;
-
+ 
+    private InventoryManager inventoryManager;
+    void Start() 
+    {
+        inventoryManager = FindObjectOfType<InventoryManager>();
+    }
     public void OnDrop(PointerEventData eventData)
     {
         if (transform.childCount == 0)
         {
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
+            if (inventoryItem != null)
+            {
+                inventoryItem.parentAfterDrag = transform;
 
-
-            inventoryItem.parentAfterDrag = transform;
-            
-
-
+            }
         }
         else if (transform.childCount == 1)
         {
 
             InventoryItem droppedItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             InventoryItem currentItem = transform.GetChild(0).GetComponent<InventoryItem>();
-            InventorySlotHelmet inventorySlotHelmet = droppedItem.parentBeforeDrag.GetComponentInParent<InventorySlotHelmet>();
-            InventorySlotArmor inventorySlotArmor = droppedItem.parentBeforeDrag.GetComponentInParent<InventorySlotArmor>();
-            InventorySlotBoot inventorySlotBoot = droppedItem.parentBeforeDrag.GetComponentInParent<InventorySlotBoot>();
 
-            if ((inventorySlotHelmet == null) && (inventorySlotArmor == null) && (inventorySlotBoot == null))
+            if (droppedItem != null && currentItem != null)
             {
-                Debug.Log(droppedItem.parentBeforeDrag);
+                InventorySlotHelmet inventorySlotHelmet = droppedItem.parentBeforeDrag.GetComponentInParent<InventorySlotHelmet>();
+                InventorySlotArmor inventorySlotArmor = droppedItem.parentBeforeDrag.GetComponentInParent<InventorySlotArmor>();
+                InventorySlotBoot inventorySlotBoot = droppedItem.parentBeforeDrag.GetComponentInParent<InventorySlotBoot>();
 
-                currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
-                currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
-               // int newSlotIndex = GetSlotIndex();
-                // Debug.Log("New slot index: " + newSlotIndex);
-                droppedItem.parentAfterDrag = transform;
-                //inventory.MoveItem(droppedItem.item, GetSlotIndex());
-            }
-            else
-            {
-                switch (droppedItem.item.itemType)
+                if ((inventorySlotHelmet == null) && (inventorySlotArmor == null) && (inventorySlotBoot == null))
                 {
-                    case ItemType.Helmet:
-                        // Debug.Log(droppedItem.parentBeforeDrag);
-                        if (currentItem.item.itemType == ItemType.Helmet)
-                        {
-                            currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
-                            currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
-                           // int newSlotIndex = GetSlotIndex();
-                            droppedItem.parentAfterDrag = transform;
-                            Debug.Log("From Equip To Inventory");
-                            //inventory.MoveItem(droppedItem.item, GetSlotIndex());
-                        }
-                        break;
-                    case ItemType.Armor:
-                        if (currentItem.item.itemType == ItemType.Armor)
-                        {
-                            currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
-                            currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
-                            //int newSlotIndex = GetSlotIndex();
-                            droppedItem.parentAfterDrag = transform;
-                           // inventory.MoveItem(droppedItem.item, GetSlotIndex());
-                        }
-                        break;
-                    case ItemType.Boot:
-                        if (currentItem.item.itemType == ItemType.Boot)
-                        {
-                            currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
-                            currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
-                           // int newSlotIndex = GetSlotIndex();
-                            droppedItem.parentAfterDrag = transform;
-                           // inventory.MoveItem(droppedItem.item, GetSlotIndex());
-                        }
-                        break;
-                    default:
+                    Debug.Log(droppedItem.parentBeforeDrag);
 
-                        break;
+                    currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
+                    currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
+                    // int newSlotIndex = GetSlotIndex();
+                    // Debug.Log("New slot index: " + newSlotIndex);
+                    droppedItem.parentAfterDrag = transform;
+                    //inventory.MoveItem(droppedItem.item, GetSlotIndex());
                 }
+                else
+                {
+                    switch (droppedItem.item.itemType)
+                    {
+                        case ItemType.Helmet:
+                            // Debug.Log(droppedItem.parentBeforeDrag);
+                            if (currentItem.item.itemType == ItemType.Helmet)
+                            {
+                                currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
+                                currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
+                                // int newSlotIndex = GetSlotIndex();
+                                droppedItem.parentAfterDrag = transform;
+                                Debug.Log("From Equip To Inventory");
+                                //inventory.MoveItem(droppedItem.item, GetSlotIndex());
+                            }
+                            break;
+                        case ItemType.Armor:
+                            if (currentItem.item.itemType == ItemType.Armor)
+                            {
+                                currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
+                                currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
+                                //int newSlotIndex = GetSlotIndex();
+                                droppedItem.parentAfterDrag = transform;
+                                // inventory.MoveItem(droppedItem.item, GetSlotIndex());
+                            }
+                            break;
+                        case ItemType.Boot:
+                            if (currentItem.item.itemType == ItemType.Boot)
+                            {
+                                currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
+                                currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
+                                // int newSlotIndex = GetSlotIndex();
+                                droppedItem.parentAfterDrag = transform;
+                                // inventory.MoveItem(droppedItem.item, GetSlotIndex());
+                            }
+                            break;
+                        default:
+
+                            break;
+                    }
 
 
+                }
             }
         }
     }

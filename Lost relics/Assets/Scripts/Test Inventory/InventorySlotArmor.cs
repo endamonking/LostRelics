@@ -3,25 +3,37 @@ using UnityEngine;
 
 public class InventorySlotArmor : MonoBehaviour, IDropHandler
 {
-    public Inventory inventory;
-    public int character;
-    private EquipmentStats equipmentStats; 
-    public InventoryManager inventoryManager;
+   
+    private int character;
     public GameObject PlayerUI;
+    private InventoryManager inventoryManager;
+
+    void Start()
+    {
+
+        inventoryManager = FindObjectOfType<InventoryManager>();
+
+        if (inventoryManager == null)
+        {
+            Debug.LogError("No InventoryManager found in the scene.");
+        }
+    }
     public void OnDrop(PointerEventData eventData)
     {
 
         PlayerStatsUI UI = PlayerUI.GetComponent<PlayerStatsUI>();
+        EquipmentStats stats = PlayerUI.GetComponent<EquipmentStats>();
         character = UI.character;
         InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
+
         if (inventoryItem.item.itemType == ItemType.Armor)
         {
             if (transform.childCount == 0)
             {
                 // Move the dropped item to this slot
                 inventoryItem.parentAfterDrag = transform;
-                inventory.EquipArmor(inventoryItem.item, character);
-                UI.UpdateStat( );
+                inventoryManager.inventory.EquipArmor(inventoryItem.item, character);
+                stats.UpdateStat(character);
             }
             else if (transform.childCount == 1)
             {
@@ -34,7 +46,7 @@ public class InventorySlotArmor : MonoBehaviour, IDropHandler
                     currentItem.parentAfterDrag = droppedItem.parentBeforeDrag;
                     currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
                     droppedItem.parentAfterDrag = transform;
-                    UI.UpdateStat( );
+                    stats.UpdateStat(character);
                 }
             }
         }

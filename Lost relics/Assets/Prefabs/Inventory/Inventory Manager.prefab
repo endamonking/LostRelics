@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9194790408368717523}
-  - component: {fileID: 9194790408368717524}
   - component: {fileID: 9194790408368717525}
   m_Layer: 0
   m_Name: Inventory Manager
@@ -38,47 +37,6 @@ RectTransform:
   m_AnchoredPosition: {x: 554.99976, y: 284.5303}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9194790408368717524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9194790408368717526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf194a1192893ac4aaaa35029bea645e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: c287389b628a68b46877d86d19a8505a, type: 2}
-  inventoryItemPrefab: {fileID: 3976915456615689015, guid: b37f6584d0640be4b84ff6d18315f874, type: 3}
-  inventorySlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  PlayerHelmetSlot: {fileID: 0}
-  PlayerArmorSlot: {fileID: 0}
-  PlayerBootSlot: {fileID: 0}
-  helmetSlot: {fileID: 0}
-  armorSlot: {fileID: 0}
-  bootSlot: {fileID: 0}
 --- !u!114 &9194790408368717525
 MonoBehaviour:
   m_ObjectHideFlags: 0

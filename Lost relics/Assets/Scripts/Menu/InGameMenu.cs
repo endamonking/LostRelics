@@ -20,10 +20,7 @@ public class InGameMenu : MonoBehaviour
 
             MenuControl();
         }
-        else if(Input.GetKeyDown(KeyCode.B))
-        {
-            PlayerInventory();
-        }
+        
     }
 
     private void MenuControl(){
@@ -37,18 +34,5 @@ public class InGameMenu : MonoBehaviour
             player.GetComponent<PlayerControl>().enabled = false;
         }     
     }
-    private void PlayerInventory()
-    {
-
-        if (PlayerCanvas.activeSelf)
-        {
-            PlayerCanvas.SetActive(false);
-            player.GetComponent<PlayerControl>().enabled = true;
-        }
-        else
-        {
-            PlayerCanvas.SetActive(true);
-            player.GetComponent<PlayerControl>().enabled = false;
-        }
-    }
+    
 }

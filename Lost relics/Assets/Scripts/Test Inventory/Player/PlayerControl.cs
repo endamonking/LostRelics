@@ -14,6 +14,10 @@ public class PlayerControl : MonoBehaviour
   
     [SerializeField] private float runSpeed = 10.0f;
     [SerializeField] private Inventory inventory;
+    [SerializeField] private GameObject PlayerCanvas;
+    [SerializeField] private GameObject player;
+
+    private int move =0;
     public GameObject boundaryCollider;
     public Quest[] activeQuest;
 
@@ -57,24 +61,27 @@ public class PlayerControl : MonoBehaviour
     {
         body = transform.Find("PlayerCollider").GetComponent<Rigidbody>();
 
-        
-
-
     }
 
 
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+       
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            PlayerInventory();
+        }
     }
 
     private void FixedUpdate()
-    {
+    { if (move == 0) { 
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
         Vector3 position = this.transform.position;
         Vector3 movement = new Vector3(horizontal, 0, vertical).normalized;
         position += movement * runSpeed * Time.deltaTime;
         this.transform.position = position;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -87,6 +94,21 @@ public class PlayerControl : MonoBehaviour
         else
         {
             Debug.Log("Collided with: " + collision.gameObject.name);
+        }
+    }
+    private void PlayerInventory()
+    {
+
+        if (PlayerCanvas.activeSelf)
+        {
+            PlayerCanvas.SetActive(false);
+            move = 0;
+        }
+        else
+        {
+            PlayerCanvas.SetActive(true);
+            move = 1;
+            
         }
     }
 }

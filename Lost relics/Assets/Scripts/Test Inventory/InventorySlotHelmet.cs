@@ -4,15 +4,27 @@ using System;
 
 public class InventorySlotHelmet : MonoBehaviour, IDropHandler
 {
-    public Inventory inventory;
+    
      
-    public InventoryManager inventoryManager;
-    public int character;
+        
+    private int character;
     public GameObject PlayerUI;
-    private EquipmentStats stats;
+    private InventoryManager inventoryManager;
+
+    void Start()
+    {
+         
+        inventoryManager = FindObjectOfType<InventoryManager>();
+
+        if (inventoryManager == null)
+        {
+            Debug.LogError("No InventoryManager found in the scene.");
+        }
+    }
     public void OnDrop(PointerEventData eventData)
     {
         PlayerStatsUI UI = PlayerUI.GetComponent<PlayerStatsUI>();
+        EquipmentStats stats = PlayerUI.GetComponent<EquipmentStats>();
         character = UI.character;
         
         InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
@@ -22,8 +34,8 @@ public class InventorySlotHelmet : MonoBehaviour, IDropHandler
             {
                 
                 inventoryItem.parentAfterDrag = transform;
-                inventory.EquipHelmet(inventoryItem.item, character);
-                UI.UpdateStat( );
+                inventoryManager.inventory.EquipHelmet(inventoryItem.item, character);
+                stats.UpdateStat(character);
             }
 
             else if (transform.childCount == 1)
@@ -39,7 +51,7 @@ public class InventorySlotHelmet : MonoBehaviour, IDropHandler
                     currentItem.transform.SetParent(droppedItem.parentBeforeDrag);
                     droppedItem.parentAfterDrag = transform;
 
-                    UI.UpdateStat( );
+                    stats.UpdateStat(character);
                 }
             }
         }

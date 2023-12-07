@@ -15,6 +15,7 @@ public class PlayerStatsUI : MonoBehaviour
     public GameObject slot_2;
     public GameObject slot_3;
     public GameObject slot_4;
+
     public TextMeshProUGUI hpText; 
     public TextMeshProUGUI atkText;
     //public TextMeshProUGUI healingText;
@@ -31,9 +32,7 @@ public class PlayerStatsUI : MonoBehaviour
     // Update is called once per frame
     void Update()
         {
-             Item equippedArmor = null;
-             Item equippedHelmet=null;
-             Item equippedBoot=null;
+           
         if (slot_1.activeSelf)
             {
                 character = 0;
@@ -50,32 +49,13 @@ public class PlayerStatsUI : MonoBehaviour
             {
                 character = 3;
             }
-
-        if (character == 0)
-            {
-            equippedArmor = inventory.equippedArmor_1;
-                equippedHelmet = inventory.equippedHelmet_1;
-                equippedBoot = inventory.equippedBoot_1;
-            }
-            if(character ==1) 
-            {
-                equippedArmor = inventory.equippedArmor_2;
-                equippedHelmet = inventory.equippedHelmet_2;
-                equippedBoot = inventory.equippedBoot_2;
-            }
-            if (character == 2)
-            {
-                equippedArmor = inventory.equippedArmor_3;
-                equippedHelmet = inventory.equippedHelmet_3;
-                equippedBoot = inventory.equippedBoot_3;
-            }
-            if (character == 3)
-            {
-                equippedArmor = inventory.equippedArmor_4;
-                equippedHelmet = inventory.equippedHelmet_4;
-                equippedBoot = inventory.equippedBoot_4;
-            }
-        int HP=0;
+ 
+          Item  equippedHelmet = inventory.helmetList[character];
+          Item equippedArmor = inventory.armorList[character];
+          Item equippedBoot = inventory.bootList[character];
+                
+          
+            int HP=0;
             int SPD=0;
             int DEF=0;
             int ATK = 0;    
@@ -123,106 +103,7 @@ public class PlayerStatsUI : MonoBehaviour
        
         }
 
-    public int Def;
-    public int HP;
-    public int SPD;
-    public void UpdateStat()
-    {
-
-        Def = 0;
-        HP = 0;
-        SPD = 0;
-        if (character == 0)
-        {
-            if (inventory.equippedArmor_1 != null)
-            {
-                HP += (int)inventory.equippedArmor_1.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedArmor_1.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedArmor_1.GetItemStateValue("DEF");
-            }
-            if (inventory.equippedBoot_1 != null)
-            {
-                HP += (int)inventory.equippedBoot_1.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedBoot_1.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedBoot_1.GetItemStateValue("DEF");
-            }
-            if (inventory.equippedHelmet_1 != null)
-            {
-                HP += (int)inventory.equippedHelmet_1.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedHelmet_1.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedHelmet_1.GetItemStateValue("DEF");
-            }
-
-
-
-        }
-        else if (character == 1)
-        {
-            if (inventory.equippedArmor_2 != null)
-            {
-                HP += (int)inventory.equippedArmor_2.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedArmor_2.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedArmor_2.GetItemStateValue("DEF");
-            }
-            if (inventory.equippedBoot_2 != null)
-            {
-                HP += (int)inventory.equippedBoot_2.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedBoot_2.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedBoot_2.GetItemStateValue("DEF");
-            }
-            if (inventory.equippedHelmet_2 != null)
-            {
-                HP += (int)inventory.equippedHelmet_2.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedHelmet_2.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedHelmet_2.GetItemStateValue("DEF");
-            }
-
-        }
-        else if (character == 2)
-        {
-            if (inventory.equippedArmor_3 != null)
-            {
-                HP += (int)inventory.equippedArmor_3.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedArmor_3.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedArmor_3.GetItemStateValue("DEF");
-            }
-            if (inventory.equippedBoot_3 != null)
-            {
-                HP += (int)inventory.equippedBoot_3.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedBoot_3.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedBoot_3.GetItemStateValue("DEF");
-            }
-            if (inventory.equippedHelmet_3 != null)
-            {
-                HP += (int)inventory.equippedHelmet_3.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedHelmet_3.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedHelmet_3.GetItemStateValue("DEF");
-            }
-
-        }
-        else if (character == 3)
-        {
-            if (inventory.equippedArmor_4 != null)
-            {
-                HP += (int)inventory.equippedArmor_4.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedArmor_4.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedArmor_4.GetItemStateValue("DEF");
-            }
-            if (inventory.equippedBoot_3 != null)
-            {
-                HP += (int)inventory.equippedBoot_4.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedBoot_4.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedBoot_4.GetItemStateValue("DEF");
-            }
-            if (inventory.equippedHelmet_3 != null)
-            {
-                HP += (int)inventory.equippedHelmet_4.GetItemStateValue("HP");
-                SPD += (int)inventory.equippedHelmet_4.GetItemStateValue("SPD");
-                Def += (int)inventory.equippedHelmet_4.GetItemStateValue("DEF");
-            }
-
-        }
-    }
+     
 
 
 }

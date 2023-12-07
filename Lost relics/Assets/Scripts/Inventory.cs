@@ -6,35 +6,43 @@ using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "Inventory", menuName = "ScriptableObjects/Inventory")]
 public class Inventory : ScriptableObject
-{
-    public List<Item> itemList = new List<Item>(20);
+{   
+   
+    public int numberOfSlot = 20;
+    public int numberOfCharacter = 1 ;
+    public List<Item> itemList = new List<Item>();
 
-    [Header("1_Equipment")]
-    public Item equippedArmor_1;
-    public Item equippedHelmet_1;
-    public Item equippedBoot_1;
+    [Header("Equipment")]
+    public List<Item> helmetList = new List<Item>();
+    public List<Item> armorList = new List<Item>();
+    public List<Item> bootList = new List<Item>();
+    
+    
+ 
+     
+    [HideInInspector] public Item equippedArmor_1;
+    [HideInInspector] public Item equippedHelmet_1;
+    [HideInInspector] public Item equippedBoot_1;
+ 
+    [HideInInspector] public Item equippedArmor_2;
+    [HideInInspector] public Item equippedHelmet_2;
+    [HideInInspector] public Item equippedBoot_2;
+ 
+    [HideInInspector] public Item equippedArmor_3;
+    [HideInInspector] public Item equippedHelmet_3;
+    [HideInInspector] public Item equippedBoot_3;
 
-    [Header("2_Equipment")]
-    public Item equippedArmor_2;
-    public Item equippedHelmet_2;
-    public Item equippedBoot_2;
+ 
+    [HideInInspector] public Item equippedArmor_4;
+    [HideInInspector] public Item equippedHelmet_4;
+    [HideInInspector] public Item equippedBoot_4;
 
-    [Header("3_Equipment")]
-    public Item equippedArmor_3;
-    public Item equippedHelmet_3;
-    public Item equippedBoot_3;
-
-    [Header("4_Equipment")]
-    public Item equippedArmor_4;
-    public Item equippedHelmet_4;
-    public Item equippedBoot_4;
-
-
+     
     public void EquipHelmet(Item helmet, int character)
     {
-       
-             
-            if (character == 0)
+        helmetList[character] = helmet;
+
+        /*    if (character == 0)
             {
                 equippedHelmet_1 = helmet;
             }
@@ -52,13 +60,14 @@ public class Inventory : ScriptableObject
             }
 
 
-
+        */
     }
+
     public void EquipArmor(Item armor, int character)
     {
-            
-                // Equip the helmet for the specified character
-                if (character == 0)
+        armorList[character] = armor;
+        // Equip the helmet for the specified character
+          /*      if(character == 0)
                 {
                     equippedArmor_1 = armor;
                 }
@@ -73,13 +82,13 @@ public class Inventory : ScriptableObject
                 else if (character == 3)
                 {
                     equippedArmor_4 = armor;
-                }
+                }*/
     }
     public void EquipBoot(Item boot, int character)
     {
-        
+        bootList[character] = boot;
             // Equip the helmet for the specified character
-            if (character == 0)
+           /* if (character == 0)
             {
                 equippedBoot_1 = boot;
             }
@@ -95,7 +104,7 @@ public class Inventory : ScriptableObject
             {
                 equippedBoot_4 = boot;
             }
-
+           */
 
     }
 

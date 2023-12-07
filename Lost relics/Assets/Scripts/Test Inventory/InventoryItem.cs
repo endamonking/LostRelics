@@ -19,6 +19,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     }
 
     public void InitialiseItem(Item newItem) {
+
         item= newItem;
         image.sprite = newItem.icon;
     }
@@ -39,5 +40,5 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {   image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         inventoryManager.UpdateInventoryItems();
-    }
+    }                                                                                       
 }
