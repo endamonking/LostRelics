@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] private GameObject ShopUIContent;
-    // Start is called before the first frame update
- 
+    [SerializeField] private List<Item> itemlist = new List<Item>();
+
 }
