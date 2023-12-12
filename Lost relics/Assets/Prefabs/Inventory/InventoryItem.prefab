@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   image: {fileID: 3295386786620613606}
-  itemStatsPopupPrefab: {fileID: 193416699975374202, guid: b4a6cbb8d7e956f429d001a5a612e715, type: 3}
+  itemStatsPopupPrefab: {fileID: 8476332976655591630, guid: 6b646ac3136b40e45850767d88f5b185, type: 3}
   parentAfterDrag: {fileID: 0}
   parentBeforeDrag: {fileID: 0}
 --- !u!114 &3295386786620613606
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

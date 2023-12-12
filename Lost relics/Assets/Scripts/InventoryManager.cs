@@ -110,17 +110,25 @@ public class InventoryManager : MonoBehaviour
                 Transform helmetSlotTransform = parentTransform.Find(helmetSlotName);
                 Transform armorSlotTransform = parentTransform.Find(armorSlotName);
                 Transform bootSlotTransform = parentTransform.Find(bootSlotName);
+
                 if (helmetSlotTransform != null && armorSlotTransform != null && bootSlotTransform != null)
                 {
                     InventorySlotHelmet helmet = helmetSlotTransform.GetComponent<InventorySlotHelmet>();
                     InventorySlotArmor armor = armorSlotTransform.GetComponent<InventorySlotArmor>();
                     InventorySlotBoot boot = bootSlotTransform.GetComponent<InventorySlotBoot>();
-                    if (helmetSlot != null && armorSlot != null && bootSlot != null)
+
+                    if (helmetSlot != null  )
                     {
                         helmetSlot.Add(helmet);
+                      
+                    }
+                    if(armorSlot != null)
+                    {
                         armorSlot.Add(armor);
+                     }
+                    if(bootSlot != null) 
+                    {
                         bootSlot.Add(boot);
-
                     }
                     else
                     {
@@ -386,18 +394,18 @@ public class InventoryManager : MonoBehaviour
             inventory.bootList[i] = null;
             if (helmetSlot[i].transform.childCount != 0)
             {
-                InventoryItem inventoryItem = helmetSlot_1.transform.GetChild(0).GetComponent<InventoryItem>();
+                InventoryItem inventoryItem = helmetSlot[i].transform.GetChild(0).GetComponent<InventoryItem>();
                 inventory.EquipHelmet(inventoryItem.item, i);
             }
             if (armorSlot[i].transform.childCount != 0)
             {
-                InventoryItem inventoryItem = armorSlot_1.transform.GetChild(0).GetComponent<InventoryItem>();
+                InventoryItem inventoryItem = armorSlot[i].transform.GetChild(0).GetComponent<InventoryItem>();
                 inventory.EquipArmor(inventoryItem.item, i);
             }
             if (bootSlot[i].transform.childCount != 0)
             {
 
-                InventoryItem inventoryItem = bootSlot_1.transform.GetChild(0).GetComponent<InventoryItem>();
+                InventoryItem inventoryItem = bootSlot[i].transform.GetChild(0).GetComponent<InventoryItem>();
                 inventory.EquipBoot(inventoryItem.item, i);
             }
         }

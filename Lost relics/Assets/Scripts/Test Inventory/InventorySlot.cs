@@ -3,9 +3,9 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
- 
+
     private InventoryManager inventoryManager;
-    void Start() 
+    void Start()
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
     }

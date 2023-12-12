@@ -18,8 +18,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 26c1eafd57ec5434897e33600c29549d, type: 2}
   - {fileID: 0}
-  - {fileID: 11400000, guid: 3dd2bd254782be94db423dc5c3894690, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   armorList:
-  - {fileID: 11400000, guid: 26c1eafd57ec5434897e33600c29549d, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   bootList:
-  - {fileID: 11400000, guid: a8e526976ee651340a132671651c969c, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

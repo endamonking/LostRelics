@@ -126,6 +126,16 @@ public class EquipmentStats : MonoBehaviour
 
         } 
     }*/
+    void Start()
+    {
+
+        inventoryManager = FindObjectOfType<InventoryManager>();
+
+        if (inventoryManager == null)
+        {
+            Debug.LogError("No InventoryManager found in the scene.");
+        }
+    }
     public void UpdateStat(int character)
     {
         if (inventoryManager == null || inventoryManager.inventory == null)

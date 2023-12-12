@@ -20,50 +20,71 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         inventoryManager = FindObjectOfType<InventoryManager>();
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!isDragging) // Show the popup only if not dragging
+        Debug.Log("Enter");
+        if (eventData.pointerCurrentRaycast.gameObject.transform.IsChildOf(transform))
         {
-            itemStatsPopup = Instantiate(itemStatsPopupPrefab, transform.position + new Vector3(0, 50, -1), Quaternion.identity);
-            itemStatsPopup.transform.SetParent(transform); // Set the popup's parent to the inventory item
-
-            // Customize the popup to display item stats based on the item data
-            ItemStatsPopup popupScript = itemStatsPopup.GetComponent<ItemStatsPopup>();
-            if (popupScript != null)
+            if (!isDragging) // Show the popup only if not dragging
             {
-                // Assuming 'item' is a reference to the current item
-                popupScript.DisplayStats(item); // Pass the item's information to display in the popup
+                ShowPopup();
             }
+
+            return;
+        }
+       
+
+
+    }
+    public void ShowPopup()
+    {
+         
+        itemStatsPopup = Instantiate(itemStatsPopupPrefab, transform.position + new Vector3(100, -75, 0), Quaternion.identity);
+        Canvas activeCanvas = FindObjectOfType<Canvas>();
+        itemStatsPopup.transform.SetParent(activeCanvas.transform); // Set the popup's parent to the inventory item
+        itemStatsPopup.transform.SetAsLastSibling();
+        // Customize the popup to display item stats based on the item data
+        ItemStatsPopup popupScript = itemStatsPopup.GetComponent<ItemStatsPopup>();
+        if (popupScript != null)
+        {
+            // Assuming 'item' is a reference to the current item
+            popupScript.DisplayStats(item); // Pass the item's information to display in the popup
         }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         Destroy(itemStatsPopup);
+        Debug.Log("Exit");
+
     }
+
     public void InitialiseItem(Item newItem) {
 
         item= newItem;
         image.sprite = newItem.icon;
     }
-  
-    public void OnBeginDrag(PointerEventData eventData) {
-        // Debug.Log("BeginDrag");
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Debug.Log("BeginDrag");
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
-        parentBeforeDrag= transform.parent;
+        parentBeforeDrag = transform.parent;
         transform.SetParent(transform.root);
     }
     public void OnDrag(PointerEventData eventData)
     {
         isDragging = true;
-        //Debug.Log("Dragging");
-        transform.position = Input.mousePosition; 
+        Debug.Log("Dragging");
+        transform.position = Input.mousePosition;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
         isDragging = false;
+        Debug.Log("EndDrag");
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         inventoryManager.UpdateInventoryItems();
-    }                                                                                       
+    }
 }
