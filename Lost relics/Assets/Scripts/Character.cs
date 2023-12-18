@@ -271,7 +271,7 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        
+        //equipmentStats = GetComponent<EquipmentStats>();
     }
 
     void Start()
@@ -282,7 +282,7 @@ public class Character : MonoBehaviour
 
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();
-        hpBar.updateHPBar(maxHP, currentHP);
+        hpBar.updateHPBar(inComMaxHP, currentHP);
     }
     
     public void changingStance(stance inTo)

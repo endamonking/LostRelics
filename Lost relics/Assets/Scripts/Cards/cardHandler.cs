@@ -114,7 +114,8 @@ public abstract class cardHandler : MonoBehaviour
     private void initCard()
     {
         _currentDeck.AddRange(playerDeck);
-
+        //Shuffle
+        shuffle(_currentDeck);
         for (int i = 0; i < player.maxPlayerHand; i++)
         {
             if (_currentDeck.Count <= i)
@@ -171,8 +172,20 @@ public abstract class cardHandler : MonoBehaviour
         _currentDeck.AddRange(discardedDeck);
         discardedDeck.Clear();
         //shuffle
+        shuffle(_currentDeck);
 
         return true;
+    }
+
+    public void shuffle<T>(List<T> inputList)
+    {
+        for (int i = 0; i < inputList.Count - 1; i++)
+        {
+            T temp = inputList[i];
+            int rand = Random.Range(i, inputList.Count);
+            inputList[i] = inputList[rand];
+            inputList[rand] = temp;
+        }
     }
 
     public void destroyInHandCard()

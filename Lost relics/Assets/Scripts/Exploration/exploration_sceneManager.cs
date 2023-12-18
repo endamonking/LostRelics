@@ -24,6 +24,8 @@ public class exploration_sceneManager : MonoBehaviour
     public TextMeshProUGUI eventNameText;
     public TextMeshProUGUI eventDescText;
     public Transform answerContainer;
+    public List<Button> answerButtonList = new List<Button>();
+
 
     public bool isLerping = false;
     public bool isEvent = false;
@@ -95,6 +97,15 @@ public class exploration_sceneManager : MonoBehaviour
 
 
     }
+
+    public void turnOffEvenCanvas()
+    {
+        foreach (Button thisButton in answerButtonList)
+            Destroy(thisButton.gameObject);
+        EventCanvas.SetActive(false);
+        isEvent = false;
+    }
+
 
     public void loadCombatScene()
     {

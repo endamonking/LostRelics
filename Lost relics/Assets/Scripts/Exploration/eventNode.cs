@@ -11,6 +11,8 @@ public class eventNode : node
     [SerializeField]
     private List<string> answerList = new List<string>();
     [SerializeField]
+    private List<nodeEfffect> asnwerEffectList = new List<nodeEfffect>();
+    [SerializeField]
     private Button buttonPrefab;
     private List<Button> buttonList = new List<Button>();
 
@@ -44,25 +46,21 @@ public class eventNode : node
     {
         exploration_sceneManager.Instance.isEvent = true;
         int i = 0;
+        int effectIndex = 0;
+        exploration_sceneManager.Instance.answerButtonList.Clear();
         foreach (string answer in answerList)
         {
             Button ansBut = Instantiate(buttonPrefab, exploration_sceneManager.Instance.answerContainer);
             Vector3 position = new Vector3(0, i, 0);
             ansBut.GetComponentInChildren<TextMeshProUGUI>().text = answer;
             ansBut.GetComponent<RectTransform>().anchoredPosition = position;
-            ansBut.onClick.AddListener(nodeEffect);
+            ansBut.onClick.AddListener(asnwerEffectList[effectIndex].doEffect);
             i = i - 100;
-            buttonList.Add(ansBut);
+            exploration_sceneManager.Instance.answerButtonList.Add(ansBut);
+            effectIndex++;
         }
         exploration_sceneManager.Instance.updateEventCanvas(nodeName, description);
     }
 
-    private void nodeEffect()
-    {
-        foreach (Button thisButton in buttonList)
-            Destroy(thisButton.gameObject);
-        exploration_sceneManager.Instance.EventCanvas.SetActive(false);
-        exploration_sceneManager.Instance.isEvent = false;
-    }
 
 }

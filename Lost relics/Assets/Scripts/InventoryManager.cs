@@ -40,6 +40,26 @@ public class InventoryManager : MonoBehaviour
 
         */
 
+    private static InventoryManager instance;
+
+    private void Awake()
+    {
+        // Check if an instance already exists
+        if (instance == null)
+        {
+            // If not, set the instance to this object
+            instance = this;
+
+            // Make the game object persistent across scene changes
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            // If an instance already exists, destroy this object
+            Destroy(gameObject);
+        }
+    }
+
     public void AddItem(Item item)
     {
         int succes = 0;
