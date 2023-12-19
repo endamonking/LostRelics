@@ -12729,6 +12729,3 @@ MonoBehaviour:
   armorSlot: []
   bootSlot: []
   binSlot: {fileID: 0}
-  helmetSlot_1: {fileID: 0}
-  armorSlot_1: {fileID: 0}
-  bootSlot_1: {fileID: 0}

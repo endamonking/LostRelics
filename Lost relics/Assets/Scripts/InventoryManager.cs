@@ -12,7 +12,6 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject inventoryShopUI;
     [SerializeField] private GameObject PlayerEquipmentUI;
     [SerializeField] private GameObject inventoryItemPrefab;
-
     [SerializeField] private List<InventorySlot> inventorySlots = new List<InventorySlot>();
     [SerializeField] private List<InventorySlotHelmet> helmetSlot = new List<InventorySlotHelmet>();
     [SerializeField] private List<InventorySlotArmor> armorSlot = new List<InventorySlotArmor>();
@@ -21,24 +20,6 @@ public class InventoryManager : MonoBehaviour
     private int memberOfRow = 3;
 
 
-    
-    public InventorySlotHelmet helmetSlot_1;
-    public InventorySlotArmor armorSlot_1;
-    public InventorySlotBoot bootSlot_1;
-    /*  
-        public InventorySlotHelmet  helmetSlot_2;
-        public InventorySlotArmor  armorSlot_2;
-        public InventorySlotBoot  bootSlot_2;
-
-       public InventorySlotHelmet helmetSlot_3;
-       public InventorySlotArmor armorSlot_3;
-       public InventorySlotBoot bootSlot_3;
-
-       public InventorySlotHelmet helmetSlot_4;
-       public InventorySlotArmor armorSlot_4;
-       public InventorySlotBoot bootSlot_4;
-
-        */
 
     private static InventoryManager instance;
 
@@ -170,6 +151,7 @@ public class InventoryManager : MonoBehaviour
 
             LoadItemInventory();
         }
+
     public void SetInvetoryBacktoInventory()
     {
          
@@ -207,6 +189,7 @@ public class InventoryManager : MonoBehaviour
         LoadItemInventory();
 
     }
+
     public void SetInvetoryBacktoShop()
     {
         
