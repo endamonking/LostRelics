@@ -473,6 +473,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2958676841159209181, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
+      propertyPath: characterName
+      value: Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958676841159209181, guid: cb2d55e17d4ce4948ac227ac8a84b1bc, type: 3}
       propertyPath: maxPlayerHand
       value: 3
       objectReference: {fileID: 0}

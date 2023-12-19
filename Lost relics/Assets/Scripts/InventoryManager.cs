@@ -253,7 +253,7 @@ public class InventoryManager : MonoBehaviour
     {
         
         for (int i = 0; i < inventory.numberOfSlot; i++)
-          {
+        {
             if (inventory.itemList[i] != null)
             {
                 InventorySlot slot = inventorySlots[i];

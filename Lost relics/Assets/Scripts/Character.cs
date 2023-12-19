@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     private int basedefPoint;
     [SerializeField]
     public int maxHP, baseSPD;
-
+    public string characterName;
     public int maxPlayerHand = 7;
     public int maxMana = 10;
     public int currentDefpoint;

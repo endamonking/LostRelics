@@ -104,8 +104,15 @@ public class exploration_sceneManager : MonoBehaviour
             Destroy(thisButton.gameObject);
         EventCanvas.SetActive(false);
         isEvent = false;
+        answerButtonList.Clear();
     }
 
+    public void clearEventButton()
+    {
+        foreach (Button thisButton in answerButtonList)
+            Destroy(thisButton.gameObject);
+        answerButtonList.Clear();
+    }
 
     public void loadCombatScene()
     {
