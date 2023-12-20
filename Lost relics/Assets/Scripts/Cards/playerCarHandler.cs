@@ -14,6 +14,7 @@ public class playerCarHandler : cardHandler
     void Update()
     {
         updateTurnGuage();
+        Debug.Log("Player SPD" + player.inComSPD);
         if (turnGauge <= 0 && comIns.state == BattleState.NORMAL)
         {
             Debug.Log(this.gameObject.name);

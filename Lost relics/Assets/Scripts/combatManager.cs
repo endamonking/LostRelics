@@ -88,9 +88,27 @@ public class combatManager : MonoBehaviour
             playerObj.transform.position = new Vector3(-3, 0, -2 + (i * 2));
             playerObj.SetActive(true);
             remainingPlayers.Add(playerObj);
+            //Add explo buff and debuff
+            applyExploBuffAndDebuff(playerObj.GetComponent<Character>());
             i++;
         }
         playersInitPool.AddRange(remainingPlayers);
+    }
+
+    private void applyExploBuffAndDebuff(Character pCharacter)
+    {
+        List<buff> exBuff = exploration_sceneManager.Instance.buffInExploration;
+        List<buff> exdeBuff = exploration_sceneManager.Instance.debuffInExploration;
+
+        foreach (buff buff in exBuff)
+        {
+            pCharacter.applyActiveBuff(buff);
+        }
+        foreach (buff buff in exdeBuff)
+        {
+            pCharacter.applyActiveBuff(buff);
+        }
+
     }
 
     private void initEnemies()
@@ -272,6 +290,7 @@ public class combatManager : MonoBehaviour
         {
             changeTurn(BattleState.WON);
             Destroy(_selectedEffect);
+            exploration_sceneManager.Instance.updateExploBuffAndDebuff();
             StartCoroutine(delay());
             return;
         }

@@ -25,7 +25,8 @@ public class exploration_sceneManager : MonoBehaviour
     public TextMeshProUGUI eventDescText;
     public Transform answerContainer;
     public List<Button> answerButtonList = new List<Button>();
-
+    public List<buff> buffInExploration = new List<buff>();
+    public List<buff> debuffInExploration = new List<buff>();
 
     public bool isLerping = false;
     public bool isEvent = false;
@@ -112,6 +113,41 @@ public class exploration_sceneManager : MonoBehaviour
         foreach (Button thisButton in answerButtonList)
             Destroy(thisButton.gameObject);
         answerButtonList.Clear();
+    }
+
+    public void applyExploBuff(buff activeBuff)
+    {
+        buffInExploration.Add(activeBuff);
+    }
+
+    public void applyExploDeBuff(buff activeDeBuff)
+    {
+        debuffInExploration.Add(activeDeBuff);
+    }
+
+    public void updateExploBuffAndDebuff()
+    {
+        for (int i = buffInExploration.Count - 1; i >= 0; i--)
+        {
+            buff buff = buffInExploration[i];
+            buff.duration--;
+            if (buff.duration <= 0)
+            {
+                buffInExploration.RemoveAt(i);
+                // Handle any post-buff effects here
+            }
+        }
+
+        for (int i = debuffInExploration.Count - 1; i >= 0; i--)
+        {
+            buff debuff = debuffInExploration[i];
+            debuff.duration--;
+            if (debuff.duration <= 0)
+            {
+                debuffInExploration.RemoveAt(i);
+                // Handle any post-buff effects here
+            }
+        }
     }
 
     public void loadCombatScene()
