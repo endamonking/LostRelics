@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ca95b9b96e24c48ad1e8b898f84dae, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
+  money: 0
   numberOfSlot: 20
   numberOfCharacter: 1
   itemList:
@@ -35,6 +36,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  keyItemList: []
   helmetList:
   - {fileID: 0}
   - {fileID: 0}
@@ -50,15 +52,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  equippedArmor_1: {fileID: 0}
-  equippedHelmet_1: {fileID: 11400000, guid: addeb30375be08b48abfb57953ccc619, type: 2}
-  equippedBoot_1: {fileID: 0}
-  equippedArmor_2: {fileID: 0}
-  equippedHelmet_2: {fileID: 0}
-  equippedBoot_2: {fileID: 0}
-  equippedArmor_3: {fileID: 0}
-  equippedHelmet_3: {fileID: 0}
-  equippedBoot_3: {fileID: 0}
-  equippedArmor_4: {fileID: 0}
-  equippedHelmet_4: {fileID: 0}
-  equippedBoot_4: {fileID: 0}

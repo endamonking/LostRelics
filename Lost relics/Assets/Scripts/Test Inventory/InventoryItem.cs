@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using System.Linq;
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerEnterHandler, IPointerExitHandler
 {
     public Item item;
     [Header("UI")]
     public Image image;
+    public GameObject sellSlot;
     private InventoryManager inventoryManager;
     public GameObject itemStatsPopupPrefab;
     private GameObject itemStatsPopup;
     private bool isDragging = false;  
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform parentBeforeDrag;
-
+    private void Start() 
+    {
+        sellSlot = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(go => go.name == "Sell");
+        if (sellSlot == null)
+        {
+            Debug.LogError("No GameObject named 'Sell' found in the scene.");
+        }
+    }
     private void Awake()
     {
+       
+
         inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
@@ -48,7 +58,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         ItemStatsPopup popupScript = itemStatsPopup.GetComponent<ItemStatsPopup>();
         if (popupScript != null)
         {
-            // Assuming 'item' is a reference to the current item
+           
             popupScript.DisplayStats(item); // Pass the item's information to display in the popup
         }
     }
@@ -67,14 +77,21 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        sellSlot.SetActive(true);
         Debug.Log("BeginDrag");
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
         parentBeforeDrag = transform.parent;
         transform.SetParent(transform.root);
+        
+       
+
+       
+
     }
     public void OnDrag(PointerEventData eventData)
     {
+        sellSlot.SetActive(true);
         isDragging = true;
         Debug.Log("Dragging");
         transform.position = Input.mousePosition;
@@ -86,5 +103,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         inventoryManager.UpdateInventoryItems();
+        
+        sellSlot.SetActive(false);
     }
 }

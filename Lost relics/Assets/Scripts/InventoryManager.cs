@@ -8,7 +8,7 @@ using static UnityEditor.Progress;
 public class InventoryManager : MonoBehaviour
 {
     public Inventory inventory;
-
+    
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject inventoryShopUI;
     [SerializeField] private GameObject PlayerEquipmentUI;
@@ -46,16 +46,16 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        int succes = 0;
+        //int succes = 0;
 
-        
-        for (int i = 0; i < inventorySlots.Count && succes == 0; i++)
+        //&& succes == 0
+        for (int i = 0; i < inventorySlots.Count ; i++)
         {
             InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
-                succes++;
+                 
                 SpawnNewItem(item, slot);
 
             }
@@ -250,7 +250,7 @@ public class InventoryManager : MonoBehaviour
 
                 if (itemInSlot != null)
                 {
-                    Debug.Log($"{i}");
+                    
                     Destroy(itemInSlot.gameObject);
                 }
 

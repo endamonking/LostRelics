@@ -8,6 +8,7 @@ using UnityEngine.UI;
  
 public class PlayerStatsUI : MonoBehaviour
 {
+    private InventoryManager inventoryManager;
     public int character;
     public Inventory inventory;
     public GameObject slot_1;
@@ -26,7 +27,15 @@ public class PlayerStatsUI : MonoBehaviour
     //public TextMeshProUGUI evadeText;
     //public TextMeshProUGUI critText;
     //public TextMeshProUGUI critDmgText;
+    void Start() 
+    {
+        inventoryManager = FindObjectOfType<InventoryManager>();
 
+        if (inventoryManager == null)
+        {
+            Debug.LogError("No InventoryManager found in the scene.");
+        }
+    }
 
 
     // Update is called once per frame
@@ -50,9 +59,9 @@ public class PlayerStatsUI : MonoBehaviour
                 character = 3;
             }
  
-          Item  equippedHelmet = inventory.helmetList[character];
-          Item equippedArmor = inventory.armorList[character];
-          Item equippedBoot = inventory.bootList[character];
+          Item  equippedHelmet = inventoryManager.inventory.helmetList[character];
+          Item equippedArmor = inventoryManager.inventory.armorList[character];
+          Item equippedBoot = inventoryManager.inventory.bootList[character];
                 
           
             int HP=0;

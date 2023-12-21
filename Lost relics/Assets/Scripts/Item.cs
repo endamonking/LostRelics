@@ -14,12 +14,14 @@ public enum ItemType
     Armor,
     Helmet,
     Boot,
-    Quest
+    KeyItem
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item")]
 public class Item : ScriptableObject
 {   public int currentSlot;
+    public int sell;
+    public int buy;
     public string itemName;
     public ItemType itemType;
     public Sprite icon;

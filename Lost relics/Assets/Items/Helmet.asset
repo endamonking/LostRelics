@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae60f2c1034348344bafe7dbccd3d2f6, type: 3}
   m_Name: Helmet
   m_EditorClassIdentifier: 
+  currentSlot: 0
+  sell: 100
+  buy: 0
   itemName: Helmet
   itemType: 1
   icon: {fileID: 21300000, guid: 864d20a5fa9c74848905ae5985478207, type: 3}
