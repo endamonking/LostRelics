@@ -97,8 +97,8 @@ public class combatManager : MonoBehaviour
 
     private void applyExploBuffAndDebuff(Character pCharacter)
     {
-        List<buff> exBuff = exploration_sceneManager.Instance.buffInExploration;
-        List<buff> exdeBuff = exploration_sceneManager.Instance.debuffInExploration;
+        List<buff> exBuff = exploration_sceneManager.Instance.getExploBuff();
+        List<buff> exdeBuff = exploration_sceneManager.Instance.getExploDeBuff();
 
         foreach (buff buff in exBuff)
         {
@@ -106,7 +106,7 @@ public class combatManager : MonoBehaviour
         }
         foreach (buff buff in exdeBuff)
         {
-            pCharacter.applyActiveBuff(buff);
+            pCharacter.applyActiveDeBuff(buff);
         }
 
     }

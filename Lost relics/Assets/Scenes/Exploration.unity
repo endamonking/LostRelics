@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNodeLayer: 10
   normalNodePrefab:
-  - {fileID: 6587583746170735598, guid: cd8890d06f121d541a2fc913c4f50451, type: 3}
+  - {fileID: 387022539649289216, guid: ddccce1510a33af45bd9a8b1c7d641a2, type: 3}
   - {fileID: 6277428939473586405, guid: 3e43fdb8e84324d498e3c002e1269159, type: 3}
   startNodePrefab:
   - {fileID: 2724576845780458930, guid: a3d8c5e5463f16d4fa1f2c4d0711d460, type: 3}

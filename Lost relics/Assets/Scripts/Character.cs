@@ -412,7 +412,10 @@ public class Character : MonoBehaviour
                         case "Poison":
                             takeTrueDamage(debuff.buffs[key]);
                             break;
-
+                        case "PoisonMaxHP":
+                            int DMGAmount = debuff.buffs[key] * inComMaxHP / 100;
+                            takeTrueDamage(DMGAmount);
+                            break;
                         default:
                             break;
                     }

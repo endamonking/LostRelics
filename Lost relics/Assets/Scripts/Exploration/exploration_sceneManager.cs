@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+public class explorationBuffAndDebuff
+{
+    public buff buff;
+    public int battleDuration;
+}
+
 public class exploration_sceneManager : MonoBehaviour
 {
     public static exploration_sceneManager Instance;
@@ -25,8 +31,8 @@ public class exploration_sceneManager : MonoBehaviour
     public TextMeshProUGUI eventDescText;
     public Transform answerContainer;
     public List<Button> answerButtonList = new List<Button>();
-    public List<buff> buffInExploration = new List<buff>();
-    public List<buff> debuffInExploration = new List<buff>();
+    public List<explorationBuffAndDebuff> buffInExploration = new List<explorationBuffAndDebuff>();
+    public List<explorationBuffAndDebuff> debuffInExploration = new List<explorationBuffAndDebuff>();
 
     public bool isLerping = false;
     public bool isEvent = false;
@@ -115,23 +121,25 @@ public class exploration_sceneManager : MonoBehaviour
         answerButtonList.Clear();
     }
 
-    public void applyExploBuff(buff activeBuff)
+    public void applyExploBuff(buff activeBuff, int duration)
     {
-        buffInExploration.Add(activeBuff);
+        explorationBuffAndDebuff newBuff = new explorationBuffAndDebuff { buff = activeBuff, battleDuration = duration };
+        buffInExploration.Add(newBuff);
     }
 
-    public void applyExploDeBuff(buff activeDeBuff)
+    public void applyExploDeBuff(buff activeDeBuff, int duration)
     {
-        debuffInExploration.Add(activeDeBuff);
+        explorationBuffAndDebuff newBuff = new explorationBuffAndDebuff { buff = activeDeBuff, battleDuration = duration };
+        debuffInExploration.Add(newBuff);
     }
 
     public void updateExploBuffAndDebuff()
     {
         for (int i = buffInExploration.Count - 1; i >= 0; i--)
         {
-            buff buff = buffInExploration[i];
-            buff.duration--;
-            if (buff.duration <= 0)
+            explorationBuffAndDebuff buff = buffInExploration[i];
+            buff.battleDuration--;
+            if (buff.battleDuration <= 0)
             {
                 buffInExploration.RemoveAt(i);
                 // Handle any post-buff effects here
@@ -140,14 +148,35 @@ public class exploration_sceneManager : MonoBehaviour
 
         for (int i = debuffInExploration.Count - 1; i >= 0; i--)
         {
-            buff debuff = debuffInExploration[i];
-            debuff.duration--;
-            if (debuff.duration <= 0)
+            explorationBuffAndDebuff debuff = debuffInExploration[i];
+            debuff.battleDuration--;
+            if (debuff.battleDuration <= 0)
             {
                 debuffInExploration.RemoveAt(i);
                 // Handle any post-buff effects here
             }
         }
+    }
+
+    public List<buff> getExploBuff()
+    {
+        List<buff> exploBuff = new List<buff>();
+        foreach (explorationBuffAndDebuff activeBuff in buffInExploration)
+        {
+            exploBuff.Add(activeBuff.buff);
+        }
+
+        return exploBuff;
+    }
+    public List<buff> getExploDeBuff()
+    {
+        List<buff> exploBuff = new List<buff>();
+        foreach (explorationBuffAndDebuff activeBuff in debuffInExploration)
+        {
+            exploBuff.Add(activeBuff.buff);
+        }
+
+        return exploBuff;
     }
 
     public void loadCombatScene()

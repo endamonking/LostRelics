@@ -23,7 +23,7 @@ public class getSpeedBuff : nodeEfffect
         buff spdBuff = new buff("Speed", duration);
         spdBuff.AddBuff("SPD", speedAmount);
 
-        exploration_sceneManager.Instance.applyExploBuff(spdBuff);
+        exploration_sceneManager.Instance.applyExploBuff(spdBuff,1);
 
         base.closeEvenCanvas();
     }
