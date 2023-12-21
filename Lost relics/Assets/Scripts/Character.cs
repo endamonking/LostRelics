@@ -393,7 +393,6 @@ public class Character : MonoBehaviour
         {
             buff buff = activeBuffs[i];
             buff.duration--;
-
             if (buff.duration <= 0)
             {
                 activeBuffs.RemoveAt(i);
@@ -490,7 +489,7 @@ public class Character : MonoBehaviour
         int defReduction = GetDeBuffValue("DEFReduction");
         int damageReduction = GetBuffValue("DMGReduction");
         float randomNumber = Random.value;
-        Debug.Log(randomNumber);
+
         if (randomNumber < enemyCritRate / 100.0f) //Critical hit
             damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus / 100.0f) - (damageReduction / 100.0f)) * skillMutiplier * (1.5f + (enemyCritDMG/100.0f) - (inComCritRes/100.0f));
         else
