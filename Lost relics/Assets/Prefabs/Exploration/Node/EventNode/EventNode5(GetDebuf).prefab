@@ -136,6 +136,6 @@ MonoBehaviour:
   - 'All allies receive 15% hp damage '
   asnwerEffectList:
   - {fileID: 6516452399348577953, guid: 96a26a66c7db3394ea16de9c24777ef0, type: 3}
-  - {fileID: 7970524604923710341, guid: f5ec67fe9690c6b4d9f5a562647a7c2c, type: 3}
+  - {fileID: 7904120905994015796, guid: 28f4884525aae1a45879351c661a772f, type: 3}
   - {fileID: 3373167213991825048, guid: 6d3c7651d739e9141809394e004b8826, type: 3}
   buttonPrefab: {fileID: 8142424949879169981, guid: 893afe3816621fb418980d336b86b6eb, type: 3}
