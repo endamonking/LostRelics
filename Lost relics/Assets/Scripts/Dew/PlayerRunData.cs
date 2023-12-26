@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+[CreateAssetMenu(fileName = "PlayerRunData", menuName = "ScriptableObjects/PlayerRunData", order = 1)]
+public class CharacterStatsScriptableObject : ScriptableObject
 {
     public int UnitID;
     public string UnitName;
@@ -16,14 +17,5 @@ public class Unit : MonoBehaviour
     public int Resistance;
     public int MaxHP;
     public int CurrentHP;
-
-    public bool TakeDamage(int damage)
-    {
-        CurrentHP -= damage;
-
-        if (CurrentHP <= 0)
-            return true;
-        else
-            return false;
-    }
+ 
 }

@@ -14,6 +14,28 @@ public class TownPlayerSystem : MonoBehaviour
         GameObject characterPrefab = Resources.Load<GameObject>("Prefabs/Town/Character" + selectedCharacterID);
         Debug.Log(characterPrefab);
         GameObject MainCharacter = Instantiate(characterPrefab, PlayerSlot);
+
+        CharacterStatsScriptableObject characterStats = ScriptableObject.CreateInstance<CharacterStatsScriptableObject>();
+        Unit unitComponent = MainCharacter.GetComponent<Unit>();
+        Debug.Log("PlayerController: " + unitComponent);
+        if (unitComponent != null)
+        {
+
+            characterStats.UnitID = unitComponent.UnitID;
+            characterStats.UnitName = unitComponent.UnitName;
+            characterStats.ATK = unitComponent.ATK;
+            characterStats.Healing = unitComponent.Healing;
+            characterStats.DEF = unitComponent.DEF;
+            characterStats.SPD = unitComponent.SPD;
+            characterStats.CritChance = unitComponent.CritChance;
+            characterStats.Evade = unitComponent.Evade;
+            characterStats.CritDamage = unitComponent.CritDamage;
+            characterStats.Resistance = unitComponent.Resistance;
+            characterStats.MaxHP = unitComponent.MaxHP;
+            characterStats.CurrentHP = unitComponent.CurrentHP;
+
+            GameManager.Instance.characterStats = characterStats;
+        }
     }
 
     // Update is called once per frame

@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public int selectedCharacterID;
+    public CharacterStatsScriptableObject characterStats;
 
     private void Awake()
     {
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        selectedCharacterID = PlayerPrefs.GetInt("SelectedCharacter", 1);
+
+        characterStats = Resources.Load<CharacterStatsScriptableObject>("CharacterStats");
     }
 
     private void Start()

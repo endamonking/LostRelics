@@ -26,7 +26,7 @@ RectTransform:
   m_GameObject: {fileID: 5836946873085584819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7736294210111653292}
@@ -52,8 +52,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitID: 3
   UnitName: Clarisse
-  UnitLevel: 1
   ATK: 20
+  Healing: 20
+  DEF: 20
+  SPD: 20
+  CritChance: 20
+  Evade: 2
+  CritDamage: 50
+  Resistance: 3
   MaxHP: 20
   CurrentHP: 20
 --- !u!1 &7104277297742536201
@@ -82,8 +88,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7104277297742536201}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000020980835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -92,7 +98,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.12, y: 5.38}
+  m_AnchoredPosition: {x: -0.12002031, y: 0.03}
   m_SizeDelta: {x: 205.6227, y: 303.6129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &3956383540885345693
