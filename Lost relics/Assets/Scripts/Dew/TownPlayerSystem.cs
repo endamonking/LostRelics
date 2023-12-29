@@ -14,6 +14,7 @@ public class TownPlayerSystem : MonoBehaviour
         GameObject characterPrefab = Resources.Load<GameObject>("Prefabs/Town/Character" + selectedCharacterID);
         Debug.Log(characterPrefab);
         GameObject MainCharacter = Instantiate(characterPrefab, PlayerSlot);
+        MainCharacter.name = "Character";
 
         CharacterStatsScriptableObject characterStats = ScriptableObject.CreateInstance<CharacterStatsScriptableObject>();
         Unit unitComponent = MainCharacter.GetComponent<Unit>();

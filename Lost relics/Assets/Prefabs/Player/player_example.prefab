@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 89152010}
   - component: {fileID: 89152009}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HPCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,12 +509,18 @@ MonoBehaviour:
   basedefPoint: 5
   maxHP: 100
   baseSPD: 5
+  characterName: 
   maxPlayerHand: 3
   maxMana: 20
-  myStatnce: 0
   currentDefpoint: 0
   currentHP: 0
   currentSPD: 0
+  baseArmorPen: 0
+  baseCritRate: 20
+  baseCritDMG: 0
+  baseATK: 30
+  myStance: 0
+  myPreviousStance: 0
 --- !u!114 &9047056346979240663
 MonoBehaviour:
   m_ObjectHideFlags: 0

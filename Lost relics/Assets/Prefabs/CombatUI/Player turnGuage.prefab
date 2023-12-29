@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 6915900518559813822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6915900518582360998}
@@ -151,7 +151,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 33.1, y: 0}
-  m_SizeDelta: {x: 20, y: 160}
+  m_SizeDelta: {x: 20, y: 300}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6915900519548540414
 CanvasRenderer:
@@ -231,7 +231,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 6915900519548540415}
   m_HandleRect: {fileID: 6915900518559813821}
   m_Direction: 3
   m_Value: 1

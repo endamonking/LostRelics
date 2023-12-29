@@ -28,10 +28,9 @@ public class playerCarHandler : cardHandler
     protected override void displayInhandCard()
     {
         base.displayInhandCard();
-        comIns.endTurnButton.SetActive(true);
-        comIns.showDiscardButton.SetActive(true);
-        comIns.updateManaText();
-        comIns.updateCardRemaining(_currentDeck.Count);
+        GameObject picGobj = transform.Find("Character").gameObject;
+        Sprite pic = picGobj.GetComponentInChildren<SpriteRenderer>().sprite;
+        comIns.updatePlayerUI(_currentDeck.Count, pic);
     }
 
 

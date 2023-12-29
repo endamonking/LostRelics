@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public enum BattleState 
 { 
@@ -30,6 +31,7 @@ public class combatManager : MonoBehaviour
     public GameObject endTurnButton;
     public GameObject showDiscardButton;
     public GameObject turnBar;
+    public GameObject CurrentTurnPic;
     public Character target;
     [SerializeField]
     private TextMeshProUGUI _stateText;
@@ -150,6 +152,8 @@ public class combatManager : MonoBehaviour
             showDiscardButton.SetActive(false);
         if (discardScreen.activeSelf)
             discardScreen.SetActive(false);
+        if (CurrentTurnPic.activeSelf)
+            CurrentTurnPic.SetActive(false);
         if (currentManaText.gameObject.activeSelf == true)
             currentManaText.gameObject.SetActive(false);
         if (cardLeftText.gameObject.activeSelf == true)
@@ -186,6 +190,8 @@ public class combatManager : MonoBehaviour
             showDiscardButton.SetActive(false);
         if (discardScreen.activeSelf)
             discardScreen.SetActive(false);
+        if (CurrentTurnPic.activeSelf)
+            CurrentTurnPic.SetActive(false);
         if (currentManaText.gameObject.activeSelf == true)
             currentManaText.gameObject.SetActive(false);
         if (cardLeftText.gameObject.activeSelf == true)
@@ -340,6 +346,7 @@ public class combatManager : MonoBehaviour
     }
 
 
+
     [System.Obsolete]
     IEnumerator delay()
     {
@@ -354,6 +361,15 @@ public class combatManager : MonoBehaviour
         exploration_sceneManager.Instance.ReturnToExplorationScene();
     }
 
+    public void updatePlayerUI(int deckCount, Sprite pic)
+    {
+        endTurnButton.SetActive(true);
+        showDiscardButton.SetActive(true);
+        CurrentTurnPic.SetActive(true);
+        CurrentTurnPic.GetComponent<Image>().sprite = pic;
+        updateManaText();
+        updateCardRemaining(deckCount);
+    }
 
 }
 

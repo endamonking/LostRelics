@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Character : MonoBehaviour
 {
@@ -20,8 +22,9 @@ public class Character : MonoBehaviour
     public List<buff> activeDeBuffs = new List<buff>();
 
     private cardHandler cardHandler;
-
+    
     private CharacterBar hpBar;
+    private TextMeshProUGUI stanceText;
 
     private EquipmentStats equipmentStats;
 
@@ -275,7 +278,11 @@ public class Character : MonoBehaviour
     }
 
     void Start()
-    {        
+    {
+        handleCharacterUI();
+        combatManager comIns = combatManager.Instance;
+        if (comIns == null)
+            return;
         equipmentStats = GetComponent<EquipmentStats>();
         currentSPD = baseSPD + equipmentStats.SPD;
         currentDefpoint = basedefPoint + equipmentStats.Def;
@@ -287,6 +294,7 @@ public class Character : MonoBehaviour
     
     public void changingStance(stance inTo)
     {
+        updateStanceText(inTo.ToString());
         //Do leave stance effect
         switch (myStance)
         {
@@ -509,6 +517,21 @@ public class Character : MonoBehaviour
         return finalDamage;
     }
 
+    private void handleCharacterUI()
+    {
+        GameObject childObject = transform.Find("HPCanvas").gameObject;
+        Scene currentScene = SceneManager.GetActiveScene();
+        stanceText = childObject.GetComponentInChildren<TextMeshProUGUI>();
+        if (currentScene.name == "TestRoom")
+            childObject.SetActive(false);
+        else
+            childObject.SetActive(true);
+    }
+
+    private void updateStanceText(string newStance)
+    {
+        stanceText.text = newStance;
+    }
 
     [System.Obsolete]
     private void died()

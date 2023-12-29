@@ -176,7 +176,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 150}
+  m_SizeDelta: {x: 180, y: 300}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2407097319502983404
 CanvasRenderer:
@@ -232,6 +232,7 @@ MonoBehaviour:
   _cardName: {fileID: 2407097319868667808}
   _sta: {fileID: 2407097319111216893}
   originalPosition: {x: 0, y: 0}
+  showOnly: 0
 --- !u!61 &6056766569966168439
 BoxCollider2D:
   m_ObjectHideFlags: 0
