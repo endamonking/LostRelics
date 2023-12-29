@@ -18,6 +18,7 @@ public class QuestBoard : MonoBehaviour, IsInteractable
     public Quest[] questList;
     public GameObject buttonPrefab;
 
+
     private void Start()
     {
         _QuestUI.SetActive(false);
