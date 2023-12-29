@@ -60,7 +60,6 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         body = transform.Find("PlayerCollider").GetComponent<Rigidbody>();
-
     }
 
 

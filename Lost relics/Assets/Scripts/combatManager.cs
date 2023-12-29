@@ -26,8 +26,10 @@ public class combatManager : MonoBehaviour
     public GameObject currentObjTurn;
     public bool isAction = false;
     public bool isForceEndturn = false;
+    [Header("UI")]
     public GameObject endTurnButton;
     public GameObject showDiscardButton;
+    public GameObject turnBar;
     public Character target;
     [SerializeField]
     private TextMeshProUGUI _stateText;

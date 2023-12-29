@@ -9,17 +9,28 @@ public class TransitionToExploration : MonoBehaviour
     public GameObject playerPrefabExploration;
     public GameObject companionPrefabTown;
     public GameObject companionPrefabExploration;
+    public List<GameObject> players = new List<GameObject>();
+    public  GameObject playerA;
+
     // public Transform playerSpawnPoint; // Reference to the player spawn point in "Exploration" scene
     // public Transform companionSpawnPoint; // Reference to the companion spawn point in "Exploration" scene
+
+    private void Awake()
+    {
+        playerA = GameObject.FindGameObjectWithTag("Player");
+        //findPlayer();
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Player entered trigger.");
-        InstantiatePlayerFromTestRoom();
+
         // Load the "Exploration" scene without additive loading
         SceneManager.LoadScene("Exploration", LoadSceneMode.Single);
 
         // Subscribe to the scene loaded event to enable objects when the scene is fully loaded
-        SceneManager.sceneLoaded += OnSceneLoaded; 
+        //SceneManager.sceneLoaded += OnSceneLoaded; 
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -28,9 +39,8 @@ public class TransitionToExploration : MonoBehaviour
         if (scene.name == "Exploration")
         {
             // Instantiate and position the player and companion in the "Exploration" scene
-            //InstantiateAndPositionCharacters();
-            trychangestats();
-            InstantiatePlayerFromTestRoom();
+            InstantiateAndPositionCharacters();
+
             // Unsubscribe from the scene loaded event to avoid duplicate calls
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
@@ -62,6 +72,15 @@ public class TransitionToExploration : MonoBehaviour
         }
     }
 
+    private void spawnPlayer()
+    {
+        GameObject newCharacter = Instantiate(playerA, Vector3.zero, Quaternion.identity);
+        /**foreach (GameObject player in players)
+        {
+            GameObject newCharacter = Instantiate(player, Vector3.zero, Quaternion.identity);
+        }*/
+    }
+
     private void InstantiateAndPositionCharacters()
     {
         // Determine the active prefabs based on the current scene
@@ -82,7 +101,8 @@ public class TransitionToExploration : MonoBehaviour
         // Instantiate and position characters at their respective spawn points
         if (activePlayerPrefab != null)
         {
-            GameObject player = Instantiate(activePlayerPrefab, Vector3.zero, Quaternion.identity);
+            //GameObject player = Instantiate(activePlayerPrefab, Vector3.zero, Quaternion.identity);
+            GameObject newCharacter = Instantiate(playerA, Vector3.zero, Quaternion.identity);
             // Deactivate the player in the "Exploration" scene
             // player.SetActive(false); Uan mnodify
             Debug.Log("Player spawn");
@@ -90,15 +110,17 @@ public class TransitionToExploration : MonoBehaviour
 
         if (activeCompanionPrefab != null)
         {
-            GameObject companion = Instantiate(activeCompanionPrefab, Vector3.zero, Quaternion.identity);
+            //GameObject companion = Instantiate(activeCompanionPrefab, Vector3.zero, Quaternion.identity);
+            GameObject newCharacter = Instantiate(playerA, Vector3.zero, Quaternion.identity);
             // Deactivate the companion in the "Exploration" scene
             //companion.SetActive(false);Uan mnodify
             Debug.Log("Companion spawn");
         }
     }
 
-    private void InstantiatePlayerFromTestRoom()
+    private void findPlayer()
     {
+        Debug.Log("T");
         // Find the player GameObject in the "TestRoom" scene
         GameObject[] rootObjects = GameObject.FindGameObjectsWithTag("Player");
 
@@ -106,9 +128,8 @@ public class TransitionToExploration : MonoBehaviour
         {
             if (rootObject.CompareTag("Player"))
             {
-                GameObject player = Instantiate(rootObject, Vector3.zero, Quaternion.identity);
-                // Additional setup or modifications for the instantiated player can go here
-                Debug.Log("Player spawned");
+                players.Add(rootObject);
+                Debug.Log(rootObject);
             }
         }
     }

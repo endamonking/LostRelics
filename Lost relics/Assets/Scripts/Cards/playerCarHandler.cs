@@ -8,6 +8,7 @@ public class playerCarHandler : cardHandler
     protected override void Start()
     {
         base.Start();
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
