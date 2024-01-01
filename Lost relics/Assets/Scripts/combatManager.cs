@@ -32,6 +32,12 @@ public class combatManager : MonoBehaviour
     public GameObject showDiscardButton;
     public GameObject turnBar;
     public GameObject CurrentTurnPic;
+    public GameObject showCharacterScreen;
+    public GameObject debuffBox;
+    public GameObject buffBox;
+    [SerializeField]
+    private GameObject buffText;
+    [Header("Target")]
     public Character target;
     [SerializeField]
     private TextMeshProUGUI _stateText;
@@ -345,6 +351,70 @@ public class combatManager : MonoBehaviour
         isShowDiscard = false;
     }
 
+    public void showCharacterWindow()
+    {
+        Character player = currentObjTurn.GetComponent<Character>();
+        GameObject pic = showCharacterScreen.transform.Find("Portrait").gameObject;
+        pic.GetComponent<Image>().sprite = CurrentTurnPic.GetComponent<Image>().sprite;
+        foreach (Transform childTransform in showCharacterScreen.transform)
+        {
+            // Access the child GameObject
+            GameObject childObject = childTransform.gameObject;
+            
+            switch (childObject.name)
+            {
+                case "Name":
+                    childObject.GetComponent<TextMeshProUGUI>().text = player.characterName;
+                    break;
+                case "HP":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "HP " +player.currentHP.ToString();
+                    break;
+                case "ATK":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "Atk "+player.inComATK.ToString();
+                    break;
+                case "DEF":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "Def " +player.inComDef.ToString();
+                    break;
+                case "SPD":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "Speed " +player.inComSPD.ToString();
+                    break;
+                case "CRTRate":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "Crit rate " +player.inComCritRate.ToString();
+                    break;
+                case "CRTDMG":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "Crit damage "+ player.inComCritDMG.ToString();
+                    break;
+            }
+        }
+        displayBuffInStatusScreen();
+        displaydeBuffInStatusScreen();
+
+        showCharacterScreen.SetActive(true);
+    }
+
+    private void displayBuffInStatusScreen()
+    {
+        GameObject textObject = Instantiate(buffText, buffBox.transform);
+        for (int i =0; i < 50; i++)
+        {
+            GameObject textObject1 = Instantiate(buffText, buffBox.transform);
+            textObject1.GetComponent<TextMeshProUGUI>().text = "<sprite=0> Ehe";
+        }
+    }
+    private void displaydeBuffInStatusScreen()
+    {
+        GameObject textObject = Instantiate(buffText, debuffBox.transform);
+        for (int i = 0; i < 50; i++)
+        {
+            GameObject textObject1 = Instantiate(buffText, debuffBox.transform);
+            textObject1.GetComponent<TextMeshProUGUI>().text = "<sprite=0> Ehe";
+        }
+    }
+
+    public void closeCharacterWindow()
+    {
+        showCharacterScreen.SetActive(false);
+    }
 
 
     [System.Obsolete]
