@@ -543,13 +543,15 @@ public class Character : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnMouseDown()
+    /*private void OnMouseDown()
     {
         if (combatManager.Instance.state != BattleState.PLAYER || combatManager.Instance.isShowDiscard == true)
             return;
 
         Debug.Log(this.gameObject.name + "Clicked");
         combatManager.Instance.selectedTarget(this.gameObject);
-    }
+    }*/
+    
+
 
 }

@@ -70,9 +70,11 @@ public abstract class cardHandler : MonoBehaviour
     {
         for (int i = 0; i < cardInHand.Count; i++)
         {
+            Debug.Log(i);
             GameObject pCard = Instantiate(cardTemplate, cardParent);
-            pCard.transform.position = pCard.transform.position + new Vector3(130, 0, 0);
-            pCard.transform.position = pCard.transform.position + new Vector3(-i*70, 0,0);
+            pCard.transform.position = new Vector3(0, 0, 0);
+            pCard.transform.position = pCard.transform.position + new Vector3(900, 0, 0);
+            pCard.transform.position = pCard.transform.position + new Vector3(-i*120, 0,0);
             pCard.GetComponent<cardDisplay>().card = cardInHand[i];
             pCard.name = pCard.name + " " + i.ToString();
         }
@@ -201,5 +203,5 @@ public abstract class cardHandler : MonoBehaviour
         }
     }
 
-
+    
 }

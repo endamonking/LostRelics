@@ -351,11 +351,11 @@ public class combatManager : MonoBehaviour
         isShowDiscard = false;
     }
 
-    public void showCharacterWindow()
+    public void showCharacterWindow(Character player, Sprite portrait)
     {
-        Character player = currentObjTurn.GetComponent<Character>();
+        //Character player = currentObjTurn.GetComponent<Character>();
         GameObject pic = showCharacterScreen.transform.Find("Portrait").gameObject;
-        pic.GetComponent<Image>().sprite = CurrentTurnPic.GetComponent<Image>().sprite;
+        pic.GetComponent<Image>().sprite = portrait;
         foreach (Transform childTransform in showCharacterScreen.transform)
         {
             // Access the child GameObject
@@ -407,7 +407,7 @@ public class combatManager : MonoBehaviour
         for (int i = 0; i < 50; i++)
         {
             GameObject textObject1 = Instantiate(buffText, debuffBox.transform);
-            textObject1.GetComponent<TextMeshProUGUI>().text = "<sprite=0> Ehe";
+            textObject1.GetComponent<TextMeshProUGUI>().text = "<sprite=" + i.ToString() + "> Ehe";
         }
     }
 
@@ -437,6 +437,8 @@ public class combatManager : MonoBehaviour
         showDiscardButton.SetActive(true);
         CurrentTurnPic.SetActive(true);
         CurrentTurnPic.GetComponent<Image>().sprite = pic;
+        Button picBut = CurrentTurnPic.GetComponent<Button>();
+        picBut.onClick.AddListener(() => showCharacterWindow(currentObjTurn.GetComponent<Character>(), pic));
         updateManaText();
         updateCardRemaining(deckCount);
     }
