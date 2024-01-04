@@ -36,7 +36,7 @@ public class node5Opt2 : nodeEfffect
                 pCha.currentHP = pCha.inComMaxHP;
         }
         //Add debuff
-        buff deBuff = new buff("Poison", 99);
+        buff deBuff = new buff("Poison", 99, "Poison");
         int damageAmount = poisonPercenATK;
 
         deBuff.AddBuff("PoisonMaxHP", damageAmount);

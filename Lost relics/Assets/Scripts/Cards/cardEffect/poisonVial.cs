@@ -18,7 +18,7 @@ public class poisonVial : cardEffect
 
     public override bool applyEffect(Character target, Character user)
     {
-        buff deBuff = new buff("Poison vial", 3);
+        buff deBuff = new buff("Poison vial", 3, "Poison");
         int damageAmount = user.inComATK;
 
         deBuff.AddBuff("Poison", damageAmount);

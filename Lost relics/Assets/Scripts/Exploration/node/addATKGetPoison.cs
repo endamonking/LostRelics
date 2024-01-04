@@ -28,7 +28,7 @@ public class addATKGetPoison : nodeEfffect
             pCha.baseATK += 5;
         }
         //Add debuff
-        buff deBuff = new buff("Poison", 99);
+        buff deBuff = new buff("Poison", 99, "Poison");
         int damageAmount = poisonPercenATK;
 
         deBuff.AddBuff("PoisonMaxHP", damageAmount);

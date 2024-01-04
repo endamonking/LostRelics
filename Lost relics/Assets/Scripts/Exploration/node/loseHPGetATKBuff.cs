@@ -32,7 +32,7 @@ public class loseHPGetATKBuff : nodeEfffect
                 pCha.currentHP = 1;
         }
 
-        buff ATKBuff = new buff("Attack", duration);
+        buff ATKBuff = new buff("Attack", duration,"ATK_Up");
         ATKBuff.AddBuff("ATK", ATKAmount);
         exploration_sceneManager.Instance.applyExploBuff(ATKBuff,1);
         base.closeEvenCanvas();

@@ -29,7 +29,7 @@ public class sweepKick : cardEffect
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         //Apply debuf
-        buff deBuff = new buff("Sweep Kick", 2);
+        buff deBuff = new buff("Sweep Kick", 2, "SPD_Down");
         deBuff.AddBuff("SPD", -10);
 
         target.applyActiveDeBuff(deBuff);

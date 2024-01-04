@@ -36,7 +36,7 @@ public class combatManager : MonoBehaviour
     public GameObject debuffBox;
     public GameObject buffBox;
     [SerializeField]
-    private GameObject buffText;
+    private GameObject buffText, buffIcon;
     [Header("Target")]
     public Character target;
     [SerializeField]
@@ -353,6 +353,7 @@ public class combatManager : MonoBehaviour
 
     public void showCharacterWindow(Character player, Sprite portrait)
     {
+        isShowDiscard = true;
         //Character player = currentObjTurn.GetComponent<Character>();
         GameObject pic = showCharacterScreen.transform.Find("Portrait").gameObject;
         pic.GetComponent<Image>().sprite = portrait;
@@ -386,33 +387,65 @@ public class combatManager : MonoBehaviour
                     break;
             }
         }
-        displayBuffInStatusScreen();
-        displaydeBuffInStatusScreen();
+        displayBuffInStatusScreen(player.activeBuffs);
+        displaydeBuffInStatusScreen(player.activeDeBuffs);
 
         showCharacterScreen.SetActive(true);
     }
 
-    private void displayBuffInStatusScreen()
+    private void displayBuffInStatusScreen(List<buff> allBuff)
     {
-        GameObject textObject = Instantiate(buffText, buffBox.transform);
-        for (int i =0; i < 50; i++)
+        foreach (Transform child in buffBox.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (buff activeBuff in allBuff)
         {
             GameObject textObject1 = Instantiate(buffText, buffBox.transform);
-            textObject1.GetComponent<TextMeshProUGUI>().text = "<sprite=0> Ehe";
+            textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName;
+            //GameObject icon = Instantiate(buffIcon, debuffBox.transform);
+            Sprite pic = Resources.Load<Sprite>("Buff_Icon/" + activeBuff.buffPicName);
+            if (pic != null)
+                textObject1.GetComponentInChildren<Image>().sprite = pic;
+            else
+            {
+                pic = Resources.Load<Sprite>("Buff_Icon/none");
+                textObject1.GetComponentInChildren<Image>().sprite = pic;
+            }
+
+
         }
     }
-    private void displaydeBuffInStatusScreen()
+    private void displaydeBuffInStatusScreen(List<buff> allBuff)
     {
-        GameObject textObject = Instantiate(buffText, debuffBox.transform);
-        for (int i = 0; i < 50; i++)
+        foreach (Transform child in debuffBox.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (buff activeBuff in allBuff)
         {
             GameObject textObject1 = Instantiate(buffText, debuffBox.transform);
-            textObject1.GetComponent<TextMeshProUGUI>().text = "<sprite=" + i.ToString() + "> Ehe";
+            textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName;
+            //GameObject icon = Instantiate(buffIcon, debuffBox.transform);
+            Sprite pic = Resources.Load<Sprite>("Buff_Icon/" + activeBuff.buffPicName);
+            if (pic != null)
+                textObject1.GetComponentInChildren<Image>().sprite = pic;
+            else
+            {
+                pic = Resources.Load<Sprite>("Buff_Icon/none");
+                textObject1.GetComponentInChildren<Image>().sprite = pic;
+            }
+
+
         }
+
     }
 
     public void closeCharacterWindow()
     {
+        isShowDiscard = false;
         showCharacterScreen.SetActive(false);
     }
 

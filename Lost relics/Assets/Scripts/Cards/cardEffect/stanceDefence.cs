@@ -19,7 +19,7 @@ public class stanceDefence : cardEffect
 
     public override bool applyEffect(Character target, Character user)
     {
-        buff stanceDefence = new buff("Stance Defence", 2);
+        buff stanceDefence = new buff("Stance Defence", 2,"DEF_Up");
         stanceDefence.AddBuff("DEF", skillMuliplier);
 
         user.applyActiveBuff(stanceDefence);

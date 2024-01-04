@@ -1607,7 +1607,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890340416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2008,6 +2008,7 @@ MonoBehaviour:
   debuffBox: {fileID: 1744154482}
   buffBox: {fileID: 1186148716}
   buffText: {fileID: 1269679743256091803, guid: 095c38f36988b94438d48ae60e6db552, type: 3}
+  buffIcon: {fileID: 9102824731504165391, guid: 451700e121c44124e96a71aff647d6ca, type: 3}
   target: {fileID: 0}
   _stateText: {fileID: 429618496}
   currentManaText: {fileID: 1175971357}
@@ -2750,7 +2751,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -1080}
+  m_SizeDelta: {x: 0, y: -1080.4181}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127908318
 MonoBehaviour:
@@ -2998,8 +2999,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -498.79968, y: 0}
+  m_AnchoredPosition: {x: -0.00010681152, y: -0.000030517578}
+  m_SizeDelta: {x: 1.2003174, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1186148718
 MonoBehaviour:
@@ -3013,7 +3014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
+  m_HorizontalFit: 2
   m_VerticalFit: 2
 --- !u!114 &1186148719
 MonoBehaviour:
@@ -4512,7 +4513,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.00002063287}
-  m_SizeDelta: {x: -498.79968, y: 0}
+  m_SizeDelta: {x: 1.2003174, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1744154484
 MonoBehaviour:
@@ -4526,7 +4527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
+  m_HorizontalFit: 2
   m_VerticalFit: 2
 --- !u!114 &1744154485
 MonoBehaviour:
@@ -4549,7 +4550,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 500, y: 100}
-  m_Spacing: {x: 0, y: 0}
+  m_Spacing: {x: 0, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!1 &1762399096

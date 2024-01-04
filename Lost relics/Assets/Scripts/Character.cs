@@ -32,6 +32,8 @@ public class Character : MonoBehaviour
     public stance myPreviousStance;
     private Dictionary<string, int> stanceValue = new Dictionary<string, int>();
 
+    private buffContainer buffContainer;
+
     public int inComATK
     {
         get
@@ -290,6 +292,14 @@ public class Character : MonoBehaviour
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();
         hpBar.updateHPBar(inComMaxHP, currentHP);
+
+        //Update buff ui
+        if (buffContainer == null)
+            buffContainer = GetComponentInChildren<buffContainer>();
+        List<buff> startBuff = new List<buff>();
+        startBuff.AddRange(activeBuffs);
+        startBuff.AddRange(activeDeBuffs);
+        buffContainer.updateBuffIconUI(startBuff);
     }
     
     public void changingStance(stance inTo)
@@ -299,14 +309,14 @@ public class Character : MonoBehaviour
         switch (myStance)
         {
             case stance.Exhausted:
-                buff deBuff = new buff("Exhausted", 2);
+                buff deBuff = new buff("Exhausted", 2, "ATK_Down");
                 deBuff.AddBuff("SPD", -10);
                 deBuff.AddBuff("ATK", -10);
                 deBuff.AddBuff("DEF", -20);
                 applyActiveDeBuff(deBuff);
                 break;
             case stance.Panic:
-                buff panic = new buff("Panic", 2);
+                buff panic = new buff("Panic", 2,"Fear");
                 panic.AddBuff("DEF", -20);
                 applyActiveDeBuff(panic);
                 break;
@@ -363,12 +373,31 @@ public class Character : MonoBehaviour
 
     public void applyActiveBuff(buff activeBuff)
     {
+        if (buffContainer == null)
+            buffContainer = GetComponentInChildren<buffContainer>();
+
         activeBuffs.Add(activeBuff);
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeDeBuffs);
+        if (buffContainer == null) // In case of apply buff in exploration
+            return;
+        buffContainer.updateBuffIconUI(allBuff);
     }
 
     public void applyActiveDeBuff(buff activeDeBuff)
     {
+        if (buffContainer == null)
+            buffContainer = GetComponentInChildren<buffContainer>();
+
         activeDeBuffs.Add(activeDeBuff);
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeDeBuffs);
+        Debug.Log(buffContainer);
+        if (buffContainer == null) // In case of apply buff in exploration
+            return;
+        buffContainer.updateBuffIconUI(allBuff);
     }
 
     public void removeActiveBuff(int number)
@@ -379,6 +408,10 @@ public class Character : MonoBehaviour
                 break;
             activeBuffs.Remove(activeBuffs[i]);
         }
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeDeBuffs);
+        buffContainer.updateBuffIconUI(allBuff);
     }
 
     public void removeActiveDeBuff(int number)
@@ -393,6 +426,10 @@ public class Character : MonoBehaviour
             Debug.Log("remove " + activeDeBuffs[i].buffName);
             activeDeBuffs.Remove(activeDeBuffs[i]);
         }
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeDeBuffs);
+        buffContainer.updateBuffIconUI(allBuff);
     }
 
     public void updateBuffAndDebuff()
@@ -436,7 +473,12 @@ public class Character : MonoBehaviour
                 activeDeBuffs.RemoveAt(i);
                 // Handle any post-buff effects here
             }
+
         }
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeDeBuffs);
+        buffContainer.updateBuffIconUI(allBuff);
     }
 
     public int GetBuffValue(string propertyName)

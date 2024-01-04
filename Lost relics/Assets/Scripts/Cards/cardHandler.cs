@@ -70,7 +70,6 @@ public abstract class cardHandler : MonoBehaviour
     {
         for (int i = 0; i < cardInHand.Count; i++)
         {
-            Debug.Log(i);
             GameObject pCard = Instantiate(cardTemplate, cardParent);
             pCard.transform.position = new Vector3(0, 0, 0);
             pCard.transform.position = pCard.transform.position + new Vector3(900, 0, 0);
