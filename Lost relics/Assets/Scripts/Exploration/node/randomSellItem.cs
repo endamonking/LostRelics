@@ -26,8 +26,8 @@ public class randomSellItem : nodeEfffect
     public override void doEffect()
     {
         //if (Not met requirment item)
-        InventoryManager playerInventory = GameObject.FindObjectOfType<InventoryManager>();
-        if (playerInventory.inventory.itemList.Count < amount)
+        inventoryManager playerInventory = GameObject.FindObjectOfType<inventoryManager>();
+        if (playerInventory.equipmentList.Count < amount)
         {
             exploration_sceneManager.Instance.clearEventButton();
             Button ansBut = Instantiate(buttonPrefab, exploration_sceneManager.Instance.answerContainer);
@@ -40,7 +40,7 @@ public class randomSellItem : nodeEfffect
         }
         else
         {
-            removeItemAndGetMoney(playerInventory.inventory.itemList);
+            removeItemAndGetMoney(playerInventory.equipmentList);
         }
 
 
@@ -51,7 +51,7 @@ public class randomSellItem : nodeEfffect
         base.closeEvenCanvas();
     }
 
-    private void removeItemAndGetMoney(List<Item> playerInventory)
+    private void removeItemAndGetMoney(List<equipment> playerInventory)
     {
         for (int i = 0; i < amount; i++)
         {

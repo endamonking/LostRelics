@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
     private CharacterBar hpBar;
     private TextMeshProUGUI stanceText;
 
-    private EquipmentStats equipmentStats;
+    private characterEquipment equipmentStats;
 
     public stance myStance = stance.None;
     public stance myPreviousStance;
@@ -209,7 +209,7 @@ public class Character : MonoBehaviour
     {
         get
         {
-            int characterMaxHP = maxHP + equipmentStats.HP;
+            int characterMaxHP = maxHP + equipmentStats.bonusMAXHP;
             float totalValue = characterMaxHP;
             if (stanceValue.ContainsKey("MAXHP"))
             {
@@ -285,9 +285,9 @@ public class Character : MonoBehaviour
         combatManager comIns = combatManager.Instance;
         if (comIns == null)
             return;
-        equipmentStats = GetComponent<EquipmentStats>();
-        currentSPD = baseSPD + equipmentStats.SPD;
-        currentDefpoint = basedefPoint + equipmentStats.Def;
+        equipmentStats = GetComponent<characterEquipment>();
+        currentSPD = baseSPD + equipmentStats.bonusSpeed;
+        currentDefpoint = basedefPoint + equipmentStats.bonusSpeed;
 
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();
@@ -361,8 +361,8 @@ public class Character : MonoBehaviour
 
     public void characterSetup()
     {
-        equipmentStats = GetComponent<EquipmentStats>();
-        currentHP = maxHP + equipmentStats.HP;
+        equipmentStats = GetComponent<characterEquipment>();
+        currentHP = maxHP + equipmentStats.bonusMAXHP;
     }
 
     // Update is called once per frame

@@ -11,7 +11,7 @@ public class Quest : ScriptableObject
     public int active;
     public int category;
     public string description;
-    public string name;
+    public string questName;
     public Item questItem;
 
 

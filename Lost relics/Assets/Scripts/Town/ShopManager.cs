@@ -9,8 +9,8 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    private InventoryManager inventoryManager;
-    public Inventory shopinven;
+   // private InventoryManager inventoryManager;
+    //public Inventory shopinven;
     [SerializeField] private GameObject rowPrefab;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject shoppingItemPrefab;
@@ -28,7 +28,7 @@ public class ShopManager : MonoBehaviour
     {
          
 
-        inventoryManager = FindObjectOfType<InventoryManager>();
+        /*inventoryManager = FindObjectOfType<InventoryManager>();
 
         if (inventoryManager == null)
             {
@@ -77,7 +77,7 @@ public class ShopManager : MonoBehaviour
 
         contentSizeFitter.SetLayoutVertical();
         
-        scrollRect.verticalNormalizedPosition = 1f;
+        scrollRect.verticalNormalizedPosition = 1f*/
     }
 
     void OnAddToCartButtonClick(Item item)
@@ -108,7 +108,7 @@ public class ShopManager : MonoBehaviour
         Destroy(shoppingListItem);
     }
     void Purchase()
-    {
+    {/*
         Debug.Log("Purchase");
         // Count only non-null items in the inventory
         int nonNullInventoryCount = inventoryManager.inventory.itemList.Count(item => item != null);
@@ -158,6 +158,6 @@ public class ShopManager : MonoBehaviour
         {
             Debug.Log("Not enough money to buy all items in ShopItemList.");
         }
-
+        */
     }
 }

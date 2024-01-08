@@ -880,8 +880,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconPrefab: {fileID: 9102824731504165391, guid: 451700e121c44124e96a71aff647d6ca, type: 3}
   containBox: {fileID: 4761266709463181791}
-  spriteList:
-  - {fileID: 21300000, guid: 693b2f2ea8d1f8b498680eff1c63caf4, type: 3}
 --- !u!65 &816414402460990157
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -993,7 +991,7 @@ GameObject:
   - component: {fileID: 9149397430665950215}
   - component: {fileID: 9149397430665950209}
   - component: {fileID: 9149397430665950267}
-  - component: {fileID: 725834063316356741}
+  - component: {fileID: -4763585795202686784}
   m_Layer: 0
   m_Name: Enemy_example
   m_TagString: Enemy
@@ -1142,7 +1140,7 @@ MonoBehaviour:
   player: {fileID: 0}
   turnGuagePrefab: {fileID: 270276827906435083, guid: 30c75ed653a5164459a5d6c2f30e16a3, type: 3}
   turnGuageUI: {fileID: 0}
---- !u!114 &725834063316356741
+--- !u!114 &-4763585795202686784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1151,14 +1149,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9149397430665950210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e01d082d71cff24dba746d23451efc2, type: 3}
+  m_Script: {fileID: 11500000, guid: ddc4ef2d877dc054bac2093596f9d798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
-  Def: 0
-  ATK: 0
-  HP: 0
-  SPD: 0
-  Res: 0
-  Crit: 0
-  Evade: 0
+  bonusMAXHP: 0
+  bonusSpeed: 0
+  bonusDEF: 0

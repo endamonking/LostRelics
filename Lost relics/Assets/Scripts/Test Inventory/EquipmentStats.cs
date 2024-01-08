@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EquipmentStats : MonoBehaviour
 {
-    public InventoryManager inventoryManager;
+   // public InventoryManager inventoryManager;
 
     public int Def;
     public int ATK;
@@ -18,16 +18,16 @@ public class EquipmentStats : MonoBehaviour
     void Start()
     {
 
-        inventoryManager = FindObjectOfType<InventoryManager>();
+      /*  inventoryManager = FindObjectOfType<InventoryManager>();
 
         if (inventoryManager == null)
         {
             Debug.LogError("No InventoryManager found in the scene.");
-        }
+        }*/
     }
     public void UpdateStat(int character)
     {
-        if (inventoryManager == null || inventoryManager.inventory == null)
+        /*if (inventoryManager == null || inventoryManager.inventory == null)
         {
             Debug.LogError("InventoryManager or its inventory is null");
             return;
@@ -72,6 +72,6 @@ public class EquipmentStats : MonoBehaviour
             Crit += (int)inventoryManager.inventory.bootList[character].GetItemStateValue("Crit");
             Evade += (int)inventoryManager.inventory.bootList[character].GetItemStateValue("Evade");
             Res += (int)inventoryManager.inventory.bootList[character].GetItemStateValue("Resistance");
-        }
+        }*/
     }
 }

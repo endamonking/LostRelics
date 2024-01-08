@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody body;
   
     [SerializeField] private float runSpeed = 10.0f;
-    [SerializeField] private Inventory inventory;
+   // [SerializeField] private Inventory inventory;
     [SerializeField] private GameObject PlayerCanvas;
     [SerializeField] private GameObject player;
 
