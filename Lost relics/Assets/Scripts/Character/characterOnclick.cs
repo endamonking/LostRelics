@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class characterOnclick : MonoBehaviour
 {
@@ -18,6 +20,10 @@ public class characterOnclick : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Scene thisScene = SceneManager.GetActiveScene();
+        if (thisScene.name != "Combat")
+            return;
+
         if (combatManager.Instance.state != BattleState.PLAYER || combatManager.Instance.isShowDiscard == true)
             return;
 

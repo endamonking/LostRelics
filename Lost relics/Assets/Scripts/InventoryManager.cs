@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class inventoryManager : MonoBehaviour
 {
     public static inventoryManager Instance;
     public int money = 0;
 
-    public List<equipment> equipmentList = new List<equipment>();
+    public List<GameObject> equipmentList = new List<GameObject>();
+
+    [Header("UI")]
+    public GameObject playerCanvas;
+
 
     private void Awake()
     {

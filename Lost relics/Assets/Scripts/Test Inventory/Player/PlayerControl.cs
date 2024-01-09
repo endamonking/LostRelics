@@ -65,7 +65,6 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-       
         if (Input.GetKeyDown(KeyCode.B))
         {
             PlayerInventory();
@@ -97,17 +96,10 @@ public class PlayerControl : MonoBehaviour
     }
     private void PlayerInventory()
     {
-
-        if (PlayerCanvas.activeSelf)
-        {
-            PlayerCanvas.SetActive(false);
-            move = 0;
-        }
-        else
-        {
-            PlayerCanvas.SetActive(true);
+        if (move == 0)
             move = 1;
-            
-        }
+        else
+            move = 0;
+        inventoryManager.Instance.playerCanvas.GetComponent<inventoryCanvas>().showInventory();
     }
 }

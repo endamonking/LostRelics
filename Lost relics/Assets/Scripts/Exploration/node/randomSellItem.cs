@@ -51,7 +51,7 @@ public class randomSellItem : nodeEfffect
         base.closeEvenCanvas();
     }
 
-    private void removeItemAndGetMoney(List<equipment> playerInventory)
+    private void removeItemAndGetMoney(List<GameObject> playerInventory)
     {
         for (int i = 0; i < amount; i++)
         {
