@@ -7,9 +7,7 @@ using TMPro;
 public class Character : MonoBehaviour
 {
     [Header("Attribute")]
-    [SerializeField]
-    private int basedefPoint;
-    [SerializeField]
+    public int basedefPoint;
     public int maxHP, baseSPD;
     public string characterName;
     public int maxPlayerHand = 7;
@@ -68,7 +66,7 @@ public class Character : MonoBehaviour
     {
         get
         {
-            float totalDEF = currentDefpoint;
+            float totalDEF = basedefPoint + equipmentStats.bonusDEF;
             if (stanceValue.ContainsKey("DEF"))
             {
                 totalDEF = ( stanceValue["DEF"] * currentDefpoint /100.0f) + totalDEF;
@@ -97,7 +95,7 @@ public class Character : MonoBehaviour
     {
         get
         {
-            float totalValue = currentSPD;
+            float totalValue = baseSPD + equipmentStats.bonusSpeed;
             if (stanceValue.ContainsKey("SPD"))
             {
                 totalValue = totalValue + (stanceValue["SPD"]*currentSPD/100.0f);
@@ -117,7 +115,6 @@ public class Character : MonoBehaviour
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
-
             return finalValue;
         }
     }
@@ -286,8 +283,8 @@ public class Character : MonoBehaviour
         if (comIns == null)
             return;
         equipmentStats = GetComponent<characterEquipment>();
-        currentSPD = baseSPD + equipmentStats.bonusSpeed;
-        currentDefpoint = basedefPoint + equipmentStats.bonusSpeed;
+        /*currentSPD = baseSPD + equipmentStats.bonusSpeed;
+        currentDefpoint = basedefPoint + equipmentStats.bonusSpeed;*/
 
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();

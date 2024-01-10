@@ -8,12 +8,20 @@ public class inventoryCanvas : MonoBehaviour
 {
     public GameObject[] playerList;
 
-    public GameObject inventoryScreen;
+    [Header("Tab")]
+    public GameObject inventoryTab;
+    public GameObject characterTab;
     [Header("Inventory UI")]
+    public GameObject inventoryScreen; 
     public Image itemPic;
     public TextMeshProUGUI itemDesText;
     public TextMeshProUGUI itemStatText;
+    [Header("Character UI")]
+    public Image portrait;
+    public TextMeshProUGUI characterName;
+    public TextMeshProUGUI characterStat;
 
+    private int characterIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +29,9 @@ public class inventoryCanvas : MonoBehaviour
         itemPic.enabled = false;
         itemDesText.enabled = false;
         itemStatText.enabled = false;
+        //Close all tab
+        inventoryTab.SetActive(false);
+        characterTab.SetActive(false);
 
         this.gameObject.SetActive(false);
     }
@@ -31,21 +42,98 @@ public class inventoryCanvas : MonoBehaviour
         
     }
 
-    public void showInventory()
+    public int openTab(int tabIndex)
     {
-        if (this.gameObject.activeSelf)
+        int move = 0;
+        switch (tabIndex)
         {
-            itemPic.enabled = false;
-            itemDesText.enabled = false;
-            itemStatText.enabled = false;
-            this.gameObject.SetActive(false);
+            case 0://Inventory
+                move = showInventoryTab();
+                break;
+            case 1:
+                move = showCharacterTab();
+                break;
+        }
+        return move;
+    }
 
+    private int showInventoryTab()
+    {
+        int move = 0;
+        if (inventoryTab.activeSelf)
+        {
+            closeAllTab();
+            this.gameObject.SetActive(false); // CLose canas 
+            move = 0;
         }
         else
         {
             this.gameObject.SetActive(true);
+            closeAllTab();
+            inventoryTab.SetActive(true);
             generateAllItem();
+            move = 1;
         }
+        return move;
+    }
+    private int showCharacterTab()
+    {
+        int move = 0;
+        if (characterTab.activeSelf)
+        {
+            closeAllTab();
+            this.gameObject.SetActive(false); // CLose canas 
+            move = 0;
+        }
+        else
+        {
+            this.gameObject.SetActive(true);
+            closeAllTab();
+            characterTab.SetActive(true);
+            characterIndex = 0;
+            openCharacterTab();
+            move = 1;
+        }
+        return move;
+    }
+
+    private void openCharacterTab()
+    {
+        Character player = playerList[characterIndex].GetComponent<Character>();
+        portrait.sprite = playerList[characterIndex].GetComponentInChildren<SpriteRenderer>().sprite;
+        characterName.text = player.characterName;
+        printCharacterStat(player, playerList[characterIndex].GetComponent<characterEquipment>());
+
+    }
+
+    private void printCharacterStat(Character player, characterEquipment playerEquipment)
+    {
+        string displayText = "MAX HP " + (player.maxHP + playerEquipment.bonusMAXHP).ToString()+"\n";
+        displayText = displayText + "Current HP " + player.currentHP+"\n";
+        displayText = displayText + "Attack power " + player.baseATK + "\n";
+        displayText = displayText + "Defend " + (player.basedefPoint + playerEquipment.bonusDEF).ToString()+"\n";
+        displayText = displayText + "Speed " + (player.baseSPD + playerEquipment.bonusSpeed);
+
+        characterStat.text = displayText;
+    }
+
+    public void nextCharacter(int number)
+    {
+        characterIndex += number;
+        if (characterIndex >= playerList.Length)
+            characterIndex = 0;
+        else if (characterIndex < 0)
+            characterIndex = playerList.Length -1;
+        openCharacterTab();
+    }
+
+    private void closeAllTab()
+    {
+        itemPic.enabled = false;
+        itemDesText.enabled = false;
+        itemStatText.enabled = false;
+        characterTab.SetActive(false);
+        inventoryTab.SetActive(false);
     }
 
     private void generateAllItem()

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+
+
 public class PlayerControl : MonoBehaviour
 {
 
@@ -59,7 +62,10 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name != "TestRoom")
+            this.enabled = false;
+            
     }
 
 
@@ -67,7 +73,11 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            PlayerInventory();
+            showInventoryTab(0);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            showInventoryTab(1);
         }
     }
 
@@ -94,12 +104,8 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("Collided with: " + collision.gameObject.name);
         }
     }
-    private void PlayerInventory()
+    private void showInventoryTab(int tabIndex)
     {
-        if (move == 0)
-            move = 1;
-        else
-            move = 0;
-        inventoryManager.Instance.playerCanvas.GetComponent<inventoryCanvas>().showInventory();
+        move = inventoryManager.Instance.playerCanvas.GetComponent<inventoryCanvas>().openTab(tabIndex);
     }
 }
