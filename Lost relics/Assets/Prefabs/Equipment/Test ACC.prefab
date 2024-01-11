@@ -56,9 +56,11 @@ MonoBehaviour:
   SPD: 10
   CRITChance: 10
   equipmentDes: Boot EHE
+  equipmentName: TestBoot
   equipmentType: 2
   pic: {fileID: 21300000, guid: b18732bef90ff6a409e2b56017fa335a, type: 3}
   isEquiped: 0
+  equipmentIndexInList: 0
 --- !u!222 &1452532280063236302
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -87,7 +89,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 165a4e5f0c1e42044a5e9e2c1499c24f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b18732bef90ff6a409e2b56017fa335a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

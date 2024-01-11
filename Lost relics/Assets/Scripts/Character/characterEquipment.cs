@@ -7,6 +7,9 @@ public class characterEquipment : MonoBehaviour
     public equipment head = null;
     public equipment armor = null;
     public equipment accessory = null;
+    public GameObject headGO;
+    public GameObject armorGO;
+    public GameObject accGO;
 
 
     [SerializeField]
@@ -81,4 +84,50 @@ public class characterEquipment : MonoBehaviour
     {
         
     }
+
+    public void equipEquipment(GameObject newEquipmentGO, equipmentType type)
+    {
+        equipment newEquipment = newEquipmentGO.GetComponent<equipment>();
+
+        switch (type)
+        {
+            case equipmentType.HEAD when head == null:
+                head = newEquipment;
+                headGO = newEquipmentGO;
+                newEquipment.equiped();
+                break;
+            case equipmentType.ARMORE when armor == null:
+                armor = newEquipment;
+                armorGO = newEquipmentGO;
+                newEquipment.equiped();
+                break;
+            case equipmentType.ACCESSORY when accessory == null:
+                accessory = newEquipment;
+                accGO = newEquipmentGO;
+                newEquipment.equiped();
+                break;
+            case equipmentType.HEAD when head != null:
+                head.removeEquiped();
+                Destroy(headGO);
+                head = newEquipment;
+                headGO = newEquipmentGO;
+                newEquipment.equiped();
+                break;
+            case equipmentType.ARMORE when armor != null:
+                armor.removeEquiped();
+                Destroy(armorGO);
+                armor = newEquipment;
+                armorGO = newEquipmentGO;
+                newEquipment.equiped();
+                break;
+            case equipmentType.ACCESSORY when accessory != null:
+                accessory.removeEquiped();
+                Destroy(accGO);
+                accessory = newEquipment;
+                accGO = newEquipmentGO;
+                newEquipment.equiped();
+                break;
+        }
+    }
+
 }

@@ -40,7 +40,7 @@ public class randomSellItem : nodeEfffect
         }
         else
         {
-            removeItemAndGetMoney(playerInventory.equipmentList);
+            removeItemAndGetMoney();
         }
 
 
@@ -51,15 +51,25 @@ public class randomSellItem : nodeEfffect
         base.closeEvenCanvas();
     }
 
-    private void removeItemAndGetMoney(List<GameObject> playerInventory)
+    private void removeItemAndGetMoney()
     {
+        inventoryManager im = inventoryManager.Instance;
         for (int i = 0; i < amount; i++)
         {
-            int ranIndex = Random.Range(0, playerInventory.Count);
-            //Debug.Log(playerInventory[ranIndex].itemName);
-            playerInventory.RemoveAt(ranIndex);
+            bool loopflag = true;
+            while (loopflag)
+            {
+                int ranIndex = Random.Range(0, im.equipmentList.Count);
+                equipment eq = im.equipmentList[ranIndex].GetComponent<equipment>();
+                if (eq.isEquiped == false) //Not equiped
+                {
+                    im.removeItem(ranIndex);
+                    loopflag = false;
+                }
+            }
         }
         base.closeEvenCanvas();
+        
     }
 
 }

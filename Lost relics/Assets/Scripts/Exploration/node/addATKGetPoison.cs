@@ -25,7 +25,7 @@ public class addATKGetPoison : nodeEfffect
         foreach (GameObject character in playersCha)
         {
             Character pCha = character.GetComponent<Character>();
-            pCha.baseATK += 5;
+            pCha.baseATK += ATKAmount;
         }
         //Add debuff
         buff deBuff = new buff("Poison", 99, "Poison");
