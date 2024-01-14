@@ -11,6 +11,7 @@ public class inventoryCanvas : MonoBehaviour
     [Header("Tab")]
     public GameObject inventoryTab;
     public GameObject characterTab;
+    public GameObject deckTab;
     [Header("Inventory UI")]
     public GameObject inventoryScreen; 
     public Image itemPic;
@@ -31,6 +32,9 @@ public class inventoryCanvas : MonoBehaviour
     public Image accPic;
     private equipment selectedEquipment = null;
     private GameObject selectedEquipmentGO = null;
+    [Header("Character deck")]
+    public GameObject deckBox;
+    public Image characterDeckPortrait;
 
     private int characterIndex = 0;
     // Start is called before the first frame update
@@ -43,6 +47,7 @@ public class inventoryCanvas : MonoBehaviour
         //Close all tab
         inventoryTab.SetActive(false);
         characterTab.SetActive(false);
+        deckTab.SetActive(false);
         equipmentBoxParent.SetActive(false);
 
         this.gameObject.SetActive(false);
@@ -59,6 +64,7 @@ public class inventoryCanvas : MonoBehaviour
         int move = 0;
         clearInventory();
         clearEquipmentBox();
+        clearDeckBox();
         switch (tabIndex)
         {
             case 0://Inventory
@@ -66,6 +72,9 @@ public class inventoryCanvas : MonoBehaviour
                 break;
             case 1:
                 move = showCharacterTab();
+                break;
+            case 2:
+                move = showCharacterDeck();
                 break;
         }
         return move;
@@ -111,6 +120,27 @@ public class inventoryCanvas : MonoBehaviour
         return move;
     }
 
+    private int showCharacterDeck()
+    {
+        int move = 0;
+        if (deckTab.activeSelf)
+        {
+            closeAllTab();
+            this.gameObject.SetActive(false); // CLose canas 
+            move = 0;
+        }
+        else
+        {
+            this.gameObject.SetActive(true);
+            closeAllTab();
+            deckTab.SetActive(true);
+            characterIndex = 0;
+            openCharacterDeck();
+            move = 1;
+        }
+        return move;
+    }
+
     private void openCharacterTab()
     {
         equipmentBoxParent.SetActive(false);
@@ -120,8 +150,6 @@ public class inventoryCanvas : MonoBehaviour
         portrait.sprite = playerList[characterIndex].GetComponentInChildren<SpriteRenderer>().sprite;
         characterName.text = player.characterName;
         printCharacterStat(player, playerList[characterIndex].GetComponent<characterEquipment>());
-        //
-
 
     }
 
@@ -257,6 +285,27 @@ public class inventoryCanvas : MonoBehaviour
         openCharacterTab();
     }
 
+    public void nextDeck(int number)
+    {
+        characterIndex += number;
+        if (characterIndex >= playerList.Length)
+            characterIndex = 0;
+        else if (characterIndex < 0)
+            characterIndex = playerList.Length - 1;
+        openCharacterDeck();
+    }
+
+    private void openCharacterDeck()
+    {
+        clearDeckBox();
+        Character player = playerList[characterIndex].GetComponent<Character>();
+        characterDeckPortrait.sprite = playerList[characterIndex].GetComponentInChildren<SpriteRenderer>().sprite;
+        //Generate card
+        playerList[characterIndex].GetComponent<cardHandler>().showDeckList(deckBox);
+
+    }
+
+
     private void closeAllTab()
     {
         itemPic.enabled = false;
@@ -265,6 +314,7 @@ public class inventoryCanvas : MonoBehaviour
         equipmentBoxParent.SetActive(false);
         characterTab.SetActive(false);
         inventoryTab.SetActive(false);
+        deckTab.SetActive(false);
 
     }
 
@@ -293,6 +343,14 @@ public class inventoryCanvas : MonoBehaviour
     private void clearEquipmentBox()
     {
         foreach (Transform child in equipmentBox.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void clearDeckBox()
+    {
+        foreach (Transform child in deckBox.transform)
         {
             Destroy(child.gameObject);
         }

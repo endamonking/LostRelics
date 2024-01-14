@@ -79,6 +79,10 @@ public class PlayerControl : MonoBehaviour
         {
             showInventoryTab(1);
         }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            showInventoryTab(2);
+        }
     }
 
     private void FixedUpdate()

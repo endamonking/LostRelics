@@ -202,5 +202,20 @@ public abstract class cardHandler : MonoBehaviour
         }
     }
 
+    public void showDeckList(GameObject container)
+    {
+        if (playerDeck.Count == 0)
+            return;
+
+        for (int i = 0; i < playerDeck.Count; i++)
+        {
+            GameObject dCard = Instantiate(cardTemplate, container.transform);
+            //dCard.transform.position = dCard.transform.position + new Vector3(-i * 110, 500, 0);
+            dCard.GetComponent<cardDisplay>().card = playerDeck[i];
+            dCard.GetComponent<cardDisplay>().showOnly = true;
+            dCard.name = dCard.name + " " + i.ToString();
+        }
+    }
+
     
 }
