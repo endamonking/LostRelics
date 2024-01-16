@@ -60,7 +60,6 @@ public class inventoryManager : MonoBehaviour
         foreach (GameObject GO in equipmentList)
         {
             GO.GetComponent<equipment>().equipmentIndexInList = i;
-            Debug.Log(i);
             i++;
         }
     }
@@ -73,6 +72,13 @@ public class inventoryManager : MonoBehaviour
     public void removeItem(int Index)
     {
         equipmentList.RemoveAt(Index);
+        updatelistIndex();
+    }
+
+    public void addItem (GameObject newItem)
+    {
+        equipmentList.Add(newItem);
+        newItem.transform.SetParent(this.gameObject.transform);
         updatelistIndex();
     }
 

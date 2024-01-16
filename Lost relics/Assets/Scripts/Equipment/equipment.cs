@@ -10,12 +10,18 @@ public enum equipmentType
 }
 public abstract class equipment : MonoBehaviour
 {
-    public int HP = 0, DEF = 0, SPD = 0, CRITChance = 0;
+    [Header("Status")]
+    public int HP = 0;
+    public int DEF = 0;
+    public int SPD = 0;
+    public int CRITChance = 0;
+    public int value = 0; // Price
     public string equipmentDes;
     public string equipmentName;
     public equipmentType equipmentType;
-    public Sprite pic;
     public bool isEquiped = false;
+    [Header("UI")]
+    public Sprite pic;
     public int equipmentIndexInList = 0;
     // Start is called before the first frame update
     void Start()

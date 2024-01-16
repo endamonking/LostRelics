@@ -55,11 +55,12 @@ MonoBehaviour:
   DEF: 10
   SPD: 0
   CRITChance: 5
+  value: 200
   equipmentDes: TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>TEST<br>
   equipmentName: ArrmorTest
   equipmentType: 1
-  pic: {fileID: 21300000, guid: d92322fae3f2ec44c925028e5b9f07ff, type: 3}
   isEquiped: 0
+  pic: {fileID: 21300000, guid: d92322fae3f2ec44c925028e5b9f07ff, type: 3}
   equipmentIndexInList: 0
 --- !u!222 &756251429645843039
 CanvasRenderer:

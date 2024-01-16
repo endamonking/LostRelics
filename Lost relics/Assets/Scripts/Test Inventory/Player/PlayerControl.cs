@@ -20,46 +20,11 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject PlayerCanvas;
     [SerializeField] private GameObject player;
 
-    private int move =0;
     public GameObject boundaryCollider;
-    public Quest[] activeQuest;
 
-    public void AddQuest(Quest newQuest)
-    {
-        // Check if activeQuest is null or empty
-        if (activeQuest == null)
-        {
-            // Create a new array with size 1 and add the new quest
-            activeQuest = new Quest[] { newQuest };
-            return;
-        }
-
-        // Check if the quest with the same ID already exists
-        if (Array.Exists(activeQuest, quest => quest != null && quest.id == newQuest.id))
-        {
-            // Quest with the same ID already exists, do nothing and return
-            Debug.Log("Quest with ID " + newQuest.id + " already exists!");
-            return;
-        }
-
-        // Create a new array with increased size to accommodate the new quest
-        Quest[] newArray = new Quest[activeQuest.Length + 1];
-
-        // Copy existing quests from activeQuest to newArray
-        for (int i = 0; i < activeQuest.Length; i++)
-        {
-            newArray[i] = activeQuest[i];
-        }
-
-        // Add the new quest at the end of newArray
-        newArray[activeQuest.Length] = newQuest;
-
-        // Assign newArray to activeQuest
-        activeQuest = newArray;
-    }
-
-
-
+    private int move =0;
+    private bool isOpenOtherTab = false;
+    
     void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -110,6 +75,20 @@ public class PlayerControl : MonoBehaviour
     }
     private void showInventoryTab(int tabIndex)
     {
-        move = inventoryManager.Instance.playerCanvas.GetComponent<inventoryCanvas>().openTab(tabIndex);
+        if (isOpenOtherTab != true)
+            move = inventoryManager.Instance.playerCanvas.GetComponent<inventoryCanvas>().openTab(tabIndex);
     }
+
+    public void stopPlaterMovement()
+    {
+        move = 1;
+        isOpenOtherTab = true;
+    }
+
+    public void resumePlaterMovement()
+    {
+        move = 0;
+        isOpenOtherTab = false;
+    }
+
 }

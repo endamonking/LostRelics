@@ -220,7 +220,10 @@ public class inventoryCanvas : MonoBehaviour
             GameObject eq = Instantiate(equipmentGO, equipmentBox.transform);
             eq.GetComponent<equipment>().setEquipmentPic();
             eq.GetComponent<Image>().enabled = true;
-            eq.AddComponent<Button>();
+            Button but = eq.GetComponent<Button>();
+            if (but == null)
+                eq.AddComponent<Button>();
+            eq.GetComponent<Button>().onClick.RemoveAllListeners();
             eq.GetComponent<Button>().onClick.AddListener(() => printNewEquipmentStat(eq));
         }
 
@@ -327,7 +330,10 @@ public class inventoryCanvas : MonoBehaviour
         {
             GameObject eq = Instantiate(equipmentGO, inventoryScreen.transform);
             eq.GetComponent<equipment>().setEquipmentPic();
-            eq.AddComponent<Button>();
+            Button but = eq.GetComponent<Button>();
+            if (but == null)
+                eq.AddComponent<Button>();
+            eq.GetComponent<Button>().onClick.RemoveAllListeners();
             eq.GetComponent<Button>().onClick.AddListener(() => showItemDescription(eq.GetComponent<equipment>()));
             
         }
@@ -373,8 +379,5 @@ public class inventoryCanvas : MonoBehaviour
 
         itemStatText.text = itemStat;
 
-
-
     }
-
 }
