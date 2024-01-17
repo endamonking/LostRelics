@@ -21,7 +21,8 @@ public class characterOnclick : MonoBehaviour
     private void OnMouseDown()
     {
         Scene thisScene = SceneManager.GetActiveScene();
-        if (thisScene.name != "Combat")
+
+        if (thisScene.name != "Exploration")
             return;
 
         if (combatManager.Instance.state != BattleState.PLAYER || combatManager.Instance.isShowDiscard == true)

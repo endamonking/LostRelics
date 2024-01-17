@@ -72,8 +72,8 @@ public abstract class cardHandler : MonoBehaviour
         {
             GameObject pCard = Instantiate(cardTemplate, cardParent);
             pCard.transform.position = new Vector3(0, 0, 0);
-            pCard.transform.position = pCard.transform.position + new Vector3(900, 0, 0);
-            pCard.transform.position = pCard.transform.position + new Vector3(-i*120, 0,0);
+            pCard.transform.position = pCard.transform.position + new Vector3(1000, 0, 0);
+            pCard.transform.position = pCard.transform.position + new Vector3(-i*130, 0,0);
             pCard.GetComponent<cardDisplay>().card = cardInHand[i];
             pCard.name = pCard.name + " " + i.ToString();
         }
@@ -216,6 +216,36 @@ public abstract class cardHandler : MonoBehaviour
             dCard.name = dCard.name + " " + i.ToString();
         }
     }
+    public List<GameObject> showDeckListAndReturnList(GameObject container)
+    {
+        if (playerDeck.Count == 0)
+            return null;
+        List<GameObject> cardGOList = new List<GameObject>();
 
-    
+        for (int i = 0; i < playerDeck.Count; i++)
+        {
+            GameObject dCard = Instantiate(cardTemplate, container.transform);
+            //dCard.transform.position = dCard.transform.position + new Vector3(-i * 110, 500, 0);
+            dCard.GetComponent<cardDisplay>().card = playerDeck[i];
+            dCard.GetComponent<cardDisplay>().showOnly = true;
+            dCard.name = dCard.name + " " + i.ToString();
+            cardGOList.Add(dCard);
+        }
+        return cardGOList;
+    }
+
+    public void deleteCard(Card selectedCard)
+    {
+        List<Card> cardList = new List<Card>();
+        cardList.AddRange(playerDeck);
+        for (int i = 0; i < cardList.Count; i++)
+        {
+            if (cardList[i] == selectedCard)
+            {
+                playerDeck.RemoveAt(i);
+                break;
+            }
+        }
+    }
+
 }

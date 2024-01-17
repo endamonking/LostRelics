@@ -21,6 +21,9 @@ public class buffContainer : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (combatManager.Instance.state != BattleState.PLAYER || combatManager.Instance.isShowDiscard == true)
+            return;
+
         Sprite pic = this.transform.parent.parent.GetComponentInChildren<SpriteRenderer>().sprite;
         combatManager.Instance.showCharacterWindow(this.transform.parent.parent.gameObject.GetComponent<Character>(), pic);
     }
