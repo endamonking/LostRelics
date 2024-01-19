@@ -82,4 +82,11 @@ public class inventoryManager : MonoBehaviour
         updatelistIndex();
     }
 
+    public void addMoney(int amount)
+    {
+        money = money + amount;
+        if (money <= 0)
+            money = 0;
+    }
+
 }

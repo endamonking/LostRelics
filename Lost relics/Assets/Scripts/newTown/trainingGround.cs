@@ -12,6 +12,7 @@ public class trainingGround : MonoBehaviour
     public GameObject tgCanvas;
     public GameObject mainTab;
     public GameObject deleteCardTab;
+    public GameObject buyCardTab;
     [Header("Delete card")]
     public Button openDeleteTabButton;
     public GameObject deckBox;
@@ -19,10 +20,24 @@ public class trainingGround : MonoBehaviour
     public int maxDeleteCount = 1;
     private int deleteCount = 0;
     private GameObject selectedCard;
+    [Header("Buy card")]
+    public List<GameObject> cardGOList = new List<GameObject>();
+    public GameObject chooseCharacter;
+    public GameObject chooseCardToBuy;
+    public GameObject buyCardButtonPrefab;
+    public GameObject descriptionGo;
+    public GameObject moneyTextGo;
+    public TextMeshProUGUI buyCardDescription;
+    public int baseCost = 200;
+    public int costTobuy = 200;
+    private int buyCardCount = 0;
+    private Card choosedCard = null;
+    private GameObject choosedCharacter;
 
     private int characterIndex = 0;
     private bool isPlayerNear = false;
     private bool isOpen = false;
+    private bool forceCantClose = false; //Use to make player cant leave to screen by pressing F
     private GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +45,7 @@ public class trainingGround : MonoBehaviour
         tgCanvas.SetActive(false);
         mainTab.SetActive(false);
         deleteCardTab.SetActive(false);
+        buyCardTab.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,9 +59,9 @@ public class trainingGround : MonoBehaviour
 
     private void doTraining()
     {
-        if (isOpen)
+        if (isOpen && forceCantClose == false)
             closeTraining();
-        else
+        else if (forceCantClose == false)
             openTraining();
     }
 
@@ -91,8 +107,10 @@ public class trainingGround : MonoBehaviour
         tgCanvas.SetActive(false);
         mainTab.SetActive(false);
         deleteCardTab.SetActive(false);
+        buyCardTab.SetActive(false);
         player.GetComponent<PlayerControl>().resumePlaterMovement();
         isOpen = false;
+        forceCantClose = false;
     }
 
     public void nextDeck(int number)
@@ -154,6 +172,8 @@ public class trainingGround : MonoBehaviour
     {
         mainTab.SetActive(true);
         deleteCardTab.SetActive(false);
+        buyCardTab.SetActive(false);
+        forceCantClose = false;
         checkCondition();
     }
 
@@ -163,6 +183,112 @@ public class trainingGround : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+
+    //Buy card
+    private void clearDialogInContainer()
+    {
+        foreach (Transform child in chooseCharacter.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    public void openBuyCard()
+    {
+        mainTab.SetActive(false);
+        chooseCardToBuy.SetActive(false);
+        buyCardTab.SetActive(true);
+        chooseCharacter.SetActive(true);
+        descriptionGo.SetActive(true);
+        moneyTextGo.SetActive(true);
+        costTobuy = Mathf.FloorToInt(baseCost + (baseCost * (0.5f * buyCardCount)));
+        if (inventoryManager.Instance.money >= costTobuy)
+            buyCardDescription.text = "Who do you want to train?(Cost: " + costTobuy.ToString() + ")";
+        else
+            buyCardDescription.text = "You don't have enough money!!(Need " + costTobuy.ToString() +" )";
+        moneyTextGo.GetComponent<TextMeshProUGUI>().text = "Money : " + inventoryManager.Instance.money.ToString();
+        //print Text
+        clearDialogInContainer();
+        int i = 0;
+        if (inventoryManager.Instance.money >= costTobuy)
+        {
+            foreach (GameObject thisCharacter in playerList)
+            {
+                GameObject buttonGO = Instantiate(buyCardButtonPrefab, chooseCharacter.transform);
+                buttonGO.transform.position = buttonGO.transform.position + new Vector3(0, 100, 0) + new Vector3 (0,-100*i,0);
+                TextMeshProUGUI tmp = buttonGO.GetComponentInChildren<TextMeshProUGUI>();
+                tmp.text = thisCharacter.GetComponent<Character>().characterName;
+                buttonGO.GetComponent<Button>().onClick.AddListener(() => openChooseCardToBuy(thisCharacter));
+                i++;
+            }
+        }
+        //Print return
+        GameObject backBut = Instantiate(buyCardButtonPrefab, chooseCharacter.transform);
+        backBut.transform.position = backBut.transform.position + new Vector3(0, 100, 0) + new Vector3(0, -100 * i, 0);
+        TextMeshProUGUI tmpA = backBut.GetComponentInChildren<TextMeshProUGUI>();
+        tmpA.text = "Return";
+        backBut.GetComponent<Button>().onClick.AddListener(() => backToTopic());
+    }
+
+
+    private void openChooseCardToBuy(GameObject character)
+    {
+        //init
+        choosedCharacter = character;
+        choosedCard = null;
+        forceCantClose = true;
+        descriptionGo.SetActive(false);
+        moneyTextGo.SetActive(false);
+        chooseCharacter.SetActive(false);
+        chooseCardToBuy.SetActive(true);
+        //Create card
+        List<Card> playerPool = cardPool.Instance.getCharactCardList(character.GetComponent<Character>().characterName);
+        List<Card> chooseCardList = createChooseCardList(playerPool);
+        for (int i =0; i < cardGOList.Count; i++)
+        {
+            int dummy = i;
+            cardGOList[i].GetComponentInChildren<TextMeshProUGUI>().text = chooseCardList[i].cardName;
+            Button button = cardGOList[i].GetComponent<Button>();
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => chooseThisCard(chooseCardList[dummy]));
+        }
+
+    }
+
+    private void chooseThisCard(Card card)
+    {
+        choosedCard = card;
+    }
+
+    public void confirmToBuyCard()
+    {
+        if (choosedCard == null || choosedCharacter == null)
+            return;
+        choosedCharacter.GetComponent<cardHandler>().playerDeck.Add(choosedCard);
+        inventoryManager.Instance.addMoney(-costTobuy);
+        buyCardCount++;
+        forceCantClose = false;
+        backToTopic();
+    }
+
+    private List<Card> createChooseCardList(List<Card> cards)
+    {
+        List<Card> outputList = new List<Card>();
+        List<int> indexList = new List<int>();
+        while (indexList.Count < 3)
+        {
+            int index = Random.Range(0, cards.Count);
+
+            if (indexList.Contains(index))
+                continue;
+            else
+                indexList.Add(index);
+        }
+        foreach (int index in indexList)
+        {
+            outputList.Add(cards[index]);
+        }
+        return outputList;
     }
 
 }

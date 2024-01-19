@@ -161,7 +161,8 @@ public class shopManager : MonoBehaviour
 
         if (inventoryManager.Instance.money >= selectedItem.GetComponent<equipment>().value)
         {
-            inventoryManager.Instance.money = inventoryManager.Instance.money - selectedItem.GetComponent<equipment>().value;
+            //- because it buy
+            inventoryManager.Instance.addMoney(-selectedItem.GetComponent<equipment>().value);
             inventoryManager.Instance.addItem(selectedItem);
             itemsInShop.RemoveAt(selectedItem.GetComponent<sellItemIndex>().itemInListIndex);
             Destroy(selectedItem.GetComponent<sellItemIndex>());
