@@ -305,6 +305,10 @@ public class combatManager : MonoBehaviour
             changeTurn(BattleState.WON);
             Destroy(_selectedEffect);
             exploration_sceneManager.Instance.updateExploBuffAndDebuff();
+            foreach (GameObject enemy in enemiesPool)
+            {
+                inventoryManager.Instance.doKillQuest(enemy.GetComponent<Character>().characterName);
+            }
             StartCoroutine(delay());
             return;
         }
@@ -475,6 +479,7 @@ public class combatManager : MonoBehaviour
         updateManaText();
         updateCardRemaining(deckCount);
     }
+
 
 }
 

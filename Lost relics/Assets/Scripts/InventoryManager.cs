@@ -19,6 +19,9 @@ public class inventoryManager : MonoBehaviour
 
     [Header("UI")]
     public GameObject playerCanvas;
+    [Header("Quest")]
+    public List<quest> questPrefab = new List<quest>(); //Use to test dont forget to remove later
+    public List<quest> questList = new List<quest>();
 
 
     private void Awake()
@@ -44,6 +47,10 @@ public class inventoryManager : MonoBehaviour
             GameObject eq = Instantiate(GO, this.gameObject.transform);
             equipmentList.Add(eq);
 
+        }
+        foreach (quest originalQuest in questPrefab)
+        {
+            addQuest(originalQuest);
         }
         updatelistIndex();
     }
@@ -89,4 +96,22 @@ public class inventoryManager : MonoBehaviour
             money = 0;
     }
 
+    //Quest
+    public void doKillQuest(string targetName)
+    {
+        foreach (quest q in questList)
+        {
+            if (q is killEnemyQuest)
+            {
+                killEnemyQuest thisQuest = (killEnemyQuest)q;
+                thisQuest.fullfillCondition(targetName);
+            }
+        }
+    }
+
+    public void addQuest(quest newQuest)
+    {
+        quest copiedQuest = Instantiate(newQuest, this.transform);
+        questList.Add(copiedQuest);
+    }
 }

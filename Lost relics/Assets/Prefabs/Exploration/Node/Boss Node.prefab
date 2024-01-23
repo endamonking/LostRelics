@@ -129,5 +129,5 @@ MonoBehaviour:
   linePrefab: {fileID: 4884272530443238322, guid: e5fe689a9df66dc4e917ea32b4e921cf, type: 3}
   enemies:
   - {fileID: 9149397430665950210, guid: b020a9aedf4aace4ab3a8e9966159b47, type: 3}
-  - {fileID: 9149397430665950210, guid: 4431b5d334134e3439350ebe948f9f31, type: 3}
+  - {fileID: 9149397430665950210, guid: 3d3e2a9248e100648ba08bafe15b4b75, type: 3}
   - {fileID: 9149397430665950210, guid: b020a9aedf4aace4ab3a8e9966159b47, type: 3}

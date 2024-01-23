@@ -1096,7 +1096,7 @@ MonoBehaviour:
   basedefPoint: 0
   maxHP: 50
   baseSPD: 5
-  characterName: 
+  characterName: Test monster
   maxPlayerHand: 3
   maxMana: 10
   currentDefpoint: 0
@@ -1152,6 +1152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc4ef2d877dc054bac2093596f9d798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonusMAXHP: 0
-  bonusSpeed: 0
-  bonusDEF: 0
+  head: {fileID: 0}
+  armor: {fileID: 0}
+  accessory: {fileID: 0}
+  headGO: {fileID: 0}
+  armorGO: {fileID: 0}
+  accGO: {fileID: 0}
+  _bonusMAXHP: 0
+  _bonusSpeed: 0
+  _bonusDEF: 0

@@ -8477,6 +8477,11 @@ MonoBehaviour:
   accGO: {fileID: 0}
   equipmentContainer: {fileID: 1543456851}
   playerCanvas: {fileID: 1992421518}
+  questPrefab:
+  - {fileID: 4804100346460335620, guid: 422846edf6a14a74097488f3118b89c8, type: 3}
+  - {fileID: 4804100346460335620, guid: 422846edf6a14a74097488f3118b89c8, type: 3}
+  - {fileID: 4804100346460335620, guid: 422846edf6a14a74097488f3118b89c8, type: 3}
+  questListt: []
 --- !u!1 &1000308319
 GameObject:
   m_ObjectHideFlags: 0
