@@ -20,8 +20,8 @@ public class inventoryManager : MonoBehaviour
     [Header("UI")]
     public GameObject playerCanvas;
     [Header("Quest")]
-    public List<quest> questPrefab = new List<quest>(); //Use to test dont forget to remove later
     public List<quest> questList = new List<quest>();
+    public GameObject questContainer;
 
 
     private void Awake()
@@ -47,10 +47,6 @@ public class inventoryManager : MonoBehaviour
             GameObject eq = Instantiate(GO, this.gameObject.transform);
             equipmentList.Add(eq);
 
-        }
-        foreach (quest originalQuest in questPrefab)
-        {
-            addQuest(originalQuest);
         }
         updatelistIndex();
     }
@@ -111,7 +107,12 @@ public class inventoryManager : MonoBehaviour
 
     public void addQuest(quest newQuest)
     {
-        quest copiedQuest = Instantiate(newQuest, this.transform);
+        quest copiedQuest = Instantiate(newQuest, questContainer.transform);
         questList.Add(copiedQuest);
+    }
+
+    public void removeQuest(quest newQuest)
+    {
+        questList.Remove(newQuest);
     }
 }
