@@ -59,6 +59,7 @@ public class questManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && isPlayerNear == true)
         {
+            inventoryManager.Instance.closePlayerCanvas();
             openQuestBoard();
         }
     }

@@ -380,4 +380,12 @@ public class inventoryCanvas : MonoBehaviour
         itemStatText.text = itemStat;
 
     }
+
+    public void forceClose()
+    {
+        inventoryTab.SetActive(false);
+        characterTab.SetActive(false);
+        deckTab.SetActive(false);
+        this.gameObject.SetActive(false);
+    }
 }

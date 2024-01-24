@@ -45,6 +45,7 @@ public class shopManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && isPlayerNear == true)
         {
+            inventoryManager.Instance.closePlayerCanvas();
             doShop();
         }
 

@@ -115,4 +115,10 @@ public class inventoryManager : MonoBehaviour
     {
         questList.Remove(newQuest);
     }
+
+    //UI
+    public void closePlayerCanvas()
+    {
+        playerCanvas.GetComponent<inventoryCanvas>().forceClose();
+    }
 }

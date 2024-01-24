@@ -53,6 +53,7 @@ public class trainingGround : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && isPlayerNear == true)
         {
+            inventoryManager.Instance.closePlayerCanvas();
             doTraining();
         }
     }
