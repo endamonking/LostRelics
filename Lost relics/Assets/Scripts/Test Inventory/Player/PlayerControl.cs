@@ -48,6 +48,10 @@ public class PlayerControl : MonoBehaviour
         {
             showInventoryTab(2);
         }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            showInventoryTab(3);
+        }
     }
 
     private void FixedUpdate()

@@ -6,12 +6,14 @@ using TMPro;
 
 public class inventoryCanvas : MonoBehaviour
 {
+    public static inventoryCanvas Instance;
     public GameObject[] playerList;
 
     [Header("Tab")]
     public GameObject inventoryTab;
     public GameObject characterTab;
     public GameObject deckTab;
+    public GameObject questTab;
     [Header("Inventory UI")]
     public GameObject inventoryScreen; 
     public Image itemPic;
@@ -35,12 +37,35 @@ public class inventoryCanvas : MonoBehaviour
     [Header("Character deck")]
     public GameObject deckBox;
     public Image characterDeckPortrait;
+    [Header("Quest UI")]
+    public GameObject questContainer;
+    public GameObject questDetail;
+    public GameObject questButtonPrefab;
+    public TextMeshProUGUI questName;
+    public TextMeshProUGUI questDescription;
+    public TextMeshProUGUI questStatus;
+
 
     private int characterIndex = 0;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        // If an instance already exists, destroy the new one
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            // Set the instance to this if it doesn't exist
+            Instance = this;
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Start()
     {
-        playerList = GameObject.FindGameObjectsWithTag("Player");
+        //playerList = GameObject.FindGameObjectsWithTag("Player");
         itemPic.enabled = false;
         itemDesText.enabled = false;
         itemStatText.enabled = false;
@@ -48,6 +73,7 @@ public class inventoryCanvas : MonoBehaviour
         inventoryTab.SetActive(false);
         characterTab.SetActive(false);
         deckTab.SetActive(false);
+        questTab.SetActive(false);
         equipmentBoxParent.SetActive(false);
 
         this.gameObject.SetActive(false);
@@ -65,6 +91,17 @@ public class inventoryCanvas : MonoBehaviour
         clearInventory();
         clearEquipmentBox();
         clearDeckBox();
+        //Find player
+        playerList = new GameObject[0];
+        playerList = GameObject.FindGameObjectsWithTag("Player");
+        if (playerList.Length <= 0)
+        {
+            if (exploration_sceneManager.Instance != null)
+            {
+                playerList = exploration_sceneManager.Instance.playerPool.ToArray();
+            }
+                
+        }
         switch (tabIndex)
         {
             case 0://Inventory
@@ -75,6 +112,9 @@ public class inventoryCanvas : MonoBehaviour
                 break;
             case 2:
                 move = showCharacterDeck();
+                break;
+            case 3:
+                move = showQuestTab();
                 break;
         }
         return move;
@@ -141,6 +181,26 @@ public class inventoryCanvas : MonoBehaviour
         return move;
     }
 
+    private int showQuestTab()
+    {
+        int move = 0;
+        if (questTab.activeSelf)
+        {
+            closeAllTab();
+            this.gameObject.SetActive(false); // CLose canas 
+            move = 0;
+        }
+        else
+        {
+            this.gameObject.SetActive(true);
+            closeAllTab();
+            questTab.SetActive(true);
+            generateQuest();
+            move = 1;
+        }
+        return move;
+    }
+
     private void openCharacterTab()
     {
         equipmentBoxParent.SetActive(false);
@@ -169,6 +229,7 @@ public class inventoryCanvas : MonoBehaviour
     {
         if (equipmentBoxParent.activeSelf != true)
             equipmentBoxParent.SetActive(true);
+
         equipmentType eqType = equipmentType.HEAD;
         switch (eqIndex)
         {
@@ -318,6 +379,8 @@ public class inventoryCanvas : MonoBehaviour
         characterTab.SetActive(false);
         inventoryTab.SetActive(false);
         deckTab.SetActive(false);
+        questTab.SetActive(false);
+        questDetail.SetActive(false);
 
     }
 
@@ -387,5 +450,38 @@ public class inventoryCanvas : MonoBehaviour
         characterTab.SetActive(false);
         deckTab.SetActive(false);
         this.gameObject.SetActive(false);
+    }
+
+    // Quest
+    private void generateQuest()
+    {
+        questDetail.SetActive(false);
+        clearQuestContainer();
+
+        foreach (quest q in inventoryManager.Instance.questList)
+        {
+            GameObject eq = Instantiate(questButtonPrefab, questContainer.transform);
+            Button but = eq.GetComponent<Button>();
+            but.onClick.RemoveAllListeners();
+            but.onClick.AddListener(() => printCompleteQuestDetail(q));
+            eq.GetComponentInChildren<TextMeshProUGUI>().text = q.questName;
+        }
+    }
+    private void clearQuestContainer()
+    {
+        foreach (Transform child in questContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    private void printCompleteQuestDetail(quest thisQuest)
+    {
+        questDetail.SetActive(true);
+        questName.text = thisQuest.questName;
+        questDescription.text = thisQuest.questDescription;
+        if (thisQuest.isComplete)
+            questStatus.text = "Status : Complete";
+        else
+            questStatus.text = "Status : Not complete";
     }
 }
