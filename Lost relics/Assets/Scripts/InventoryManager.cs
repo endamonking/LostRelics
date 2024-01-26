@@ -74,7 +74,26 @@ public class inventoryManager : MonoBehaviour
 
     public void removeItem(int Index)
     {
+        Destroy(equipmentList[Index]);
         equipmentList.RemoveAt(Index);
+        updatelistIndex();
+    }
+
+    public void removeMultipleItems(List<int> IndexList)
+    {
+        IndexList.Sort((a, b) => b.CompareTo(a));
+        foreach (int index in IndexList)
+        {
+            if (index >= 0 && index < equipmentList.Count)
+            {
+                Destroy(equipmentList[index]);
+                equipmentList.RemoveAt(index);
+            }
+            else
+            {
+                Debug.LogWarning("Index out of range: " + index);
+            }
+        }
         updatelistIndex();
     }
 

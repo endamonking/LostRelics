@@ -33,7 +33,11 @@ public class questManager : MonoBehaviour
     public TextMeshProUGUI completeQuestDescription;
     public TextMeshProUGUI completeMoneyText;
     public TextMeshProUGUI questStatus;
+    public GameObject sendingItemContainer;
+    public GameObject sendingItemBox;
     private quest selectedCompleteQuest = null;
+    [SerializeField]
+    private List<equipment> selectSendingEquipment = new List<equipment>();
 
     private bool isPlayerNear = false;
     private bool isOpen = false;
@@ -219,23 +223,102 @@ public class questManager : MonoBehaviour
         questCompleteDetail.SetActive(true);
         completeQuestName.text = selectedCompleteQuest.questName;
         completeQuestDescription.text = selectedCompleteQuest.questDescription;
-        if (selectedCompleteQuest.isComplete)
-            questStatus.text = "Status : Complete";
+        if (selectedCompleteQuest is giveItemQuest) //Check is give item quest type
+        {
+            sendingItemBox.SetActive(true);
+            questStatus.gameObject.SetActive(false);
+            clearItemInContainer(sendingItemContainer);
+            giveItemQuest thisQuest = (giveItemQuest)selectedCompleteQuest;
+            createEquipmentToSend(thisQuest.targetEquipmentType);
+
+        }
         else
-            questStatus.text = "Status : Not complete";
+        {
+            sendingItemBox.SetActive(false);
+            questStatus.gameObject.SetActive(true);
+            if (selectedCompleteQuest.isComplete)
+                questStatus.text = "Status : Complete";
+            else
+                questStatus.text = "Status : Not complete";
+        }
     }
+
+    private void createEquipmentToSend(equipmentType eqType)
+    {
+        List<GameObject> eqList = new List<GameObject>();
+        eqList.AddRange(inventoryManager.Instance.equipmentList);
+        selectSendingEquipment.Clear();
+
+        foreach (GameObject equipmentGO in eqList)
+        {
+            if (equipmentGO.GetComponent<equipment>().equipmentType != eqType || equipmentGO.GetComponent<equipment>().isEquiped == true)
+                continue;
+
+            GameObject eq = Instantiate(equipmentGO, sendingItemContainer.transform);
+            eq.GetComponent<equipment>().setEquipmentPic();
+            eq.GetComponent<Image>().enabled = true;
+            Button but = eq.GetComponent<Button>();
+            if (but == null)
+                eq.AddComponent<Button>();
+            eq.GetComponent<Button>().onClick.RemoveAllListeners();
+            eq.GetComponent<Button>().onClick.AddListener(() => clickToSelectSendingEquipment(eq.GetComponent<equipment>()));
+
+
+        }
+
+    }
+
     public void sendQuest()
     {
         if (selectedCompleteQuest == null)
             return;
 
-        if (selectedCompleteQuest.isComplete)
+        if (selectedCompleteQuest is killEnemyQuest)
         {
-            inventoryManager.Instance.addMoney(selectedCompleteQuest.moneyReward);
-            inventoryManager.Instance.removeQuest(selectedCompleteQuest);
-            generateCompleteQuest();
+            if (selectedCompleteQuest.isComplete)
+            {
+                inventoryManager.Instance.addMoney(selectedCompleteQuest.moneyReward);
+                inventoryManager.Instance.removeQuest(selectedCompleteQuest);
+                generateCompleteQuest();
+            }
+        }
+        else if (selectedCompleteQuest is giveItemQuest)
+        {
+            giveItemQuest sendingQuest = (giveItemQuest)selectedCompleteQuest;
+            if (sendingQuest.fullfillCondition(selectSendingEquipment))
+            {
+                inventoryManager.Instance.addMoney(selectedCompleteQuest.moneyReward);
+                inventoryManager.Instance.removeQuest(selectedCompleteQuest);
+                List<int> eqIndexList = new List<int>();
+                foreach (equipment eq in selectSendingEquipment)
+                {
+                    eqIndexList.Add(eq.equipmentIndexInList);
+                }
+                inventoryManager.Instance.removeMultipleItems(eqIndexList);
+                generateCompleteQuest();
+            }
+        }
+
+    }
+
+    private void clickToSelectSendingEquipment(equipment thisEquipment)
+    {
+        if (selectSendingEquipment.Contains(thisEquipment))
+        {
+            selectSendingEquipment.Remove(thisEquipment);
+            Color imgC = thisEquipment.gameObject.GetComponent<Image>().color;
+            imgC.a = 1f;
+            thisEquipment.gameObject.GetComponent<Image>().color = imgC;
+        }
+        else
+        {
+            selectSendingEquipment.Add(thisEquipment);
+            Color imgC = thisEquipment.gameObject.GetComponent<Image>().color;
+            imgC.a = 0.5f;
+            thisEquipment.gameObject.GetComponent<Image>().color = imgC;
         }
     }
+
     private void changeSnedTabColor()
     {
         ColorBlock semdcolorBlock = openSendTab.colors;
