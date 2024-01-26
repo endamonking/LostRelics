@@ -36,8 +36,8 @@ public class questManager : MonoBehaviour
     public GameObject sendingItemContainer;
     public GameObject sendingItemBox;
     private quest selectedCompleteQuest = null;
-    [SerializeField]
     private List<equipment> selectSendingEquipment = new List<equipment>();
+    private int maxItems = 0;
 
     private bool isPlayerNear = false;
     private bool isOpen = false;
@@ -223,12 +223,14 @@ public class questManager : MonoBehaviour
         questCompleteDetail.SetActive(true);
         completeQuestName.text = selectedCompleteQuest.questName;
         completeQuestDescription.text = selectedCompleteQuest.questDescription;
+        maxItems = 0;
         if (selectedCompleteQuest is giveItemQuest) //Check is give item quest type
         {
             sendingItemBox.SetActive(true);
             questStatus.gameObject.SetActive(false);
             clearItemInContainer(sendingItemContainer);
             giveItemQuest thisQuest = (giveItemQuest)selectedCompleteQuest;
+            maxItems = thisQuest.numberOfItem;
             createEquipmentToSend(thisQuest.targetEquipmentType);
 
         }
@@ -248,7 +250,7 @@ public class questManager : MonoBehaviour
         List<GameObject> eqList = new List<GameObject>();
         eqList.AddRange(inventoryManager.Instance.equipmentList);
         selectSendingEquipment.Clear();
-
+   
         foreach (GameObject equipmentGO in eqList)
         {
             if (equipmentGO.GetComponent<equipment>().equipmentType != eqType || equipmentGO.GetComponent<equipment>().isEquiped == true)
@@ -262,7 +264,6 @@ public class questManager : MonoBehaviour
                 eq.AddComponent<Button>();
             eq.GetComponent<Button>().onClick.RemoveAllListeners();
             eq.GetComponent<Button>().onClick.AddListener(() => clickToSelectSendingEquipment(eq.GetComponent<equipment>()));
-
 
         }
 
@@ -312,6 +313,14 @@ public class questManager : MonoBehaviour
         }
         else
         {
+            if (selectSendingEquipment.Count >= maxItems)
+            {
+                Color img = selectSendingEquipment[0].gameObject.GetComponent<Image>().color;
+                img.a = 1f;
+                selectSendingEquipment[0].gameObject.GetComponent<Image>().color = img;
+                selectSendingEquipment.RemoveAt(0);
+            }
+
             selectSendingEquipment.Add(thisEquipment);
             Color imgC = thisEquipment.gameObject.GetComponent<Image>().color;
             imgC.a = 0.5f;
