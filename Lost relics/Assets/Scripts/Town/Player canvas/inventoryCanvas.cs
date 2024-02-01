@@ -14,6 +14,7 @@ public class inventoryCanvas : MonoBehaviour
     public GameObject characterTab;
     public GameObject deckTab;
     public GameObject questTab;
+    public List<GameObject> buttonNavbar = new List<GameObject>();
     [Header("Inventory UI")]
     public GameObject inventoryScreen; 
     public Image itemPic;
@@ -105,15 +106,19 @@ public class inventoryCanvas : MonoBehaviour
         switch (tabIndex)
         {
             case 0://Inventory
+                changeReceiveTabColor(0);
                 move = showInventoryTab();
                 break;
             case 1:
+                changeReceiveTabColor(1);
                 move = showCharacterTab();
                 break;
             case 2:
+                changeReceiveTabColor(2);
                 move = showCharacterDeck();
                 break;
             case 3:
+                changeReceiveTabColor(3);
                 move = showQuestTab();
                 break;
         }
@@ -484,4 +489,32 @@ public class inventoryCanvas : MonoBehaviour
         else
             questStatus.text = "Status : Not complete";
     }
+
+    //Navbar
+
+    public void changeTabButton(int tab)
+    {
+        openTab(tab);
+    }
+
+    private void changeReceiveTabColor(int tabIndex)
+    {
+        int i = 0;
+        foreach (GameObject button in buttonNavbar)
+        {
+            ColorBlock sendcolorBlock = button.GetComponent<Button>().colors;
+            sendcolorBlock.normalColor = new Color(255f, 255f, 255f, 0.5f);
+            button.GetComponent<Button>().colors = sendcolorBlock;
+
+            if (i == tabIndex)
+            {
+                ColorBlock colorBlock = button.GetComponent<Button>().colors;
+                colorBlock.normalColor = new Color(255f, 255f, 255f, 1f);
+                button.GetComponent<Button>().colors = colorBlock;
+            }
+
+            i++;
+        }
+    }
+
 }
