@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     public int maxMana = 10;
     public int currentDefpoint;
     public int currentHP, currentSPD;
-    public int baseArmorPen = 0, baseCritRate = 20, baseCritDMG = 0, baseATK = 30;
+    public int baseArmorPen = 0, baseCritRate = 20, baseCritDMG = 0, baseATK = 30, baseHeal = 10;
 
     public List<buff> activeBuffs = new List<buff>();
     public List<buff> activeDeBuffs = new List<buff>();
@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
     {
         get
         {
-            float totalAttack = baseATK;
+            float totalAttack = baseATK + equipmentStats.bonusATK;
             if (stanceValue.ContainsKey("ATK"))
             {
                 totalAttack = totalAttack + (stanceValue["ATK"] * baseATK / 100.0f);
@@ -125,20 +125,20 @@ public class Character : MonoBehaviour
             float totalValue = baseArmorPen;
             if (stanceValue.ContainsKey("AP"))
             {
-                totalValue = totalValue + (stanceValue["AP"] * baseArmorPen / 100.0f);
+                totalValue = totalValue + stanceValue["AP"];
             }
             foreach (buff buff in activeBuffs)
             {
                 if (buff.buffs.ContainsKey("AP"))
                 {
-                    totalValue = totalValue + (buff.buffs["AP"] * baseArmorPen / 100.0f);
+                    totalValue = totalValue + buff.buffs["AP"];
                 }
             }
             foreach (buff buff in activeDeBuffs)
             {
                 if (buff.buffs.ContainsKey("AP"))
                 {
-                    totalValue = totalValue + (buff.buffs["AP"] * baseArmorPen / 100.0f);
+                    totalValue = totalValue + buff.buffs["AP"];
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
@@ -150,23 +150,23 @@ public class Character : MonoBehaviour
         
         get
         {
-            float totalValue = baseCritRate;
+            float totalValue = baseCritRate + equipmentStats.bonusCRITRATE;
             if (stanceValue.ContainsKey("CRITRate"))
             {
-                totalValue = totalValue + (stanceValue["CRITRate"] * baseCritRate / 100.0f);
+                totalValue = totalValue + stanceValue["CRITRate"];
             }
             foreach (buff buff in activeBuffs)
             {
                 if (buff.buffs.ContainsKey("CRITRate"))
                 {
-                    totalValue = totalValue + (buff.buffs["CRITRate"] * baseCritRate / 100.0f);
+                    totalValue = totalValue + buff.buffs["CRITRate"];
                 }
             }
             foreach (buff buff in activeDeBuffs)
             {
                 if (buff.buffs.ContainsKey("CRITRate"))
                 {
-                    totalValue = totalValue + (buff.buffs["CRITRate"] * baseCritRate / 100.0f);
+                    totalValue = totalValue + buff.buffs["CRITRate"];
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
@@ -181,20 +181,20 @@ public class Character : MonoBehaviour
             float totalValue = baseCritDMG;
             if (stanceValue.ContainsKey("CRITDMG"))
             {
-                totalValue = totalValue + (stanceValue["CRITDMG"] * baseCritDMG / 100.0f);
+                totalValue = totalValue + stanceValue["CRITDMG"];
             }
             foreach (buff buff in activeBuffs)
             {
                 if (buff.buffs.ContainsKey("CRITDMG"))
                 {
-                    totalValue = totalValue + (buff.buffs["CRITDMG"] * baseCritDMG / 100.0f);
+                    totalValue = totalValue + buff.buffs["CRITDMG"];
                 }
             }
             foreach (buff buff in activeDeBuffs)
             {
                 if (buff.buffs.ContainsKey("CRITDMG"))
                 {
-                    totalValue = totalValue + (buff.buffs["CRITDMG"] * baseCritDMG / 100.0f);
+                    totalValue = totalValue + buff.buffs["CRITDMG"];
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
@@ -268,6 +268,34 @@ public class Character : MonoBehaviour
                 }
             }
             return totalValue;
+        }
+    }
+    public int inComHeal
+    {
+
+        get
+        {
+            float totalValue = baseHeal + equipmentStats.bonusHEAL;
+            if (stanceValue.ContainsKey("HEAL"))
+            {
+                totalValue = totalValue + stanceValue["HEAL"];
+            }
+            foreach (buff buff in activeBuffs)
+            {
+                if (buff.buffs.ContainsKey("HEAL"))
+                {
+                    totalValue = totalValue + buff.buffs["HEAL"];
+                }
+            }
+            foreach (buff buff in activeDeBuffs)
+            {
+                if (buff.buffs.ContainsKey("HEAL"))
+                {
+                    totalValue = totalValue + buff.buffs["HEAL"];
+                }
+            }
+            int finalValue = Mathf.FloorToInt(totalValue);
+            return finalValue;
         }
     }
 
@@ -365,7 +393,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void applyActiveBuff(buff activeBuff)
@@ -539,6 +567,9 @@ public class Character : MonoBehaviour
         int defReduction = GetDeBuffValue("DEFReduction");
         int damageReduction = GetBuffValue("DMGReduction");
         float randomNumber = Random.value;
+        //Case AP exceed 100
+        if (enemyArmorPen >= 100)
+            enemyArmorPen = 100;
 
         if (randomNumber < enemyCritRate / 100.0f) //Critical hit
             damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus / 100.0f) - (damageReduction / 100.0f)) * skillMutiplier * (1.5f + (enemyCritDMG/100.0f) - (inComCritRes/100.0f));

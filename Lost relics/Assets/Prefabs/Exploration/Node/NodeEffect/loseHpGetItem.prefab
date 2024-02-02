@@ -45,3 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loseHP: 35
+  maxGetItem: 1
+  itemSpawnList:
+  - {fileID: 8726145279859662147, guid: 38a18d9fbfeda24448c747082459af26, type: 3}
+  - {fileID: 7444360181684797394, guid: 441a31da81e191544b1461dde0621596, type: 3}
+  - {fileID: 3292838450487307666, guid: 00808b797dd2e764abfba8cba153b5aa, type: 3}

@@ -11,10 +11,12 @@ public enum equipmentType
 public abstract class equipment : MonoBehaviour
 {
     [Header("Status")]
+    public int ATK = 0;
     public int HP = 0;
     public int DEF = 0;
     public int SPD = 0;
     public int CRITChance = 0;
+    public int HEAL = 0;
     public int value = 0; // Price
     public string equipmentDes;
     public string equipmentName;

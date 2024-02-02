@@ -34,6 +34,10 @@ public class exploration_sceneManager : MonoBehaviour
     public List<explorationBuffAndDebuff> buffInExploration = new List<explorationBuffAndDebuff>();
     public List<explorationBuffAndDebuff> debuffInExploration = new List<explorationBuffAndDebuff>();
 
+    [Header("Get item")]
+    public GameObject getItemTab;
+    public GameObject getItemContainer;
+
     public bool isLerping = false;
     public bool isEvent = false;
 
@@ -54,6 +58,8 @@ public class exploration_sceneManager : MonoBehaviour
             playerPool.Add(obj);
             obj.SetActive(false);
         }
+        getItemTab.SetActive(false);
+        EventCanvas.SetActive(false);
 
     }
 
@@ -196,4 +202,31 @@ public class exploration_sceneManager : MonoBehaviour
         // Enable all GameObjects in the main scene
         EnableMainSceneObjects();
     }
+
+    //Get item
+    private void clearGetItemContainer()
+    {
+        foreach (Transform child in getItemContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    public void showingGetItem(List<GameObject> itemList)
+    {
+        clearGetItemContainer();
+        isEvent = true;
+        getItemTab.SetActive(true);
+        foreach (GameObject equipmentGO in itemList)
+        {
+            GameObject eq = Instantiate(equipmentGO, getItemContainer.transform);
+            eq.GetComponent<equipment>().setEquipmentPic();
+        }
+    }
+    public void closeGetItemScreen()
+    {
+        getItemTab.SetActive(false);
+        isEvent = false;
+    }
+
 }

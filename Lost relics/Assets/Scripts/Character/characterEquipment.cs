@@ -11,9 +11,26 @@ public class characterEquipment : MonoBehaviour
     public GameObject armorGO;
     public GameObject accGO;
 
+    // ATK,MAxHp,Speed,DEf,Critrate,Heal
+    public int bonusATK
+    {
+        get
+        {
+            int finalValue = 0, headValue = 0, armorValue = 0, accValue = 0;
 
-    [SerializeField]
-    private int _bonusMAXHP = 0, _bonusSpeed = 0, _bonusDEF = 0;
+            if (head != null)
+                headValue = head.ATK;
+            if (armor != null)
+                armorValue = armor.ATK;
+            if (accessory != null)
+                accValue = accessory.ATK;
+
+            finalValue = headValue + armorValue + accValue;
+
+
+            return finalValue;
+        }
+    }
     public int bonusMAXHP
     {
         get
@@ -71,7 +88,44 @@ public class characterEquipment : MonoBehaviour
             return finalValue;
         }
     }
+    public int bonusCRITRATE
+    {
+        get
+        {
+            int finalValue = 0, headValue = 0, armorValue = 0, accValue = 0;
 
+            if (head != null)
+                headValue = head.CRITChance;
+            if (armor != null)
+                armorValue = armor.CRITChance;
+            if (accessory != null)
+                accValue = accessory.CRITChance;
+
+            finalValue = headValue + armorValue + accValue;
+
+
+            return finalValue;
+        }
+    }
+    public int bonusHEAL
+    {
+        get
+        {
+            int finalValue = 0, headValue = 0, armorValue = 0, accValue = 0;
+
+            if (head != null)
+                headValue = head.HEAL;
+            if (armor != null)
+                armorValue = armor.HEAL;
+            if (accessory != null)
+                accValue = accessory.HEAL;
+
+            finalValue = headValue + armorValue + accValue;
+
+
+            return finalValue;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

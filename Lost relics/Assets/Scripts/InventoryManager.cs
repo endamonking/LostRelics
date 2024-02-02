@@ -97,6 +97,9 @@ public class inventoryManager : MonoBehaviour
         updatelistIndex();
     }
 
+    //use to add item to Iventory by set parent of gameobject
+    //So the new item must be new Gameobject Example (GameObject eq = Instantiate(equipmentGO, otherGO.transform))
+    
     public void addItem (GameObject newItem)
     {
         equipmentList.Add(newItem);

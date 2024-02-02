@@ -222,9 +222,10 @@ public class inventoryCanvas : MonoBehaviour
     {
         string displayText = "MAX HP " + (player.maxHP + playerEquipment.bonusMAXHP).ToString()+"\n";
         displayText = displayText + "Current HP " + player.currentHP+"\n";
-        displayText = displayText + "Attack power " + player.baseATK + "\n";
+        displayText = displayText + "Attack power " + (player.baseATK + playerEquipment.bonusATK).ToString() + "\n";
         displayText = displayText + "Defend " + (player.basedefPoint + playerEquipment.bonusDEF).ToString()+"\n";
-        displayText = displayText + "Speed " + (player.baseSPD + playerEquipment.bonusSpeed);
+        displayText = displayText + "Speed " + (player.baseSPD + playerEquipment.bonusSpeed + "\n");
+        displayText = displayText + "Crit rate " + (player.baseCritRate + playerEquipment.bonusCRITRATE + "\n");
 
         characterStat.text = displayText;
     }
@@ -307,11 +308,12 @@ public class inventoryCanvas : MonoBehaviour
     private string printEquipStat(equipment item)
     {
         string outputString = "";
-        string itemStat = (item.HP > 0) ? ("HP + " + item.HP.ToString() + "\n") : "";
-
-        itemStat = itemStat + ((item.DEF > 0) ? ("DEF + " + item.DEF.ToString() + "\n") : "");
-        itemStat = itemStat + ((item.SPD > 0) ? ("SPD + " + item.SPD.ToString() + "\n") : "");
-        itemStat = itemStat + ((item.CRITChance > 0) ? ("Crit chance + " + item.CRITChance.ToString() + "%\n") : "");
+        string itemStat = item.equipmentName + "\n";
+        itemStat = itemStat + ((item.ATK != 0) ? "ATK " + ((item.ATK > 0) ? "+ " : "- ") + Mathf.Abs(item.ATK).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.HP != 0) ? "HP " + ((item.HP > 0) ? "+ " : "- ") + Mathf.Abs(item.HP).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.DEF != 0) ? "DEF " + ((item.DEF > 0) ? "+ " : "- ") + Mathf.Abs(item.DEF).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.SPD != 0) ? "ATK " + ((item.SPD > 0) ? "+ " : "- ") + Mathf.Abs(item.SPD).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.CRITChance != 0) ? "Crit rate " + ((item.CRITChance > 0) ? "+ " : "- ") + Mathf.Abs(item.CRITChance).ToString() + "\n" : "");
 
         outputString = itemStat;
         return outputString;
@@ -439,11 +441,12 @@ public class inventoryCanvas : MonoBehaviour
 
         itemPic.sprite = item.pic;
         itemDesText.text = item.equipmentDes;
-        string itemStat = (item.HP > 0) ? ("HP + " +item.HP.ToString() + "\n") : "";
-
-        itemStat = itemStat + ((item.DEF > 0) ? ("DEF + " + item.DEF.ToString() + "\n") : "");
-        itemStat = itemStat + ((item.SPD > 0) ? ("SPD + " + item.SPD.ToString() + "\n") : "");
-        itemStat = itemStat + ((item.CRITChance > 0) ? ("Crit chance + " + item.CRITChance.ToString() + "%\n") : "");
+        string itemStat = item.equipmentName + "\n";
+        itemStat = itemStat + ((item.ATK != 0) ? "ATK " + ((item.ATK > 0) ? "+ " : "- ") + Mathf.Abs(item.ATK).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.HP != 0) ? "HP " + ((item.HP > 0) ? "+ " : "- ") + Mathf.Abs(item.HP).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.DEF != 0) ? "DEF " + ((item.DEF > 0) ? "+ " : "- ") + Mathf.Abs(item.DEF).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.SPD != 0) ? "ATK " + ((item.SPD > 0) ? "+ " : "- ") + Mathf.Abs(item.SPD).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.CRITChance != 0) ? "Crit rate " + ((item.CRITChance > 0) ? "+ " : "- ") + Mathf.Abs(item.CRITChance).ToString() + "\n" : "");
 
         itemStatText.text = itemStat;
 
