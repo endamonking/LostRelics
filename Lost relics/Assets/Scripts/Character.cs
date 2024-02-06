@@ -15,23 +15,22 @@ public class Character : MonoBehaviour
     public int currentDefpoint;
     public int currentHP, currentSPD;
     public int baseArmorPen = 0, baseCritRate = 20, baseCritDMG = 0, baseATK = 30, baseHeal = 10;
-
+    [Header("Buff")]
     public List<buff> activeBuffs = new List<buff>();
     public List<buff> activeDeBuffs = new List<buff>();
 
-    private cardHandler cardHandler;
-    
-    private CharacterBar hpBar;
-    private TextMeshProUGUI stanceText;
-
-    private characterEquipment equipmentStats;
-
+    [Header("Stance")]
     public stance myStance = stance.None;
     public stance myPreviousStance;
     private Dictionary<string, int> stanceValue = new Dictionary<string, int>();
-
     private buffContainer buffContainer;
-
+    private TextMeshProUGUI stanceText;
+    [Header("Passive skill")]
+    public uniquePassSkill characterPassiveSkill;
+    //Script
+    private CharacterBar hpBar;
+    private characterEquipment equipmentStats;
+    private cardHandler cardHandler;
     public int inComATK
     {
         get
@@ -325,6 +324,8 @@ public class Character : MonoBehaviour
         startBuff.AddRange(activeBuffs);
         startBuff.AddRange(activeDeBuffs);
         buffContainer.updateBuffIconUI(startBuff);
+        //Passive
+        characterPassiveSkill.initPassive(this.gameObject);
     }
     
     public void changingStance(stance inTo)

@@ -140,6 +140,31 @@ public class combatManager : MonoBehaviour
         _stateText.text = state.ToString();
     }
 
+    public void changeTurn(BattleState newState, GameObject newGO)
+    {
+        state = newState;
+        _stateText.text = state.ToString();
+        currentObjTurn = newGO;
+        //Character passive
+        IStartturnEffect passiveSkill = newGO.GetComponent<Character>().characterPassiveSkill.GetComponent<IStartturnEffect>();
+        if (passiveSkill != null)
+            passiveSkill.onStartTurn();
+        //Equipment
+        characterEquipment characterEQ = newGO.GetComponent<characterEquipment>();
+        List<equipment> eqList = new List<equipment>();
+        eqList.Add(characterEQ.head);
+        eqList.Add(characterEQ.armor);
+        eqList.Add(characterEQ.accessory);
+        foreach(equipment eq in eqList)
+        {
+            if (eq is IStartturnEffect)
+            {
+                IStartturnEffect skill = eq as IStartturnEffect;
+                skill.onStartTurn();       
+            }
+        }
+    }
+
     public void endTurn()
     {
         if (currentObjTurn == null || isAction == true)

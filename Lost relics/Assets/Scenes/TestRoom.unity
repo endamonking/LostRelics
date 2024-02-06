@@ -3917,7 +3917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &315090632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12383,6 +12383,7 @@ MonoBehaviour:
   - {fileID: 7444360181684797394, guid: 441a31da81e191544b1461dde0621596, type: 3}
   - {fileID: 3292838450487307666, guid: 00808b797dd2e764abfba8cba153b5aa, type: 3}
   - {fileID: 4177447943656681649, guid: fd81fc32b67af3e42a4c75bcc45016e1, type: 3}
+  - {fileID: 2907513113465176265, guid: 9835778ae0c67b04cbc6986bc394babd, type: 3}
   equipmentList: []
   equipementPrefab: {fileID: 7444360181684797394, guid: 441a31da81e191544b1461dde0621596, type: 3}
   headGO: {fileID: 0}
@@ -12901,6 +12902,10 @@ PrefabInstance:
       propertyPath: characterName
       value: Test
       objectReference: {fileID: 0}
+    - target: {fileID: 5773250614602927456, guid: 23afa937c775a9246b07fe86471cd969, type: 3}
+      propertyPath: characterPassiveSkill
+      value: 
+      objectReference: {fileID: 3227317821961898870, guid: ab1ce1953f3c1c047b25b6983861cc21, type: 3}
     - target: {fileID: 6960469935385096000, guid: 23afa937c775a9246b07fe86471cd969, type: 3}
       propertyPath: m_RootOrder
       value: 16

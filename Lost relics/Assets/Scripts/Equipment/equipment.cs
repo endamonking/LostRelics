@@ -8,6 +8,15 @@ public enum equipmentType
 {
     HEAD,ARMORE,ACCESSORY
 }
+
+public interface IStartturnEffect
+{
+    void onStartTurn();
+}
+public interface IEndturnEffect
+{
+    void onEndTurn();
+}
 public abstract class equipment : MonoBehaviour
 {
     [Header("Status")]

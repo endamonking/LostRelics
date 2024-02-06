@@ -18,8 +18,7 @@ public class playerCarHandler : cardHandler
         if (turnGauge <= 0 && comIns.state == BattleState.NORMAL)
         {
             Debug.Log(this.gameObject.name);
-            comIns.changeTurn(BattleState.PLAYER);
-            comIns.currentObjTurn = this.gameObject;
+            comIns.changeTurn(BattleState.PLAYER, this.gameObject);
             drawCard();
             displayInhandCard();
         }
