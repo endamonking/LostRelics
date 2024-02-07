@@ -127,12 +127,26 @@ public abstract class cardHandler : MonoBehaviour
         }
 
     }
-
-    public void drawCard()
+    //use to add card to hand not via deck ( similar to draw but usally use on Token card )
+    public void createCardToHand(Card createdCard)
     {
         if (cardInHand.Count >= handLimit) // card in hand reach hand limit
         {
-            discardedDeck.Add(cardInHand[0]);
+            if (cardInHand[0].isToken == false)
+                discardedDeck.Add(cardInHand[0]);
+
+            cardInHand.RemoveAt(0);
+        }
+        cardInHand.Add(createdCard);
+    }
+
+    public void drawCard()
+    {
+
+        if (cardInHand.Count >= handLimit) // card in hand reach hand limit
+        {
+            if (cardInHand[0].isToken == false)
+                discardedDeck.Add(cardInHand[0]);
             cardInHand.RemoveAt(0);
             addCardTohand();
         }
@@ -160,6 +174,25 @@ public abstract class cardHandler : MonoBehaviour
         //normal draw case
         cardInHand.Add(_currentDeck[0]);
         _currentDeck.RemoveAt(0);
+    }
+    //Use to make card in hand = max hand if it exceed the hand limit
+    //Will use it at the end of turn;
+    public void resetCardInHand()
+    {
+        int exceedNumber = cardInHand.Count- handLimit;
+        if (exceedNumber > 0) // card in hand reach hand limit
+        {
+            for (int i = 0; i < exceedNumber; i++)
+            {
+                if (cardInHand[0].isToken == false)
+                {
+                    discardedDeck.Add(cardInHand[0]);
+
+                }
+
+                cardInHand.RemoveAt(0);
+            }
+        }
     }
 
     // use to restore current deck

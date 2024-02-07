@@ -17,6 +17,7 @@ public interface IEndturnEffect
 {
     void onEndTurn();
 }
+
 public abstract class equipment : MonoBehaviour
 {
     [Header("Status")]

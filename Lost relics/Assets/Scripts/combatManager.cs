@@ -16,7 +16,7 @@ public class usingCardQ
 
 public enum stance
 {
-    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation
+    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed
 }
 
 public class combatManager : MonoBehaviour
@@ -146,9 +146,12 @@ public class combatManager : MonoBehaviour
         _stateText.text = state.ToString();
         currentObjTurn = newGO;
         //Character passive
-        IStartturnEffect passiveSkill = newGO.GetComponent<Character>().characterPassiveSkill.GetComponent<IStartturnEffect>();
-        if (passiveSkill != null)
+        if (newGO.GetComponent<Character>().characterPassiveSkill != null)
+        {
+            IStartturnEffect passiveSkill = newGO.GetComponent<Character>().characterPassiveSkill.GetComponent<IStartturnEffect>();
             passiveSkill.onStartTurn();
+
+        }
         //Equipment
         characterEquipment characterEQ = newGO.GetComponent<characterEquipment>();
         List<equipment> eqList = new List<equipment>();
@@ -163,18 +166,40 @@ public class combatManager : MonoBehaviour
                 skill.onStartTurn();       
             }
         }
+        //ApplyBuff and Debuff Effect
+        newGO.GetComponent<Character>().applyDebuffEffect();
     }
 
+    public void doEndTurnEffect()
+    {
+        Character character = currentObjTurn.GetComponent<Character>();
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(character.activeBuffs);
+        allBuff.AddRange(character.activeDeBuffs);
+        allBuff.AddRange(character.activeUnClearBuffs);
+        allBuff.AddRange(character.activeUnClearDeBuffs);
+        foreach (buff a in allBuff)
+        {
+            if (a.doEndTurnFunction != null)
+            {
+                a.doEndTurnFunction();
+            }
+        }
+    }
     public void endTurn()
     {
         if (currentObjTurn == null || isAction == true)
             return;
+        //Reset character
         cardHandler user = currentObjTurn.GetComponent<cardHandler>();
         inUseCard.Clear();
         user.destroyInHandCard();
+        //user.resetCardInHand();
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
         currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
+        doEndTurnEffect();
+        //clear var
         currentObjTurn = null;
         target = null;
         if (endTurnButton.activeSelf)
@@ -201,18 +226,22 @@ public class combatManager : MonoBehaviour
         while (inUseCard.Count > 0)
         {
             usingCardQ dequeueCard = inUseCard.Dequeue();
-            if (dequeueCard == null)
+            if (dequeueCard == null) //it cant be possible 
                 continue;
             dequeueCard.card.GetComponent<cardDisplay>().undoCard();
             if (currentObjTurn.tag == "Player")
                 currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
         }
+        //Reset character
         cardHandler user = currentObjTurn.GetComponent<cardHandler>();
         inUseCard.Clear();
         user.destroyInHandCard();
+        //user.resetCardInHand();
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
         currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
+        doEndTurnEffect();
+        //Clear var
         currentObjTurn = null;
         target = null;
         if (endTurnButton.activeSelf)
@@ -257,7 +286,9 @@ public class combatManager : MonoBehaviour
             //Using card function
             if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget))
             {
-                currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
+                //Check Token
+                if (cardData.isToken == false)
+                    currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
                 if (isForceEndturn)
                 {
                     forceEndTurn();

@@ -21,8 +21,7 @@ public class EmmaPassSkill : uniquePassSkill, IStartturnEffect
     public void onStartTurn()
     {
         playerCardHand = characterGO.GetComponent<cardHandler>();
-        Debug.Log(playerCardHand);
-        playerCardHand.cardInHand.Add(tokenCard);
+        playerCardHand.createCardToHand(tokenCard);
         playerCardHand.drawCard();
     }
 

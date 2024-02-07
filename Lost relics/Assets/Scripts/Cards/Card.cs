@@ -12,6 +12,7 @@ public class Card : ScriptableObject
     public Sprite artwork;
     public float delayAction;
     public cardEffect effect;
+    public bool isToken = false;
     private bool isUsing;
 
 

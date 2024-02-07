@@ -19,8 +19,7 @@ public class enemyCardHandler : cardHandler
         if (turnGauge <= 0 && comIns.state == BattleState.NORMAL)
         {       
             Debug.Log(this.gameObject.name);
-            comIns.changeTurn(BattleState.ENEMY);
-            comIns.currentObjTurn = this.gameObject;
+            comIns.changeTurn(BattleState.ENEMY, this.gameObject);
             drawCard();
             if (isAction == false)
                 StartCoroutine(doAction());
@@ -43,11 +42,15 @@ public class enemyCardHandler : cardHandler
                         continue;
                     currentMana = currentMana - card.cardCost;
                     card.doCardEffect(this.player, target.GetComponent<Character>());
-                    discardedDeck.Add(card);
                     cardInHand.Remove(card);
-                    yield return new WaitForSeconds(card.delayAction);
+                    //Token check
+                    float delayTime = card.delayAction;
+                    if (card.isToken == false)
+                        discardedDeck.Add(card);
+                    yield return new WaitForSeconds(delayTime);
                 }
             }
+            
             break;
         }
 

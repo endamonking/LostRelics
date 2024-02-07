@@ -18,6 +18,8 @@ public class Character : MonoBehaviour
     [Header("Buff")]
     public List<buff> activeBuffs = new List<buff>();
     public List<buff> activeDeBuffs = new List<buff>();
+    public List<buff> activeUnClearBuffs = new List<buff>();
+    public List<buff> activeUnClearDeBuffs = new List<buff>();
 
     [Header("Stance")]
     public stance myStance = stance.None;
@@ -68,20 +70,20 @@ public class Character : MonoBehaviour
             float totalDEF = basedefPoint + equipmentStats.bonusDEF;
             if (stanceValue.ContainsKey("DEF"))
             {
-                totalDEF = ( stanceValue["DEF"] * currentDefpoint /100.0f) + totalDEF;
+                totalDEF = ( stanceValue["DEF"] * basedefPoint / 100.0f) + totalDEF;
             }
             foreach (buff buff in activeBuffs)
             {
                 if (buff.buffs.ContainsKey("DEF"))
                 {
-                    totalDEF = totalDEF + (buff.buffs["DEF"] * currentDefpoint / 100.0f);
+                    totalDEF = totalDEF + (buff.buffs["DEF"] * basedefPoint / 100.0f);
                 }
             }
             foreach (buff buff in activeDeBuffs)
             {
                 if (buff.buffs.ContainsKey("DEF"))
                 {
-                    totalDEF = totalDEF + (buff.buffs["DEF"] * currentDefpoint / 100.0f);
+                    totalDEF = totalDEF + (buff.buffs["DEF"] * basedefPoint / 100.0f);
                 }
             }
             int finalDEF = Mathf.FloorToInt(totalDEF);
@@ -97,20 +99,20 @@ public class Character : MonoBehaviour
             float totalValue = baseSPD + equipmentStats.bonusSpeed;
             if (stanceValue.ContainsKey("SPD"))
             {
-                totalValue = totalValue + (stanceValue["SPD"]*currentSPD/100.0f);
+                totalValue = totalValue + (stanceValue["SPD"]* baseSPD / 100.0f);
             }
             foreach (buff buff in activeBuffs)
             {
                 if (buff.buffs.ContainsKey("SPD"))
                 {
-                    totalValue = totalValue + (buff.buffs["SPD"]*currentSPD/100.0f);
+                    totalValue = totalValue + (buff.buffs["SPD"]* baseSPD / 100.0f);
                 }
             }
             foreach (buff buff in activeDeBuffs)
             {
                 if (buff.buffs.ContainsKey("SPD"))
                 {
-                    totalValue = totalValue + (buff.buffs["SPD"] * currentSPD / 100.0f);
+                    totalValue = totalValue + (buff.buffs["SPD"] * baseSPD / 100.0f);
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
@@ -310,8 +312,6 @@ public class Character : MonoBehaviour
         if (comIns == null)
             return;
         equipmentStats = GetComponent<characterEquipment>();
-        /*currentSPD = baseSPD + equipmentStats.bonusSpeed;
-        currentDefpoint = basedefPoint + equipmentStats.bonusSpeed;*/
 
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();
@@ -325,7 +325,8 @@ public class Character : MonoBehaviour
         startBuff.AddRange(activeDeBuffs);
         buffContainer.updateBuffIconUI(startBuff);
         //Passive
-        characterPassiveSkill.initPassive(this.gameObject);
+        if (characterPassiveSkill != null)
+            characterPassiveSkill.initPassive(this.gameObject);
     }
     
     public void changingStance(stance inTo)
@@ -381,6 +382,9 @@ public class Character : MonoBehaviour
                 stanceValue.Add("ATK", 50);
                 stanceValue.Add("DEF", -20);
                 break;
+            case stance.Exposed:
+                stanceValue.Add("DEF", -30);
+                break;
         }
 
     }
@@ -402,10 +406,16 @@ public class Character : MonoBehaviour
         if (buffContainer == null)
             buffContainer = GetComponentInChildren<buffContainer>();
 
-        activeBuffs.Add(activeBuff);
+        if (activeBuff.duration >= 99)
+            activeUnClearBuffs.Add(activeBuff);
+        else
+            activeBuffs.Add(activeBuff);
+
         List<buff> allBuff = new List<buff>();
         allBuff.AddRange(activeBuffs);
         allBuff.AddRange(activeDeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
         if (buffContainer == null) // In case of apply buff in exploration
             return;
         buffContainer.updateBuffIconUI(allBuff);
@@ -416,11 +426,16 @@ public class Character : MonoBehaviour
         if (buffContainer == null)
             buffContainer = GetComponentInChildren<buffContainer>();
 
-        activeDeBuffs.Add(activeDeBuff);
+        if (activeDeBuff.duration >= 99)
+            activeUnClearDeBuffs.Add(activeDeBuff);
+        else
+            activeDeBuffs.Add(activeDeBuff);
+
         List<buff> allBuff = new List<buff>();
         allBuff.AddRange(activeBuffs);
         allBuff.AddRange(activeDeBuffs);
-        Debug.Log(buffContainer);
+        allBuff.AddRange(activeUnClearBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
         if (buffContainer == null) // In case of apply buff in exploration
             return;
         buffContainer.updateBuffIconUI(allBuff);
@@ -437,6 +452,8 @@ public class Character : MonoBehaviour
         List<buff> allBuff = new List<buff>();
         allBuff.AddRange(activeBuffs);
         allBuff.AddRange(activeDeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
         buffContainer.updateBuffIconUI(allBuff);
     }
 
@@ -452,11 +469,46 @@ public class Character : MonoBehaviour
             Debug.Log("remove " + activeDeBuffs[i].buffName);
             activeDeBuffs.Remove(activeDeBuffs[i]);
         }
+
         List<buff> allBuff = new List<buff>();
         allBuff.AddRange(activeBuffs);
         allBuff.AddRange(activeDeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
         buffContainer.updateBuffIconUI(allBuff);
     }
+    //Unlike removeActiveBuff and Debuff this function use to remove buff from activeBuff and Unclear buff to make
+    //The effect of buff only active at one Example in FindingInspiration.cs
+    public void removeBuff(buff thisBuff)
+    {
+        if (activeBuffs.Contains(thisBuff))
+            activeBuffs.Remove(thisBuff);
+        if (activeDeBuffs.Contains(thisBuff))
+            activeDeBuffs.Remove(thisBuff);
+        if (activeUnClearBuffs.Contains(thisBuff))
+            activeUnClearBuffs.Remove(thisBuff);
+        if (activeUnClearDeBuffs.Contains(thisBuff))
+            activeUnClearDeBuffs.Remove(thisBuff);
+
+        updateBuffContainer();
+
+    }
+    public bool findBuffContainByName(string buffName)
+    {
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeDeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
+
+        foreach (buff b in allBuff)
+        {
+            if (b.buffName == buffName)
+                return true;
+        }
+        return false;
+    }
+
 
     public void updateBuffAndDebuff()
     {
@@ -470,6 +522,22 @@ public class Character : MonoBehaviour
                 // Handle any post-buff effects here
             }
         }
+
+        for (int i = activeDeBuffs.Count - 1; i >= 0; i--)
+        {
+            buff debuff = activeDeBuffs[i];
+            debuff.duration--;
+            if (debuff.duration <= 0)
+            {
+                activeDeBuffs.RemoveAt(i);
+                // Handle any post-buff effects here
+            }
+
+        }
+        updateBuffContainer();
+    }
+    public void applyDebuffEffect()
+    {
 
         for (int i = activeDeBuffs.Count - 1; i >= 0; i--)
         {
@@ -493,25 +561,26 @@ public class Character : MonoBehaviour
                 }
             }
 
-            debuff.duration--;
-            if (debuff.duration <= 0)
-            {
-                activeDeBuffs.RemoveAt(i);
-                // Handle any post-buff effects here
-            }
-
         }
+    }
+    
+    public void updateBuffContainer()
+    {
         List<buff> allBuff = new List<buff>();
         allBuff.AddRange(activeBuffs);
         allBuff.AddRange(activeDeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
         buffContainer.updateBuffIconUI(allBuff);
     }
 
     public int GetBuffValue(string propertyName)
     {
         int totalBuffValue = 0;
-
-        foreach (buff buff in activeBuffs)
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        foreach (buff buff in allBuff)
         {
             if (buff.buffs.ContainsKey(propertyName))
             {
@@ -525,8 +594,10 @@ public class Character : MonoBehaviour
     public int GetDeBuffValue(string propertyName)
     {
         int totalBuffValue = 0;
-
-        foreach (buff buff in activeDeBuffs)
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeDeBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
+        foreach (buff buff in allBuff)
         {
             if (buff.buffs.ContainsKey(propertyName))
             {
