@@ -286,6 +286,8 @@ public class combatManager : MonoBehaviour
             //Using card function
             if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget))
             {
+                //Use animation
+                doCharacterAnimation(currentObjTurn);
                 //Check Token
                 if (cardData.isToken == false)
                     currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
@@ -308,6 +310,15 @@ public class combatManager : MonoBehaviour
         }
 
         isAction = false;
+    }
+
+    private void doCharacterAnimation(GameObject character)
+    {
+        animationController animCon = character.GetComponentInChildren<animationController>();
+        if (animCon == null)
+            return;
+
+        animCon.playAttackAnim();
     }
 
     public void updateManaText()

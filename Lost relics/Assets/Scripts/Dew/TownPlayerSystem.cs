@@ -13,29 +13,13 @@ public class TownPlayerSystem : MonoBehaviour
         Debug.Log(selectedCharacterID);
         GameObject characterPrefab = Resources.Load<GameObject>("Prefabs/Town/Character" + selectedCharacterID);
         Debug.Log(characterPrefab);
-        GameObject MainCharacter = Instantiate(characterPrefab, PlayerSlot);
-        MainCharacter.name = "Character";
-
-        CharacterStatsScriptableObject characterStats = ScriptableObject.CreateInstance<CharacterStatsScriptableObject>();
-        Unit unitComponent = MainCharacter.GetComponent<Unit>();
-        Debug.Log("PlayerController: " + unitComponent);
-        if (unitComponent != null)
+        Transform childTranform = this.transform.Find("Character");
+        if (childTranform == null) //Will do only once
         {
-
-            characterStats.UnitID = unitComponent.UnitID;
-            characterStats.UnitName = unitComponent.UnitName;
-            characterStats.ATK = unitComponent.ATK;
-            characterStats.Healing = unitComponent.Healing;
-            characterStats.DEF = unitComponent.DEF;
-            characterStats.SPD = unitComponent.SPD;
-            characterStats.CritChance = unitComponent.CritChance;
-            characterStats.Evade = unitComponent.Evade;
-            characterStats.CritDamage = unitComponent.CritDamage;
-            characterStats.Resistance = unitComponent.Resistance;
-            characterStats.MaxHP = unitComponent.MaxHP;
-            characterStats.CurrentHP = unitComponent.CurrentHP;
-
-            GameManager.Instance.characterStats = characterStats;
+            GameObject MainCharacter = Instantiate(characterPrefab, PlayerSlot);
+            MainCharacter.name = "Character";
+            Unit unitComponent = MainCharacter.GetComponent<Unit>();
+            assignStatToCharacterScript(unitComponent);
         }
     }
 
@@ -44,5 +28,21 @@ public class TownPlayerSystem : MonoBehaviour
     {
 
     }
+
+    private void assignStatToCharacterScript(Unit unit)
+    {
+        Character character = GetComponentInParent<Character>();
+        character.characterName = unit.UnitName;
+        character.baseATK = unit.ATK;
+        character.baseHeal = unit.Healing;
+        character.basedefPoint = unit.DEF;
+        character.baseSPD = unit.SPD;
+        character.baseCritRate = unit.CritChance;
+        character.baseCritDMG = unit.CritDamage;
+        character.baseEvade = unit.Evade;
+        character.maxHP = unit.MaxHP;
+        character.baseResistance = unit.Resistance;
+    }
+
 
 }

@@ -14,7 +14,9 @@ public class Character : MonoBehaviour
     public int maxMana = 10;
     public int currentDefpoint;
     public int currentHP, currentSPD;
-    public int baseArmorPen = 0, baseCritRate = 20, baseCritDMG = 0, baseATK = 30, baseHeal = 10;
+    //New evade and resis(Get debuff rate)
+    public int baseArmorPen = 0, baseCritRate = 20, baseCritDMG = 0, baseATK = 30, baseHeal = 10, baseEvade = 0, 
+        baseResistance = 0;
     [Header("Buff")]
     public List<buff> activeBuffs = new List<buff>();
     public List<buff> activeDeBuffs = new List<buff>();
@@ -33,6 +35,7 @@ public class Character : MonoBehaviour
     private CharacterBar hpBar;
     private characterEquipment equipmentStats;
     private cardHandler cardHandler;
+    private animationController animController;
     public int inComATK
     {
         get
@@ -315,6 +318,7 @@ public class Character : MonoBehaviour
 
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();
+        animController = GetComponentInChildren<animationController>();
         hpBar.updateHPBar(inComMaxHP, currentHP);
 
         //Update buff ui
@@ -611,6 +615,12 @@ public class Character : MonoBehaviour
     [System.Obsolete]
     public void takeDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
+        //Play animat ion
+        if (animController)
+        {
+            animController.playHurtAnim();
+        }
+
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         currentHP = currentHP - damage;
         hpBar.updateHPBar(maxHP, currentHP);
@@ -625,6 +635,11 @@ public class Character : MonoBehaviour
         if (damageAmount <= 0)
             damageAmount = 0;
         currentHP = currentHP - damageAmount;
+        //Play animat ion
+        if (animController)
+        {
+            animController.playHurtAnim();
+        }
         hpBar.updateHPBar(maxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);
         if (currentHP <= 0)
