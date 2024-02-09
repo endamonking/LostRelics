@@ -35,7 +35,10 @@ public class Character : MonoBehaviour
     private CharacterBar hpBar;
     private characterEquipment equipmentStats;
     private cardHandler cardHandler;
-    private animationController animController;
+    [HideInInspector]
+    public animationController animController;
+    [HideInInspector]
+    public characterAudioControl characterAudio;
     public int inComATK
     {
         get
@@ -319,6 +322,7 @@ public class Character : MonoBehaviour
         cardHandler = GetComponent<cardHandler>();
         hpBar = GetComponentInChildren<CharacterBar>();
         animController = GetComponentInChildren<animationController>();
+        characterAudio = GetComponentInChildren<characterAudioControl>();
         hpBar.updateHPBar(inComMaxHP, currentHP);
 
         //Update buff ui
@@ -615,10 +619,11 @@ public class Character : MonoBehaviour
     [System.Obsolete]
     public void takeDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
-        //Play animat ion
-        if (animController)
+        //Play animation and sound
+        if (animController && characterAudio)
         {
             animController.playHurtAnim();
+            characterAudio.playHurtSound();
         }
 
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
@@ -635,10 +640,11 @@ public class Character : MonoBehaviour
         if (damageAmount <= 0)
             damageAmount = 0;
         currentHP = currentHP - damageAmount;
-        //Play animat ion
-        if (animController)
+        //Play animation and sound
+        if (animController && characterAudio)
         {
             animController.playHurtAnim();
+            characterAudio.playHurtSound();
         }
         hpBar.updateHPBar(maxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);

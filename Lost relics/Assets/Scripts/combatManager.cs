@@ -194,7 +194,6 @@ public class combatManager : MonoBehaviour
         cardHandler user = currentObjTurn.GetComponent<cardHandler>();
         inUseCard.Clear();
         user.destroyInHandCard();
-        //user.resetCardInHand();
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
         currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
@@ -287,7 +286,7 @@ public class combatManager : MonoBehaviour
             if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget))
             {
                 //Use animation
-                doCharacterAnimation(currentObjTurn);
+                doCharacterAnimationAndSound(currentObjTurn);
                 //Check Token
                 if (cardData.isToken == false)
                     currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
@@ -312,13 +311,16 @@ public class combatManager : MonoBehaviour
         isAction = false;
     }
 
-    private void doCharacterAnimation(GameObject character)
+    private void doCharacterAnimationAndSound(GameObject other)
     {
-        animationController animCon = character.GetComponentInChildren<animationController>();
-        if (animCon == null)
+        Character character = other.GetComponent<Character>();
+        if (character == null)
+            return;
+        if (character.animController == null || character.characterAudio == null)
             return;
 
-        animCon.playAttackAnim();
+        character.animController.playAttackAnim();
+        character.characterAudio.playAttackSound();
     }
 
     public void updateManaText()
