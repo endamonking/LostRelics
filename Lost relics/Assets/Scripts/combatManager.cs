@@ -268,9 +268,11 @@ public class combatManager : MonoBehaviour
 
     public IEnumerator startAction()
     {
+        
         while (inUseCard.Count > 0)
         {
             usingCardQ dequeueCard = inUseCard.Dequeue();
+            Debug.Log("3");
             if (dequeueCard == null)
                 continue;
             Card cardData = dequeueCard.card.GetComponent<cardDisplay>().card;
@@ -282,6 +284,7 @@ public class combatManager : MonoBehaviour
                     currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
                 continue;
             }
+            Debug.Log("4");
             //Using card function
             if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget))
             {
@@ -311,16 +314,18 @@ public class combatManager : MonoBehaviour
         isAction = false;
     }
 
-    private void doCharacterAnimationAndSound(GameObject other)
+    public void doCharacterAnimationAndSound(GameObject other)
     {
         Character character = other.GetComponent<Character>();
         if (character == null)
             return;
-        if (character.animController == null || character.characterAudio == null)
-            return;
 
-        character.animController.playAttackAnim();
-        character.characterAudio.playAttackSound();
+        if (character.animController != null)
+            character.animController.playAttackAnim();
+
+        if (character.characterAudio != null)
+            character.characterAudio.playAttackSound();
+
     }
 
     public void updateManaText()

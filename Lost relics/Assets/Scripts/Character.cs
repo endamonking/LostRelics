@@ -620,11 +620,11 @@ public class Character : MonoBehaviour
     public void takeDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
         //Play animation and sound
-        if (animController && characterAudio)
-        {
+        if (animController)
             animController.playHurtAnim();
+
+        if (characterAudio != null)
             characterAudio.playHurtSound();
-        }
 
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         currentHP = currentHP - damage;
@@ -641,11 +641,11 @@ public class Character : MonoBehaviour
             damageAmount = 0;
         currentHP = currentHP - damageAmount;
         //Play animation and sound
-        if (animController && characterAudio)
-        {
+        if (animController)
             animController.playHurtAnim();
+
+        if (characterAudio != null)
             characterAudio.playHurtSound();
-        }
         hpBar.updateHPBar(maxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);
         if (currentHP <= 0)
