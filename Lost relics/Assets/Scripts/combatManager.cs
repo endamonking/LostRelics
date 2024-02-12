@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 public enum BattleState 
 { 
@@ -150,7 +151,6 @@ public class combatManager : MonoBehaviour
         {
             IStartturnEffect passiveSkill = newGO.GetComponent<Character>().characterPassiveSkill.GetComponent<IStartturnEffect>();
             passiveSkill.onStartTurn();
-
         }
         //Equipment
         characterEquipment characterEQ = newGO.GetComponent<characterEquipment>();
@@ -284,7 +284,6 @@ public class combatManager : MonoBehaviour
                     currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
                 continue;
             }
-            Debug.Log("4");
             //Using card function
             if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget))
             {
@@ -390,6 +389,7 @@ public class combatManager : MonoBehaviour
         if (remainingPlayers.Count == 0) //Player lost
         {
             changeTurn(BattleState.LOST);
+            StartCoroutine(delayLosing());
             return;
         }
 
@@ -541,6 +541,15 @@ public class combatManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         exploration_sceneManager.Instance.ReturnToExplorationScene();
     }
+    IEnumerator delayLosing()
+    {
+        foreach (GameObject player in exploration_sceneManager.Instance.playerPool)
+        {
+            Destroy(player);
+        }
+        yield return new WaitForSeconds(2.0f);
+        bactToMainScreen();
+    }
 
     public void updatePlayerUI(int deckCount, Sprite pic)
     {
@@ -552,6 +561,11 @@ public class combatManager : MonoBehaviour
         picBut.onClick.AddListener(() => showCharacterWindow(currentObjTurn.GetComponent<Character>(), pic));
         updateManaText();
         updateCardRemaining(deckCount);
+    }
+
+    private void bactToMainScreen()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
 

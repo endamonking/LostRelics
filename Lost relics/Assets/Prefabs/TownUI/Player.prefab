@@ -646,11 +646,9 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
-  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
-  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
-  - {fileID: 11400000, guid: 9518faaeb2d9843468507dc8454417e1, type: 2}
-  - {fileID: 11400000, guid: fe192f2866af78c41b99efef11a74440, type: 2}
-  - {fileID: 11400000, guid: 4f247d3279ff70241893dacbadf116d1, type: 2}
+  - {fileID: 11400000, guid: 2806a835a041ca841b96cd5826096fce, type: 2}
+  - {fileID: 11400000, guid: 2806a835a041ca841b96cd5826096fce, type: 2}
+  - {fileID: 11400000, guid: 2806a835a041ca841b96cd5826096fce, type: 2}
   discardedDeck: []
   _currentDeck: []
   cardInHand: []
@@ -689,7 +687,7 @@ MonoBehaviour:
   basedefPoint: 0
   maxHP: 100
   baseSPD: 20
-  characterName: 
+  characterName: Test
   maxPlayerHand: 7
   maxMana: 10
   currentDefpoint: 0
@@ -699,8 +697,14 @@ MonoBehaviour:
   baseCritRate: 20
   baseCritDMG: 0
   baseATK: 30
+  baseHeal: 10
+  baseEvade: 0
+  baseResistance: 0
   myStance: 0
   myPreviousStance: 0
+  characterPassiveSkill: {fileID: 3227317821961898870, guid: ab1ce1953f3c1c047b25b6983861cc21, type: 3}
+  animController: {fileID: 0}
+  characterAudio: {fileID: 0}
 --- !u!114 &8538754907978438628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +721,6 @@ MonoBehaviour:
   PlayerCanvas: {fileID: 0}
   player: {fileID: 6960469935385096005}
   boundaryCollider: {fileID: 0}
-  activeQuest: []
 --- !u!114 &-6091988427133704962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,11 +734,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 0}
-  armor: {fileID: 1476784040605443824, guid: 441a31da81e191544b1461dde0621596, type: 3}
+  armor: {fileID: 0}
   accessory: {fileID: 0}
-  _bonusMAXHP: 0
-  _bonusSpeed: 0
-  _bonusDEF: 0
+  headGO: {fileID: 0}
+  armorGO: {fileID: 0}
+  accGO: {fileID: 0}
 --- !u!1 &7468094183217366693
 GameObject:
   m_ObjectHideFlags: 0

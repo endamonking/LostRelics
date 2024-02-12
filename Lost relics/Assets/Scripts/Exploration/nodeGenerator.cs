@@ -7,7 +7,9 @@ public class nodeGenerator : MonoBehaviour
     public int maxNodeLayer = 10;
 
     [SerializeField]
-    private List<GameObject> normalNodePrefab = new List<GameObject>();
+    private List<GameObject> eventNodePrefab = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> monsterNodePrefab = new List<GameObject>();
     [SerializeField]
     private List<GameObject> startNodePrefab;
     [SerializeField]
@@ -23,7 +25,7 @@ public class nodeGenerator : MonoBehaviour
         createMap();
         connectNode();
         explorCam.initMinCam(nodeList[0][0].position);
-        explorCam.initMaxCam(nodeList[10][0].position);
+        explorCam.initMaxCam(nodeList[maxNodeLayer][0].position);
     }
 
     // Update is called once per frame
@@ -48,7 +50,29 @@ public class nodeGenerator : MonoBehaviour
 
         }
     }
+    private void generateNode(int numNodeInLayer, int layer, List<GameObject> eventNodePrefab, List<GameObject> monsterNodePrefab)
+    {
+        int verticalLayer = 0;
 
+        for (int i = 0; i < numNodeInLayer; i++)
+        {
+            GameObject nodePrefab = new GameObject();
+            int randType = Random.Range(0, 2);
+            if (randType == 0) //Mosnter
+                nodePrefab = monsterNodePrefab[Random.Range(0, monsterNodePrefab.Count)];
+            else
+                nodePrefab = eventNodePrefab[Random.Range(0, eventNodePrefab.Count)];
+
+            Vector3 newPosition = new Vector3(layer * 3, verticalLayer * 1.5f * Mathf.Pow(-1, i), 0);
+            GameObject node = Instantiate(nodePrefab, newPosition, Quaternion.identity);
+            node.name = "Node " + i.ToString() + " Layer " + layer.ToString();
+            node.GetComponent<node>().position = newPosition;
+            addList(layer, node.GetComponent<node>());
+            if (i % 2 == 0)
+                verticalLayer++;
+
+        }
+    }
 
     private void createMap()
     {
@@ -62,7 +86,7 @@ public class nodeGenerator : MonoBehaviour
                 generateNode(1, i ,bossNodePrefab);
                 break;
             }
-            generateNode(Random.Range(1,4), i, normalNodePrefab);
+            generateNode(Random.Range(1,4), i, eventNodePrefab,monsterNodePrefab);
         }
     }
 

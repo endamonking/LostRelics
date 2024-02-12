@@ -21,6 +21,8 @@ public class TownPlayerSystem : MonoBehaviour
             Unit unitComponent = MainCharacter.GetComponent<Unit>();
             assignStatToCharacterScript(unitComponent);
         }
+        DontDestroyOnLoad(gameObject);
+
     }
 
     // Update is called once per frame

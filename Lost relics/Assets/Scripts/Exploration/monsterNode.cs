@@ -6,6 +6,7 @@ public class monsterNode : node
 {
     [SerializeField]
     private List<GameObject> enemies = new List<GameObject>();
+    public bool isLastNode = false;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -31,6 +32,9 @@ public class monsterNode : node
 
         if (exploration_sceneManager.Instance.playerLocation.nextNode.Contains(this))
         {
+            if (isLastNode)
+                exploration_sceneManager.Instance.isReachBoss = true;
+
             exploration_sceneManager.Instance.enemyPool.AddRange(enemies);
             base.OnMouseDown();
             StartCoroutine(lerpingNode(1));

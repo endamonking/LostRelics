@@ -131,3 +131,4 @@ MonoBehaviour:
   - {fileID: 9149397430665950210, guid: b020a9aedf4aace4ab3a8e9966159b47, type: 3}
   - {fileID: 9149397430665950210, guid: 3d3e2a9248e100648ba08bafe15b4b75, type: 3}
   - {fileID: 9149397430665950210, guid: b020a9aedf4aace4ab3a8e9966159b47, type: 3}
+  isLastNode: 1

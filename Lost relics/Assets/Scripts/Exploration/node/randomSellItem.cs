@@ -12,6 +12,8 @@ public class randomSellItem : nodeEfffect
     private string nodeName, description;
     [SerializeField]
     private int amount = 1;
+    [SerializeField]
+    private int moneyGetPerItem = 200;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,7 @@ public class randomSellItem : nodeEfffect
                 if (eq.isEquiped == false) //Not equiped
                 {
                     im.removeItem(ranIndex);
+                    im.addMoney(moneyGetPerItem);
                     loopflag = false;
                 }
             }

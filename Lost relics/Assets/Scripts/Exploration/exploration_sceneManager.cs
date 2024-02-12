@@ -24,6 +24,7 @@ public class exploration_sceneManager : MonoBehaviour
     [SerializeField]
     private GameObject currentNodeEffectPrefab;
     public GameObject currentNodeEffect;
+    public bool isReachBoss = false; //Is player reach the last node(Boss)
     
     [Header("Event")] 
     public GameObject EventCanvas;
@@ -196,6 +197,9 @@ public class exploration_sceneManager : MonoBehaviour
     [System.Obsolete]
     public void ReturnToExplorationScene()
     {
+        if (isReachBoss)
+            SceneManager.LoadScene("TestRoom");
+
         // Unload the additional scene
         SceneManager.UnloadScene("Combat");
         enemyPool.Clear();
