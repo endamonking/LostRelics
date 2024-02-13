@@ -17,7 +17,7 @@ public class usingCardQ
 
 public enum stance
 {
-    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed
+    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow
 }
 
 public class combatManager : MonoBehaviour
@@ -82,7 +82,7 @@ public class combatManager : MonoBehaviour
         _selectedEffect = Instantiate(selectedEffectPrefabe, _selectedEffectPostion, Quaternion.identity);
         initPlayers();
         initEnemies();
-        StartCoroutine(startTurn());
+        StartCoroutine(startGame());
     }
 
     void Update()
@@ -113,11 +113,11 @@ public class combatManager : MonoBehaviour
 
         foreach (buff buff in exBuff)
         {
-            pCharacter.applyActiveBuff(buff);
+            pCharacter.applyActiveBuff(buff,true);
         }
         foreach (buff buff in exdeBuff)
         {
-            pCharacter.applyActiveDeBuff(buff);
+            pCharacter.applyActiveDeBuff(buff,true);
         }
 
     }
@@ -146,6 +146,8 @@ public class combatManager : MonoBehaviour
         state = newState;
         _stateText.text = state.ToString();
         currentObjTurn = newGO;
+        //Reset character 
+        newGO.GetComponent<cardHandler>().resedDrawCounter(); //Reset card counter
         //Character passive
         if (newGO.GetComponent<Character>().characterPassiveSkill != null)
         {
@@ -196,8 +198,8 @@ public class combatManager : MonoBehaviour
         user.destroyInHandCard();
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
-        currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
         doEndTurnEffect();
+        currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
         //clear var
         currentObjTurn = null;
         target = null;
@@ -238,8 +240,8 @@ public class combatManager : MonoBehaviour
         //user.resetCardInHand();
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
-        currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
         doEndTurnEffect();
+        currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
         //Clear var
         currentObjTurn = null;
         target = null;
@@ -260,7 +262,7 @@ public class combatManager : MonoBehaviour
         changeTurn(BattleState.NORMAL);
     }
 
-    IEnumerator startTurn()
+    IEnumerator startGame()
     {
         yield return new WaitForSeconds(1.0f);
         changeTurn(BattleState.NORMAL);
@@ -272,7 +274,6 @@ public class combatManager : MonoBehaviour
         while (inUseCard.Count > 0)
         {
             usingCardQ dequeueCard = inUseCard.Dequeue();
-            Debug.Log("3");
             if (dequeueCard == null)
                 continue;
             Card cardData = dequeueCard.card.GetComponent<cardDisplay>().card;
@@ -285,7 +286,8 @@ public class combatManager : MonoBehaviour
                 continue;
             }
             //Using card function
-            if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget))
+            doBeforeusingCardEffect(cardData);
+            if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget)) //Start card effect
             {
                 //Use animation
                 doCharacterAnimationAndSound(currentObjTurn);
@@ -312,7 +314,22 @@ public class combatManager : MonoBehaviour
 
         isAction = false;
     }
-
+    public void doBeforeusingCardEffect(Card cardData)
+    {
+        Character character = currentObjTurn.GetComponent<Character>();
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(character.activeBuffs);
+        allBuff.AddRange(character.activeDeBuffs);
+        allBuff.AddRange(character.activeUnClearBuffs);
+        allBuff.AddRange(character.activeUnClearDeBuffs);
+        foreach (buff a in allBuff)
+        {
+            if (a.doBeforeUseCard != null)
+            {
+                a.doBeforeUseCard(cardData);
+            }
+        }
+    }
     public void doCharacterAnimationAndSound(GameObject other)
     {
         Character character = other.GetComponent<Character>();
@@ -465,8 +482,14 @@ public class combatManager : MonoBehaviour
                     break;
             }
         }
-        displayBuffInStatusScreen(player.activeBuffs);
-        displaydeBuffInStatusScreen(player.activeDeBuffs);
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(player.activeBuffs);
+        allBuff.AddRange(player.activeUnClearBuffs);
+        List<buff> allDebuff = new List<buff>();
+        allDebuff.AddRange(player.activeDeBuffs);
+        allDebuff.AddRange(player.activeUnClearDeBuffs);
+        displayBuffInStatusScreen(allBuff);
+        displaydeBuffInStatusScreen(allDebuff);
 
         showCharacterScreen.SetActive(true);
     }
@@ -568,6 +591,11 @@ public class combatManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public GameObject getRandomEnemy()
+    {
+        GameObject randTarget = remainingEnemies[Random.Range(0, remainingEnemies.Count)];
 
+        return randTarget;
+    }
 }
 

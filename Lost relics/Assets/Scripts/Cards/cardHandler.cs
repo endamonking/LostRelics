@@ -16,14 +16,17 @@ public abstract class cardHandler : MonoBehaviour
 
     public List<Card> _currentDeck;
     public List<Card> cardInHand;
+    public Card drawedCard;
+    public int cardDrawedThisTurn = 0;
     [Header("Attribute")]
     public int currentMana;
 
     [SerializeField]
     private int handLimit = 7;
+    [Header("Object")]
     public combatManager comIns;
     public Character player;
-
+    [Header("Turn guage")]
     [SerializeField]
     private Scrollbar turnGuagePrefab;
     public Scrollbar turnGuageUI;
@@ -115,10 +118,15 @@ public abstract class cardHandler : MonoBehaviour
 
     private void initCard()
     {
-        _currentDeck.AddRange(playerDeck);
+        //_currentDeck.AddRange(playerDeck);
+        foreach (Card card in playerDeck)
+        {
+            Card newCard = Instantiate(card);
+            _currentDeck.Add(newCard);
+        }
         //Shuffle
         shuffle(_currentDeck);
-        for (int i = 0; i < player.maxPlayerHand; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (_currentDeck.Count <= i)
                 break;
@@ -142,7 +150,7 @@ public abstract class cardHandler : MonoBehaviour
 
     public void drawCard()
     {
-
+        cardDrawedThisTurn++;
         if (cardInHand.Count >= handLimit) // card in hand reach hand limit
         {
             if (cardInHand[0].isToken == false)
@@ -153,18 +161,19 @@ public abstract class cardHandler : MonoBehaviour
         else
         {
             addCardTohand();
-
         }
+        player.doStanceOnDrawEffect();
     
     }
-    
     private void addCardTohand()
     {
         if (_currentDeck.Count <= 0)
         {
             if (resetCurrentDeck())
             {
+                //Why i do like this????? spageti code
                 cardInHand.Add(_currentDeck[0]);
+                drawedCard = _currentDeck[0];
                 _currentDeck.RemoveAt(0);
                 return;
             }
@@ -173,8 +182,54 @@ public abstract class cardHandler : MonoBehaviour
         }
         //normal draw case
         cardInHand.Add(_currentDeck[0]);
+        drawedCard = _currentDeck[0];
         _currentDeck.RemoveAt(0);
     }
+
+    public Card drawCardWithReturnDrawCard()
+    {
+        Card returnCard;
+        cardDrawedThisTurn++;
+        if (cardInHand.Count >= handLimit) // card in hand reach hand limit
+        {
+            if (cardInHand[0].isToken == false)
+                discardedDeck.Add(cardInHand[0]);
+            cardInHand.RemoveAt(0);
+            returnCard = addCardTohandWithReturn();
+        }
+        else
+        {
+            returnCard = addCardTohandWithReturn();
+        }
+        player.doStanceOnDrawEffect();
+        return returnCard;
+    }
+
+    private Card addCardTohandWithReturn()
+    {
+        Card returnCard;
+        if (_currentDeck.Count <= 0)
+        {
+            if (resetCurrentDeck())
+            {
+                //Why i do like this????? spageti code
+                cardInHand.Add(_currentDeck[0]);
+                drawedCard = _currentDeck[0];
+                returnCard = _currentDeck[0];
+                _currentDeck.RemoveAt(0);
+                return drawedCard;
+            }
+            else
+                return null;
+        }
+        //normal draw case
+        cardInHand.Add(_currentDeck[0]);
+        drawedCard = _currentDeck[0];
+        returnCard = _currentDeck[0];
+        _currentDeck.RemoveAt(0);
+        return returnCard;
+    }
+
     //Use to make card in hand = max hand if it exceed the hand limit
     //Will use it at the end of turn;
     public void resetCardInHand()
@@ -279,6 +334,11 @@ public abstract class cardHandler : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void resedDrawCounter()
+    {
+        cardDrawedThisTurn = 0;
     }
 
 }

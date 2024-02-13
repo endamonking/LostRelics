@@ -20,20 +20,18 @@ public class FindingInspiration : cardEffect, IEndturnEffect
     public void onEndTurn()
     {
         cardUser.changingStance(stance.Exposed);
-        cardUser.removeBuff(currentBuff);
     }
     public override bool applyEffect(Character target, Character user)
     {
         //this.gameObject.GetComponent<IEndturnEffect>()
         cardUser = user;
-        buff deBuff = new buff("Finding inspiration", 99, "Change_Stance", this.gameObject.GetComponent<IEndturnEffect>());
+        buff deBuff = new buff("Finding inspiration", 1, "Change_Stance", this.gameObject.GetComponent<IEndturnEffect>());
         if (!user.findBuffContainByName(deBuff.buffName))
         {
-            user.applyActiveDeBuff(deBuff);
+            user.applyActiveDeBuff(deBuff,true);
             currentBuff = deBuff;
         }
             
-
         //Draw card
         GameObject player = user.gameObject;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();

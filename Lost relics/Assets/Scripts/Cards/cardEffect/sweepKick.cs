@@ -32,7 +32,7 @@ public class sweepKick : cardEffect
         buff deBuff = new buff("Sweep Kick", 2, "SPD_Down");
         deBuff.AddBuff("SPD", -10);
 
-        target.applyActiveDeBuff(deBuff);
+        target.applyActiveDeBuff(deBuff,false);
         return true;
     }
 }

@@ -56,7 +56,7 @@ public class nodeGenerator : MonoBehaviour
 
         for (int i = 0; i < numNodeInLayer; i++)
         {
-            GameObject nodePrefab = new GameObject();
+            GameObject nodePrefab;
             int randType = Random.Range(0, 2);
             if (randType == 0) //Mosnter
                 nodePrefab = monsterNodePrefab[Random.Range(0, monsterNodePrefab.Count)];

@@ -331,6 +331,8 @@ public class Character : MonoBehaviour
         List<buff> startBuff = new List<buff>();
         startBuff.AddRange(activeBuffs);
         startBuff.AddRange(activeDeBuffs);
+        startBuff.AddRange(activeUnClearBuffs);
+        startBuff.AddRange(activeUnClearDeBuffs);
         buffContainer.updateBuffIconUI(startBuff);
         //Passive
         if (characterPassiveSkill != null)
@@ -348,18 +350,19 @@ public class Character : MonoBehaviour
                 deBuff.AddBuff("SPD", -10);
                 deBuff.AddBuff("ATK", -10);
                 deBuff.AddBuff("DEF", -20);
-                applyActiveDeBuff(deBuff);
+                applyActiveDeBuff(deBuff,false);
                 break;
             case stance.Panic:
                 buff panic = new buff("Panic", 2,"Fear");
                 panic.AddBuff("DEF", -20);
-                applyActiveDeBuff(panic);
+                applyActiveDeBuff(panic,false);
                 break;
 
         }
         myPreviousStance = myStance;
         myStance = inTo;
         stanceValue.Clear();
+        //Stance effect
         switch (myStance)
         {
             case stance.None:
@@ -393,8 +396,24 @@ public class Character : MonoBehaviour
             case stance.Exposed:
                 stanceValue.Add("DEF", -30);
                 break;
+            case stance.Flow:
+                int atkpower = cardHandler.cardDrawedThisTurn * 10;
+                stanceValue.Add("ATK", atkpower);
+                break;
         }
 
+    }
+    public void doStanceOnDrawEffect()
+    {
+
+        switch (myStance)
+        {
+            case stance.Flow:
+                stanceValue.Clear();
+                int atkpower = cardHandler.cardDrawedThisTurn * 10;
+                stanceValue.Add("ATK", atkpower);
+                break;
+        }
     }
 
     public void characterSetup()
@@ -409,12 +428,12 @@ public class Character : MonoBehaviour
 
     }
 
-    public void applyActiveBuff(buff activeBuff)
+    public void applyActiveBuff(buff activeBuff, bool isUnclear)
     {
         if (buffContainer == null)
             buffContainer = GetComponentInChildren<buffContainer>();
 
-        if (activeBuff.duration >= 99)
+        if (isUnclear)
             activeUnClearBuffs.Add(activeBuff);
         else
             activeBuffs.Add(activeBuff);
@@ -429,12 +448,12 @@ public class Character : MonoBehaviour
         buffContainer.updateBuffIconUI(allBuff);
     }
 
-    public void applyActiveDeBuff(buff activeDeBuff)
+    public void applyActiveDeBuff(buff activeDeBuff, bool isUnclear)
     {
         if (buffContainer == null)
             buffContainer = GetComponentInChildren<buffContainer>();
 
-        if (activeDeBuff.duration >= 99)
+        if (isUnclear)
             activeUnClearDeBuffs.Add(activeDeBuff);
         else
             activeDeBuffs.Add(activeDeBuff);
@@ -517,12 +536,14 @@ public class Character : MonoBehaviour
         return false;
     }
 
-
+    //If buff has duration more than 90 that mean it permanantBuff
     public void updateBuffAndDebuff()
     {
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
             buff buff = activeBuffs[i];
+            if (buff.duration >= 90)
+                continue;
             buff.duration--;
             if (buff.duration <= 0)
             {
@@ -530,10 +551,24 @@ public class Character : MonoBehaviour
                 // Handle any post-buff effects here
             }
         }
+        for (int i = activeUnClearBuffs.Count - 1; i >= 0; i--)
+        {
+            buff buff = activeUnClearBuffs[i];
+            if (buff.duration >= 90)
+                continue;
+            buff.duration--;
+            if (buff.duration <= 0)
+            {
+                activeUnClearBuffs.RemoveAt(i);
+                // Handle any post-buff effects here
+            }
+        }
 
         for (int i = activeDeBuffs.Count - 1; i >= 0; i--)
         {
             buff debuff = activeDeBuffs[i];
+            if (debuff.duration >= 90)
+                continue;
             debuff.duration--;
             if (debuff.duration <= 0)
             {
@@ -542,14 +577,32 @@ public class Character : MonoBehaviour
             }
 
         }
+
+        for (int i = activeUnClearDeBuffs.Count - 1; i >= 0; i--)
+        {
+            buff debuff = activeUnClearDeBuffs[i];
+            if (debuff.duration >= 90)
+                continue;
+            debuff.duration--;
+            if (debuff.duration <= 0)
+            {
+                activeUnClearDeBuffs.RemoveAt(i);
+                // Handle any post-buff effects here
+            }
+
+        }
+
         updateBuffContainer();
     }
     public void applyDebuffEffect()
     {
+        List<buff> allActiveDebuff = new List<buff>();
+        allActiveDebuff.AddRange(activeDeBuffs);
+        allActiveDebuff.AddRange(activeUnClearDeBuffs);
 
-        for (int i = activeDeBuffs.Count - 1; i >= 0; i--)
+        for (int i = allActiveDebuff.Count - 1; i >= 0; i--)
         {
-            buff debuff = activeDeBuffs[i];
+            buff debuff = allActiveDebuff[i];
             if (debuff.buffs.Count > 0)
             {
                 foreach (string key in debuff.buffs.Keys) // Do effect

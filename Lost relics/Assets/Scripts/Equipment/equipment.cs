@@ -17,6 +17,14 @@ public interface IEndturnEffect
 {
     void onEndTurn();
 }
+public interface IOnDrawEffect
+{
+    void onDraw();
+}
+public interface IBeforeUseCard
+{
+    void onBeforeUseCard(Card usingCard);
+}
 
 public abstract class equipment : MonoBehaviour
 {

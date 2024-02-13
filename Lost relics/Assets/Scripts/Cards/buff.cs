@@ -5,12 +5,14 @@ using UnityEngine;
 public class buff 
 {
     public delegate void buffFuntion();
+    public delegate void buffFuntionWithCard(Card usingCard);
 
     public string buffName;
     public string buffPicName;
     public int duration = 0; // Turn unit
     public Dictionary<string, int> buffs;
     public buffFuntion doEndTurnFunction;
+    public buffFuntionWithCard doBeforeUseCard;
 
 
     // Start is called before the first frame update
@@ -33,6 +35,14 @@ public class buff
         this.buffPicName = pic;
         this.buffs = new Dictionary<string, int>();
         this.doEndTurnFunction = newFunction.onEndTurn;
+    }
+    public buff(string name, int duration, string pic, IBeforeUseCard newFunction)
+    {
+        this.buffName = name;
+        this.duration = duration;
+        this.buffPicName = pic;
+        this.buffs = new Dictionary<string, int>();
+        this.doBeforeUseCard = newFunction.onBeforeUseCard;
     }
 
     public void AddBuff(string propertyName, int value)

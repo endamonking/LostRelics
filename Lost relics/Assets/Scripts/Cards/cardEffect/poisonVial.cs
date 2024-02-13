@@ -23,7 +23,7 @@ public class poisonVial : cardEffect
 
         deBuff.AddBuff("Poison", damageAmount);
 
-        target.applyActiveDeBuff(deBuff);
+        target.applyActiveDeBuff(deBuff,false);
         return true;
     }
 }

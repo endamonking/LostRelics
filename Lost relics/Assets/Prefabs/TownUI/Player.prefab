@@ -646,12 +646,15 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
-  - {fileID: 11400000, guid: 2806a835a041ca841b96cd5826096fce, type: 2}
-  - {fileID: 11400000, guid: 2806a835a041ca841b96cd5826096fce, type: 2}
-  - {fileID: 11400000, guid: 2806a835a041ca841b96cd5826096fce, type: 2}
+  - {fileID: 11400000, guid: 49122a05e9965d047a6ccde6c427f2f8, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
   discardedDeck: []
   _currentDeck: []
   cardInHand: []
+  drawedCard: {fileID: 0}
+  cardDrawedThisTurn: 0
   currentMana: 0
   handLimit: 7
   comIns: {fileID: 0}

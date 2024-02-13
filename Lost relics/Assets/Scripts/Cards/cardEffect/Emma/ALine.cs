@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class throwingKnife : cardEffect
+public class ALine : cardEffect
 {
     [SerializeField]
-    int skillMultiplier = 100;
+    private int baseSkillMultiplier = 60, flowSkillMultiplier = 80;
+    [SerializeField]
+    private Card EmmaToken;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,29 +27,29 @@ public class throwingKnife : cardEffect
         int userDMGBonus = user.inComDMGBonus;
         int userCritRate = user.inComCritRate;
         int userCritDMG = user.inComCritDMG;
-        float skillMulti = skillMultiplier;
-        
+        float skillMulti = user.myStance == stance.Flow ? flowSkillMultiplier : baseSkillMultiplier;
+
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
         List<usingCardQ> usingCard = combatManager.Instance.getInUseCard();
-        skillMulti = skillMulti / 100.0f;
-        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+
         foreach (usingCardQ obj in usingCard)
         {
-            if (obj.card.GetComponent<cardDisplay>().card.effect == this)
+            if (obj.card.GetComponent<cardDisplay>().card.effect == EmmaToken.effect)
             {
-                float additiveskillMulti = 20 / 100.0f; ;
+                float additiveskillMulti = skillMulti / 100.0f; ;
                 target.takeDamage(userDamage, userAP, userDMGBonus, additiveskillMulti, userCritRate, userCritDMG);
             }
         }
         foreach (Card card in playerCardHanlder.cardInHand)
         {
-            if (card.effect == this)
+            if (card.effect == EmmaToken.effect)
             {
-                float additiveskillMulti = 20 / 100.0f; ;
+                float additiveskillMulti = skillMulti / 100.0f; ;
                 target.takeDamage(userDamage, userAP, userDMGBonus, additiveskillMulti, userCritRate, userCritDMG);
             }
         }
+
         return true;
     }
 }
