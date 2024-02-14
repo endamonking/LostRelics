@@ -597,5 +597,10 @@ public class combatManager : MonoBehaviour
 
         return randTarget;
     }
+    public List<GameObject> getAllPlayer()
+    {
+
+        return remainingPlayers;
+    }
 }
 
