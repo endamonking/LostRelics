@@ -684,8 +684,29 @@ public class Character : MonoBehaviour
 
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         currentHP = currentHP - damage;
-        hpBar.updateHPBar(maxHP, currentHP);
+        doOnHitEffect();
+        hpBar.updateHPBar(inComMaxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " +damage+" "+ currentHP);
+        if (currentHP <= 0)
+            died();
+    }
+    // use when effect on hit cause infinit loop
+    //By not call on hit effect in original funtion
+    //Note it will ingore other on hit effect (Such as take extra damage, reduce damage)
+    [System.Obsolete]
+    public void takeDamageIgnoreOnHit(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
+    {
+        //Play animation and sound
+        if (animController)
+            animController.playHurtAnim();
+
+        if (characterAudio != null)
+            characterAudio.playHurtSound();
+
+        int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
+        currentHP = currentHP - damage;
+        hpBar.updateHPBar(inComMaxHP, currentHP);
+        Debug.Log(this.gameObject.name + "take " + damage + " " + currentHP);
         if (currentHP <= 0)
             died();
     }
@@ -695,19 +716,76 @@ public class Character : MonoBehaviour
     {
         if (damageAmount <= 0)
             damageAmount = 0;
-        currentHP = currentHP - damageAmount;
+
         //Play animation and sound
         if (animController)
             animController.playHurtAnim();
 
         if (characterAudio != null)
             characterAudio.playHurtSound();
-        hpBar.updateHPBar(maxHP, currentHP);
+
+        currentHP = currentHP - damageAmount;
+        doOnHitEffect();
+        hpBar.updateHPBar(inComMaxHP, currentHP);
+        Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);
+        if (currentHP <= 0)
+            died();
+    }
+    //Usally use for turn base damage like poison
+    //Use when effect on hit cause infinit loop
+    //By not call on hit effect in original funtion
+    //Note it will ingore other on hit effect (Such as take extra damage, reduce damage)
+    public void takeTrueDamageIgnoreOnHit(int damageAmount)
+    {
+        if (damageAmount <= 0)
+            damageAmount = 0;
+
+        //Play animation and sound
+        if (animController)
+            animController.playHurtAnim();
+
+        if (characterAudio != null)
+            characterAudio.playHurtSound();
+
+        currentHP = currentHP - damageAmount;
+        hpBar.updateHPBar(inComMaxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);
         if (currentHP <= 0)
             died();
     }
 
+    private void doOnHitEffect()
+    {
+        //Buff
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeDeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
+        foreach (buff a in allBuff)
+        {
+            if (a.doOnHitFuntion != null)
+            {
+                a.doOnHitFuntion(this);
+            }
+        }
+    }
+
+    public void getHeal(int healPower, float skillMutiplier)
+    {
+        if (healPower <= 0)
+            healPower = 0;
+        float healReduction = GetDeBuffValue("HEALReduction");
+        float value = (healPower * (1 - (healReduction / 100.0f))) * skillMutiplier;
+        int finalValue = Mathf.FloorToInt(value);
+        currentHP = currentHP + finalValue;
+        if (currentHP >= inComMaxHP)
+            currentHP = inComMaxHP;
+        hpBar.updateHPBar(inComMaxHP, currentHP);
+        Debug.Log(this.gameObject.name + "Heal " + finalValue + " " + currentHP);
+        if (currentHP <= 0)
+            died();
+    }
 
     private int calcualteDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {

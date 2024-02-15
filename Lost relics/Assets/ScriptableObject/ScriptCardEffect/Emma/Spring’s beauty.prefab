@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7894451865348152237
+--- !u!1 &2613582922275738402
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7894451865348152234}
-  - component: {fileID: 7894451865348152235}
+  - component: {fileID: 2613582922275738400}
+  - component: {fileID: 2613582922275738403}
   m_Layer: 0
-  m_Name: Thou shall halt
+  m_Name: "Spring\u2019s beauty"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7894451865348152234
+--- !u!4 &2613582922275738400
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7894451865348152237}
+  m_GameObject: {fileID: 2613582922275738402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 305.73285, y: 142.55203, z: -91.67157}
+  m_LocalPosition: {x: -3, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7894451865348152235
+--- !u!114 &2613582922275738403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7894451865348152237}
+  m_GameObject: {fileID: 2613582922275738402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64a8351de140605419c207752ccb9008, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ab816d39d8da23438db9fa795bbfd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intoStance: 0
-  skillMultiplier: 50
+  intoStance: 1
+  skillMultiplier: 100
   EmmaToken: {fileID: 11400000, guid: c8eada366f134e74188c8689366d7a56, type: 2}

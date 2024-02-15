@@ -44,6 +44,7 @@ public class TownPlayerSystem : MonoBehaviour
         character.baseEvade = unit.Evade;
         character.maxHP = unit.MaxHP;
         character.baseResistance = unit.Resistance;
+        character.maxMana = unit.maxMana;
     }
 
 

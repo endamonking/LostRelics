@@ -25,6 +25,10 @@ public interface IBeforeUseCard
 {
     void onBeforeUseCard(Card usingCard);
 }
+public interface IOnTakeHit
+{
+    void onTakeHit(Character target);
+}
 
 public abstract class equipment : MonoBehaviour
 {

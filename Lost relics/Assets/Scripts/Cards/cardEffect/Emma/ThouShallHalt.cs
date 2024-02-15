@@ -6,6 +6,8 @@ public class ThouShallHalt : cardEffect
 {
     [SerializeField]
     int skillMultiplier = 50;
+    [SerializeField]
+    private Card EmmaToken;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,27 @@ public class ThouShallHalt : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
-        target.changingStance(stance.Disarm);
+
+        GameObject player = combatManager.Instance.currentObjTurn;
+        cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
+        int i = 0;
+        
+        foreach (Card card in playerCardHanlder.cardInHand)
+        {
+            if (card == EmmaToken)
+                i++;
+        }
+
+        if (i >= 2)
+        {
+            for (int a = 0; a < 2; a++)
+            {
+                playerCardHanlder.cardInHand.Remove(EmmaToken);
+            }
+            target.changingStance(stance.Exhausted);
+        }
+        else
+            target.changingStance(stance.Disarm);
 
         return true;
     }

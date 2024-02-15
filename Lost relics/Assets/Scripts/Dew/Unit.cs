@@ -16,14 +16,6 @@ public class Unit : MonoBehaviour
     public int Resistance;
     public int MaxHP;
     public int CurrentHP;
+    public int maxMana;
 
-    public bool TakeDamage(int damage)
-    {
-        CurrentHP -= damage;
-
-        if (CurrentHP <= 0)
-            return true;
-        else
-            return false;
-    }
 }

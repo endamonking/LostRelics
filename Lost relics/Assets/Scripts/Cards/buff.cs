@@ -6,6 +6,7 @@ public class buff
 {
     public delegate void buffFuntion();
     public delegate void buffFuntionWithCard(Card usingCard);
+    public delegate void buffFuntionWithTarget(Character target);
 
     public string buffName;
     public string buffPicName;
@@ -13,6 +14,7 @@ public class buff
     public Dictionary<string, int> buffs;
     public buffFuntion doEndTurnFunction;
     public buffFuntionWithCard doBeforeUseCard;
+    public buffFuntionWithTarget doOnHitFuntion;
 
 
     // Start is called before the first frame update
@@ -43,6 +45,14 @@ public class buff
         this.buffPicName = pic;
         this.buffs = new Dictionary<string, int>();
         this.doBeforeUseCard = newFunction.onBeforeUseCard;
+    }
+    public buff(string name, int duration, string pic, IOnTakeHit newFunction)
+    {
+        this.buffName = name;
+        this.duration = duration;
+        this.buffPicName = pic;
+        this.buffs = new Dictionary<string, int>();
+        this.doOnHitFuntion = newFunction.onTakeHit;
     }
 
     public void AddBuff(string propertyName, int value)

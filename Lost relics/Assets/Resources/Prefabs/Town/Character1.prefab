@@ -68,6 +68,7 @@ MonoBehaviour:
   Resistance: 1
   MaxHP: 20
   CurrentHP: 20
+  maxMana: 5
 --- !u!95 &8090925580190193820
 Animator:
   serializedVersion: 5

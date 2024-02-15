@@ -140,7 +140,7 @@ public class combatManager : MonoBehaviour
         state = newState;
         _stateText.text = state.ToString();
     }
-
+    //Start character turn
     public void changeTurn(BattleState newState, GameObject newGO)
     {
         state = newState;
@@ -596,6 +596,11 @@ public class combatManager : MonoBehaviour
         GameObject randTarget = remainingEnemies[Random.Range(0, remainingEnemies.Count)];
 
         return randTarget;
+    }
+    public List<GameObject> getAllEnemies()
+    {
+
+        return remainingEnemies;
     }
     public List<GameObject> getAllPlayer()
     {
