@@ -39,6 +39,8 @@ public abstract class equipment : MonoBehaviour
     public int SPD = 0;
     public int CRITChance = 0;
     public int HEAL = 0;
+    public int EVADE = 0;
+    public int RESISTANCE = 0;
     public int value = 0; // Price
     public string equipmentDes;
     public string equipmentName;

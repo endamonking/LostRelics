@@ -305,6 +305,62 @@ public class Character : MonoBehaviour
             return finalValue;
         }
     }
+    public int inComEvade
+    {
+
+        get
+        {
+            float totalValue = baseEvade + equipmentStats.bonusEvade;
+            if (stanceValue.ContainsKey("EVADE"))
+            {
+                totalValue = totalValue + stanceValue["EVADE"];
+            }
+            foreach (buff buff in activeBuffs)
+            {
+                if (buff.buffs.ContainsKey("EVADE"))
+                {
+                    totalValue = totalValue + buff.buffs["EVADE"];
+                }
+            }
+            foreach (buff buff in activeDeBuffs)
+            {
+                if (buff.buffs.ContainsKey("EVADE"))
+                {
+                    totalValue = totalValue + buff.buffs["EVADE"];
+                }
+            }
+            int finalValue = Mathf.FloorToInt(totalValue);
+            return finalValue;
+        }
+    }
+    public int inComResistance
+    {
+
+        get
+        {
+            float totalValue = baseResistance + equipmentStats.bonusResistance;
+            if (stanceValue.ContainsKey("RESISTANCE"))
+            {
+                totalValue = totalValue + stanceValue["RESISTANCE"];
+            }
+            foreach (buff buff in activeBuffs)
+            {
+                if (buff.buffs.ContainsKey("RESISTANCE"))
+                {
+                    totalValue = totalValue + buff.buffs["RESISTANCE"];
+                }
+            }
+            foreach (buff buff in activeDeBuffs)
+            {
+                if (buff.buffs.ContainsKey("RESISTANCE"))
+                {
+                    totalValue = totalValue + buff.buffs["RESISTANCE"];
+                }
+            }
+            int finalValue = Mathf.FloorToInt(totalValue);
+            return finalValue;
+        }
+    }
 
     private void Awake()
     {
@@ -432,6 +488,8 @@ public class Character : MonoBehaviour
     {
         if (buffContainer == null)
             buffContainer = GetComponentInChildren<buffContainer>();
+        if (equipmentStats == null)
+            equipmentStats = GetComponent<characterEquipment>();
 
         if (isUnclear)
             activeUnClearBuffs.Add(activeBuff);
@@ -452,11 +510,24 @@ public class Character : MonoBehaviour
     {
         if (buffContainer == null)
             buffContainer = GetComponentInChildren<buffContainer>();
+        if (equipmentStats == null)
+            equipmentStats = GetComponent<characterEquipment>();
 
         if (isUnclear)
-            activeUnClearDeBuffs.Add(activeDeBuff);
+        {
+            float debuffNumber = Random.value;
+            float debuffRes = 100 * (1 - inComResistance / 100.0f);
+            if (debuffNumber < debuffRes / 100.0f) 
+                activeUnClearDeBuffs.Add(activeDeBuff);
+
+        }
         else
-            activeDeBuffs.Add(activeDeBuff);
+        {
+            float debuffNumber = Random.value;
+            float debuffRes = 100.0f * (1 - inComResistance / 100.0f);
+            if (debuffNumber < debuffRes / 100.0f)
+                activeDeBuffs.Add(activeDeBuff);
+        }
 
         List<buff> allBuff = new List<buff>();
         allBuff.AddRange(activeBuffs);
@@ -675,18 +746,25 @@ public class Character : MonoBehaviour
     [System.Obsolete]
     public void takeDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
-        //Play animation and sound
-        if (animController)
-            animController.playHurtAnim();
-
-        if (characterAudio != null)
-            characterAudio.playHurtSound();
 
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
-        currentHP = currentHP - damage;
-        doOnHitEffect();
-        hpBar.updateHPBar(inComMaxHP, currentHP);
-        Debug.Log(this.gameObject.name + "take " +damage+" "+ currentHP);
+        if (damage > 0) // hit
+        {
+            currentHP = currentHP - damage;
+            doOnHitEffect();
+            hpBar.updateHPBar(inComMaxHP, currentHP);
+            Debug.Log(this.gameObject.name + "take " + damage + " " + currentHP);
+            //Play animation and sound
+            if (animController)
+                animController.playHurtAnim();
+
+            if (characterAudio != null)
+                characterAudio.playHurtSound();
+        }
+        else //Evaded
+        {
+
+        }
         if (currentHP <= 0)
             died();
     }
@@ -696,17 +774,24 @@ public class Character : MonoBehaviour
     [System.Obsolete]
     public void takeDamageIgnoreOnHit(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
-        //Play animation and sound
-        if (animController)
-            animController.playHurtAnim();
-
-        if (characterAudio != null)
-            characterAudio.playHurtSound();
-
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
-        currentHP = currentHP - damage;
-        hpBar.updateHPBar(inComMaxHP, currentHP);
-        Debug.Log(this.gameObject.name + "take " + damage + " " + currentHP);
+        if (damage > 0) // hit
+        {
+            currentHP = currentHP - damage;
+            doOnHitEffect();
+            hpBar.updateHPBar(inComMaxHP, currentHP);
+            Debug.Log(this.gameObject.name + "take " + damage + " " + currentHP);
+            //Play animation and sound
+            if (animController)
+                animController.playHurtAnim();
+
+            if (characterAudio != null)
+                characterAudio.playHurtSound();
+        }
+        else //Evaded
+        {
+
+        }
         if (currentHP <= 0)
             died();
     }
@@ -810,6 +895,11 @@ public class Character : MonoBehaviour
             damage = enemyATK * 0.2f;
             finalDamage = Mathf.FloorToInt(damage);
         }
+        //Evade 
+        float evadenumber = Random.value;
+        if (evadenumber < inComEvade / 100.0f) // Evade
+            finalDamage = 0;
+        
 
         return finalDamage;
     }

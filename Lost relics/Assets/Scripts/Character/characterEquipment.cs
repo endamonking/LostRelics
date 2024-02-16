@@ -126,6 +126,44 @@ public class characterEquipment : MonoBehaviour
             return finalValue;
         }
     }
+    public int bonusEvade
+    {
+        get
+        {
+            int finalValue = 0, headValue = 0, armorValue = 0, accValue = 0;
+
+            if (head != null)
+                headValue = head.EVADE;
+            if (armor != null)
+                armorValue = armor.EVADE;
+            if (accessory != null)
+                accValue = accessory.EVADE;
+
+            finalValue = headValue + armorValue + accValue;
+
+
+            return finalValue;
+        }
+    }
+    public int bonusResistance
+    {
+        get
+        {
+            int finalValue = 0, headValue = 0, armorValue = 0, accValue = 0;
+
+            if (head != null)
+                headValue = head.RESISTANCE;
+            if (armor != null)
+                armorValue = armor.RESISTANCE;
+            if (accessory != null)
+                accValue = accessory.RESISTANCE;
+
+            finalValue = headValue + armorValue + accValue;
+
+
+            return finalValue;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
