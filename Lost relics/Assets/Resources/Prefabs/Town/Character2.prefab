@@ -51,18 +51,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitID: 2
-  UnitName: Kuro
-  ATK: 10
-  Healing: 20
-  DEF: 20
-  SPD: 20
-  CritChance: 20
+  UnitName: Avery
+  ATK: 25
+  Healing: 10
+  DEF: 15
+  SPD: 30
+  CritChance: 5
   Evade: 5
-  CritDamage: 50
-  Resistance: 4
-  MaxHP: 30
-  CurrentHP: 30
+  CritDamage: 130
+  Resistance: 15
+  MaxHP: 25
+  CurrentHP: 25
   maxMana: 5
+  passivSkill: {fileID: 807661359225980119, guid: 1d5be588bae56a746a279f614f2d69cc, type: 3}
 --- !u!1 &7104277297742536201
 GameObject:
   m_ObjectHideFlags: 0

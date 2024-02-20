@@ -17,5 +17,5 @@ public class Unit : MonoBehaviour
     public int MaxHP;
     public int CurrentHP;
     public int maxMana;
-
+    public uniquePassSkill passivSkill;
 }

@@ -17,7 +17,7 @@ public class usingCardQ
 
 public enum stance
 {
-    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow
+    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow, Temporal, Ethereal
 }
 
 public class combatManager : MonoBehaviour
@@ -169,9 +169,26 @@ public class combatManager : MonoBehaviour
             }
         }
         //ApplyBuff and Debuff Effect
+        doOnStartTurnEffect(newGO);
         newGO.GetComponent<Character>().applyDebuffEffect();
     }
 
+    public void doOnStartTurnEffect(GameObject newGo)
+    {
+        Character character = currentObjTurn.GetComponent<Character>();
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(character.activeBuffs);
+        allBuff.AddRange(character.activeDeBuffs);
+        allBuff.AddRange(character.activeUnClearBuffs);
+        allBuff.AddRange(character.activeUnClearDeBuffs);
+        foreach (buff a in allBuff)
+        {
+            if (a.doOnStartTurnFuntion != null)
+            {
+                a.doOnStartTurnFuntion();
+            }
+        }
+    }
     public void doEndTurnEffect()
     {
         Character character = currentObjTurn.GetComponent<Character>();

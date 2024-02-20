@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class buff 
 {
     public delegate void buffFuntion();
     public delegate void buffFuntionWithCard(Card usingCard);
     public delegate void buffFuntionWithTarget(Character target);
+
 
     public string buffName;
     public string buffPicName;
@@ -15,6 +17,7 @@ public class buff
     public buffFuntion doEndTurnFunction;
     public buffFuntionWithCard doBeforeUseCard;
     public buffFuntionWithTarget doOnHitFuntion;
+    public buffFuntion doOnStartTurnFuntion;
 
 
     // Start is called before the first frame update
@@ -53,6 +56,14 @@ public class buff
         this.buffPicName = pic;
         this.buffs = new Dictionary<string, int>();
         this.doOnHitFuntion = newFunction.onTakeHit;
+    }
+    public buff(string name, int duration, string pic, IStartturnEffect newFunction)
+    {
+        this.buffName = name;
+        this.duration = duration;
+        this.buffPicName = pic;
+        this.buffs = new Dictionary<string, int>();
+        this.doOnStartTurnFuntion = newFunction.onStartTurn;
     }
 
     public void AddBuff(string propertyName, int value)

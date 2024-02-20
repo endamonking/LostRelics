@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpringBeauty : cardEffect
+public class CelestialBlessing : cardEffect
 {
     [SerializeField]
-    private int skillMultiplier = 100;
-    [SerializeField]
-    private Card EmmaToken;
+    private int skillMultiplier = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,21 +19,17 @@ public class SpringBeauty : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        GameObject player = combatManager.Instance.currentObjTurn;
-        cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
         List<GameObject> allPlayer = combatManager.Instance.getAllPlayer();
         int healPower = user.inComHeal;
         float skillMuti = skillMultiplier / 100.0f;
-
-        if (playerCardHanlder.cardInHand.Contains(EmmaToken))
+        foreach (GameObject go in allPlayer)
         {
-            playerCardHanlder.cardInHand.Remove(EmmaToken);
-            foreach (GameObject go in allPlayer)
-            {
-                go.GetComponent<Character>().getHeal(healPower, skillMuti);
-            }
-
+            Character player = go.GetComponent<Character>();
+            player.getHeal(healPower, skillMuti);
+            if (user.myStance == stance.Ethereal)
+                player.removeActiveDeBuff(player.activeDeBuffs.Count);
         }
+        
         return true;
     }
 }

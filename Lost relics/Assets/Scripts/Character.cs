@@ -48,21 +48,14 @@ public class Character : MonoBehaviour
             {
                 totalAttack = totalAttack + (stanceValue["ATK"] * baseATK / 100.0f);
             }
-            foreach (buff buff in activeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("ATK"))
                 {
                     totalAttack = totalAttack + (buff.buffs["ATK"] * baseATK / 100.0f);
                 }
             }
-            foreach (buff buff in activeDeBuffs)
-            {
-                if (buff.buffs.ContainsKey("ATK"))
-                {
-                    totalAttack = totalAttack + (buff.buffs["ATK"] * baseATK / 100.0f);
-                }
-            }
-
             int finalValue = Mathf.FloorToInt(totalAttack);
             Debug.Log(finalValue);
             return finalValue;
@@ -78,14 +71,8 @@ public class Character : MonoBehaviour
             {
                 totalDEF = ( stanceValue["DEF"] * basedefPoint / 100.0f) + totalDEF;
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("DEF"))
-                {
-                    totalDEF = totalDEF + (buff.buffs["DEF"] * basedefPoint / 100.0f);
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("DEF"))
                 {
@@ -107,14 +94,8 @@ public class Character : MonoBehaviour
             {
                 totalValue = totalValue + (stanceValue["SPD"]* baseSPD / 100.0f);
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("SPD"))
-                {
-                    totalValue = totalValue + (buff.buffs["SPD"]* baseSPD / 100.0f);
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("SPD"))
                 {
@@ -134,14 +115,8 @@ public class Character : MonoBehaviour
             {
                 totalValue = totalValue + stanceValue["AP"];
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("AP"))
-                {
-                    totalValue = totalValue + buff.buffs["AP"];
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("AP"))
                 {
@@ -162,14 +137,8 @@ public class Character : MonoBehaviour
             {
                 totalValue = totalValue + stanceValue["CRITRate"];
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("CRITRate"))
-                {
-                    totalValue = totalValue + buff.buffs["CRITRate"];
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("CRITRate"))
                 {
@@ -190,14 +159,8 @@ public class Character : MonoBehaviour
             {
                 totalValue = totalValue + stanceValue["CRITDMG"];
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("CRITDMG"))
-                {
-                    totalValue = totalValue + buff.buffs["CRITDMG"];
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("CRITDMG"))
                 {
@@ -219,14 +182,8 @@ public class Character : MonoBehaviour
             {
                 totalValue = totalValue + (stanceValue["MAXHP"] * characterMaxHP / 100.0f);
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("MAXHP"))
-                {
-                    totalValue = totalValue + (buff.buffs["MAXHP"] * characterMaxHP / 100.0f);
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("MAXHP"))
                 {
@@ -247,11 +204,12 @@ public class Character : MonoBehaviour
             {
                 totalValue += stanceValue["DMGBonus"];
             }
-            foreach (buff buff in activeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("DMGBonus"))
                 {
-                    totalValue += buff.buffs["DMGBonus"];
+                    totalValue = totalValue + buff.buffs["DMGBonus"];
                 }
             }
             return totalValue;
@@ -267,11 +225,12 @@ public class Character : MonoBehaviour
             {
                 totalValue += stanceValue["CRITRes"];
             }
-            foreach (buff buff in activeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("CRITRes"))
                 {
-                    totalValue += buff.buffs["CRITRes"];
+                    totalValue = totalValue + buff.buffs["CRITRes"];
                 }
             }
             return totalValue;
@@ -287,14 +246,8 @@ public class Character : MonoBehaviour
             {
                 totalValue = totalValue + stanceValue["HEAL"];
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("HEAL"))
-                {
-                    totalValue = totalValue + buff.buffs["HEAL"];
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("HEAL"))
                 {
@@ -315,14 +268,8 @@ public class Character : MonoBehaviour
             {
                 totalValue = totalValue + stanceValue["EVADE"];
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("EVADE"))
-                {
-                    totalValue = totalValue + buff.buffs["EVADE"];
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("EVADE"))
                 {
@@ -343,14 +290,8 @@ public class Character : MonoBehaviour
             {
                 totalValue = totalValue + stanceValue["RESISTANCE"];
             }
-            foreach (buff buff in activeBuffs)
-            {
-                if (buff.buffs.ContainsKey("RESISTANCE"))
-                {
-                    totalValue = totalValue + buff.buffs["RESISTANCE"];
-                }
-            }
-            foreach (buff buff in activeDeBuffs)
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
             {
                 if (buff.buffs.ContainsKey("RESISTANCE"))
                 {
@@ -455,6 +396,13 @@ public class Character : MonoBehaviour
             case stance.Flow:
                 int atkpower = cardHandler.cardDrawedThisTurn * 10;
                 stanceValue.Add("ATK", atkpower);
+                break;
+            case stance.Temporal:
+                stanceValue.Add("SPD", 25);
+                break;
+            case stance.Ethereal:
+                stanceValue.Add("EVADE", 50);
+                stanceValue.Add("DEF", -100);
                 break;
         }
 
@@ -576,7 +524,7 @@ public class Character : MonoBehaviour
         buffContainer.updateBuffIconUI(allBuff);
     }
     //Unlike removeActiveBuff and Debuff this function use to remove buff from activeBuff and Unclear buff to make
-    //The effect of buff only active at one Example in FindingInspiration.cs
+    //The effect of buff only active at one Example in ArcaneChanneling.cs
     public void removeBuff(buff thisBuff)
     {
         if (activeBuffs.Contains(thisBuff))
@@ -939,6 +887,14 @@ public class Character : MonoBehaviour
         combatManager.Instance.selectedTarget(this.gameObject);
     }*/
     
-
+    private List<buff> getAllBuffs()
+    {
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeDeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        allBuff.AddRange(activeUnClearDeBuffs);
+        return allBuff;
+    }
 
 }
