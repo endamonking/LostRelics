@@ -28,7 +28,7 @@ public class disarm : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
-        target.changingStance(stance.Disarm);
+        target.changingStance(stance.Disarm, false);
 
         return true;
     }

@@ -46,10 +46,10 @@ public class ThouShallHalt : cardEffect
             {
                 playerCardHanlder.cardInHand.Remove(EmmaToken);
             }
-            target.changingStance(stance.Exhausted);
+            target.changingStance(stance.Exhausted,false);
         }
         else
-            target.changingStance(stance.Disarm);
+            target.changingStance(stance.Disarm,false);
 
         return true;
     }

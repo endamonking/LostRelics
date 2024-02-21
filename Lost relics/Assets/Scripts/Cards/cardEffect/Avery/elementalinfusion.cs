@@ -17,7 +17,8 @@ public class elementalinfusion : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        List<GameObject> players = combatManager.Instance.getAllPlayer();
+        List<GameObject> players = new List<GameObject>();
+        players.AddRange(combatManager.Instance.getAllPlayer());
         buff newBuff = new buff("Elemental Infusion", 2, "SPECIAL");
         switch (user.myStance)
         {

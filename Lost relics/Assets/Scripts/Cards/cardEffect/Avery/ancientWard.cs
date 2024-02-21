@@ -20,7 +20,8 @@ public class ancientWard : cardEffect
     {
         buff ancientWard = new buff("Ancient Ward", 2, "RES_Up");
         ancientWard.AddBuff("RESISTANCE", skillMuliplier);
-        List<GameObject> players = combatManager.Instance.getAllPlayer();
+        List<GameObject> players = new List<GameObject>();
+        players.AddRange(combatManager.Instance.getAllPlayer());
         foreach (GameObject player in players)
         {
             Character chara = player.GetComponent<Character>();

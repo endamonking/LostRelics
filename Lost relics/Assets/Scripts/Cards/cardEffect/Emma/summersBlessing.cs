@@ -31,9 +31,9 @@ public class summersBlessing : cardEffect
         summerBless.AddBuff("SPD", spdMulti);
 
         //Add buff
-        List<GameObject> remainingPlayer = new List<GameObject>();
-        remainingPlayer = combatManager.Instance.getAllPlayer();
-        foreach (GameObject remainingplayer in remainingPlayer)
+        List<GameObject> players = new List<GameObject>();
+        players.AddRange(combatManager.Instance.getAllPlayer());
+        foreach (GameObject remainingplayer in players)
         {
             Character pCharacter = remainingplayer.GetComponent<Character>();
             pCharacter.applyActiveBuff(summerBless, false);
@@ -41,7 +41,7 @@ public class summersBlessing : cardEffect
         //SPD
         if (playerCardHanlder.cardInHand.Contains(EmmaToken))
         {
-            foreach (GameObject remainingplayer in remainingPlayer)
+            foreach (GameObject remainingplayer in players)
             {
                 Character pCharacter = remainingplayer.GetComponent<Character>();
                 pCharacter.applyActiveBuff(summerBlessSPD, false);

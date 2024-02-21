@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class arcaneBlast : cardEffect
+public class EssenceDrain : cardEffect
 {
     [SerializeField]
-    private int skillMultiplier = 70;
+    private int skillMultiplier = 60; //Percent unit
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,10 @@ public class arcaneBlast : cardEffect
         int userCritDMG = user.inComCritDMG;
         float skillMulti = skillMultiplier / 100.0f;
 
-        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        int healAmount = target.takeDamageWithDMGReturn(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        if (user.myStance == stance.Temporal)
+            user.getHeal(healAmount / 2, 1);
+
         return true;
     }
 }

@@ -23,7 +23,7 @@ public class Card : ScriptableObject
         bool result = effect.applyEffect(target, handler);
 
         if (effect.intoStance != stance.None)
-            handler.changingStance(effect.intoStance);
+            handler.changingStance(effect.intoStance,false);
         return result;
     }
 

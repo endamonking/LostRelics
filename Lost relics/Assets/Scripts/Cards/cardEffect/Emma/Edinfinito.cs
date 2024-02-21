@@ -8,7 +8,6 @@ public class Edinfinito : cardEffect, IBeforeUseCard
     private int baseSkillMultiplier = 20;
     public Card drawedCard;
     private Character thisUser;
-    private buff currentBuff;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +43,7 @@ public class Edinfinito : cardEffect, IBeforeUseCard
         buff newBuff = new buff("Ed infinito", 1, "Before_Use_Card", this.gameObject.GetComponent<IBeforeUseCard>());
         if (!thisUser.findBuffContainByName(newBuff.buffName))
         {
-            thisUser.applyActiveDeBuff(newBuff,true);
-            currentBuff = newBuff;
+            thisUser.applyActiveBuff(newBuff,true);
         }
 
         //Do damage

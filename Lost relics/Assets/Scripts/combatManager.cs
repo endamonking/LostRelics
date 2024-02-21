@@ -17,7 +17,7 @@ public class usingCardQ
 
 public enum stance
 {
-    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow, Temporal, Ethereal
+    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow, Temporal, Ethereal, Rage, 
 }
 
 public class combatManager : MonoBehaviour
@@ -146,10 +146,11 @@ public class combatManager : MonoBehaviour
         state = newState;
         _stateText.text = state.ToString();
         currentObjTurn = newGO;
+        Character thisChara = newGO.GetComponent<Character>();
         //Reset character 
         newGO.GetComponent<cardHandler>().resedDrawCounter(); //Reset card counter
         //Character passive
-        if (newGO.GetComponent<Character>().characterPassiveSkill != null)
+        if (thisChara.characterPassiveSkill != null)
         {
             IStartturnEffect passiveSkill = newGO.GetComponent<Character>().characterPassiveSkill.GetComponent<IStartturnEffect>();
             passiveSkill.onStartTurn();
@@ -170,7 +171,14 @@ public class combatManager : MonoBehaviour
         }
         //ApplyBuff and Debuff Effect
         doOnStartTurnEffect(newGO);
-        newGO.GetComponent<Character>().applyDebuffEffect();
+        thisChara.applyDebuffEffect();
+        //Skipp Debuff
+        float stunValue = thisChara.GetDeBuffValue("Stun");
+        if (stunValue > 0)
+        {
+            endTurn();
+            Debug.Log("d");
+        }
     }
 
     public void doOnStartTurnEffect(GameObject newGo)
@@ -254,7 +262,6 @@ public class combatManager : MonoBehaviour
         cardHandler user = currentObjTurn.GetComponent<cardHandler>();
         inUseCard.Clear();
         user.destroyInHandCard();
-        //user.resetCardInHand();
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
         doEndTurnEffect();

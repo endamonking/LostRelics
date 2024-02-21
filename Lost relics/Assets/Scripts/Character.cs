@@ -336,8 +336,11 @@ public class Character : MonoBehaviour
             characterPassiveSkill.initPassive(this.gameObject);
     }
     
-    public void changingStance(stance inTo)
+    public void changingStance(stance inTo, bool isForce)
     {
+
+        if (GetDeBuffValue("Restraint") > 0 && isForce != true)
+            return;
         updateStanceText(inTo.ToString());
         //Do leave stance effect
         switch (myStance)
@@ -350,7 +353,7 @@ public class Character : MonoBehaviour
                 applyActiveDeBuff(deBuff,false);
                 break;
             case stance.Panic:
-                buff panic = new buff("Panic", 2,"Fear");
+                buff panic = new buff("Panic", 2, "DEF_Down");
                 panic.AddBuff("DEF", -20);
                 applyActiveDeBuff(panic,false);
                 break;
@@ -403,6 +406,9 @@ public class Character : MonoBehaviour
             case stance.Ethereal:
                 stanceValue.Add("EVADE", 50);
                 stanceValue.Add("DEF", -100);
+                break;
+            case stance.Rage:
+                stanceValue.Add("ATK", 20);
                 break;
         }
 
@@ -689,6 +695,31 @@ public class Character : MonoBehaviour
         }
 
         return totalBuffValue;
+    }
+    public int takeDamageWithDMGReturn(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
+    {
+
+        int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
+        if (damage > 0) // hit
+        {
+            currentHP = currentHP - damage;
+            doOnHitEffect();
+            hpBar.updateHPBar(inComMaxHP, currentHP);
+            Debug.Log(this.gameObject.name + "take " + damage + " " + currentHP);
+            //Play animation and sound
+            if (animController)
+                animController.playHurtAnim();
+
+            if (characterAudio != null)
+                characterAudio.playHurtSound();
+        }
+        else //Evaded
+        {
+
+        }
+        if (currentHP <= 0)
+            died();
+        return damage;
     }
 
     [System.Obsolete]

@@ -24,9 +24,10 @@ public class adaptiveSetting : cardEffect, IOnTakeHit
 
     public override bool applyEffect(Character target, Character user)
     {
-        List<GameObject> allEnemies = combatManager.Instance.getAllEnemies();
+        List<GameObject> enemies = new List<GameObject>();
+        enemies.AddRange(combatManager.Instance.getAllEnemies());
         buff newdeBuff = new buff("Adaptive setting", 1, "On_Take_Hit", this.gameObject.GetComponent<IOnTakeHit>());
-        foreach (GameObject GO in allEnemies)
+        foreach (GameObject GO in enemies)
         {
             Character enemy = GO.GetComponent<Character>();
             if (!enemy.findBuffContainByName(newdeBuff.buffName))

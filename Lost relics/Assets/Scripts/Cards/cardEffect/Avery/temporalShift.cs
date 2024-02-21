@@ -18,7 +18,8 @@ public class temporalShift : cardEffect
     public override bool applyEffect(Character target, Character user)
     {
         //First debuff
-        List<GameObject> enemies = combatManager.Instance.getAllEnemies();
+        List<GameObject> enemies = new List<GameObject>();
+        enemies.AddRange(combatManager.Instance.getAllEnemies());
         buff deBuff = new buff("Temporal Shift", 2, "SPD_Down");
         deBuff.AddBuff("SPD", -20);
         foreach (GameObject enemy in enemies)

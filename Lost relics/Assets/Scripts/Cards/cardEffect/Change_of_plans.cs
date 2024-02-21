@@ -28,7 +28,7 @@ public class Change_of_plans : cardEffect
 
             if (playerCardHanlder.cardInHand.Count <= 0) //no card to discard Then change to panic and continue
             {
-                target.changingStance(stance.Panic);
+                target.changingStance(stance.Panic, false);
                 continue;
             }
             Card discardCard = playerCardHanlder.cardInHand[randomIndex];

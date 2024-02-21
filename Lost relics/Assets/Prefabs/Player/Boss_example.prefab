@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec795366bffda554288a3a2283200fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basedefPoint: 0
+  basedefPoint: 20
   maxHP: 100
   baseSPD: 5
   characterName: Test boss
@@ -1106,8 +1106,14 @@ MonoBehaviour:
   baseCritRate: 20
   baseCritDMG: 0
   baseATK: 30
+  baseHeal: 10
+  baseEvade: 0
+  baseResistance: 0
   myStance: 0
   myPreviousStance: 0
+  characterPassiveSkill: {fileID: 0}
+  animController: {fileID: 0}
+  characterAudio: {fileID: 0}
 --- !u!114 &9149397430665950267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,6 +1140,8 @@ MonoBehaviour:
   discardedDeck: []
   _currentDeck: []
   cardInHand: []
+  drawedCard: {fileID: 0}
+  cardDrawedThisTurn: 0
   currentMana: 0
   handLimit: 7
   comIns: {fileID: 0}
@@ -1158,6 +1166,3 @@ MonoBehaviour:
   headGO: {fileID: 0}
   armorGO: {fileID: 0}
   accGO: {fileID: 0}
-  _bonusMAXHP: 0
-  _bonusSpeed: 0
-  _bonusDEF: 0

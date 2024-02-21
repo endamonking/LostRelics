@@ -23,14 +23,15 @@ public class SpringBeauty : cardEffect
     {
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
-        List<GameObject> allPlayer = combatManager.Instance.getAllPlayer();
+        List<GameObject> players = new List<GameObject>();
+        players.AddRange(combatManager.Instance.getAllPlayer());
         int healPower = user.inComHeal;
         float skillMuti = skillMultiplier / 100.0f;
 
         if (playerCardHanlder.cardInHand.Contains(EmmaToken))
         {
             playerCardHanlder.cardInHand.Remove(EmmaToken);
-            foreach (GameObject go in allPlayer)
+            foreach (GameObject go in players)
             {
                 go.GetComponent<Character>().getHeal(healPower, skillMuti);
             }

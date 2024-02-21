@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class arcaneBlast : cardEffect
+public class ArcaneEruption : cardEffect, IEndturnEffect
 {
     [SerializeField]
-    private int skillMultiplier = 70;
+    private int skillMultiplier = 80; //Percent unit
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +27,19 @@ public class arcaneBlast : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //Add debuff
+        if (user.myStance == stance.Ethereal)
+        {
+            buff deBuff = new buff("Restraint", 1, "SPECIAL", this.gameObject.GetComponent<IEndturnEffect>());
+            deBuff.AddBuff("Restraint", 1);
+            deBuff.AddBuff("ATK", -20);
+            target.applyActiveDeBuff(deBuff, false);
+        }
         return true;
+    }
+    public void onEndTurn()
+    {
+        Character chara = combatManager.Instance.currentObjTurn.GetComponent<Character>();
+        chara.changingStance(stance.Rage, true);
     }
 }

@@ -19,10 +19,11 @@ public class CelestialBlessing : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        List<GameObject> allPlayer = combatManager.Instance.getAllPlayer();
+        List<GameObject> players = new List<GameObject>();
+        players.AddRange(combatManager.Instance.getAllPlayer());
         int healPower = user.inComHeal;
         float skillMuti = skillMultiplier / 100.0f;
-        foreach (GameObject go in allPlayer)
+        foreach (GameObject go in players)
         {
             Character player = go.GetComponent<Character>();
             player.getHeal(healPower, skillMuti);

@@ -21,7 +21,7 @@ public class enemyCardHandler : cardHandler
             Debug.Log(this.gameObject.name);
             comIns.changeTurn(BattleState.ENEMY, this.gameObject);
             drawCard();
-            if (isAction == false)
+            if (isAction == false && comIns.state == BattleState.ENEMY)
                 StartCoroutine(doAction());
         }
 
@@ -57,12 +57,6 @@ public class enemyCardHandler : cardHandler
 
         isAction = false;
         comIns.endTurn();
-    }
-
-    IEnumerator delayAction(float time)
-    {
-        Debug.Log("delayed");
-        yield return new WaitForSeconds(time);
     }
 
 }
