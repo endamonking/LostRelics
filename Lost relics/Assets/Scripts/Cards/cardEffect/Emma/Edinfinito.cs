@@ -41,10 +41,7 @@ public class Edinfinito : cardEffect, IBeforeUseCard
         drawedCard = cardUser.drawCardWithReturnDrawCard();
         //Buff
         buff newBuff = new buff("Ed infinito", 1, "Before_Use_Card", this.gameObject.GetComponent<IBeforeUseCard>());
-        if (!thisUser.findBuffContainByName(newBuff.buffName))
-        {
-            thisUser.applyActiveBuff(newBuff,true);
-        }
+        thisUser.applyActiveBuff(newBuff, true);
 
         //Do damage
         int userDamage = thisUser.inComATK;

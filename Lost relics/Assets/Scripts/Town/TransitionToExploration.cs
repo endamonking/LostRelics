@@ -46,31 +46,6 @@ public class TransitionToExploration : MonoBehaviour
         }
     }
     
-    private void trychangestats()
-    {
-        GameObject Player = GameObject.FindWithTag("Player");
-        if (Player != null)
-        {
-            // Get the script component attached to the GameObject
-            Character myScriptComponent = Player.GetComponent<Character>();
-
-            // Check if the script component was found
-            if (myScriptComponent != null)
-            {
-                // Modify the variable in the script
-                myScriptComponent.currentSPD = 20;
-                Debug.Log("Changed");
-            }
-            else
-            {
-                Debug.Log("MyScript component not found on the GameObject.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("GameObject with the name 'MyGameObjectName' not found.");
-        }
-    }
 
     private void spawnPlayer()
     {

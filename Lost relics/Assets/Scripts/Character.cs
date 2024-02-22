@@ -325,11 +325,7 @@ public class Character : MonoBehaviour
         //Update buff ui
         if (buffContainer == null)
             buffContainer = GetComponentInChildren<buffContainer>();
-        List<buff> startBuff = new List<buff>();
-        startBuff.AddRange(activeBuffs);
-        startBuff.AddRange(activeDeBuffs);
-        startBuff.AddRange(activeUnClearBuffs);
-        startBuff.AddRange(activeUnClearDeBuffs);
+        List<buff> startBuff = getAllBuffs();
         buffContainer.updateBuffIconUI(startBuff);
         //Passive
         if (characterPassiveSkill != null)
@@ -410,6 +406,17 @@ public class Character : MonoBehaviour
             case stance.Rage:
                 stanceValue.Add("ATK", 20);
                 break;
+            case stance.Blade_Dance:
+                stanceValue.Add("SPD", 20);
+                stanceValue.Add("CRITRate", 10);
+                break;
+            case stance.Phantom_Assault:
+                stanceValue.Add("SPD", 30);
+                stanceValue.Add("EVADE", 20);
+                break;
+            case stance.Counter:
+                stanceValue.Add("DEF", 20);
+                break;
         }
 
     }
@@ -444,17 +451,19 @@ public class Character : MonoBehaviour
             buffContainer = GetComponentInChildren<buffContainer>();
         if (equipmentStats == null)
             equipmentStats = GetComponent<characterEquipment>();
-
+        //Check if the same buff
+        buff currentBuff = findBuffContainByName(activeBuff.buffName);
+        if (currentBuff != null)
+        {
+            removeBuff(currentBuff);
+        }
+        //apply
         if (isUnclear)
             activeUnClearBuffs.Add(activeBuff);
         else
             activeBuffs.Add(activeBuff);
 
-        List<buff> allBuff = new List<buff>();
-        allBuff.AddRange(activeBuffs);
-        allBuff.AddRange(activeDeBuffs);
-        allBuff.AddRange(activeUnClearBuffs);
-        allBuff.AddRange(activeUnClearDeBuffs);
+        List<buff> allBuff = getAllBuffs();
         if (buffContainer == null) // In case of apply buff in exploration
             return;
         buffContainer.updateBuffIconUI(allBuff);
@@ -483,11 +492,7 @@ public class Character : MonoBehaviour
                 activeDeBuffs.Add(activeDeBuff);
         }
 
-        List<buff> allBuff = new List<buff>();
-        allBuff.AddRange(activeBuffs);
-        allBuff.AddRange(activeDeBuffs);
-        allBuff.AddRange(activeUnClearBuffs);
-        allBuff.AddRange(activeUnClearDeBuffs);
+        List<buff> allBuff = getAllBuffs();
         if (buffContainer == null) // In case of apply buff in exploration
             return;
         buffContainer.updateBuffIconUI(allBuff);
@@ -545,20 +550,17 @@ public class Character : MonoBehaviour
         updateBuffContainer();
 
     }
-    public bool findBuffContainByName(string buffName)
+    public buff findBuffContainByName(string buffName)
     {
-        List<buff> allBuff = new List<buff>();
-        allBuff.AddRange(activeBuffs);
-        allBuff.AddRange(activeDeBuffs);
-        allBuff.AddRange(activeUnClearBuffs);
-        allBuff.AddRange(activeUnClearDeBuffs);
+        List<buff> allBuff = getAllBuffs();
 
         foreach (buff b in allBuff)
         {
             if (b.buffName == buffName)
-                return true;
+                return b;
+               
         }
-        return false;
+        return null;
     }
 
     //If buff has duration more than 90 that mean it permanantBuff
@@ -820,12 +822,26 @@ public class Character : MonoBehaviour
 
     private void doOnHitEffect()
     {
+        //Stance on hit Effect
+        switch (myStance)
+        {
+            case stance.Counter:
+                Character target = combatManager.Instance.currentObjTurn.GetComponent<Character>(); //
+                if (target != this) //Only enemy 
+                {
+                    int userDamage = inComATK;
+                    int userAP = inComArmorPen;
+                    int userDMGBonus = inComDMGBonus;
+                    int userCritRate = inComCritRate;
+                    int userCritDMG = inComCritDMG;
+                    float skillMulti = 20 / 100.0f;
+                    target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+                    changingStance(stance.None, false);
+                }
+                break;
+        }
         //Buff
-        List<buff> allBuff = new List<buff>();
-        allBuff.AddRange(activeBuffs);
-        allBuff.AddRange(activeDeBuffs);
-        allBuff.AddRange(activeUnClearBuffs);
-        allBuff.AddRange(activeUnClearDeBuffs);
+        List<buff> allBuff = getAllBuffs();
         foreach (buff a in allBuff)
         {
             if (a.doOnHitFuntion != null)
@@ -851,9 +867,17 @@ public class Character : MonoBehaviour
             died();
     }
 
+    //use to calculate damagae in normal use case
+    //Has some speical use case liek weaknessExploitation.cs
+    //If want to force crit just assign crit rate = 200
     private int calcualteDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
         int finalDamage = 0;
+        //Evade 
+        float evadenumber = Random.value;
+        if (evadenumber < inComEvade / 100.0f) // Evade
+            return finalDamage = 0;
+
         float damage = 0;
         int defReduction = GetDeBuffValue("DEFReduction");
         int damageReduction = GetBuffValue("DMGReduction");
@@ -874,10 +898,6 @@ public class Character : MonoBehaviour
             damage = enemyATK * 0.2f;
             finalDamage = Mathf.FloorToInt(damage);
         }
-        //Evade 
-        float evadenumber = Random.value;
-        if (evadenumber < inComEvade / 100.0f) // Evade
-            finalDamage = 0;
         
 
         return finalDamage;

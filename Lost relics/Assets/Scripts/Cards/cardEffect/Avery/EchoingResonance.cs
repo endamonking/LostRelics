@@ -21,14 +21,10 @@ public class EchoingResonance : cardEffect, IBeforeUseCard
     {
         //Buff
         buff newBuff = new buff("Echoing Resonance", 1, "SPECAIL", this.gameObject.GetComponent<IBeforeUseCard>());
-        buff APBuff = new buff("Echoing Resonance", 2, "AP_Up");
+        buff APBuff = new buff("Echoing Resonance: AP", 2, "AP_Up");
         APBuff.AddBuff("AP", 50);
-        if (!user.findBuffContainByName(newBuff.buffName))
-        {
-            user.applyActiveBuff(newBuff, true);
-            user.applyActiveBuff(APBuff, true);
-            currentBuff = newBuff;
-        }
+        user.applyActiveBuff(newBuff, true);
+        user.applyActiveBuff(APBuff, true);
         return true;
     }
     

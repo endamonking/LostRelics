@@ -26,12 +26,9 @@ public class FindingInspiration : cardEffect, IEndturnEffect
         //this.gameObject.GetComponent<IEndturnEffect>()
         cardUser = user;
         buff deBuff = new buff("Finding inspiration", 1, "SPECIAL", this.gameObject.GetComponent<IEndturnEffect>());
-        if (!user.findBuffContainByName(deBuff.buffName))
-        {
-            user.applyActiveDeBuff(deBuff,true);
-            currentBuff = deBuff;
-        }
-            
+        user.applyActiveDeBuff(deBuff, true);
+        currentBuff = deBuff;
+
         //Draw card
         GameObject player = user.gameObject;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();

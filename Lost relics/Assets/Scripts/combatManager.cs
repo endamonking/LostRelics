@@ -17,7 +17,8 @@ public class usingCardQ
 
 public enum stance
 {
-    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow, Temporal, Ethereal, Rage, 
+    None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow, Temporal, Ethereal, Rage,
+    Blade_Dance, Phantom_Assault, Counter
 }
 
 public class combatManager : MonoBehaviour
@@ -621,6 +622,11 @@ public class combatManager : MonoBehaviour
 
         return randTarget;
     }
+    //Get all funtion should vreate new list first then call the funtion to get list
+    //It prevent bug when gameobject get destroy while using the list
+    //Example        
+    //List<GameObject> enemies = new List<GameObject>();
+    //enemies.AddRange(combatManager.Instance.getAllEnemies())
     public List<GameObject> getAllEnemies()
     {
 

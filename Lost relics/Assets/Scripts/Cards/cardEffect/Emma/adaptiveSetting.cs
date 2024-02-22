@@ -30,10 +30,14 @@ public class adaptiveSetting : cardEffect, IOnTakeHit
         foreach (GameObject GO in enemies)
         {
             Character enemy = GO.GetComponent<Character>();
-            if (!enemy.findBuffContainByName(newdeBuff.buffName))
+            buff currentBuff = enemy.findBuffContainByName(newdeBuff.buffName);
+            if (currentBuff != null)
             {
+                enemy.removeBuff(currentBuff);
                 enemy.applyActiveDeBuff(newdeBuff, false);
             }
+            else
+                enemy.applyActiveDeBuff(newdeBuff, false);
         }
 
         return true;

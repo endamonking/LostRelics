@@ -26,6 +26,7 @@ public class ancientWard : cardEffect
         {
             Character chara = player.GetComponent<Character>();
             chara.applyActiveBuff(ancientWard, false);
+
         }
         return true;
     }

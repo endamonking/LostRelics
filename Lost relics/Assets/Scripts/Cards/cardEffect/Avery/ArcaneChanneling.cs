@@ -21,16 +21,13 @@ public class ArcaneChanneling : cardEffect, IStartturnEffect
         players.AddRange(combatManager.Instance.getAllPlayer());
         buff newBuff = new buff("Arcane Channeling", 1, "ATK_Up");
         newBuff.AddBuff("ATK", 30);
-        buff manaBuff = new buff("Extra Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>());
-        if (!target.findBuffContainByName(newBuff.buffName))
-        {
-            if (target != combatManager.Instance.currentObjTurn.GetComponent<Character>()) //Not current Character
-                manaBuff.duration = 1;
+        buff manaBuff = new buff("Arcane Channeling : Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>());
+        if (target != combatManager.Instance.currentObjTurn.GetComponent<Character>()) //Not current Character
+            manaBuff.duration = 1;
 
-            target.applyActiveBuff(newBuff, true);
-            target.applyActiveBuff(manaBuff, true);
-            
-        }
+        target.applyActiveBuff(newBuff, true);
+        target.applyActiveBuff(manaBuff, true);
+
         return true;
     }
     public void onStartTurn()

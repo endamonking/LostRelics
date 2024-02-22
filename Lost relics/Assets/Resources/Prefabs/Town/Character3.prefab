@@ -51,18 +51,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitID: 3
-  UnitName: Clarisse
+  UnitName: Sylvia
   ATK: 20
-  Healing: 20
-  DEF: 20
-  SPD: 20
-  CritChance: 20
-  Evade: 2
-  CritDamage: 50
-  Resistance: 3
-  MaxHP: 20
-  CurrentHP: 20
-  maxMana: 5
+  Healing: 2
+  DEF: 5
+  SPD: 35
+  CritChance: 2
+  Evade: 10
+  CritDamage: 150
+  Resistance: 5
+  MaxHP: 25
+  CurrentHP: 25
+  maxMana: 4
+  passivSkill: {fileID: 1061143586150523828, guid: 09511589e5bdda04592bf0d102ca4916, type: 3}
 --- !u!1 &7104277297742536201
 GameObject:
   m_ObjectHideFlags: 0

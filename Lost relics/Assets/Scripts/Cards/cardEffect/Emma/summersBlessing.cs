@@ -27,8 +27,6 @@ public class summersBlessing : cardEffect
 
         buff summerBless = new buff("Summer’s blessing", 2, "ATK_Up");
         summerBless.AddBuff("ATK", atkMulti);
-        buff summerBlessSPD = new buff("Summer’s blessing", 2, "SPD_Up");
-        summerBless.AddBuff("SPD", spdMulti);
 
         //Add buff
         List<GameObject> players = new List<GameObject>();
@@ -44,7 +42,8 @@ public class summersBlessing : cardEffect
             foreach (GameObject remainingplayer in players)
             {
                 Character pCharacter = remainingplayer.GetComponent<Character>();
-                pCharacter.applyActiveBuff(summerBlessSPD, false);
+                summerBless.AddBuff("SPD", spdMulti);
+                pCharacter.applyActiveBuff(summerBless, false);
             }
             playerCardHanlder.cardInHand.Remove(EmmaToken);
             playerCardHanlder.updateCardInhand();
