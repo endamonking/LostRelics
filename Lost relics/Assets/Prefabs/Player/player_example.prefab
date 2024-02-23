@@ -519,8 +519,14 @@ MonoBehaviour:
   baseCritRate: 20
   baseCritDMG: 0
   baseATK: 30
+  baseHeal: 10
+  baseEvade: 0
+  baseResistance: 0
   myStance: 0
   myPreviousStance: 0
+  characterPassiveSkill: {fileID: 0}
+  animController: {fileID: 0}
+  characterAudio: {fileID: 0}
 --- !u!114 &9047056346979240663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +553,8 @@ MonoBehaviour:
   discardedDeck: []
   _currentDeck: []
   cardInHand: []
+  drawedCard: {fileID: 0}
+  cardDrawedThisTurn: 0
   currentMana: 0
   handLimit: 7
   comIns: {fileID: 0}

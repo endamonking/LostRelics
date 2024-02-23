@@ -40,6 +40,9 @@ public class cardPool : MonoBehaviour
             case "Test":
                 output.AddRange(naturalPool);
                 break;
+            default:
+                output.AddRange(naturalPool);
+                break;
         }
 
         return output;

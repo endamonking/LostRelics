@@ -3,12 +3,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
+    [Header("MC")]
     public int selectedCharacterID;
     public CharacterStatsScriptableObject characterStats;
     public GameObject MCPrefab;
-
     public GameObject MC;
+    [Header("Companion")]
+    public GameObject ComPrefab;
+    public Transform comLocation;
+    
+
     private void Awake()
     {
         if (Instance == null)
@@ -55,6 +59,12 @@ public class GameManager : MonoBehaviour
         MC.transform.position = location.position;
         pCam.player = MC.transform;
         MC.SetActive(true);
+    }
+    public void spawnCompanion(int companionNumber)
+    {
+        GameObject companion = Instantiate(ComPrefab, comLocation.position + new Vector3 (0,1,0), Quaternion.identity);
+        companion.GetComponent<Companion>().companionNumber = companionNumber;
+       
     }
 
 }
