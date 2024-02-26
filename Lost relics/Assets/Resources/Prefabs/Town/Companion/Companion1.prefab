@@ -56,20 +56,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5e4a50ec7a2874db75e09a93c7045e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitID: 1
-  UnitName: Emma
-  ATK: 20
-  Healing: 5
-  DEF: 20
+  UnitID: 4
+  UnitName: Krist
+  ATK: 15
+  Healing: 2
+  DEF: 10
   SPD: 25
-  CritChance: 0
-  Evade: 2
+  CritChance: 5
+  Evade: 5
   CritDamage: 150
-  Resistance: 10
-  MaxHP: 30
-  CurrentHP: 30
-  maxMana: 5
-  passivSkill: {fileID: 3227317821961898870, guid: ab1ce1953f3c1c047b25b6983861cc21, type: 3}
+  Resistance: 25
+  MaxHP: 50
+  CurrentHP: 50
+  maxMana: 4
+  passivSkill: {fileID: 7172980700059708246, guid: 49d4c33ae51190d41b16a833518d8e6d, type: 3}
 --- !u!95 &8090925580190193820
 Animator:
   serializedVersion: 5

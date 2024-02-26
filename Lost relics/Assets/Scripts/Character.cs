@@ -302,6 +302,27 @@ public class Character : MonoBehaviour
             return finalValue;
         }
     }
+    public int inComDMGReduction
+    {
+        get
+        {
+            float totalValue = 0;
+            if (stanceValue.ContainsKey("DMGReduction"))
+            {
+                totalValue = totalValue + stanceValue["DMGReduction"];
+            }
+            List<buff> allBuff = getAllBuffs();
+            foreach (buff buff in allBuff)
+            {
+                if (buff.buffs.ContainsKey("DMGReduction"))
+                {
+                    totalValue = totalValue + buff.buffs["DMGReduction"];
+                }
+            }
+            int finalValue = Mathf.FloorToInt(totalValue);
+            return finalValue;
+        }
+    }
 
     private void Awake()
     {
@@ -416,6 +437,13 @@ public class Character : MonoBehaviour
                 break;
             case stance.Counter:
                 stanceValue.Add("DEF", 20);
+                break;
+            case stance.Frenzy:
+                stanceValue.Add("ATK",20);
+                stanceValue.Add("CRITDMG", 50);
+                break;
+            case stance.Zan:
+                stanceValue.Add("DMGReduction", 100);
                 break;
         }
 
@@ -839,6 +867,15 @@ public class Character : MonoBehaviour
                     changingStance(stance.None, false);
                 }
                 break;
+            case stance.Zan:
+                Character zanTarget = combatManager.Instance.currentObjTurn.GetComponent<Character>(); //
+                if (zanTarget != this) //Only enemy 
+                {
+                    int dmg = inComMaxHP - currentHP;
+                    zanTarget.takeTrueDamage(dmg);
+                    changingStance(stance.None, false);
+                }
+                break;
         }
         //Buff
         List<buff> allBuff = getAllBuffs();
@@ -870,6 +907,7 @@ public class Character : MonoBehaviour
     //use to calculate damagae in normal use case
     //Has some speical use case liek weaknessExploitation.cs
     //If want to force crit just assign crit rate = 200
+    //If want ignore def put AP = 100
     private int calcualteDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
         int finalDamage = 0;
@@ -880,16 +918,15 @@ public class Character : MonoBehaviour
 
         float damage = 0;
         int defReduction = GetDeBuffValue("DEFReduction");
-        int damageReduction = GetBuffValue("DMGReduction");
         float randomNumber = Random.value;
         //Case AP exceed 100
         if (enemyArmorPen >= 100)
             enemyArmorPen = 100;
 
         if (randomNumber < enemyCritRate / 100.0f) //Critical hit
-            damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus / 100.0f) - (damageReduction / 100.0f)) * skillMutiplier * (1.5f + (enemyCritDMG/100.0f) - (inComCritRes/100.0f));
+            damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus / 100.0f) - (inComDMGReduction / 100.0f)) * skillMutiplier * ((enemyCritDMG/100.0f) - (inComCritRes/100.0f));
         else
-            damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus/ 100.0f) - (damageReduction/ 100.0f)) * skillMutiplier;
+            damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus/ 100.0f) - (inComDMGReduction / 100.0f)) * skillMutiplier;
 
 
         finalDamage = Mathf.FloorToInt(damage);
@@ -938,7 +975,7 @@ public class Character : MonoBehaviour
         combatManager.Instance.selectedTarget(this.gameObject);
     }*/
     
-    private List<buff> getAllBuffs()
+    public List<buff> getAllBuffs()
     {
         List<buff> allBuff = new List<buff>();
         allBuff.AddRange(activeBuffs);
@@ -946,6 +983,13 @@ public class Character : MonoBehaviour
         allBuff.AddRange(activeUnClearBuffs);
         allBuff.AddRange(activeUnClearDeBuffs);
         return allBuff;
+    }
+
+    public void characterUpDateHpBar()
+    {
+        if (currentHP >= inComMaxHP)
+            currentHP = inComMaxHP;
+        hpBar.updateHPBar(inComMaxHP, currentHP);
     }
 
 }

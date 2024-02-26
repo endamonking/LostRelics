@@ -18,7 +18,7 @@ public class usingCardQ
 public enum stance
 {
     None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow, Temporal, Ethereal, Rage,
-    Blade_Dance, Phantom_Assault, Counter
+    Blade_Dance, Phantom_Assault, Counter, Frenzy, Zan
 }
 
 public class combatManager : MonoBehaviour
@@ -201,11 +201,7 @@ public class combatManager : MonoBehaviour
     public void doEndTurnEffect()
     {
         Character character = currentObjTurn.GetComponent<Character>();
-        List<buff> allBuff = new List<buff>();
-        allBuff.AddRange(character.activeBuffs);
-        allBuff.AddRange(character.activeDeBuffs);
-        allBuff.AddRange(character.activeUnClearBuffs);
-        allBuff.AddRange(character.activeUnClearDeBuffs);
+        List<buff> allBuff = character.getAllBuffs();
         foreach (buff a in allBuff)
         {
             if (a.doEndTurnFunction != null)
@@ -213,6 +209,7 @@ public class combatManager : MonoBehaviour
                 a.doEndTurnFunction();
             }
         }
+        character.characterUpDateHpBar();
     }
     public void endTurn()
     {

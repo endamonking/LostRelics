@@ -632,9 +632,10 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
-  - {fileID: 11400000, guid: e284246e8d3f93d45813f39e1aba4749, type: 2}
-  - {fileID: 11400000, guid: 386fa5b975f630141906429fef5a732d, type: 2}
-  - {fileID: 11400000, guid: f0d002f6f1a438043a4ca0a3746d895d, type: 2}
+  - {fileID: 11400000, guid: 7c5713332e2f4e54495035d96f11f6fd, type: 2}
+  - {fileID: 11400000, guid: 86b0a6e2294980d49b1885dcbfac6fb9, type: 2}
+  - {fileID: 11400000, guid: 86b0a6e2294980d49b1885dcbfac6fb9, type: 2}
+  - {fileID: 11400000, guid: 86b0a6e2294980d49b1885dcbfac6fb9, type: 2}
   discardedDeck: []
   _currentDeck: []
   cardInHand: []
