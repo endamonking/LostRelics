@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishingCut : cardEffect
+public class GanmenAte : cardEffect
 {
     [SerializeField]
-    int skillMultiplier = 100; //Percent unit
+    int skillMultiplier = 20; //Percent unit
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +25,21 @@ public class FinishingCut : cardEffect
         int userCritRate = user.inComCritRate;
         int userCritDMG = user.inComCritDMG;
         float skillMulti = skillMultiplier / 100.0f;
-       
+        List<GameObject> enemies = new List<GameObject>();
+        enemies.AddRange(combatManager.Instance.getAllEnemies());
+        //create debuff
+        buff deBuff = new buff("Ganmen ate", 2, "SPD_Down");
+        deBuff.AddBuff("SPD", -10);
 
-        if (user.myStance == stance.Frenzy)
+        foreach (GameObject enemy in enemies)
         {
-            target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, 200, userCritDMG);
-            float lostHP = user.inComMaxHP * 0.2f;
-            int heal = Mathf.FloorToInt(lostHP);
-            user.getHeal(heal, 1);
+            Character targetChara = enemy.GetComponent<Character>();
+            targetChara.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+            targetChara.applyActiveDeBuff(deBuff, false);
+
         }
-        else
-            target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+
+        
         return true;
     }
 }

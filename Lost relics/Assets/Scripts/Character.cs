@@ -893,6 +893,8 @@ public class Character : MonoBehaviour
         if (healPower <= 0)
             healPower = 0;
         float healReduction = GetDeBuffValue("HEALReduction");
+        if (healReduction >= 100.0f)
+            healReduction = 100.0f;
         float value = (healPower * (1 - (healReduction / 100.0f))) * skillMutiplier;
         int finalValue = Mathf.FloorToInt(value);
         currentHP = currentHP + finalValue;
@@ -917,11 +919,13 @@ public class Character : MonoBehaviour
             return finalDamage = 0;
 
         float damage = 0;
-        int defReduction = GetDeBuffValue("DEFReduction");
         float randomNumber = Random.value;
         //Case AP exceed 100
         if (enemyArmorPen >= 100)
             enemyArmorPen = 100;
+        int defReduction = GetDeBuffValue("DEFReduction");
+        if (defReduction >= 100.0f)
+            defReduction = 0;
 
         if (randomNumber < enemyCritRate / 100.0f) //Critical hit
             damage = (enemyATK - inComDef * (1 - (enemyArmorPen / 100.0f)) * (1 - (defReduction / 100.0f))) * (1 + (enemyDamageBonus / 100.0f) - (inComDMGReduction / 100.0f)) * skillMutiplier * ((enemyCritDMG/100.0f) - (inComCritRes/100.0f));

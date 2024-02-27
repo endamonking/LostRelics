@@ -615,11 +615,16 @@ public class combatManager : MonoBehaviour
 
     public GameObject getRandomEnemy()
     {
-        GameObject randTarget = remainingEnemies[Random.Range(0, remainingEnemies.Count)];
+        if (remainingEnemies.Count > 0)
+        {
+            GameObject randTarget = remainingEnemies[Random.Range(0, remainingEnemies.Count)];
+            return randTarget;
+        }
+        else
+            return null;
 
-        return randTarget;
     }
-    //Get all funtion should vreate new list first then call the funtion to get list
+    //Get all funtion should create new list first then call the funtion to get list
     //It prevent bug when gameobject get destroy while using the list
     //Example        
     //List<GameObject> enemies = new List<GameObject>();
