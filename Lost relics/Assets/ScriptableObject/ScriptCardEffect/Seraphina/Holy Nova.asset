@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
+  m_Name: Holy Nova
+  m_EditorClassIdentifier: 
+  cardName: Holy Nova
+  description: "\u201CUnleash a burst of holy energy, damaging enemies and healing
+    allies\u201D"
+  effectString: "Deal 40% of Seraphina's Healing stat as damage to all enemies, if
+    seraphina is in \u201CPurification\u201D, multiplier change to 60%"
+  cardCost: 2
+  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  delayAction: 1
+  effect: {fileID: 5152173740040818648, guid: 04f93eb29c2a1db4eb2da000c6dfc031, type: 3}
+  isToken: 0

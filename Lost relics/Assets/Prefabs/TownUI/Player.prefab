@@ -646,7 +646,7 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
-  - {fileID: 11400000, guid: 83fa238aecf8b7541be41858504e5110, type: 2}
+  - {fileID: 11400000, guid: 89b78169785501041a4b281815239e5b, type: 2}
   - {fileID: 11400000, guid: 1db2220d49ecf31498977ba0d162ee34, type: 2}
   - {fileID: 11400000, guid: dc22d6e8961b36f40a827842156679f8, type: 2}
   discardedDeck: []

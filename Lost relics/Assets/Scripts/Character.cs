@@ -445,6 +445,10 @@ public class Character : MonoBehaviour
             case stance.Zan:
                 stanceValue.Add("DMGReduction", 100);
                 break;
+            case stance.Purification:
+                stanceValue.Add("EVADE", 10);
+                stanceValue.Add("DEF", 25);
+                break;
         }
 
     }
@@ -530,15 +534,10 @@ public class Character : MonoBehaviour
     {
         for (int i = 0; i < number; i++)
         {
-            if (i >= activeBuffs.Count)
-                break;
-            activeBuffs.Remove(activeBuffs[i]);
+            Debug.Log("remove " + activeBuffs[0].buffName);
+            activeBuffs.RemoveAt(0);
         }
-        List<buff> allBuff = new List<buff>();
-        allBuff.AddRange(activeBuffs);
-        allBuff.AddRange(activeDeBuffs);
-        allBuff.AddRange(activeUnClearBuffs);
-        allBuff.AddRange(activeUnClearDeBuffs);
+        List<buff> allBuff = getAllBuffs();
         buffContainer.updateBuffIconUI(allBuff);
     }
 
@@ -546,20 +545,11 @@ public class Character : MonoBehaviour
     {
         for (int i = 0; i < number; i++)
         {
-            if (i >= activeDeBuffs.Count)
-            {
-                Debug.Log("No");
-                break;
-            }
-            Debug.Log("remove " + activeDeBuffs[i].buffName);
-            activeDeBuffs.Remove(activeDeBuffs[i]);
+            Debug.Log("remove " + activeDeBuffs[0].buffName);
+            activeDeBuffs.RemoveAt(0);
         }
 
-        List<buff> allBuff = new List<buff>();
-        allBuff.AddRange(activeBuffs);
-        allBuff.AddRange(activeDeBuffs);
-        allBuff.AddRange(activeUnClearBuffs);
-        allBuff.AddRange(activeUnClearDeBuffs);
+        List<buff> allBuff = getAllBuffs();
         buffContainer.updateBuffIconUI(allBuff);
     }
     //Unlike removeActiveBuff and Debuff this function use to remove buff from activeBuff and Unclear buff to make

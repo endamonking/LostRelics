@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stanceDefence : cardEffect
+public class PurifyingLight : cardEffect
 {
-    [SerializeField]
-    int skillMuliplier = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +15,10 @@ public class stanceDefence : cardEffect
     {
         
     }
-
     public override bool applyEffect(Character target, Character user)
     {
-        buff stanceDefence = new buff("Stance Defence", 2,"DEF_Up");
-        stanceDefence.AddBuff("DEF", skillMuliplier);
-
-        user.applyActiveBuff(stanceDefence,false);
+        int number = user.activeDeBuffs.Count;
+        target.removeActiveDeBuff(number);
         return true;
     }
-
 }

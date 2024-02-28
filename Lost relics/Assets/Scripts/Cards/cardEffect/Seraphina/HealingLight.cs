@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stanceDefence : cardEffect
+public class HealingLight : cardEffect
 {
     [SerializeField]
-    int skillMuliplier = 20;
+    private int skillMultiplier = 60;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +17,12 @@ public class stanceDefence : cardEffect
     {
         
     }
-
     public override bool applyEffect(Character target, Character user)
     {
-        buff stanceDefence = new buff("Stance Defence", 2,"DEF_Up");
-        stanceDefence.AddBuff("DEF", skillMuliplier);
+        int healPower = user.inComHeal;
+        float skillMuti = skillMultiplier / 100.0f;
+        target.getHeal(healPower, skillMuti);
 
-        user.applyActiveBuff(stanceDefence,false);
         return true;
     }
-
 }

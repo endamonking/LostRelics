@@ -18,7 +18,7 @@ public class usingCardQ
 public enum stance
 {
     None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow, Temporal, Ethereal, Rage,
-    Blade_Dance, Phantom_Assault, Counter, Frenzy, Zan
+    Blade_Dance, Phantom_Assault, Counter, Frenzy, Zan, Purification
 }
 
 public class combatManager : MonoBehaviour
