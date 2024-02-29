@@ -25,28 +25,39 @@ public class summersBlessing : cardEffect
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
 
-        buff summerBless = new buff("Summer’s blessing", 2, "ATK_Up");
+        buff summerBless = new buff("Summer’s blessing", 3, "ATK_Up");
         summerBless.AddBuff("ATK", atkMulti);
+        buff otherSummerBless = new buff("Summer’s blessing", 2, "ATK_Up");
+        otherSummerBless.AddBuff("ATK", atkMulti);
 
         //Add buff
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());
-        foreach (GameObject remainingplayer in players)
-        {
-            Character pCharacter = remainingplayer.GetComponent<Character>();
-            pCharacter.applyActiveBuff(summerBless, false);
-        }
         //SPD
         if (playerCardHanlder.cardInHand.Contains(EmmaToken))
         {
+            summerBless.AddBuff("SPD", spdMulti);
+            otherSummerBless.AddBuff("SPD", spdMulti);
+            user.applyActiveBuff(summerBless,false);
             foreach (GameObject remainingplayer in players)
             {
+ 
+                if (remainingplayer == combatManager.Instance.currentObjTurn) //Not current Character
+                    continue;
                 Character pCharacter = remainingplayer.GetComponent<Character>();
-                summerBless.AddBuff("SPD", spdMulti);
-                pCharacter.applyActiveBuff(summerBless, false);
+                pCharacter.applyActiveBuff(otherSummerBless, false);
             }
             playerCardHanlder.cardInHand.Remove(EmmaToken);
             playerCardHanlder.updateCardInhand();
+        }
+        else
+        {
+            user.applyActiveBuff(summerBless, false);
+            foreach (GameObject remainingplayer in players)
+            {
+                Character pCharacter = remainingplayer.GetComponent<Character>();
+                pCharacter.applyActiveBuff(otherSummerBless, false);
+            }
         }
 
         return true;

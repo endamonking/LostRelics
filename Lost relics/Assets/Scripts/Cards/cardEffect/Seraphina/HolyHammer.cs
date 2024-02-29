@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DivineIntervention : cardEffect
+public class HolyHammer : cardEffect
 {
     [SerializeField]
-    int skillMuliplier = 30;
+    private int skillMultiplier = 200; //Percent unit
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +19,21 @@ public class DivineIntervention : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        buff newBuff = new buff("Divine Intervention", 3, "DEF_Up");
-        newBuff.AddBuff("DEF", skillMuliplier);
-        user.applyActiveBuff(newBuff, false);
+        int userDamage = user.inComATK;
+        int userAP = user.inComArmorPen;
+        int userDMGBonus = user.inComDMGBonus;
+        int userCritRate = user.inComCritRate;
+        int userCritDMG = user.inComCritDMG;
+        float skillMulti = skillMultiplier / 100.0f;
+
+        int healAmount = target.takeDamageWithDMGReturn(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //Heal part
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());
         foreach (GameObject player in players)
         {
-            if (player == combatManager.Instance.currentObjTurn) //Not current Character
-                continue;
             Character ally = player.GetComponent<Character>();
-            buff otherBuff = new buff("Divine Intervention", 2, "DEF_Up");
-            otherBuff.AddBuff("DEF", skillMuliplier);
-            ally.applyActiveBuff(otherBuff, false);
+            ally.getHeal(healAmount / 2, 1.0f);
         }
 
         return true;

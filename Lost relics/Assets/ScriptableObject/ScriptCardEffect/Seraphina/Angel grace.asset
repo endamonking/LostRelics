@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
+  m_Name: Angel grace
+  m_EditorClassIdentifier: 
+  cardName: Angel grace
+  description: '"Summon a celestial guardian to help ally"'
+  effectString: Grant target 50% armor penetration and 30% damage bonus for 2 turns
+  cardCost: 3
+  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  delayAction: 1
+  effect: {fileID: 3867303952714527972, guid: 241cddddf2bf6c34f991be165db1f5fc, type: 3}
+  isToken: 0

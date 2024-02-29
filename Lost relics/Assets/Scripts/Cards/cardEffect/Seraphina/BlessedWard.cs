@@ -28,6 +28,7 @@ public class BlessedWard : cardEffect
             if (player == combatManager.Instance.currentObjTurn) //Not current Character
                 continue;
             buff otherBuff = new buff("Protective ward", 2, "DEF_Up");
+            otherBuff.AddBuff("DMGReduction", 20);
             Character targetBuff = player.GetComponent<Character>();
             targetBuff.applyActiveBuff(otherBuff, true);
         }

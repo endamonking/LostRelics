@@ -18,14 +18,19 @@ public class ancientWard : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        buff ancientWard = new buff("Ancient Ward", 2, "RES_Up");
+        buff ancientWard = new buff("Ancient Ward", 3, "RES_Up");
         ancientWard.AddBuff("RESISTANCE", skillMuliplier);
+        user.applyActiveBuff(ancientWard, false);
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());
         foreach (GameObject player in players)
         {
+            if (player == combatManager.Instance.currentObjTurn) //Not current Character
+                continue;
             Character chara = player.GetComponent<Character>();
-            chara.applyActiveBuff(ancientWard, false);
+            buff otherAncientWard = new buff("Ancient Ward", 2, "RES_Up");
+            otherAncientWard.AddBuff("RESISTANCE", skillMuliplier);
+            chara.applyActiveBuff(otherAncientWard, false);
 
         }
         return true;
