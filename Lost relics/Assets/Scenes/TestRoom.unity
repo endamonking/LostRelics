@@ -5493,7 +5493,7 @@ MonoBehaviour:
   canvas: {fileID: 1217361723}
   comName: {fileID: 888320505}
   dialog: {fileID: 343416602}
-  companionNumber: 2
+  companionNumber: 3
 --- !u!1 &408286075
 GameObject:
   m_ObjectHideFlags: 0

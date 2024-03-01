@@ -449,6 +449,15 @@ public class Character : MonoBehaviour
                 stanceValue.Add("EVADE", 10);
                 stanceValue.Add("DEF", 25);
                 break;
+            case stance.Showdown:
+                stanceValue.Add("CRITRate", 50);
+                stanceValue.Add("DEF", -40);
+                break;
+            case stance.Reloading:
+                stanceValue.Add("SPD", 20);
+                stanceValue.Add("ATK", -50);
+                break;
+
         }
 
     }
@@ -681,6 +690,21 @@ public class Character : MonoBehaviour
         allBuff.AddRange(activeUnClearBuffs);
         allBuff.AddRange(activeUnClearDeBuffs);
         buffContainer.updateBuffIconUI(allBuff);
+    }
+    public buff GetBuffByName(string BuffName)
+    {
+        List<buff> allBuff = new List<buff>();
+        allBuff.AddRange(activeBuffs);
+        allBuff.AddRange(activeUnClearBuffs);
+        foreach (buff b in allBuff)
+        {
+            if (b.buffName == BuffName)
+            {
+                return b;
+            }
+        }
+
+        return null;
     }
 
     public int GetBuffValue(string propertyName)
