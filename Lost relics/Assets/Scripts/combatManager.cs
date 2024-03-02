@@ -208,7 +208,30 @@ public class combatManager : MonoBehaviour
             {
                 a.doEndTurnFunction();
             }
+            if (a.buffs.ContainsKey("Bomb")) //do bomb effect
+            {
+                if (a.duration == 1)
+                {
+                    List<GameObject> enemies = new List<GameObject>();
+                    //Find is player turn or enemy
+                    if (currentObjTurn.tag == "Player")
+                    {
+                        enemies.AddRange(getAllPlayer());
+                    }
+                    else
+                        enemies.AddRange(getAllEnemies());
+
+                    foreach (GameObject enemy in enemies)
+                    {
+                        Character target = enemy.GetComponent<Character>();
+                        target.takeTrueDamage(a.buffs["Bomb"]);
+                    }
+                }
+            }
         }
+        
+
+
         character.characterUpDateHpBar();
     }
     public void endTurn()

@@ -681,7 +681,48 @@ public class Character : MonoBehaviour
 
         }
     }
-    
+    //Do buff efffect when dead 
+    //right now is has only bomb
+    public void applyOnDeadEffect()
+    {
+        List<buff> allActiveDebuff = new List<buff>();
+        allActiveDebuff.AddRange(activeDeBuffs);
+        allActiveDebuff.AddRange(activeUnClearDeBuffs);
+
+        for (int i = allActiveDebuff.Count - 1; i >= 0; i--)
+        {
+            buff aBuff = allActiveDebuff[i];
+            if (aBuff.buffs.Count > 0)
+            {
+                foreach (string key in aBuff.buffs.Keys) // Do effect
+                {
+                    switch (key)
+                    {
+                        case "Bomb":
+                            List<GameObject> enemies = new List<GameObject>();
+                            combatManager cm = combatManager.Instance;
+                            //Find is player turn or enemy
+                            if (cm.currentObjTurn.tag == "Player")
+                            {
+                                enemies.AddRange(cm.getAllPlayer());
+                            }
+                            else
+                                enemies.AddRange(cm.getAllEnemies());
+                            foreach (GameObject enemy in enemies)
+                            {
+                                Character target = enemy.GetComponent<Character>();
+                                target.takeTrueDamage(aBuff.buffs[key]);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+        }
+    }
+
     public void updateBuffContainer()
     {
         List<buff> allBuff = new List<buff>();
@@ -980,6 +1021,7 @@ public class Character : MonoBehaviour
         combatManager.Instance.target = null;
         combatManager.Instance.returnEffectPosition();
         combatManager.Instance.checkWinLose(this.gameObject);
+        applyOnDeadEffect();
         Destroy(cardHandler.turnGuageUI.gameObject);
         Destroy(this.gameObject);
     }
