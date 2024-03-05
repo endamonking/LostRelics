@@ -39,6 +39,9 @@ public class Character : MonoBehaviour
     public animationController animController;
     [HideInInspector]
     public characterAudioControl characterAudio;
+    [Header("Other")]
+    [SerializeField]
+    private GameObject dmgPopupPrefab;
     public int inComATK
     {
         get
@@ -797,6 +800,13 @@ public class Character : MonoBehaviour
 
             if (characterAudio != null)
                 characterAudio.playHurtSound();
+            //Show dmg popup
+            if (dmgPopupPrefab != null)
+            {
+                GameObject popup = Instantiate(dmgPopupPrefab, transform.position, Quaternion.identity);
+                popup.GetComponent<popUpDMG>().popUpDamage(damage);
+
+            }
         }
         else //Evaded
         {
@@ -824,6 +834,14 @@ public class Character : MonoBehaviour
 
             if (characterAudio != null)
                 characterAudio.playHurtSound();
+
+            //Show dmg popup
+            if (dmgPopupPrefab != null)
+            {
+                GameObject popup = Instantiate(dmgPopupPrefab, transform.position, Quaternion.identity);
+                popup.GetComponent<popUpDMG>().popUpDamage(damage);
+
+            }
         }
         else //Evaded
         {
@@ -851,6 +869,13 @@ public class Character : MonoBehaviour
 
             if (characterAudio != null)
                 characterAudio.playHurtSound();
+            //Show dmg popup
+            if (dmgPopupPrefab != null)
+            {
+                GameObject popup = Instantiate(dmgPopupPrefab, transform.position, Quaternion.identity);
+                popup.GetComponent<popUpDMG>().popUpDamage(damage);
+
+            }
         }
         else //Evaded
         {
@@ -872,6 +897,14 @@ public class Character : MonoBehaviour
 
         if (characterAudio != null)
             characterAudio.playHurtSound();
+
+        //Show dmg popup
+        if (dmgPopupPrefab != null)
+        {
+            GameObject popup = Instantiate(dmgPopupPrefab, transform.position, Quaternion.identity);
+            popup.GetComponent<popUpDMG>().popUpDamage(damageAmount);
+
+        }
 
         currentHP = currentHP - damageAmount;
         doOnHitEffect();
@@ -895,7 +928,13 @@ public class Character : MonoBehaviour
 
         if (characterAudio != null)
             characterAudio.playHurtSound();
+        //Show dmg popup
+        if (dmgPopupPrefab != null)
+        {
+            GameObject popup = Instantiate(dmgPopupPrefab, transform.position, Quaternion.identity);
+            popup.GetComponent<popUpDMG>().popUpDamage(damageAmount);
 
+        }
         currentHP = currentHP - damageAmount;
         hpBar.updateHPBar(inComMaxHP, currentHP);
         Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);

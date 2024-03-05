@@ -409,6 +409,7 @@ MonoBehaviour:
   characterPassiveSkill: {fileID: 0}
   animController: {fileID: 0}
   characterAudio: {fileID: 0}
+  dmgPopupPrefab: {fileID: 1190771094348605403, guid: 56e0cf5830e267041a3e7b8071922fb9, type: 3}
 --- !u!114 &2811751758122764413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +436,8 @@ MonoBehaviour:
   discardedDeck: []
   _currentDeck: []
   cardInHand: []
+  drawedCard: {fileID: 0}
+  cardDrawedThisTurn: 0
   currentMana: 0
   handLimit: 7
   comIns: {fileID: 0}

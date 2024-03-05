@@ -375,6 +375,7 @@ public class combatManager : MonoBehaviour
             }
         }
     }
+
     public void doCharacterAnimationAndSound(GameObject other)
     {
         Character character = other.GetComponent<Character>();
@@ -501,23 +502,35 @@ public class combatManager : MonoBehaviour
         {
             // Access the child GameObject
             GameObject childObject = childTransform.gameObject;
-            
+
             switch (childObject.name)
             {
                 case "Name":
                     childObject.GetComponent<TextMeshProUGUI>().text = player.characterName;
                     break;
+                case "MAXHP":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "Max HP " + player.inComMaxHP.ToString();
+                    break;
                 case "HP":
-                    childObject.GetComponent<TextMeshProUGUI>().text = "HP " +player.currentHP.ToString();
+                    childObject.GetComponent<TextMeshProUGUI>().text = "Current HP " +player.currentHP.ToString();
                     break;
                 case "ATK":
                     childObject.GetComponent<TextMeshProUGUI>().text = "Atk "+player.inComATK.ToString();
                     break;
+                case "HEAL":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "Healing " + player.inComHeal.ToString();
+                    break;
                 case "DEF":
                     childObject.GetComponent<TextMeshProUGUI>().text = "Def " +player.inComDef.ToString();
                     break;
+                case "RESISTANCE":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "RESISTANCE " + player.inComResistance.ToString();
+                    break;
                 case "SPD":
                     childObject.GetComponent<TextMeshProUGUI>().text = "Speed " +player.inComSPD.ToString();
+                    break;
+                case "EVADE":
+                    childObject.GetComponent<TextMeshProUGUI>().text = "EVADE " + player.inComEvade.ToString();
                     break;
                 case "CRTRate":
                     childObject.GetComponent<TextMeshProUGUI>().text = "Crit rate " +player.inComCritRate.ToString();
@@ -549,7 +562,7 @@ public class combatManager : MonoBehaviour
         foreach (buff activeBuff in allBuff)
         {
             GameObject textObject1 = Instantiate(buffText, buffBox.transform);
-            textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName;
+            textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName + "  "+ activeBuff.duration.ToString();
             //GameObject icon = Instantiate(buffIcon, debuffBox.transform);
             Sprite pic = Resources.Load<Sprite>("Buff_Icon/" + activeBuff.buffPicName);
             if (pic != null)
@@ -573,7 +586,7 @@ public class combatManager : MonoBehaviour
         foreach (buff activeBuff in allBuff)
         {
             GameObject textObject1 = Instantiate(buffText, debuffBox.transform);
-            textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName;
+            textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName +"  " + activeBuff.duration.ToString();
             //GameObject icon = Instantiate(buffIcon, debuffBox.transform);
             Sprite pic = Resources.Load<Sprite>("Buff_Icon/" + activeBuff.buffPicName);
             if (pic != null)

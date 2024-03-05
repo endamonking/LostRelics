@@ -693,6 +693,7 @@ MonoBehaviour:
   characterPassiveSkill: {fileID: 3227317821961898870, guid: ab1ce1953f3c1c047b25b6983861cc21, type: 3}
   animController: {fileID: 0}
   characterAudio: {fileID: 0}
+  dmgPopupPrefab: {fileID: 1190771094348605403, guid: 56e0cf5830e267041a3e7b8071922fb9, type: 3}
 --- !u!114 &-6091988427133704962
 MonoBehaviour:
   m_ObjectHideFlags: 0

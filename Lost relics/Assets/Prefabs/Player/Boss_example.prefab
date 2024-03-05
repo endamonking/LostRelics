@@ -1100,7 +1100,7 @@ MonoBehaviour:
   maxPlayerHand: 3
   maxMana: 10
   currentDefpoint: 0
-  currentHP: 0
+  currentHP: 100
   currentSPD: 0
   baseArmorPen: 0
   baseCritRate: 20
@@ -1114,6 +1114,7 @@ MonoBehaviour:
   characterPassiveSkill: {fileID: 0}
   animController: {fileID: 0}
   characterAudio: {fileID: 0}
+  dmgPopupPrefab: {fileID: 1190771094348605403, guid: 56e0cf5830e267041a3e7b8071922fb9, type: 3}
 --- !u!114 &9149397430665950267
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -223,9 +223,13 @@ public class inventoryCanvas : MonoBehaviour
         string displayText = "MAX HP " + (player.maxHP + playerEquipment.bonusMAXHP).ToString()+"\n";
         displayText = displayText + "Current HP " + player.currentHP+"\n";
         displayText = displayText + "Attack power " + (player.baseATK + playerEquipment.bonusATK).ToString() + "\n";
+        displayText = displayText + "Healing power " + (player.baseHeal + playerEquipment.bonusHEAL).ToString() + "\n";
         displayText = displayText + "Defend " + (player.basedefPoint + playerEquipment.bonusDEF).ToString()+"\n";
+        displayText = displayText + "Resistance " + (player.baseResistance + playerEquipment.bonusResistance).ToString() + "\n";
         displayText = displayText + "Speed " + (player.baseSPD + playerEquipment.bonusSpeed + "\n");
+        displayText = displayText + "Evade " + (player.baseEvade + playerEquipment.bonusEvade + "\n");
         displayText = displayText + "Crit rate " + (player.baseCritRate + playerEquipment.bonusCRITRATE + "\n");
+        displayText = displayText + "Crit damage " + (player.baseCritDMG + /*playerEquipment.bonuscritd +*/ "\n");
 
         characterStat.text = displayText;
     }
