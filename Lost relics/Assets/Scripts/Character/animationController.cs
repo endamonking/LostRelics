@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class animationController : MonoBehaviour
 {
-    [Header("Animation numbers")]
-    public int attackAnims = 2;
+    /*[Header("Animation numbers")]
+    public int attackAnims = 2;*/
+    public GameObject hitEffectSpritePrefab;
 
     private Animator animator;
 
@@ -28,17 +29,24 @@ public class animationController : MonoBehaviour
         animator.Play(aniName);
     }
 
-    public void playAttackAnim()
+    public void playAttackAnim(Transform targetTransform)
     {
-        int randomNum = Random.Range(0, attackAnims);
-        randomNum++;
-        string animName = "Atk" + randomNum;
+        /*int randomNum = Random.Range(0, attackAnims);
+        randomNum++;*/
+        string animName = "Atk";
         Debug.Log(animName);
         animator.SetTrigger(animName);
+        GameObject effectSprite;
+        if (hitEffectSpritePrefab != null)
+            effectSprite = Instantiate(hitEffectSpritePrefab, targetTransform.position, Quaternion.identity);
     }
 
     public void playHurtAnim()
     {
         animator.SetTrigger("Hurt");
+    }
+    public void playEvadeAnim()
+    {
+        animator.SetTrigger("Evade");
     }
 }

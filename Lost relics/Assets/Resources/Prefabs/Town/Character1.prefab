@@ -70,6 +70,8 @@ MonoBehaviour:
   CurrentHP: 30
   maxMana: 5
   passivSkill: {fileID: 3227317821961898870, guid: ab1ce1953f3c1c047b25b6983861cc21, type: 3}
+  townAnimController: {fileID: 9100000, guid: c7a666bab5025c94797bbc88fee246ea, type: 2}
+  combatAnimController: {fileID: 9100000, guid: b08725737989e6d4d8fdb99910165c11, type: 2}
 --- !u!95 &8090925580190193820
 Animator:
   serializedVersion: 5
@@ -80,7 +82,7 @@ Animator:
   m_GameObject: {fileID: 5836946873085584819}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9d8259ca41737b54f881c3c90f4ace41, type: 2}
+  m_Controller: {fileID: 9100000, guid: b08725737989e6d4d8fdb99910165c11, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -170,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2ef148b776ecd4dab7d4b0f01de0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnims: 2
+  hitEffectSpritePrefab: {fileID: 7065812165498420751, guid: 8bf89835e513eee4ba7a0516b5578fa9, type: 3}
 --- !u!82 &6458812455483262727
 AudioSource:
   m_ObjectHideFlags: 0

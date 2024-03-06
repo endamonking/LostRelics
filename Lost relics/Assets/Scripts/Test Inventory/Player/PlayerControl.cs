@@ -11,6 +11,10 @@ public class PlayerControl : MonoBehaviour
 
     private float horizontal;
     private float vertical;
+    private Animator animator;
+    //Clip
+    public RuntimeAnimatorController townController;
+    public RuntimeAnimatorController combatController;
 
     // private Rigidbody2D body;
     private Rigidbody body;
@@ -27,10 +31,15 @@ public class PlayerControl : MonoBehaviour
     
     void Start()
     {
+        Debug.Log("1");
         Scene currentScene = SceneManager.GetActiveScene();
+        animator = GetComponentInChildren<Animator>();
         if (currentScene.name != "TestRoom")
             this.enabled = false;
-            
+        else
+            animator.SetBool("IsTown", true);
+
+
     }
 
 
@@ -55,13 +64,26 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void FixedUpdate()
-    { if (move == 0) { 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-        Vector3 position = this.transform.position;
-        Vector3 movement = new Vector3(horizontal, 0, vertical).normalized;
-        position += movement * runSpeed * Time.deltaTime;
-        this.transform.position = position;
+    { 
+        if (move == 0) 
+        { /*
+            if (animator == null)
+            {
+                animator = GetComponentInChildren<Animator>();
+                animator.SetBool("IsTown", true);
+            }*/
+
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+            Vector3 position = this.transform.position;
+            Vector3 movement = new Vector3(horizontal, 0, vertical).normalized;
+            position += movement * runSpeed * Time.deltaTime;
+            Debug.Log(Math.Abs(movement.x));
+            //play animation
+            if (animator != null)
+                animator.SetFloat("Run", Math.Abs(movement.x));
+
+            this.transform.position = position;
         }
     }
     private void OnCollisionEnter(Collision collision)

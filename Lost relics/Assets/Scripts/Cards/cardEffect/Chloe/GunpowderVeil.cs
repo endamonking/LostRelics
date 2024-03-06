@@ -28,6 +28,8 @@ public class GunpowderVeil : cardEffect
         int addSkillMulti = Mathf.FloorToInt(userDamage * (addskillMultiplier / 100.0f));
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Apply debuf
         buff deBuff = new buff("Bomb", 2, "SPECIAL");
         deBuff.AddBuff("Bomb", addSkillMulti);

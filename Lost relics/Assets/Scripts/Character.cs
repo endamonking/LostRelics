@@ -845,7 +845,20 @@ public class Character : MonoBehaviour
         }
         else //Evaded
         {
+            //Play animation and sound
+            if (animController)
+                animController.playEvadeAnim();
 
+            if (characterAudio != null)
+                characterAudio.playDodgeSound();
+
+            //Show dmg popup
+            if (dmgPopupPrefab != null)
+            {
+                GameObject popup = Instantiate(dmgPopupPrefab, transform.position, Quaternion.identity);
+                popup.GetComponent<popUpDMG>().popUpDamage(0);
+
+            }
         }
         if (currentHP <= 0)
             died();
@@ -1091,4 +1104,14 @@ public class Character : MonoBehaviour
         hpBar.updateHPBar(inComMaxHP, currentHP);
     }
 
+    // Animation and sound
+    public void doCharacterAnimationAndSound(GameObject target)
+    {
+        if (animController != null)
+            animController.playAttackAnim(target.transform);
+
+        if (characterAudio != null)
+            characterAudio.playAttackSound();
+
+    }
 }

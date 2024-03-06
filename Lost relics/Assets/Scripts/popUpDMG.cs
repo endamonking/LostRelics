@@ -24,7 +24,15 @@ public class popUpDMG : MonoBehaviour
     public void popUpDamage(int damage)
     {
         TextMeshPro tmp = GetComponent<TextMeshPro>();
-        tmp.text = damage.ToString();
+        if (damage > 0)
+            tmp.text = damage.ToString();
+        else
+        {
+            tmp.text = "MISS";
+            Color whiteColour = new Color(255, 0, 0);
+            tmp.color = whiteColour;
+        }
+
         addForce();
     }
     public void popUpTrueDamage(int damage)

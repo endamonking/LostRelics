@@ -6,8 +6,7 @@ public class TownPlayerSystem : MonoBehaviour
 {
 
     public Transform PlayerSlot;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         int selectedCharacterID = GameManager.Instance.selectedCharacterID;
         Debug.Log(selectedCharacterID);
@@ -22,6 +21,23 @@ public class TownPlayerSystem : MonoBehaviour
             assignStatToCharacterScript(unitComponent);
         }
         DontDestroyOnLoad(gameObject);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+       /* int selectedCharacterID = GameManager.Instance.selectedCharacterID;
+        Debug.Log(selectedCharacterID);
+        GameObject characterPrefab = Resources.Load<GameObject>("Prefabs/Town/Character" + selectedCharacterID);
+        Debug.Log(characterPrefab);
+        Transform childTranform = this.transform.Find("Character");
+        if (childTranform == null) //Will do only once
+        {
+            GameObject MainCharacter = Instantiate(characterPrefab, PlayerSlot);
+            MainCharacter.name = "Character";
+            Unit unitComponent = MainCharacter.GetComponent<Unit>();
+            assignStatToCharacterScript(unitComponent);
+        }
+        DontDestroyOnLoad(gameObject);*/
 
     }
 

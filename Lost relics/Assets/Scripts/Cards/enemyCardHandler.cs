@@ -42,7 +42,7 @@ public class enemyCardHandler : cardHandler
                         continue;
                     currentMana = currentMana - card.cardCost;
                     card.doCardEffect(this.player, target.GetComponent<Character>());
-                    comIns.doCharacterAnimationAndSound(this.gameObject);
+                    //comIns.doCharacterAnimationAndSound(this.gameObject);
                     cardInHand.Remove(card);
                     //Token check
                     float delayTime = card.delayAction;

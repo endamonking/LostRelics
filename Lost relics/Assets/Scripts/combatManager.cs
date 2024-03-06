@@ -335,7 +335,7 @@ public class combatManager : MonoBehaviour
             if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget)) //Start card effect
             {
                 //Use animation
-                doCharacterAnimationAndSound(currentObjTurn);
+                //doCharacterAnimationAndSound(currentObjTurn);
                 //Check Token
                 if (cardData.isToken == false)
                     currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
@@ -376,7 +376,7 @@ public class combatManager : MonoBehaviour
         }
     }
 
-    public void doCharacterAnimationAndSound(GameObject other)
+    /*public void doCharacterAnimationAndSound(GameObject other)
     {
         Character character = other.GetComponent<Character>();
         if (character == null)
@@ -388,7 +388,7 @@ public class combatManager : MonoBehaviour
         if (character.characterAudio != null)
             character.characterAudio.playAttackSound();
 
-    }
+    }*/
 
     public void updateManaText()
     {
