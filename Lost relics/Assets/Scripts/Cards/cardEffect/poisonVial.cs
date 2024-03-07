@@ -24,6 +24,8 @@ public class poisonVial : cardEffect
         deBuff.AddBuff("Poison", damageAmount);
 
         target.applyActiveDeBuff(deBuff,false);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
 }

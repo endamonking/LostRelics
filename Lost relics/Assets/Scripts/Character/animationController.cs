@@ -34,8 +34,13 @@ public class animationController : MonoBehaviour
         /*int randomNum = Random.Range(0, attackAnims);
         randomNum++;*/
         string animName = "Atk";
-        Debug.Log(animName);
         animator.SetTrigger(animName);
+        GameObject effectSprite;
+        if (hitEffectSpritePrefab != null)
+            effectSprite = Instantiate(hitEffectSpritePrefab, targetTransform.position, Quaternion.identity);
+    }
+    public void spawnHitEffect(Transform targetTransform)
+    {
         GameObject effectSprite;
         if (hitEffectSpritePrefab != null)
             effectSprite = Instantiate(hitEffectSpritePrefab, targetTransform.position, Quaternion.identity);

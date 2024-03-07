@@ -27,6 +27,8 @@ public class HolyHammer : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         int healAmount = target.takeDamageWithDMGReturn(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Heal part
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());

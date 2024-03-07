@@ -15,8 +15,8 @@ MonoBehaviour:
   cardName: A line
   description: 
   effectString: "Deal 60% ATK as damage X time to an enemy (X equals to \u201CIndecipherable
-    Poem\u201D in hands), if the user is in \u201CFlow\u201D stance Effect changes
-    to 80% damage"
+    Poem\u201D in hand and using queue.), if the user is in \u201CFlow\u201D stance
+    Effect changes to 80% damage"
   cardCost: 1
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
   delayAction: 1

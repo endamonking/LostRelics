@@ -29,11 +29,15 @@ public class BlindingBarrage : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Addition damage
         int count = (user.inComSPD - 30) / 10;
         for (int i =0; i < count; i++)
         {
             target.takeTrueDamage(additionalDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(target.gameObject);
         }
 
 

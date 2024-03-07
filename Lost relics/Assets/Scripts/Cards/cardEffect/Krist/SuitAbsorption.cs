@@ -24,6 +24,7 @@ public class SuitAbsorption : cardEffect
         //Heal
         int lostHP = user.inComMaxHP - user.currentHP;
         user.getHeal(lostHP / 2, 1);
+        user.doCharacterSound();
 
         return true;
     }

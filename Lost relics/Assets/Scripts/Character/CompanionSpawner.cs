@@ -83,15 +83,22 @@ public class CompanionSpawner : MonoBehaviour
         {
             case 1:
                 npcName = "Krist";
-                npcDialog = "Test";
+                npcDialog = "I’ve seen you investigating the lost relics for a while now. " +
+                    "I’m also interested in it. I’m Krist, town security. " +
+                    "Do you mind if I join your investigation?";
                 break;
             case 2:
                 npcName = "Seraphina";
-                npcDialog = "Test";
+                npcDialog = "”Greetings, traveler. I am Seraphina, a humble servant of the divine. " +
+                    "I’ve heard you are here to investigate the Lost relics. " +
+                    "Will you accept my assistance on your noble quest? " +
+                    "I wish to save more people whose suffering out there“ ";
                 break;
             case 3:
                 npcName = "Chloe";
-                npcDialog = "Test";
+                npcDialog = "”Name’s Chloe, just a mercenary. I usually take jobs but " +
+                    "I see you are having fun relic hunting. Fancy having a sharpshooter like me in your party? " +
+                    "I want to join the fun as well“ ";
                 break;
         }
         comName.text = npcName;

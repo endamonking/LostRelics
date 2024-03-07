@@ -30,6 +30,8 @@ public class DivineJudgment : cardEffect
             target.takeDamage(userDamage, 100, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         else
             target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
 }

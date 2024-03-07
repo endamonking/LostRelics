@@ -28,7 +28,8 @@ public class DimensionalRift : cardEffect
             resisDebuf.AddBuff("RESISTANCE", 30);
             target.applyActiveDeBuff(resisDebuf, false);
         }
-
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
 
         return true;
     }

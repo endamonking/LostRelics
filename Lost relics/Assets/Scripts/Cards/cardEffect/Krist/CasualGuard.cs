@@ -30,7 +30,7 @@ public class CasualGuard : cardEffect
             Character playerTarget = player.GetComponent<Character>();
             playerTarget.applyActiveBuff(newBuff, false);
         }
-
+        user.doCharacterSound();
 
 
         return true;

@@ -28,6 +28,8 @@ public class pileOfGarbage : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Add debuff if condition met
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();

@@ -24,6 +24,7 @@ public class PerceptiveWriting : cardEffect
         {
             playerCardHand.createCardToHand(tokenCard);
         }
+        user.doCharacterSound();
 
         return true;
     }

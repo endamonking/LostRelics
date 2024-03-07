@@ -27,6 +27,8 @@ public class Ricochet : cardEffect
         float skillMulti = baseSkillMultiplier / 100.0f;
         float addskillMulti = addSkillMultiplier / 100.0f;
 
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Check if crit or not if cri then force critical by give critrate 200%
         float randomNumber = Random.value;
 
@@ -37,10 +39,11 @@ public class Ricochet : cardEffect
             GameObject other = combatManager.Instance.getRandomEnemy();
             Character otherTarget = other.GetComponent<Character>();
             otherTarget.takeDamage(userDamage, userAP, userDMGBonus, addskillMulti, userCritRate, userCritDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(other.gameObject);
         }
         else
             target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, 0, userCritDMG);
-
         return true;
     }
 }

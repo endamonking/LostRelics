@@ -39,9 +39,12 @@ public class magnumOpus : cardEffect
                 tokenList.Add(card);
             }
         }
+
         skillMulti = skillMulti * tokenList.Count;
         skillMulti = skillMulti / 100.0f;
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Remove all token in hand
         playerCardHanlder.cardInHand.RemoveAll(card => tokenList.Contains(card));
 

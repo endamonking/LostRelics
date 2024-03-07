@@ -31,7 +31,7 @@ public class endOfChapter : cardEffect
             CH.drawCard();
             CH.drawCard();
         }
-
+        user.doCharacterSound();
         return true;
     }
 }

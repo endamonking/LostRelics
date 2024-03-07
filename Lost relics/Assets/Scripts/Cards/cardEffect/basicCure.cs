@@ -20,6 +20,7 @@ public class basicCure : cardEffect
     {
         int number = 1;
         target.removeActiveDeBuff(number);
+        user.doCharacterSound();
         return true;
     }
 }

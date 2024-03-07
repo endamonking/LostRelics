@@ -28,6 +28,7 @@ public class DarkPact : cardEffect
             Darkpact.AddBuff("SPD", 20);
 
             user.applyActiveBuff(Darkpact, false);
+            user.doCharacterSound();
             return true;
         }
         else

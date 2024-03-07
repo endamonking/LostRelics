@@ -25,6 +25,7 @@ public class ArcaneChanneling : cardEffect, IStartturnEffect
 
         target.applyActiveBuff(newBuff, true);
         target.applyActiveBuff(manaBuff, true);
+        user.doCharacterSound();
 
         return true;
     }

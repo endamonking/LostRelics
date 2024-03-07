@@ -78,10 +78,15 @@ public class PlayerControl : MonoBehaviour
             Vector3 position = this.transform.position;
             Vector3 movement = new Vector3(horizontal, 0, vertical).normalized;
             position += movement * runSpeed * Time.deltaTime;
-            Debug.Log(Math.Abs(movement.x));
             //play animation
             if (animator != null)
+            {
                 animator.SetFloat("Run", Math.Abs(movement.x));
+                if (movement.x < 0)
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                else if (movement.x > 0)
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+            }
 
             this.transform.position = position;
         }

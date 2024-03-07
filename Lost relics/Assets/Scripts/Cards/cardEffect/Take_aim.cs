@@ -21,6 +21,7 @@ public class Take_aim : cardEffect
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
         playerCardHanlder.drawCard();
+        user.doCharacterSound();
         return true;
 
     }

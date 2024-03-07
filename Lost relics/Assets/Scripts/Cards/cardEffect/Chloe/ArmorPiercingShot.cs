@@ -27,6 +27,8 @@ public class ArmorPiercingShot : cardEffect
         float skillMulti = baseSkillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         if (target.myStance == stance.Defence)
         {
             target.changingStance(stance.Exposed, false);

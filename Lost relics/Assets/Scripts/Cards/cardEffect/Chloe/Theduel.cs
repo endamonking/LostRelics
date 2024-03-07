@@ -18,6 +18,7 @@ public class Theduel : cardEffect
 
     public override bool applyEffect(Character target, Character user)
     {
+        user.doCharacterSound();
         return true;
     }
 }

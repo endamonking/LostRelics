@@ -32,8 +32,9 @@ public class HolyNova : cardEffect
         {
             Character targetCharac = enemy.GetComponent<Character>();
             targetCharac.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(enemy);
 
-    
         }
         return true;
     }

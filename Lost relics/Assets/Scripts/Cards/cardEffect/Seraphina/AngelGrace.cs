@@ -21,6 +21,7 @@ public class AngelGrace : cardEffect
         newbuff.AddBuff("AP", 50);
         newbuff.AddBuff("DMGBonus", 30);
         target.applyActiveBuff(newbuff, true);
+        user.doCharacterSound();
         return true;
     }
 }

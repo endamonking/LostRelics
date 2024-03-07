@@ -22,7 +22,7 @@ public class HealingLight : cardEffect
         int healPower = user.inComHeal;
         float skillMuti = skillMultiplier / 100.0f;
         target.getHeal(healPower, skillMuti);
-
+        user.doCharacterSound();
         return true;
     }
 }

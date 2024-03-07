@@ -28,6 +28,8 @@ public class Alloutstrike : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti,userCritRate,userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
 
         return true;
     }

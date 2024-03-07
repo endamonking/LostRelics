@@ -38,7 +38,7 @@ public class approachingDeadlines : cardEffect
             CH.createCardToHand(tokenCard);
         }
         CH.drawCard();
-
+        user.doCharacterSound();
 
         return true;
     }

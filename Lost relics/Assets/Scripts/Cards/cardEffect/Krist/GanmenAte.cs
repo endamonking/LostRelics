@@ -35,6 +35,8 @@ public class GanmenAte : cardEffect
         {
             Character targetChara = enemy.GetComponent<Character>();
             targetChara.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(enemy);
             targetChara.applyActiveDeBuff(deBuff, false);
 
         }

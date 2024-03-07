@@ -39,6 +39,8 @@ public class EmptyTheStorage : cardEffect
         for (int i = 0; i < hitCounts; i++)
         {
             target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(target.gameObject);
         }
         Debug.Log(hitCounts);
         return true;

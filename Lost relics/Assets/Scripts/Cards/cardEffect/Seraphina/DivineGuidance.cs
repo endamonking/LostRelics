@@ -34,6 +34,7 @@ public class DivineGuidance : cardEffect
             other.AddBuff("CRITRate", 30);
             targetBuff.applyActiveBuff(other, true);
         }
+        user.doCharacterSound();
         return true;
     }
 }

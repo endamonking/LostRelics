@@ -31,6 +31,8 @@ public class ShadowStep : cardEffect
 
         skillMulti = skillMulti / 100.0f;
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         if (user.myStance == stance.Phantom_Assault)
         {
             buff debuff = new buff("Shadow Step", 2, "SPD_Down");

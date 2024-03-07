@@ -48,6 +48,8 @@ public class throwingKnife : cardEffect
                 target.takeDamage(userDamage, userAP, userDMGBonus, additiveskillMulti, userCritRate, userCritDMG);
             }
         }
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
 }

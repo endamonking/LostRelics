@@ -19,6 +19,7 @@ public class Stance_Preparation : cardEffect
     public override bool applyEffect(Character target, Character user)
     {
         combatManager.Instance.isForceEndturn = true;
+        user.doCharacterSound();
         return true;
     }
 }

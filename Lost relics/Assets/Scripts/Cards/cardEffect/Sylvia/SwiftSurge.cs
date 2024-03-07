@@ -36,6 +36,8 @@ public class SwiftSurge : cardEffect
             GameObject enemyGO = combatManager.Instance.getRandomEnemy();
             Character enemy = enemyGO.GetComponent<Character>();
             enemy.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(enemyGO);
         }
 
 

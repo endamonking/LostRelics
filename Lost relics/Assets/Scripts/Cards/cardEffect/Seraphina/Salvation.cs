@@ -20,6 +20,7 @@ public class Salvation : cardEffect
         buff salvation = new buff("Salvation", 2, "ATK_Up");
         salvation.AddBuff("ATK", 20);
         target.applyActiveBuff(salvation, false);
+        user.doCharacterSound();
         return true;
     }
 }

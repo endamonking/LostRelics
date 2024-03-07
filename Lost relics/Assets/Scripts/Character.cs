@@ -1114,4 +1114,15 @@ public class Character : MonoBehaviour
             characterAudio.playAttackSound();
 
     }
+    public void doCharacterSound()
+    {
+        if (characterAudio != null)
+            characterAudio.playAttackSound();
+
+    }
+    public void spawnHitEffect(GameObject target)
+    {
+        if (animController != null)
+            animController.spawnHitEffect(target.transform);
+    }
 }

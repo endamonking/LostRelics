@@ -21,7 +21,7 @@ public class Harden : cardEffect
         newBuff.AddBuff("MAXHP", 20);
         user.applyActiveBuff(newBuff, false);
         user.characterUpDateHpBar();
-
+        user.doCharacterSound();
         return true;
     }
 }

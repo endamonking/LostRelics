@@ -36,7 +36,8 @@ public class Quickshot : cardEffect
         }
         else
             target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, 0, userCritDMG);
-
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
 }

@@ -24,6 +24,7 @@ public class stanceDefence : cardEffect
         stanceDefence.AddBuff("DEF", skillMuliplier);
 
         user.applyActiveBuff(stanceDefence,false);
+        user.doCharacterSound();
         return true;
     }
 

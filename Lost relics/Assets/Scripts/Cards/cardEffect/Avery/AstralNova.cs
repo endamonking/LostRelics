@@ -33,8 +33,9 @@ public class AstralNova : cardEffect, IStartturnEffect
         {
             Character targetSkill = enemy.GetComponent<Character>();
             targetSkill.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(enemy);
         }
-
         //Add mana
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());

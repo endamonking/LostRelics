@@ -20,11 +20,11 @@ public class Iaido : cardEffect
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
 
+        user.doCharacterSound();
         for (int i = 0; i < 1; i++)
         {
             playerCardHanlder.drawCard();
         }
-
         combatManager.Instance.isForceEndturn = true;
         return true;
     }

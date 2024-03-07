@@ -29,7 +29,8 @@ public class EssenceDrain : cardEffect
         int healAmount = target.takeDamageWithDMGReturn(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         if (user.myStance == stance.Temporal)
             user.getHeal(healAmount / 2, 1);
-
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
 }

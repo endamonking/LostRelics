@@ -33,6 +33,8 @@ public class ScabbardKnock : cardEffect
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         target.applyActiveDeBuff(deBuff, false);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
 }

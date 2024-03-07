@@ -28,6 +28,8 @@ public class sweepKick : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Apply debuf
         buff deBuff = new buff("Sweep Kick", 2, "SPD_Down");
         deBuff.AddBuff("SPD", -10);

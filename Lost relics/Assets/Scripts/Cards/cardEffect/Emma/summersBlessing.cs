@@ -59,7 +59,7 @@ public class summersBlessing : cardEffect
                 pCharacter.applyActiveBuff(otherSummerBless, false);
             }
         }
-
+        user.doCharacterSound();
         return true;
     }
 }

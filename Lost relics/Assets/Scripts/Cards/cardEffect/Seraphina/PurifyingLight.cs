@@ -19,6 +19,7 @@ public class PurifyingLight : cardEffect
     {
         int number = user.activeDeBuffs.Count;
         target.removeActiveDeBuff(number);
+        user.doCharacterSound();
         return true;
     }
 }

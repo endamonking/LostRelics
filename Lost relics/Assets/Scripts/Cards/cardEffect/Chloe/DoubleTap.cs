@@ -31,6 +31,9 @@ public class DoubleTap : cardEffect
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         target.takeDamage(userDamage, userAP, userDMGBonus, addskillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
+        user.doCharacterAnimationAndSound(target.gameObject);
         //add stack
         buff lockNLoad = user.GetBuffByName(buffName);
         if (lockNLoad != null)

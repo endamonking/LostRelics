@@ -37,6 +37,8 @@ public class LightningDraw : cardEffect
         {
             Character enemyTarget = enemy.GetComponent<Character>();
             enemyTarget.takeTrueDamage(dmg);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(enemy);
         }
 
 

@@ -17,6 +17,7 @@ public class RapidRetaliation : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
+        user.doCharacterSound();
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
 

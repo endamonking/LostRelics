@@ -24,7 +24,7 @@ public class arcaneInsight : cardEffect
         {
             playerCardHanlder.drawCard();
         }
-
+        user.doCharacterSound();
         return true;
     }
 }

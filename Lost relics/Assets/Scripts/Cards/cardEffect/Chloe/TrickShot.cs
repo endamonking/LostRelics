@@ -26,6 +26,8 @@ public class TrickShot : cardEffect
         int userCritDMG = user.inComCritDMG;
         float skillMulti = baseSkillMultiplier / 100.0f;
 
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Check if crit or not if cri then force critical by give critrate 200%
         float randomNumber = Random.value;
 

@@ -23,6 +23,7 @@ public class VitalRedistribution : cardEffect
         int dmg = Mathf.FloorToInt(user.currentHP * 0.3f);
         user.takeTrueDamageIgnoreOnHit(dmg);
         target.getHeal(dmg, 1);
+        user.doCharacterSound();
         return true;
     }
 }

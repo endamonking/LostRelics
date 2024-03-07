@@ -33,6 +33,8 @@ public class Snipe : cardEffect
         buff lockNLoad = user.GetBuffByName(buffName);
         if (lockNLoad != null)
         {
+            //play animation and sound
+            user.doCharacterAnimationAndSound(target.gameObject);
             if (lockNLoad.buffs["STACK"] == 2)
             {
                 target.takeDamage(userDamage, userAP, userDMGBonus, addSkillMulti, userCritRate, userCritDMG);

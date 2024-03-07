@@ -26,6 +26,7 @@ public class ChainHeal : cardEffect
         //Self
         float selfMulti = addSkillMultiplier / 100.0f;
         user.getHeal(healPower, selfMulti);
+        user.doCharacterSound();
         return true;
     }
 }

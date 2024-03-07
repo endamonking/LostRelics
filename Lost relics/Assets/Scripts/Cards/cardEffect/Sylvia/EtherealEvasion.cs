@@ -29,7 +29,7 @@ public class EtherealEvasion : cardEffect
         {
             playerCardHanlder.drawCard();
         }
-
+        user.doCharacterSound();
         return true;
     }
 }

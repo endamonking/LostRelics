@@ -30,7 +30,7 @@ public class CelestialBlessing : cardEffect
             if (user.myStance == stance.Ethereal)
                 player.removeActiveDeBuff(player.activeDeBuffs.Count);
         }
-        
+        user.doCharacterSound();
         return true;
     }
 }

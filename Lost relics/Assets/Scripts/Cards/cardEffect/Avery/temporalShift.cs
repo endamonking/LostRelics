@@ -26,6 +26,8 @@ public class temporalShift : cardEffect
         {
             Character charac = enemy.GetComponent<Character>();
             charac.applyActiveDeBuff(deBuff, false);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(enemy);
         }
         //Second Buff
         if (user.myStance == stance.Temporal)
@@ -36,7 +38,6 @@ public class temporalShift : cardEffect
             secondDeBuff.AddBuff("SPD", -20);
             chara.applyActiveDeBuff(secondDeBuff, true);
         }
-
         return true;
     }
 }

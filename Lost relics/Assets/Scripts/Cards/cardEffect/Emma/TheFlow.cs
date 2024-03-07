@@ -17,7 +17,7 @@ public class TheFlow : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-
+        user.doCharacterSound();
         return true;
     }
 }

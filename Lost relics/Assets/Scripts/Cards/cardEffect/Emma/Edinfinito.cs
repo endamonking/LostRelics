@@ -53,6 +53,8 @@ public class Edinfinito : cardEffect, IBeforeUseCard
         Character target = enemy.GetComponent<Character>();
         float skillMulti = baseSkillMultiplier / 100.0f;
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        thisUser.doCharacterAnimationAndSound(target.gameObject);
 
     }
     

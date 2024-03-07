@@ -18,6 +18,7 @@ public class IndecipherablePoem : cardEffect
     public override bool applyEffect(Character target, Character user)
     {
         Debug.Log("Use Token");
+        user.doCharacterSound();
         return true;
     }
 }

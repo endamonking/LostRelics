@@ -46,7 +46,7 @@ public class Change_of_plans : cardEffect
         {
             playerCardHanlder.drawCard();
         }
-
+        user.doCharacterSound();
         return true;
     }
 }

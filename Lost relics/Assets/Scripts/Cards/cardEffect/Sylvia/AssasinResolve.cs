@@ -17,10 +17,11 @@ public class AssasinResolve : cardEffect, IStartturnEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
+        user.doCharacterSound();
         //Add mana buff
         buff manaBuff = new buff("Extra Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>());
         user.applyActiveBuff(manaBuff, true);
-
+        
         combatManager.Instance.isForceEndturn = true;
         return true;
     }

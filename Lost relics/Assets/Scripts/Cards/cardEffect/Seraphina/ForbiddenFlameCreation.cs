@@ -21,6 +21,7 @@ public class ForbiddenFlameCreation : cardEffect
     public override bool applyEffect(Character target, Character user)
     {
         //Check ally
+        //Other aproach is to check tag
         List<GameObject> enemies = new List<GameObject>();
         enemies.AddRange(combatManager.Instance.getAllEnemies());
         foreach (GameObject enemy in enemies)
@@ -30,6 +31,8 @@ public class ForbiddenFlameCreation : cardEffect
         }
         //Deal dmg
         target.takeTrueDamageIgnoreOnHit(damage);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Create card
         cardHandler playerCardHand = user.gameObject.GetComponent<cardHandler>();
         playerCardHand.createCardToHand(tokenCard);

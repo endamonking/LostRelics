@@ -38,6 +38,8 @@ public class WhirlwindAssault : cardEffect
         {
             Character targetCharac = enemy.GetComponent<Character>();
             targetCharac.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(enemy);
             //Add debuf 
             if (user.myStance == stance.Phantom_Assault)
             {

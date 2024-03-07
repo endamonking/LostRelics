@@ -20,7 +20,8 @@ public class ForbiddenFlame : cardEffect
     public override bool applyEffect(Character target, Character user)
     {
         target.takeTrueDamage(damage);
-
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
 }

@@ -36,6 +36,8 @@ public class AVerse : cardEffect
         {
             float additiveskillMulti = skillMulti / 100.0f;
             target.takeDamage(userDamage, userAP, userDMGBonus, additiveskillMulti, userCritRate, userCritDMG);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(target.gameObject);
         }
 
         return true;

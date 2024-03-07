@@ -33,6 +33,7 @@ public class ancientWard : cardEffect
             chara.applyActiveBuff(otherAncientWard, false);
 
         }
+        user.doCharacterSound();
         return true;
     }
 }

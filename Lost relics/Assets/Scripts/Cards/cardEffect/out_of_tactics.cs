@@ -25,6 +25,7 @@ public class out_of_tactics : cardEffect
         {
             playerCardHanlder.drawCard();
         }
+        user.doCharacterSound();
         return true;
     }
 }

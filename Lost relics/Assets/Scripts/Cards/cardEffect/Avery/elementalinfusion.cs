@@ -48,6 +48,7 @@ public class elementalinfusion : cardEffect
             Character cha = player.GetComponent<Character>();
             cha.applyActiveBuff(otherBuff, false);
         }
+        user.doCharacterSound();
         return true;
     }
 }

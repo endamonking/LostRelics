@@ -38,7 +38,7 @@ public class QuickReload : cardEffect
                     lockNLoad.buffs["STACK"] = 0;
             }
         }
-
+        user.doCharacterSound();
         return true;
     }
 }

@@ -27,6 +27,8 @@ public class EternalSorrow : cardEffect
                 continue;
             Character enemyTarget = go.GetComponent<Character>();
             enemyTarget.takeTrueDamage(dmg);
+            //play animation and sound
+            user.doCharacterAnimationAndSound(go);
         }
 
 

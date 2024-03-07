@@ -37,6 +37,7 @@ public class SpringBeauty : cardEffect
             }
 
         }
+        user.doCharacterSound();
         return true;
     }
 }

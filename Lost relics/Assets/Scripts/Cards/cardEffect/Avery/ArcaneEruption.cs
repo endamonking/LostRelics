@@ -35,6 +35,8 @@ public class ArcaneEruption : cardEffect, IEndturnEffect
             deBuff.AddBuff("ATK", -20);
             target.applyActiveDeBuff(deBuff, false);
         }
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
     public void onEndTurn()

@@ -28,6 +28,8 @@ public class FlashStrike : cardEffect
 
         skillMulti = skillMulti / 100.0f;
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         if (user.myStance == stance.Blade_Dance)
         {
             buff newbuff = new buff("Flash Strike", 3, "EVADE_Up");

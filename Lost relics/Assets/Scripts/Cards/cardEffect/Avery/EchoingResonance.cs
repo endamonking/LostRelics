@@ -25,6 +25,7 @@ public class EchoingResonance : cardEffect, IBeforeUseCard
         APBuff.AddBuff("AP", 50);
         user.applyActiveBuff(newBuff, true);
         user.applyActiveBuff(APBuff, true);
+        user.doCharacterSound();
         return true;
     }
     

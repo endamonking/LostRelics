@@ -36,6 +36,7 @@ public class FindingInspiration : cardEffect, IEndturnEffect
         {
             playerCardHanlder.drawCard();
         }
+        user.doCharacterSound();
         return true;
     }
 }

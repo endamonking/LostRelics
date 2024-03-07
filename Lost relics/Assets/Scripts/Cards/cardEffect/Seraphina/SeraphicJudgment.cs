@@ -35,6 +35,8 @@ public class SeraphicJudgment : cardEffect
                 Character targetCharac = enemy.GetComponent<Character>();
                 targetCharac.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
                 targetCharac.takeDamage(userDamage, userAP, userDMGBonus, addSkillMulti, userCritRate, userCritDMG);
+                //play animation and sound
+                user.doCharacterAnimationAndSound(enemy);
             }
         }
         else
@@ -43,6 +45,8 @@ public class SeraphicJudgment : cardEffect
             {
                 Character targetCharac = enemy.GetComponent<Character>();
                 targetCharac.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+                //play animation and sound
+                user.doCharacterAnimationAndSound(enemy);
 
             }
         }

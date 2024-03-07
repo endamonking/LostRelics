@@ -26,6 +26,8 @@ public class UpwardSlash : cardEffect
         int dmg = Mathf.FloorToInt(haftHP);
         user.takeTrueDamageIgnoreOnHit(dmg);
         target.takeTrueDamage(dmg);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
 
 
         return true;

@@ -26,7 +26,8 @@ public class StrengtheningBullet : cardEffect
         int userCritDMG = user.inComCritDMG;
         float skillMulti = baseSkillMultiplier / 100.0f;
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
-
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Add buff
         buff newBuff = new buff("Strengthening bullet", 2, "ATK_Up");
         newBuff.AddBuff("ATK", 30);

@@ -21,7 +21,7 @@ public class CriticalSurge : cardEffect
         buff newBuff = new buff("Strengthening bullet", 2, "CRIT_Up");
         newBuff.AddBuff("CRITDMG", 30);
         user.applyActiveBuff(newBuff, false);
-
+        user.doCharacterSound();
         return true;
     }
 }

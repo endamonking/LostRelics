@@ -29,6 +29,8 @@ public class adaptiveSetting : cardEffect, IOnTakeHit
         buff newdeBuff = new buff("Adaptive setting", 1, "On_Take_Hit", this.gameObject.GetComponent<IOnTakeHit>());
         foreach (GameObject GO in enemies)
         {
+            //play animation and sound
+            user.doCharacterAnimationAndSound(GO);
             Character enemy = GO.GetComponent<Character>();
             buff currentBuff = enemy.findBuffContainByName(newdeBuff.buffName);
             if (currentBuff != null)
