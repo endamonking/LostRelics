@@ -29,7 +29,8 @@ public class SonicSurge : cardEffect
         float skillMulti = baseSkillMultiplier;
         skillMulti = skillMulti / 100.0f;
         //Create debuff
-        buff debuff = new buff("Sonic Surge", 2, "SPD_Down");
+        string des = "Decrease SPD by 10%";
+        buff debuff = new buff("Sonic Surge", 2, "SPD_Down", des);
         debuff.AddBuff("SPD", -10);
         foreach (GameObject enemy in enemies)
         {

@@ -28,7 +28,8 @@ public class ScabbardKnock : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         //create debuff
-        buff deBuff = new buff("Scabbard knock", 3, "HEAL_Down");
+        string des2 = "Decrease Healing receive by 30%";
+        buff deBuff = new buff("Scabbard knock", 3, "HEAL_Down", des2);
         deBuff.AddBuff("HEALReduction", 30);
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);

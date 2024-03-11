@@ -35,7 +35,8 @@ public class ShadowStep : cardEffect
         user.doCharacterAnimationAndSound(target.gameObject);
         if (user.myStance == stance.Phantom_Assault)
         {
-            buff debuff = new buff("Shadow Step", 2, "SPD_Down");
+            string des = "Decrease SPD by 10%";
+            buff debuff = new buff("Shadow Step", 2, "SPD_Down", des);
             debuff.AddBuff("SPD", -10);
             user.applyActiveDeBuff(debuff, false);
             CH.currentMana += 2;

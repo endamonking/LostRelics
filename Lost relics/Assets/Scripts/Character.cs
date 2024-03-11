@@ -106,6 +106,8 @@ public class Character : MonoBehaviour
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
+            if (finalValue <= 0)
+                finalValue = 1;
             return finalValue;
         }
     }
@@ -302,6 +304,8 @@ public class Character : MonoBehaviour
                 }
             }
             int finalValue = Mathf.FloorToInt(totalValue);
+            if (finalValue < 0)
+                finalValue = 0;
             return finalValue;
         }
     }
@@ -366,14 +370,16 @@ public class Character : MonoBehaviour
         switch (myStance)
         {
             case stance.Exhausted:
-                buff deBuff = new buff("Exhausted", 2, "ATK_Down");
+                string des = "Decrease DEF for 20%, SPD for 10%, and ATK for 10%";
+                buff deBuff = new buff("Exhausted", 2, "ATK_Down",des);
                 deBuff.AddBuff("SPD", -10);
                 deBuff.AddBuff("ATK", -10);
                 deBuff.AddBuff("DEF", -20);
                 applyActiveDeBuff(deBuff,false);
                 break;
             case stance.Panic:
-                buff panic = new buff("Panic", 2, "DEF_Down");
+                string des1 = "Decrease DEF for 20%";
+                buff panic = new buff("Panic", 2, "DEF_Down", des1);
                 panic.AddBuff("DEF", -20);
                 applyActiveDeBuff(panic,false);
                 break;
@@ -1064,7 +1070,8 @@ public class Character : MonoBehaviour
 
     private void updateStanceText(string newStance)
     {
-        stanceText.text = newStance;
+        string modifiedString = newStance.Replace("_", " ");
+        stanceText.text = modifiedString;
     }
 
     [System.Obsolete]

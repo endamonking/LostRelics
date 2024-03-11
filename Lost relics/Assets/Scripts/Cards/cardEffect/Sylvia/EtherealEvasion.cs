@@ -18,7 +18,8 @@ public class EtherealEvasion : cardEffect
     public override bool applyEffect(Character target, Character user)
     {
         //Add buff
-        buff newBuff = new buff("Ethereal Evasion", 2, "EVADE_Up");
+        string des = "Increase Evade by 50%";
+        buff newBuff = new buff("Ethereal Evasion", 2, "EVADE_Up", des);
         newBuff.AddBuff("EVADE", 50);
         user.applyActiveBuff(newBuff, false);
         //Draw

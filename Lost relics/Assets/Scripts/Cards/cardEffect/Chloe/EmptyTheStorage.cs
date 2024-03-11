@@ -34,6 +34,8 @@ public class EmptyTheStorage : cardEffect
         {
             hitCounts = lockNLoad.buffs["STACK"];
             lockNLoad.buffs["STACK"] = 0;
+            string des = "Lock’n loaded : " + lockNLoad.buffs["STACK"].ToString() + " Stacks";
+            lockNLoad.updateDescription(des);
         }
 
         for (int i = 0; i < hitCounts; i++)

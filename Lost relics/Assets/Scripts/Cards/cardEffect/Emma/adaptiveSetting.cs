@@ -26,7 +26,8 @@ public class adaptiveSetting : cardEffect, IOnTakeHit
     {
         List<GameObject> enemies = new List<GameObject>();
         enemies.AddRange(combatManager.Instance.getAllEnemies());
-        buff newdeBuff = new buff("Adaptive setting", 1, "On_Take_Hit", this.gameObject.GetComponent<IOnTakeHit>());
+        string des = "When receive damage, receive 2 more damage";
+        buff newdeBuff = new buff("Adaptive setting", 1, "On_Take_Hit", this.gameObject.GetComponent<IOnTakeHit>(), des);
         foreach (GameObject GO in enemies)
         {
             //play animation and sound

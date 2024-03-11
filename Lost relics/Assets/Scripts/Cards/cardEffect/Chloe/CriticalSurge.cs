@@ -18,7 +18,8 @@ public class CriticalSurge : cardEffect
     public override bool applyEffect(Character target, Character user)
     {
         //Add buff
-        buff newBuff = new buff("Strengthening bullet", 2, "CRIT_Up");
+        string des1 = "Increase Critical damage by 30%";
+        buff newBuff = new buff("Strengthening bullet", 2, "CRIT_Up", des1);
         newBuff.AddBuff("CRITDMG", 30);
         user.applyActiveBuff(newBuff, false);
         user.doCharacterSound();

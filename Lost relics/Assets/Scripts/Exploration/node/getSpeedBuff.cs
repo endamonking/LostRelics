@@ -20,7 +20,8 @@ public class getSpeedBuff : nodeEfffect
     }
     public override void doEffect()
     {
-        buff spdBuff = new buff("Speed", duration, "SPD_Up");
+        string des2 = "Increase SPD by 20%";
+        buff spdBuff = new buff("Speed", duration, "SPD_Up",des2);
         spdBuff.AddBuff("SPD", speedAmount);
 
         exploration_sceneManager.Instance.applyExploBuff(spdBuff,1);

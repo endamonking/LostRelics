@@ -17,7 +17,8 @@ public class Harden : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        buff newBuff = new buff("Harden", 3, "HP_Up");
+        string des2 = "Increase MAX HP by 20%";
+        buff newBuff = new buff("Harden", 3, "HP_Up", des2);
         newBuff.AddBuff("MAXHP", 20);
         user.applyActiveBuff(newBuff, false);
         user.characterUpDateHpBar();

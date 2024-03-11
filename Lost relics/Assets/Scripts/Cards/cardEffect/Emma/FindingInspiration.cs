@@ -25,7 +25,8 @@ public class FindingInspiration : cardEffect, IEndturnEffect
     {
         //this.gameObject.GetComponent<IEndturnEffect>()
         cardUser = user;
-        buff deBuff = new buff("Finding inspiration", 1, "SPECIAL", this.gameObject.GetComponent<IEndturnEffect>());
+        string des = "Enter Exposed at the end of the turn";
+        buff deBuff = new buff("Finding inspiration", 1, "SPECIAL", this.gameObject.GetComponent<IEndturnEffect>(), des);
         user.applyActiveDeBuff(deBuff, true);
         currentBuff = deBuff;
 

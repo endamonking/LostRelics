@@ -31,7 +31,8 @@ public class GunpowderVeil : cardEffect
         //play animation and sound
         user.doCharacterAnimationAndSound(target.gameObject);
         //Apply debuf
-        buff deBuff = new buff("Bomb", 2, "SPECIAL");
+        string des1 = "Explodes after 2 turns, dealing true damage to all enemies for 50% of ATK";
+        buff deBuff = new buff("Bomb", 2, "SPECIAL", des1);
         deBuff.AddBuff("Bomb", addSkillMulti);
 
         target.applyActiveDeBuff(deBuff, false);

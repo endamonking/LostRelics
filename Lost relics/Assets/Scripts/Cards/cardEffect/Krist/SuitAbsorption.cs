@@ -18,7 +18,8 @@ public class SuitAbsorption : cardEffect
     public override bool applyEffect(Character target, Character user)
     {
         //Add def down debuff
-        buff deBuff = new buff("Suit Absorption", 2, "DEF_Down");
+        string des2 = "Decrease DEF by 20%";
+        buff deBuff = new buff("Suit Absorption", 2, "DEF_Down", des2);
         deBuff.AddBuff("DEF", 20);
         user.applyActiveDeBuff(deBuff, false);
         //Heal

@@ -19,7 +19,8 @@ public class AssasinResolve : cardEffect, IStartturnEffect
     {
         user.doCharacterSound();
         //Add mana buff
-        buff manaBuff = new buff("Extra Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>());
+        string des2 = "2 extra mana next turn";
+        buff manaBuff = new buff("Extra Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>(), des2);
         user.applyActiveBuff(manaBuff, true);
         
         combatManager.Instance.isForceEndturn = true;

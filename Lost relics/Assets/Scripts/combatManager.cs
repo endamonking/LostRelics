@@ -562,7 +562,10 @@ public class combatManager : MonoBehaviour
         foreach (buff activeBuff in allBuff)
         {
             GameObject textObject1 = Instantiate(buffText, buffBox.transform);
-            textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName + "  "+ activeBuff.duration.ToString();
+            if (activeBuff.duration < 90)
+                textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName + "  " + activeBuff.duration.ToString();
+            else
+                textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName;
             //GameObject icon = Instantiate(buffIcon, debuffBox.transform);
             Sprite pic = Resources.Load<Sprite>("Buff_Icon/" + activeBuff.buffPicName);
             if (pic != null)
@@ -572,6 +575,9 @@ public class combatManager : MonoBehaviour
                 pic = Resources.Load<Sprite>("Buff_Icon/none");
                 textObject1.GetComponentInChildren<Image>().sprite = pic;
             }
+            //Print descript
+            BuffDescription bd = textObject1.GetComponent<BuffDescription>();
+            bd.printBuffDescripttion(activeBuff.buffDescription);
 
 
         }
@@ -586,7 +592,10 @@ public class combatManager : MonoBehaviour
         foreach (buff activeBuff in allBuff)
         {
             GameObject textObject1 = Instantiate(buffText, debuffBox.transform);
-            textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName +"  " + activeBuff.duration.ToString();
+            if (activeBuff.duration < 90)
+                textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName + "  " + activeBuff.duration.ToString();
+            else
+                textObject1.GetComponent<TextMeshProUGUI>().text = activeBuff.buffName;
             //GameObject icon = Instantiate(buffIcon, debuffBox.transform);
             Sprite pic = Resources.Load<Sprite>("Buff_Icon/" + activeBuff.buffPicName);
             if (pic != null)
@@ -597,7 +606,9 @@ public class combatManager : MonoBehaviour
                 textObject1.GetComponentInChildren<Image>().sprite = pic;
             }
 
-
+            //Print descript
+            BuffDescription bd = textObject1.GetComponent<BuffDescription>();
+            bd.printBuffDescripttion(activeBuff.buffDescription);
         }
 
     }

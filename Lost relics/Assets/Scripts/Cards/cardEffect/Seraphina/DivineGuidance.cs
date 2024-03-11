@@ -20,7 +20,8 @@ public class DivineGuidance : cardEffect
         //Add buff
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());
-        buff newBuff = new buff("Divine Guidance", 3, "EVADE_Up");
+        string des = "Increase Evade by 25%, and Critical rate by 30%";
+        buff newBuff = new buff("Divine Guidance", 3, "EVADE_Up",des);
         newBuff.AddBuff("EVADE", 25);
         newBuff.AddBuff("CRITRate", 30);
         user.applyActiveBuff(newBuff, true);
@@ -29,7 +30,7 @@ public class DivineGuidance : cardEffect
             if (player == combatManager.Instance.currentObjTurn) //Not current Character
                 continue;
             Character targetBuff = player.GetComponent<Character>();
-            buff other = new buff("Divine Guidance", 2, "EVADE_Up");
+            buff other = new buff("Divine Guidance", 2, "EVADE_Up", des);
             other.AddBuff("EVADE", 25);
             other.AddBuff("CRITRate", 30);
             targetBuff.applyActiveBuff(other, true);

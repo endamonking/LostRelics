@@ -18,7 +18,8 @@ public class ancientWard : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        buff ancientWard = new buff("Ancient Ward", 3, "RES_Up");
+        string des = "Increase RES by 20%";
+        buff ancientWard = new buff("Ancient Ward", 3, "RES_Up", des);
         ancientWard.AddBuff("RESISTANCE", skillMuliplier);
         user.applyActiveBuff(ancientWard, false);
         List<GameObject> players = new List<GameObject>();
@@ -28,7 +29,7 @@ public class ancientWard : cardEffect
             if (player == combatManager.Instance.currentObjTurn) //Not current Character
                 continue;
             Character chara = player.GetComponent<Character>();
-            buff otherAncientWard = new buff("Ancient Ward", 2, "RES_Up");
+            buff otherAncientWard = new buff("Ancient Ward", 2, "RES_Up", des);
             otherAncientWard.AddBuff("RESISTANCE", skillMuliplier);
             chara.applyActiveBuff(otherAncientWard, false);
 

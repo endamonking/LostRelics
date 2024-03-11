@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descripBox: {fileID: 4116392900897958168}
+  descriptionTMP: {fileID: 1748749786624234193}
 --- !u!1 &2587068157023044721
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0013809, y: -21.241}
-  m_SizeDelta: {x: 405.87, y: 142.48}
+  m_SizeDelta: {x: 490, y: 142.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2707168335927190861
 CanvasRenderer:
@@ -377,7 +378,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0.000030517578, y: 0}
-  m_SizeDelta: {x: 405.8696, y: 142.4846}
+  m_SizeDelta: {x: 440.7, y: 142.4846}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8431195995841432268
 CanvasRenderer:
@@ -407,7 +408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New TextNew TextNew Text
+  m_text: Deceased DEF for 20%, SPD for 10%, and ATK for 10%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -434,12 +435,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.8
+  m_fontSize: 32
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 22
+  m_fontSizeMax: 32
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256

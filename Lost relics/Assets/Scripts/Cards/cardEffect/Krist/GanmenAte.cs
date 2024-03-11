@@ -28,7 +28,8 @@ public class GanmenAte : cardEffect
         List<GameObject> enemies = new List<GameObject>();
         enemies.AddRange(combatManager.Instance.getAllEnemies());
         //create debuff
-        buff deBuff = new buff("Ganmen ate", 2, "SPD_Down");
+        string des2 = "Decrease SPD by 10%";
+        buff deBuff = new buff("Ganmen ate", 2, "SPD_Down", des2);
         deBuff.AddBuff("SPD", -10);
 
         foreach (GameObject enemy in enemies)

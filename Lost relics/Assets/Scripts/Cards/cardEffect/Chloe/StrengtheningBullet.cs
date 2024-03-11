@@ -29,7 +29,8 @@ public class StrengtheningBullet : cardEffect
         //play animation and sound
         user.doCharacterAnimationAndSound(target.gameObject);
         //Add buff
-        buff newBuff = new buff("Strengthening bullet", 2, "ATK_Up");
+        string des2 = "Increase ATK by 30%";
+        buff newBuff = new buff("Strengthening bullet", 2, "ATK_Up", des2);
         newBuff.AddBuff("ATK", 30);
         target.applyActiveBuff(newBuff, false);
 

@@ -31,7 +31,8 @@ public class sweepKick : cardEffect
         //play animation and sound
         user.doCharacterAnimationAndSound(target.gameObject);
         //Apply debuf
-        buff deBuff = new buff("Sweep Kick", 2, "SPD_Down");
+        string des = "Decrease SPD by 10%";
+        buff deBuff = new buff("Sweep Kick", 2, "SPD_Down", des);
         deBuff.AddBuff("SPD", -10);
 
         target.applyActiveDeBuff(deBuff,false);

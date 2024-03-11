@@ -20,7 +20,8 @@ public class stanceDefence : cardEffect
 
     public override bool applyEffect(Character target, Character user)
     {
-        buff stanceDefence = new buff("Stance Defence", 2,"DEF_Up");
+        string des = "Increase DEF by 20%";
+        buff stanceDefence = new buff("Stance Defence", 2,"DEF_Up", des);
         stanceDefence.AddBuff("DEF", skillMuliplier);
 
         user.applyActiveBuff(stanceDefence,false);

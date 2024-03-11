@@ -19,7 +19,8 @@ public class SwiftSurge : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        buff newBuff = new buff("Swift Surge", 3, "SPD,Up");
+        string des = "Increase SPD by 30%";
+        buff newBuff = new buff("Swift Surge", 3, "SPD,Up",des);
         newBuff.AddBuff("SPD", 30);
         user.applyActiveBuff(newBuff, false);
         //Dead damage

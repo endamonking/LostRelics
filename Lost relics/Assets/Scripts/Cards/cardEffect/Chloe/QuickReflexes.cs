@@ -21,14 +21,16 @@ public class QuickReflexes : cardEffect
         //Add buff
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());
-        buff newBuff = new buff("Quick Reflexes", 2, "EVADE_Up");
+        string des1 = "Increase Evade by 20%";
+        buff newBuff = new buff("Quick Reflexes", 2, "EVADE_Up", des1);
         newBuff.AddBuff("EVADE", 20);
         user.applyActiveBuff(newBuff, true);
         foreach (GameObject player in players)
         {
             if (player == combatManager.Instance.currentObjTurn) //Not current Character
                 continue;
-            buff otherBuff = new buff("Quick Reflexes", 1, "DEF_Up");
+            string des2 = "Increase DEF by 20%";
+            buff otherBuff = new buff("Quick Reflexes", 1, "DEF_Up",des2);
             otherBuff.AddBuff("EVADE", 20);
             Character targetBuff = player.GetComponent<Character>();
             targetBuff.applyActiveBuff(otherBuff, true);

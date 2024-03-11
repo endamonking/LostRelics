@@ -23,7 +23,8 @@ public class ChloePassSkill : uniquePassSkill, IStartturnEffect, IBeforeUseCard
         Character Chloe = characterGO.GetComponent<Character>();
         if (Chloe.GetBuffByName(buffName) == null)
         {
-            buff ChloeBuff = new buff("Lock地 loaded", 99, "SPECIAL", this.gameObject.GetComponent<IBeforeUseCard>());
+            string des = "Lock地 loaded : 0 Stacks";
+            buff ChloeBuff = new buff("Lock地 loaded", 99, "SPECIAL", this.gameObject.GetComponent<IBeforeUseCard>(),des);
             ChloeBuff.AddBuff("STACK", 0);
             passiveBuff = ChloeBuff;
             Chloe.applyActiveBuff(ChloeBuff, true);
@@ -40,9 +41,8 @@ public class ChloePassSkill : uniquePassSkill, IStartturnEffect, IBeforeUseCard
             ch.drawCard();
             passiveBuff.buffs["STACK"] = 0;
             Chloe.changingStance(stance.Reloading, false);
-
-
         }
-
+        string des = "Lock地 loaded : " + passiveBuff.buffs["STACK"].ToString() + " Stacks";
+        passiveBuff.updateDescription(des);
     }
 }

@@ -31,8 +31,8 @@ public class loseHPGetATKBuff : nodeEfffect
             if (pCha.currentHP <= 0)
                 pCha.currentHP = 1;
         }
-
-        buff ATKBuff = new buff("Attack", duration,"ATK_Up");
+        string des2 = "Increase ATK by 40%";
+        buff ATKBuff = new buff("Attack", duration,"ATK_Up",des2);
         ATKBuff.AddBuff("ATK", ATKAmount);
         exploration_sceneManager.Instance.applyExploBuff(ATKBuff,1);
         base.closeEvenCanvas();

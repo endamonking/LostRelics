@@ -36,6 +36,8 @@ public class QuickReload : cardEffect
                 lockNLoad.buffs["STACK"] -= 4;
                 if (lockNLoad.buffs["STACK"] < 0)
                     lockNLoad.buffs["STACK"] = 0;
+                string des = "Lock’n loaded : " + lockNLoad.buffs["STACK"].ToString() + " Stacks";
+                lockNLoad.updateDescription(des);
             }
         }
         user.doCharacterSound();

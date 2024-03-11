@@ -18,7 +18,8 @@ public class poisonVial : cardEffect
 
     public override bool applyEffect(Character target, Character user)
     {
-        buff deBuff = new buff("Poison vial", 3, "Poison");
+        string des = "Receive true damage at the start of the turn";
+        buff deBuff = new buff("Poison vial", 3, "Poison", des);
         int damageAmount = user.inComATK;
 
         deBuff.AddBuff("Poison", damageAmount);

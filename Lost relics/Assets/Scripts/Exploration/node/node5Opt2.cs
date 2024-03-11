@@ -36,7 +36,8 @@ public class node5Opt2 : nodeEfffect
                 pCha.currentHP = pCha.inComMaxHP;
         }
         //Add debuff
-        buff deBuff = new buff("Poison", 99, "Poison");
+        string des = "Receive true damage at the start of the turn";
+        buff deBuff = new buff("Poison", 99, "Poison", des);
         int damageAmount = poisonPercenATK;
 
         deBuff.AddBuff("PoisonMaxHP", damageAmount);

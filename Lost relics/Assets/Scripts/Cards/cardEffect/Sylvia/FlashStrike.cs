@@ -32,7 +32,8 @@ public class FlashStrike : cardEffect
         user.doCharacterAnimationAndSound(target.gameObject);
         if (user.myStance == stance.Blade_Dance)
         {
-            buff newbuff = new buff("Flash Strike", 3, "EVADE_Up");
+            string des = "Increase Evade by 20%";
+            buff newbuff = new buff("Flash Strike", 3, "EVADE_Up", des);
             newbuff.AddBuff("EVADE", 20);
             user.applyActiveBuff(newbuff, false);
         }

@@ -17,9 +17,11 @@ public class ArcaneChanneling : cardEffect, IStartturnEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        buff newBuff = new buff("Arcane Channeling", 1, "ATK_Up");
+        string des = "Increase ATK by 30%";
+        buff newBuff = new buff("Arcane Channeling", 1, "ATK_Up", des);
         newBuff.AddBuff("ATK", 30);
-        buff manaBuff = new buff("Arcane Channeling : Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>());
+        string des2 = "2 extra mana next turn";
+        buff manaBuff = new buff("Arcane Channeling : Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>(),des2);
         if (target != combatManager.Instance.currentObjTurn.GetComponent<Character>()) //Not current Character
             manaBuff.duration = 1;
 

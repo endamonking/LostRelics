@@ -19,7 +19,8 @@ public class DivineIntervention : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        buff newBuff = new buff("Divine Intervention", 3, "DEF_Up");
+        string des = "Increase DEF by 30%";
+        buff newBuff = new buff("Divine Intervention", 3, "DEF_Up", des);
         newBuff.AddBuff("DEF", skillMuliplier);
         user.applyActiveBuff(newBuff, false);
         List<GameObject> players = new List<GameObject>();
@@ -29,7 +30,7 @@ public class DivineIntervention : cardEffect
             if (player == combatManager.Instance.currentObjTurn) //Not current Character
                 continue;
             Character ally = player.GetComponent<Character>();
-            buff otherBuff = new buff("Divine Intervention", 2, "DEF_Up");
+            buff otherBuff = new buff("Divine Intervention", 2, "DEF_Up", des);
             otherBuff.AddBuff("DEF", skillMuliplier);
             ally.applyActiveBuff(otherBuff, false);
         }

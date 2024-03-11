@@ -39,6 +39,8 @@ public class DoubleTap : cardEffect
         if (lockNLoad != null)
         {
             lockNLoad.buffs["STACK"] += 2;
+            string des = "Lock’n loaded : " + lockNLoad.buffs["STACK"].ToString() + " Stacks";
+            lockNLoad.updateDescription(des);
         }
 
         return true;

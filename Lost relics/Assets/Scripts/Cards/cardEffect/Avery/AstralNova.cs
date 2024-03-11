@@ -37,15 +37,17 @@ public class AstralNova : cardEffect, IStartturnEffect
             user.doCharacterAnimationAndSound(enemy);
         }
         //Add mana
+        string des2 = "1 extra mana next turn";
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());
-        buff manaBuff = new buff("Astral Nova : Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>());
+        buff manaBuff = new buff("Astral Nova : Mana", 2, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>(), des2);
         user.applyActiveBuff(manaBuff, true);
         foreach (GameObject player in players)
         {
             if (player == combatManager.Instance.currentObjTurn) //Not current Character
                 continue;
-            buff otherBuff = new buff("Astral Nova : Mana", 1, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>());
+
+            buff otherBuff = new buff("Astral Nova : Mana", 1, "MANA_Up", this.gameObject.GetComponent<IStartturnEffect>(), des2);
             Character targetBuff = player.GetComponent<Character>();
             targetBuff.applyActiveBuff(otherBuff, true);
         }

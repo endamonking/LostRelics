@@ -30,7 +30,8 @@ public class ArcaneEruption : cardEffect, IEndturnEffect
         //Add debuff
         if (user.myStance == stance.Ethereal)
         {
-            buff deBuff = new buff("Restraint", 1, "SPECIAL", this.gameObject.GetComponent<IEndturnEffect>());
+            string des = "Decrease ATK by 20%, and can’t change stance";
+            buff deBuff = new buff("Restraint", 1, "SPECIAL", this.gameObject.GetComponent<IEndturnEffect>(), des);
             deBuff.AddBuff("Restraint", 1);
             deBuff.AddBuff("ATK", -20);
             target.applyActiveDeBuff(deBuff, false);

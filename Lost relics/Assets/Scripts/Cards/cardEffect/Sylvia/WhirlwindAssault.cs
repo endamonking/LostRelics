@@ -30,7 +30,8 @@ public class WhirlwindAssault : cardEffect
         skillMulti = skillMulti / 100.0f;
 
         //Create debuff
-        buff deBuff = new buff("Whirlwind Assault", 2, "Poison");
+        string des = "Receive true damage at the start of the turn";
+        buff deBuff = new buff("Whirlwind Assault", 2, "Poison" , des);
         int damageAmount = user.inComATK;
 
         deBuff.AddBuff("Poison", damageAmount);

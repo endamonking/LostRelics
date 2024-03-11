@@ -17,7 +17,8 @@ public class AngelGrace : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        buff newbuff = new buff("Angel grace", 2, "AP_Up");
+        string des = "Increase AP by 50%, and Damage bonus by 30%";
+        buff newbuff = new buff("Angel grace", 2, "AP_Up", des);
         newbuff.AddBuff("AP", 50);
         newbuff.AddBuff("DMGBonus", 30);
         target.applyActiveBuff(newbuff, true);

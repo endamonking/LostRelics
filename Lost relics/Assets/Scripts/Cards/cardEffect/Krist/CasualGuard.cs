@@ -18,7 +18,8 @@ public class CasualGuard : cardEffect
 
     public override bool applyEffect(Character target, Character user)
     {
-        buff newBuff = new buff("Casual guard", 2, "DEF_Up");
+        string des2 = "Increase DEF by 30%";
+        buff newBuff = new buff("Casual guard", 2, "DEF_Up", des2);
         newBuff.AddBuff("DEF", 30);
         List<GameObject> players = new List<GameObject>();
         players.AddRange(combatManager.Instance.getAllPlayer());

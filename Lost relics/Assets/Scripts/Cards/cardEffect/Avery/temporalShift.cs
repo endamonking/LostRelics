@@ -20,7 +20,8 @@ public class temporalShift : cardEffect
         //First debuff
         List<GameObject> enemies = new List<GameObject>();
         enemies.AddRange(combatManager.Instance.getAllEnemies());
-        buff deBuff = new buff("Temporal Shift", 2, "SPD_Down");
+        string des1 = "Decrease SPD by 20%";
+        buff deBuff = new buff("Temporal Shift", 2, "SPD_Down", des1);
         deBuff.AddBuff("SPD", -20);
         foreach (GameObject enemy in enemies)
         {
@@ -34,7 +35,7 @@ public class temporalShift : cardEffect
         {
             GameObject enemy = combatManager.Instance.getRandomEnemy();
             Character chara = enemy.GetComponent<Character>();
-            buff secondDeBuff = new buff("Time Warp", 2, "SPD_Down");
+            buff secondDeBuff = new buff("Time Warp", 2, "SPD_Down", des1);
             secondDeBuff.AddBuff("SPD", -20);
             chara.applyActiveDeBuff(secondDeBuff, true);
         }
