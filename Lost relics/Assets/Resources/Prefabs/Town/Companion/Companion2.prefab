@@ -70,6 +70,7 @@ MonoBehaviour:
   CurrentHP: 40
   maxMana: 4
   passivSkill: {fileID: 1523048148763905776, guid: 45f07700495e9e043a33d5a3ac37ab17, type: 3}
+  portrait: {fileID: 21300000, guid: 463e6510f1e0d8e46b055671ba71ebae, type: 3}
 --- !u!95 &8090925580190193820
 Animator:
   serializedVersion: 5
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2ef148b776ecd4dab7d4b0f01de0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnims: 2
+  hitEffectSpritePrefab: {fileID: 0}
 --- !u!82 &6458812455483262727
 AudioSource:
   m_ObjectHideFlags: 0

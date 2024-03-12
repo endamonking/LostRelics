@@ -6,6 +6,13 @@ public class cardPool : MonoBehaviour
 {
     public static cardPool Instance;
     public List<Card> naturalPool = new List<Card>();
+    public List<Card> EmmaPool = new List<Card>();
+    public List<Card> AveryPool = new List<Card>();
+    public List<Card> SylviaPool = new List<Card>();
+    public List<Card> KristPool = new List<Card>();
+    public List<Card> SeraphinaPool = new List<Card>();
+    public List<Card> ChloePool = new List<Card>();
+
 
     private void Awake()
     {
@@ -39,6 +46,24 @@ public class cardPool : MonoBehaviour
         {
             case "Test":
                 output.AddRange(naturalPool);
+                break;
+            case "Emma":
+                output.AddRange(EmmaPool);
+                break;
+            case "Avery":
+                output.AddRange(AveryPool);
+                break;
+            case "Sylvia":
+                output.AddRange(SylviaPool);
+                break;
+            case "Krist":
+                output.AddRange(KristPool);
+                break;
+            case "Seraphina":
+                output.AddRange(SeraphinaPool);
+                break;
+            case "Chloe":
+                output.AddRange(ChloePool);
                 break;
             default:
                 output.AddRange(naturalPool);

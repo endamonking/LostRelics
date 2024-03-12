@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Gunpowder Vei
   description: '"Surround enemies with explosive gunpowder."'
-  effectString: "Deal 30% ATK as damage to an enemy and inflict \"Bomb\" (explodes
-    after 2 turns, dealing true damage to all enemies for 50% of Chloe ATK) for 2
-    turns. \u2190 Bomb explode immediately if the target dies"
+  effectString: Deal 30% ATK as damage to an enemy and inflict "Bomb" (explodes after
+    2 turns, dealing true damage to all enemies for 50% of Chloe ATK) for 2 turns.
   cardCost: 2
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
   delayAction: 1

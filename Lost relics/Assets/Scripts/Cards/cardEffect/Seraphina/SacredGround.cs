@@ -35,7 +35,7 @@ public class SacredGround : cardEffect, IStartturnEffect
             Character targetBuff = player.GetComponent<Character>();
             targetBuff.applyActiveBuff(otherBuff, true);
         }
-        user.doCharacterSound();
+        user.doCharacterAnimationAndSound();
         return true;
     }
     public void onStartTurn()

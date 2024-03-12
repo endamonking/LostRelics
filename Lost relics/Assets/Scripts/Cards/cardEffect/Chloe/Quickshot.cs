@@ -30,9 +30,9 @@ public class Quickshot : cardEffect
 
         if (randomNumber < userCritRate / 100.0f) //Critical hit
         {
-            target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, 200, userCritDMG);
             cardHandler CH = combatManager.Instance.currentObjTurn.GetComponent<cardHandler>();
             CH.drawCard();
+            target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, 200, userCritDMG);
         }
         else
             target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, 0, userCritDMG);

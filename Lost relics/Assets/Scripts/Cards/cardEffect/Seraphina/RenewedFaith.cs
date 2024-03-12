@@ -25,7 +25,7 @@ public class RenewedFaith : cardEffect
         }
         if (user.myStance == stance.Purification)
             playerCardHanlder.drawCard();
-        user.doCharacterSound();
+        user.doCharacterAnimationAndSound();
         return true;
     }
 }

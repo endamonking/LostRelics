@@ -212,7 +212,7 @@ public class inventoryCanvas : MonoBehaviour
         selectedEquipment = null;
         selectedEquipmentGO = null;
         Character player = playerList[characterIndex].GetComponent<Character>();
-        portrait.sprite = playerList[characterIndex].GetComponentInChildren<SpriteRenderer>().sprite;
+        portrait.sprite = playerList[characterIndex].GetComponentInChildren<Unit>().portrait;
         characterName.text = player.characterName;
         printCharacterStat(player, playerList[characterIndex].GetComponent<characterEquipment>());
 

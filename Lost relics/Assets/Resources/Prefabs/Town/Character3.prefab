@@ -64,6 +64,7 @@ MonoBehaviour:
   CurrentHP: 25
   maxMana: 4
   passivSkill: {fileID: 1061143586150523828, guid: 09511589e5bdda04592bf0d102ca4916, type: 3}
+  portrait: {fileID: 21300000, guid: 2a04937c77b49c14c97aa2e035971862, type: 3}
 --- !u!1 &7104277297742536201
 GameObject:
   m_ObjectHideFlags: 0

@@ -574,6 +574,7 @@ public class Character : MonoBehaviour
     //The effect of buff only active at one Example in ArcaneChanneling.cs
     public void removeBuff(buff thisBuff)
     {
+
         if (activeBuffs.Contains(thisBuff))
             activeBuffs.Remove(thisBuff);
         if (activeDeBuffs.Contains(thisBuff))
@@ -582,7 +583,7 @@ public class Character : MonoBehaviour
             activeUnClearBuffs.Remove(thisBuff);
         if (activeUnClearDeBuffs.Contains(thisBuff))
             activeUnClearDeBuffs.Remove(thisBuff);
-
+        Debug.Log(thisBuff);
         updateBuffContainer();
 
     }
@@ -711,7 +712,7 @@ public class Character : MonoBehaviour
                             List<GameObject> enemies = new List<GameObject>();
                             combatManager cm = combatManager.Instance;
                             //Find is player turn or enemy
-                            if (cm.currentObjTurn.tag == "Player")
+                            if (this.gameObject.tag == "Player")
                             {
                                 enemies.AddRange(cm.getAllPlayer());
                             }
@@ -792,7 +793,6 @@ public class Character : MonoBehaviour
     }
     public int takeDamageWithDMGReturn(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
-
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         if (damage > 0) // hit
         {
@@ -816,7 +816,20 @@ public class Character : MonoBehaviour
         }
         else //Evaded
         {
+            //Play animation and sound
+            if (animController)
+                animController.playEvadeAnim();
 
+            if (characterAudio != null)
+                characterAudio.playDodgeSound();
+
+            //Show dmg popup
+            if (dmgPopupPrefab != null)
+            {
+                GameObject popup = Instantiate(dmgPopupPrefab, transform.position, Quaternion.identity);
+                popup.GetComponent<popUpDMG>().popUpDamage(0);
+
+            }
         }
         if (currentHP <= 0)
             died();
@@ -826,7 +839,6 @@ public class Character : MonoBehaviour
     [System.Obsolete]
     public void takeDamage(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
-
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         if (damage > 0) // hit
         {
@@ -875,6 +887,7 @@ public class Character : MonoBehaviour
     [System.Obsolete]
     public void takeDamageIgnoreOnHit(int enemyATK, int enemyArmorPen, int enemyDamageBonus, float skillMutiplier, int enemyCritRate, int enemyCritDMG)
     {
+
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         if (damage > 0) // hit
         {
@@ -938,6 +951,7 @@ public class Character : MonoBehaviour
     //Note it will ingore other on hit effect (Such as take extra damage, reduce damage)
     public void takeTrueDamageIgnoreOnHit(int damageAmount)
     {
+
         if (damageAmount <= 0)
             damageAmount = 0;
 
@@ -1081,6 +1095,8 @@ public class Character : MonoBehaviour
         combatManager.Instance.returnEffectPosition();
         combatManager.Instance.checkWinLose(this.gameObject);
         applyOnDeadEffect();
+        if (combatManager.Instance.currentObjTurn == this.gameObject)
+            combatManager.Instance.forceEndTurnWitOutTriggerEndTurnEffect();
         Destroy(cardHandler.turnGuageUI.gameObject);
         Destroy(this.gameObject);
     }
@@ -1116,6 +1132,15 @@ public class Character : MonoBehaviour
     {
         if (animController != null)
             animController.playAttackAnim(target.transform);
+
+        if (characterAudio != null)
+            characterAudio.playAttackSound();
+
+    }
+    public void doCharacterAnimationAndSound()
+    {
+        if (animController != null)
+            animController.playAttackAnim();
 
         if (characterAudio != null)
             characterAudio.playAttackSound();

@@ -18,4 +18,5 @@ public class Unit : MonoBehaviour
     public int CurrentHP;
     public int maxMana;
     public uniquePassSkill passivSkill;
+    public Sprite portrait;
 }

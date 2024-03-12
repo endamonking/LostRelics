@@ -39,6 +39,13 @@ public class animationController : MonoBehaviour
         if (hitEffectSpritePrefab != null)
             effectSprite = Instantiate(hitEffectSpritePrefab, targetTransform.position, Quaternion.identity);
     }
+    public void playAttackAnim()
+    {
+        /*int randomNum = Random.Range(0, attackAnims);
+        randomNum++;*/
+        string animName = "Atk";
+        animator.SetTrigger(animName);
+    }
     public void spawnHitEffect(Transform targetTransform)
     {
         GameObject effectSprite;

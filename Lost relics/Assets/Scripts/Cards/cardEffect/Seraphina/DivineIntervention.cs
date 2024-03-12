@@ -34,7 +34,7 @@ public class DivineIntervention : cardEffect
             otherBuff.AddBuff("DEF", skillMuliplier);
             ally.applyActiveBuff(otherBuff, false);
         }
-        user.doCharacterSound();
+        user.doCharacterAnimationAndSound();
         return true;
     }
 }

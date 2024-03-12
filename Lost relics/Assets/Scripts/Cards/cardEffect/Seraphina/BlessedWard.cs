@@ -33,7 +33,7 @@ public class BlessedWard : cardEffect
             Character targetBuff = player.GetComponent<Character>();
             targetBuff.applyActiveBuff(otherBuff, true);
         }
-        user.doCharacterSound();
+        user.doCharacterAnimationAndSound();
         return true;
     }
 }

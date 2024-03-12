@@ -212,6 +212,8 @@ public class combatManager : MonoBehaviour
             {
                 if (a.duration == 1)
                 {
+                    int damage = a.buffs["Bomb"];
+                    a.buffs.Remove("Bomb");
                     List<GameObject> enemies = new List<GameObject>();
                     //Find is player turn or enemy
                     if (currentObjTurn.tag == "Player")
@@ -224,7 +226,7 @@ public class combatManager : MonoBehaviour
                     foreach (GameObject enemy in enemies)
                     {
                         Character target = enemy.GetComponent<Character>();
-                        target.takeTrueDamage(a.buffs["Bomb"]);
+                        target.takeTrueDamage(damage);
                     }
                 }
             }
@@ -245,7 +247,8 @@ public class combatManager : MonoBehaviour
         user.turnGauge = 100f;
         user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
         doEndTurnEffect();
-        currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
+        if (currentObjTurn != null)
+            currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
         //clear var
         currentObjTurn = null;
         target = null;
@@ -307,6 +310,46 @@ public class combatManager : MonoBehaviour
         changeTurn(BattleState.NORMAL);
     }
 
+    public void forceEndTurnWitOutTriggerEndTurnEffect()
+    {
+        if (currentObjTurn == null)
+            return;
+        while (inUseCard.Count > 0)
+        {
+            usingCardQ dequeueCard = inUseCard.Dequeue();
+            if (dequeueCard == null) //it cant be possible 
+                continue;
+            dequeueCard.card.GetComponent<cardDisplay>().undoCard();
+            if (currentObjTurn.tag == "Player")
+                currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
+        }
+        //Reset character
+        cardHandler user = currentObjTurn.GetComponent<cardHandler>();
+        inUseCard.Clear();
+        user.destroyInHandCard();
+        user.turnGauge = 100f;
+        user.currentMana = currentObjTurn.GetComponent<Character>().maxMana;
+        currentObjTurn.GetComponent<Character>().updateBuffAndDebuff();
+        //Clear var
+        currentObjTurn = null;
+        target = null;
+        if (endTurnButton.activeSelf)
+            endTurnButton.SetActive(false);
+        if (showDiscardButton.activeSelf)
+            showDiscardButton.SetActive(false);
+        if (discardScreen.activeSelf)
+            discardScreen.SetActive(false);
+        if (CurrentTurnPic.activeSelf)
+            CurrentTurnPic.SetActive(false);
+        if (currentManaText.gameObject.activeSelf == true)
+            currentManaText.gameObject.SetActive(false);
+        if (cardLeftText.gameObject.activeSelf == true)
+            cardLeftText.gameObject.SetActive(false);
+        returnEffectPosition();
+        isForceEndturn = false;
+        changeTurn(BattleState.NORMAL);
+    }
+
     IEnumerator startGame()
     {
         yield return new WaitForSeconds(1.0f);
@@ -334,11 +377,12 @@ public class combatManager : MonoBehaviour
             doBeforeusingCardEffect(cardData);
             if (cardData.doCardEffect(currentObjTurn.GetComponent<Character>(), dequeueCard.cardTarget)) //Start card effect
             {
-                //Use animation
-                //doCharacterAnimationAndSound(currentObjTurn);
                 //Check Token
                 if (cardData.isToken == false)
-                    currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
+                {
+                    if (currentObjTurn != null)
+                        currentObjTurn.GetComponent<cardHandler>().discardedDeck.Add(cardData);
+                }
                 if (isForceEndturn)
                 {
                     forceEndTurn();
@@ -352,8 +396,12 @@ public class combatManager : MonoBehaviour
                     currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
             }
             //currentObjTurn.GetComponent<cardHandler>().cardInHand.Remove(cardData);
-            if (currentObjTurn.tag == "Player")
-                currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
+            if (currentObjTurn != null)
+            {
+                if (currentObjTurn.tag == "Player")
+                    currentObjTurn.GetComponent<cardHandler>().updateCardInhand();
+
+            }
             yield return new WaitForSeconds(cardData.delayAction); 
         }
 

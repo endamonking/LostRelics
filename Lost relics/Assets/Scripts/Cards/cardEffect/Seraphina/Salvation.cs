@@ -21,7 +21,7 @@ public class Salvation : cardEffect
         buff salvation = new buff("Salvation", 2, "ATK_Up", des);
         salvation.AddBuff("ATK", 20);
         target.applyActiveBuff(salvation, false);
-        user.doCharacterSound();
+        user.doCharacterAnimationAndSound();
         return true;
     }
 }
