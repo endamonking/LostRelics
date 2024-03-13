@@ -265,7 +265,9 @@ public class exploration_sceneManager : MonoBehaviour
         {
             inventoryManager.Instance.addItemWithOutReParent(item);
         }
-
+        //Add money
+        int moneyAmount = 250;
+        inventoryManager.Instance.addMoney(moneyAmount);
     }
 
 }
