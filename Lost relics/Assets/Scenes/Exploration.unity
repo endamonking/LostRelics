@@ -3434,7 +3434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.77254903}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3518,5 +3518,21 @@ MonoBehaviour:
   answerButtonList: []
   getItemTab: {fileID: 1831318740}
   getItemContainer: {fileID: 2054908296}
+  itemSpawnList:
+  - {fileID: 3292838450487307666, guid: 00808b797dd2e764abfba8cba153b5aa, type: 3}
+  - {fileID: 6779113709294849528, guid: d193b36ad82b71546912178176b42937, type: 3}
+  - {fileID: 575777030335319968, guid: ccd47cf40c2a9294fb0c1a5c08e02787, type: 3}
+  - {fileID: 5620965407984157053, guid: 01cf685d334fc1f4aa6aa0c127cdd43f, type: 3}
+  - {fileID: 4177447943656681649, guid: fd81fc32b67af3e42a4c75bcc45016e1, type: 3}
+  - {fileID: 5028150026555111840, guid: d190bb69dcbc39a4db8b8fc7c93ac67b, type: 3}
+  - {fileID: 5324539070541221960, guid: 571497efb769e1c4a8e28b769e28398a, type: 3}
+  - {fileID: 9179783800336495537, guid: 685508be1cae0024cbdd9d38de4eb8f8, type: 3}
+  - {fileID: 3372073379741615796, guid: 9969a2a6474d48d438a42020978d62f9, type: 3}
+  - {fileID: 4855143566689302531, guid: f90b9d3fcaed51845b5c1b6a77bbd01b, type: 3}
+  - {fileID: 30196990420456471, guid: 24ca4e01aa7f6ac419bfafb1f689ab02, type: 3}
+  - {fileID: 969146426591845963, guid: 8f50a257f7565644b9953ee93a96ea42, type: 3}
+  - {fileID: 1486667587254810485, guid: 9e0512454af4edc4fb00052874ed7579, type: 3}
+  - {fileID: 4982039501698963310, guid: c2247477cac725e43a17a6ee91240ddc, type: 3}
+  - {fileID: 3372659998634680777, guid: 16888d367eb2ded47b7510307d51e8b3, type: 3}
   isLerping: 0
   isEvent: 0

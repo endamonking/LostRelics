@@ -107,6 +107,11 @@ public class inventoryManager : MonoBehaviour
         updatelistIndex();
     }
 
+    public void addItemWithOutReParent(GameObject newItem)
+    {
+        equipmentList.Add(newItem);
+        updatelistIndex();
+    }
     public void addMoney(int amount)
     {
         money = money + amount;

@@ -12,9 +12,11 @@ public class CompanionSpawner : MonoBehaviour
 
     public int companionNumber;
 
+
     private bool isPlayerNear = false;
     private bool isOpen = false;
     private GameObject player;
+    public Transform comLocation;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,13 +66,14 @@ public class CompanionSpawner : MonoBehaviour
     public void closeRecruit()
     {
         canvas.SetActive(false);
+        Debug.Log(player.name);
         player.GetComponent<PlayerControl>().resumePlaterMovement();
         isOpen = false;
     }
 
     public void spawnCompanion()
     {
-        GameManager.Instance.spawnCompanion(companionNumber);
+        GameManager.Instance.spawnCompanion(companionNumber, comLocation);
         closeRecruit();
         this.gameObject.SetActive(false);
     }

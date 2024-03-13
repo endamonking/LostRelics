@@ -9,7 +9,7 @@ public class TransitionToExploration : MonoBehaviour
     public GameObject playerPrefabExploration;
     public GameObject companionPrefabTown;
     public GameObject companionPrefabExploration;
-    public List<GameObject> players = new List<GameObject>();
+    public GameObject[] players;
     public  GameObject playerA;
 
     // public Transform playerSpawnPoint; // Reference to the player spawn point in "Exploration" scene
@@ -17,7 +17,12 @@ public class TransitionToExploration : MonoBehaviour
 
     private void Awake()
     {
-        playerA = GameObject.FindGameObjectWithTag("Player");
+        findPlayer();
+        foreach (GameObject player in players)
+        {
+            player.SetActive(true);
+            Debug.Log(player);
+        }
         //findPlayer();
     }
 
@@ -25,7 +30,6 @@ public class TransitionToExploration : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Player entered trigger.");
-
         // Load the "Exploration" scene without additive loading
         SceneManager.LoadScene("Exploration", LoadSceneMode.Single);
 
@@ -46,15 +50,6 @@ public class TransitionToExploration : MonoBehaviour
         }
     }
     
-
-    private void spawnPlayer()
-    {
-        GameObject newCharacter = Instantiate(playerA, Vector3.zero, Quaternion.identity);
-        /**foreach (GameObject player in players)
-        {
-            GameObject newCharacter = Instantiate(player, Vector3.zero, Quaternion.identity);
-        }*/
-    }
 
     private void InstantiateAndPositionCharacters()
     {
@@ -95,18 +90,7 @@ public class TransitionToExploration : MonoBehaviour
 
     private void findPlayer()
     {
-        Debug.Log("T");
-        // Find the player GameObject in the "TestRoom" scene
-        GameObject[] rootObjects = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (GameObject rootObject in rootObjects)
-        {
-            if (rootObject.CompareTag("Player"))
-            {
-                players.Add(rootObject);
-                Debug.Log(rootObject);
-            }
-        }
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 
 }

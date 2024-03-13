@@ -25,7 +25,7 @@ public class exploration_sceneManager : MonoBehaviour
     private GameObject currentNodeEffectPrefab;
     public GameObject currentNodeEffect;
     public bool isReachBoss = false; //Is player reach the last node(Boss)
-    
+    private bool isBackToTown = false;
     [Header("Event")] 
     public GameObject EventCanvas;
     public TextMeshProUGUI eventNameText;
@@ -38,6 +38,7 @@ public class exploration_sceneManager : MonoBehaviour
     [Header("Get item")]
     public GameObject getItemTab;
     public GameObject getItemContainer;
+    public List<GameObject> itemSpawnList = new List<GameObject>();
 
     public bool isLerping = false;
     public bool isEvent = false;
@@ -67,8 +68,22 @@ public class exploration_sceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isBackToTown && isEvent != true)
+        {
+            SceneManager.LoadScene("TestRoom");
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
     }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        foreach (GameObject player in playerPool)
+        {
+            player.SetActive(true);
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
 
     private void EnableMainSceneObjects()
     {
@@ -198,7 +213,7 @@ public class exploration_sceneManager : MonoBehaviour
     public void ReturnToExplorationScene()
     {
         if (isReachBoss)
-            SceneManager.LoadScene("TestRoom");
+            isBackToTown = true;
 
         // Unload the additional scene
         SceneManager.UnloadScene("Combat");
@@ -230,7 +245,27 @@ public class exploration_sceneManager : MonoBehaviour
     public void closeGetItemScreen()
     {
         getItemTab.SetActive(false);
-        isEvent = false;
+        if (getCardManager.Instance.canvas.activeSelf != true)
+            isEvent = false;
+    }
+
+    public void getRewardAfterCombat()
+    {
+        //Card
+        GameObject choosedCharacter = playerPool[Random.Range(0,playerPool.Count)];
+        List<Card> cards = cardPool.Instance.getCharactCardList(choosedCharacter.GetComponent<Character>().characterName);
+        List<Card> natural = cardPool.Instance.getCharactCardList("Natural");
+        cards.AddRange(natural);
+        getCardManager.Instance.startChooseCardEvent(cards, choosedCharacter.GetComponent<cardHandler>());
+        //Get Item
+        List<GameObject> items = new List<GameObject>();
+        items.Add(itemSpawnList[Random.Range(0, itemSpawnList.Count)]);
+        showingGetItem(items);
+        foreach (GameObject item in items)
+        {
+            inventoryManager.Instance.addItemWithOutReParent(item);
+        }
+
     }
 
 }

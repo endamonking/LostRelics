@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public GameObject MC;
     [Header("Companion")]
     public GameObject ComPrefab;
-    public Transform comLocation;
     
 
     private void Awake()
@@ -59,8 +58,9 @@ public class GameManager : MonoBehaviour
         MC.transform.position = location.position;
         pCam.player = MC.transform;
         MC.SetActive(true);
+        MC.GetComponent<PlayerControl>().playerSetAnimTown();
     }
-    public void spawnCompanion(int companionNumber)
+    public void spawnCompanion(int companionNumber, Transform comLocation)
     {
         GameObject companion = Instantiate(ComPrefab, comLocation.position + new Vector3 (0,1,0), Quaternion.identity);
         companion.GetComponent<Companion>().companionNumber = companionNumber;

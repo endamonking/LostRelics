@@ -16,28 +16,38 @@ public class PlayerControl : MonoBehaviour
     public RuntimeAnimatorController townController;
     public RuntimeAnimatorController combatController;
 
-    // private Rigidbody2D body;
-    private Rigidbody body;
   
     [SerializeField] private float runSpeed = 10.0f;
    // [SerializeField] private Inventory inventory;
     [SerializeField] private GameObject PlayerCanvas;
     [SerializeField] private GameObject player;
-
-    public GameObject boundaryCollider;
+    [SerializeField]
+    private BoxCollider footCollider;
 
     private int move =0;
     private bool isOpenOtherTab = false;
-    
+    private Rigidbody rb;
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
-        Debug.Log("1");
         Scene currentScene = SceneManager.GetActiveScene();
         animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
         if (currentScene.name != "TestRoom")
+        {
             this.enabled = false;
+            footCollider.center = new Vector3(0, -1.7f, 0);
+            Destroy(rb);
+        }
         else
+        {
             animator.SetBool("IsTown", true);
+            footCollider.center = new Vector3(0, -1f, 0);
+            
+        }
 
 
     }
@@ -66,18 +76,15 @@ public class PlayerControl : MonoBehaviour
     private void FixedUpdate()
     { 
         if (move == 0) 
-        { /*
-            if (animator == null)
-            {
-                animator = GetComponentInChildren<Animator>();
-                animator.SetBool("IsTown", true);
-            }*/
+        { 
+
 
             horizontal = Input.GetAxisRaw("Horizontal");
             vertical = Input.GetAxisRaw("Vertical");
-            Vector3 position = this.transform.position;
+            //Vector3 position = this.transform.position;
             Vector3 movement = new Vector3(horizontal, 0, vertical).normalized;
-            position += movement * runSpeed * Time.deltaTime;
+            //position += movement * runSpeed * Time.deltaTime;
+            rb.velocity = new Vector3(horizontal*runSpeed, 0, vertical*runSpeed);
             //play animation
             if (animator != null)
             {
@@ -88,21 +95,17 @@ public class PlayerControl : MonoBehaviour
                     transform.eulerAngles = new Vector3(0, 0, 0);
             }
 
-            this.transform.position = position;
+            //this.transform.position = position;
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision detected!");
-        if (collision.gameObject == boundaryCollider)
+        if (collision.gameObject.tag == "Boundary")
         {
-            Debug.Log("In the bound");
-            body.velocity = Vector3.zero;
+
         }
-        else
-        {
-            Debug.Log("Collided with: " + collision.gameObject.name);
-        }
+    
+            
     }
     private void showInventoryTab(int tabIndex)
     {
@@ -113,6 +116,7 @@ public class PlayerControl : MonoBehaviour
     public void stopPlaterMovement()
     {
         move = 1;
+        rb.velocity = new Vector3(0,0,0);
         isOpenOtherTab = true;
     }
 
@@ -122,4 +126,8 @@ public class PlayerControl : MonoBehaviour
         isOpenOtherTab = false;
     }
 
+    public void playerSetAnimTown()
+    {
+        animator.SetBool("IsTown", true);
+    }
 }

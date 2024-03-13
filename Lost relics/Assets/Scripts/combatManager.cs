@@ -678,7 +678,8 @@ public class combatManager : MonoBehaviour
             playersPool[index].GetComponent<Character>().currentHP = player.GetComponent<Character>().currentHP;
             Destroy(player);
         }
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
+        exploration_sceneManager.Instance.getRewardAfterCombat();
         exploration_sceneManager.Instance.ReturnToExplorationScene();
     }
     IEnumerator delayLosing()

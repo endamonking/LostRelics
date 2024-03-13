@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Companion : MonoBehaviour
 {
     public int companionNumber;
-
+    private Rigidbody rb;
+    [SerializeField]
+    private BoxCollider footCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +21,18 @@ public class Companion : MonoBehaviour
             Unit unitComponent = MainCharacter.GetComponent<Unit>();
             assignStatToCharacterScript(unitComponent);
         }
-        DontDestroyOnLoad(gameObject);
+        Scene currentScene = SceneManager.GetActiveScene();
+        rb = GetComponent<Rigidbody>();
+        if (currentScene.name != "TestRoom")
+        {
+            Destroy(rb);
+        }
+        else
+        {
+            footCollider.center = new Vector3(0, -1f, 0);
 
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
