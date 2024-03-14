@@ -13,6 +13,7 @@ public class getCardManager : MonoBehaviour
     [Header("UI")]
     public List<Button> buttonList = new List<Button>();
     public GameObject canvas;
+    public TextMeshProUGUI titleText;
 
     private int selectCardIndex = 99;
 
@@ -66,6 +67,8 @@ public class getCardManager : MonoBehaviour
             button.GetComponentInChildren<TextMeshProUGUI>().text = choosedCardList[i].cardName;
             i++;
         }
+        string characterName = pCha.gameObject.GetComponent<Character>().characterName;
+        titleText.text = characterName + " got";
         canvas.SetActive(true);
     }
 

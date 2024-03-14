@@ -20,6 +20,7 @@ public class inventoryCanvas : MonoBehaviour
     public Image itemPic;
     public TextMeshProUGUI itemDesText;
     public TextMeshProUGUI itemStatText;
+    public TextMeshProUGUI moneyText;
     [Header("Character UI")]
     public Image portrait;
     public TextMeshProUGUI characterName;
@@ -374,7 +375,7 @@ public class inventoryCanvas : MonoBehaviour
     {
         clearDeckBox();
         Character player = playerList[characterIndex].GetComponent<Character>();
-        characterDeckPortrait.sprite = playerList[characterIndex].GetComponentInChildren<SpriteRenderer>().sprite;
+        characterDeckPortrait.sprite = playerList[characterIndex].GetComponentInChildren<Unit>().portrait;
         //Generate card
         playerList[characterIndex].GetComponent<cardHandler>().showDeckList(deckBox);
 
@@ -411,6 +412,7 @@ public class inventoryCanvas : MonoBehaviour
             eq.GetComponent<Button>().onClick.AddListener(() => showItemDescription(eq.GetComponent<equipment>()));
             
         }
+        moneyText.text = "Money : " + inventoryManager.Instance.money.ToString();
     }
 
     private void clearInventory()
