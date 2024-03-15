@@ -10,8 +10,10 @@ public class CompanionSpawner : MonoBehaviour
     public TextMeshProUGUI comName;
     public TextMeshProUGUI dialog;
 
+    [Header("Companion")]
+    public List<Sprite> standingPic;
     public int companionNumber;
-
+    private SpriteRenderer spriteRender;
 
     private bool isPlayerNear = false;
     private bool isOpen = false;
@@ -21,7 +23,8 @@ public class CompanionSpawner : MonoBehaviour
     void Start()
     {
         canvas.SetActive(false);
-
+        spriteRender = GetComponent<SpriteRenderer>();
+        spriteRender.sprite = standingPic[companionNumber];
     }
 
     // Update is called once per frame
