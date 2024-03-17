@@ -24,7 +24,7 @@ public class CompanionSpawner : MonoBehaviour
     {
         canvas.SetActive(false);
         spriteRender = GetComponent<SpriteRenderer>();
-        spriteRender.sprite = standingPic[companionNumber];
+        spriteRender.sprite = standingPic[companionNumber-1];
     }
 
     // Update is called once per frame

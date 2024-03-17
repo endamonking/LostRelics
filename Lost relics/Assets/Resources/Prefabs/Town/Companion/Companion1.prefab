@@ -70,6 +70,8 @@ MonoBehaviour:
   CurrentHP: 50
   maxMana: 4
   passivSkill: {fileID: 7172980700059708246, guid: 49d4c33ae51190d41b16a833518d8e6d, type: 3}
+  portrait: {fileID: 21300000, guid: 440362065a6925c42b8ecb9b8c8f4673, type: 3}
+  isMelee: 0
 --- !u!95 &8090925580190193820
 Animator:
   serializedVersion: 5
@@ -80,7 +82,7 @@ Animator:
   m_GameObject: {fileID: 5836946873085584819}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9d8259ca41737b54f881c3c90f4ace41, type: 2}
+  m_Controller: {fileID: 9100000, guid: c82e775485dff62409abe97005cb019f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -132,7 +134,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1655426925, guid: 0fea37e5a7bb648408bedc96575e6032, type: 3}
+  m_Sprite: {fileID: -1654865136, guid: 7c0dedcdc5eafff49927a1fbab3db777, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2ef148b776ecd4dab7d4b0f01de0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnims: 2
+  hitEffectSpritePrefab: {fileID: 8590918826956873087, guid: a82b35e977aac6847a292b611dcb5bc9, type: 3}
 --- !u!82 &6458812455483262727
 AudioSource:
   m_ObjectHideFlags: 0

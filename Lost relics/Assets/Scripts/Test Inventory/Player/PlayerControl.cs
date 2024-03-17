@@ -45,7 +45,7 @@ public class PlayerControl : MonoBehaviour
         else
         {
             animator.SetBool("IsTown", true);
-            footCollider.center = new Vector3(0, -1f, 0);
+            footCollider.center = new Vector3(0, -1.1f, 0);
             
         }
 

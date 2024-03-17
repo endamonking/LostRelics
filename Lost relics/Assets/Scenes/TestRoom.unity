@@ -24589,10 +24589,10 @@ MonoBehaviour:
   comName: {fileID: 888320505}
   dialog: {fileID: 343416602}
   standingPic:
+  - {fileID: -1654865136, guid: 7c0dedcdc5eafff49927a1fbab3db777, type: 3}
   - {fileID: -1940214471, guid: be75d83743a4dd146b2390c490e9c715, type: 3}
-  - {fileID: -1940214471, guid: be75d83743a4dd146b2390c490e9c715, type: 3}
-  - {fileID: -1940214471, guid: be75d83743a4dd146b2390c490e9c715, type: 3}
-  companionNumber: 2
+  - {fileID: 43205001, guid: 2ae202c06868f604f9ca15020dc56fed, type: 3}
+  companionNumber: 3
   comLocation: {fileID: 868235485}
 --- !u!54 &2070290010
 Rigidbody:

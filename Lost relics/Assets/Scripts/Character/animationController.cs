@@ -39,6 +39,23 @@ public class animationController : MonoBehaviour
         if (hitEffectSpritePrefab != null)
             effectSprite = Instantiate(hitEffectSpritePrefab, targetTransform.position, Quaternion.identity);
     }
+    public void playMeleeAttackAnim(Transform targetTransform)
+    {
+        Transform character = this.transform.parent.gameObject.transform;
+        Vector3 original = this.transform.parent.gameObject.transform.position;
+        character.position = targetTransform.position + new Vector3 (-1,0,0);
+        string animName = "Atk";
+        animator.SetTrigger(animName);
+        GameObject effectSprite;
+        if (hitEffectSpritePrefab != null)
+            effectSprite = Instantiate(hitEffectSpritePrefab, targetTransform.position, Quaternion.identity);
+        StartCoroutine(delayReturn(character, original));
+    }
+    IEnumerator delayReturn(Transform character, Vector3 original)
+    {
+        yield return new WaitForSeconds(1.0f);
+        character.position = original;
+    }
     public void playAttackAnim()
     {
         /*int randomNum = Random.Range(0, attackAnims);

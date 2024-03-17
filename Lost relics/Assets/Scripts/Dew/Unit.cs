@@ -19,4 +19,5 @@ public class Unit : MonoBehaviour
     public int maxMana;
     public uniquePassSkill passivSkill;
     public Sprite portrait;
+    public bool isMelee = false;
 }

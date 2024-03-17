@@ -62,6 +62,7 @@ public class TownPlayerSystem : MonoBehaviour
         character.baseResistance = unit.Resistance;
         character.maxMana = unit.maxMana;
         character.characterPassiveSkill = unit.passivSkill;
+        character.isMelee = unit.isMelee;
     }
 
 

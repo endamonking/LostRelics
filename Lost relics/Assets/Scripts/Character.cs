@@ -42,6 +42,7 @@ public class Character : MonoBehaviour
     [Header("Other")]
     [SerializeField]
     private GameObject dmgPopupPrefab;
+    public bool isMelee; //Is this character use melee?
     public int inComATK
     {
         get
@@ -1131,7 +1132,12 @@ public class Character : MonoBehaviour
     public void doCharacterAnimationAndSound(GameObject target)
     {
         if (animController != null)
-            animController.playAttackAnim(target.transform);
+        {
+            if (isMelee)
+                animController.playMeleeAttackAnim(target.transform);
+            else
+                animController.playAttackAnim(target.transform);
+        }
 
         if (characterAudio != null)
             characterAudio.playAttackSound();
