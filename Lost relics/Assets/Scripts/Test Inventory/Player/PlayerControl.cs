@@ -45,7 +45,7 @@ public class PlayerControl : MonoBehaviour
         else
         {
             animator.SetBool("IsTown", true);
-            footCollider.center = new Vector3(0, -1.1f, 0);
+            footCollider.center = new Vector3(0, -1.4f, 0);
             
         }
 
@@ -88,7 +88,7 @@ public class PlayerControl : MonoBehaviour
             //play animation
             if (animator != null)
             {
-                animator.SetFloat("Run", Math.Abs(movement.x));
+                animator.SetFloat("Run", Math.Abs(movement.x)+ Math.Abs(movement.z));
                 if (movement.x < 0)
                     transform.eulerAngles = new Vector3(0, 180, 0);
                 else if (movement.x > 0)

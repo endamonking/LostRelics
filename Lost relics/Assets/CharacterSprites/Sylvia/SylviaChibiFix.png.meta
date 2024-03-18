@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 07a0d421a2ac4a241bc2cfb1c3c93ccf
+guid: d4d3e28870a3dcf40b0328eaa2ebcc7e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SylviaIDLE_0
+      name: SylviaChibiFix_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e07fc82d62d2b43bf786d7bcdb166f
+      internalID: 99095038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SylviaChibiFix_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c83641228ac9a747a60208f732c9737
+      internalID: -201834549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SylviaChibiFix_2
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3edb48027cb79e34ca9a242da53fb720
-      internalID: 336296486
+      spriteID: 63e601f42a3f85642ad07a8a28e7fb5b
+      internalID: 873501172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SylviaIDLE_1
+      name: SylviaChibiFix_3
       rect:
         serializedVersion: 2
         x: 1024
@@ -152,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68bba6a1255d2424f8e6a72c5cb621da
-      internalID: -124562366
+      spriteID: f83b76d442d3d474db42b67e2adaaf7a
+      internalID: 832614252
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SylviaIDLE_2
+      name: SylviaChibiFix_4
       rect:
         serializedVersion: 2
         x: 2048
@@ -173,50 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fca5d4c80c901ae45a21a4752ddbfb44
-      internalID: 42396424
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SylviaIDLE_3
-      rect:
-        serializedVersion: 2
-        x: 3072
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 57abb35049e61324fa296435ea168d81
-      internalID: -774029416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SylviaIDLE_4
-      rect:
-        serializedVersion: 2
-        x: 4096
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24c77a8373f74db4e89ccf6ade914bdc
-      internalID: -558700106
+      spriteID: ac3232bbdcd87a24c8087e93f59edd27
+      internalID: 1316266460
       vertices: []
       indices: 
       edges: []
@@ -232,11 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SylviaIDLE_0: 336296486
-      SylviaIDLE_1: -124562366
-      SylviaIDLE_2: 42396424
-      SylviaIDLE_3: -774029416
-      SylviaIDLE_4: -558700106
+      SylviaChibiFix_0: 99095038
+      SylviaChibiFix_1: -201834549
+      SylviaChibiFix_2: 873501172
+      SylviaChibiFix_3: 832614252
+      SylviaChibiFix_4: 1316266460
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

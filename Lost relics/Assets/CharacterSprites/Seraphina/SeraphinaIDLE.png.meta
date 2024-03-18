@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 07a0d421a2ac4a241bc2cfb1c3c93ccf
+guid: a92b2a1b19258494f8cc343191a3c613
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SylviaIDLE_0
+      name: SeraphinaIDLE_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3edb48027cb79e34ca9a242da53fb720
-      internalID: 336296486
+      spriteID: 3e7997e41ff664144a399653881535db
+      internalID: 646036890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SylviaIDLE_1
+      name: SeraphinaIDLE_1
       rect:
         serializedVersion: 2
         x: 1024
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68bba6a1255d2424f8e6a72c5cb621da
-      internalID: -124562366
+      spriteID: 9ab78a52dac08d744906d770ecd176fe
+      internalID: -1925948526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SylviaIDLE_2
+      name: SeraphinaIDLE_2
       rect:
         serializedVersion: 2
         x: 2048
@@ -173,50 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fca5d4c80c901ae45a21a4752ddbfb44
-      internalID: 42396424
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SylviaIDLE_3
-      rect:
-        serializedVersion: 2
-        x: 3072
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 57abb35049e61324fa296435ea168d81
-      internalID: -774029416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SylviaIDLE_4
-      rect:
-        serializedVersion: 2
-        x: 4096
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24c77a8373f74db4e89ccf6ade914bdc
-      internalID: -558700106
+      spriteID: 4cb165da434f90545a3b74eb575d7798
+      internalID: 889139668
       vertices: []
       indices: 
       edges: []
@@ -232,11 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SylviaIDLE_0: 336296486
-      SylviaIDLE_1: -124562366
-      SylviaIDLE_2: 42396424
-      SylviaIDLE_3: -774029416
-      SylviaIDLE_4: -558700106
+      SeraphinaIDLE_0: 646036890
+      SeraphinaIDLE_1: -1925948526
+      SeraphinaIDLE_2: 889139668
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

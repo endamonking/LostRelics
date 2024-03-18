@@ -8,6 +8,10 @@ public class buffContainer : MonoBehaviour
     [SerializeField]
     private GameObject iconPrefab, containBox;
 
+   /* private bool heldDown = false;
+    private float holdDuration = 1f; 
+    private float holdTimer = 0f;*/
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +25,35 @@ public class buffContainer : MonoBehaviour
 
     private void OnMouseDown()
     {
+        /*
+        heldDown = true;
+        holdTimer = Time.time;*/
+        openCharacterScreen();
+    }
+
+    /*private void OnMouseUp()
+    {
+        heldDown = false;
+        if (Time.time - holdTimer < holdDuration) // Click
+        {
+            Debug.Log(this.transform.parent.parent.gameObject);
+            combatManager.Instance.selectedTarget(this.transform.parent.parent.gameObject);
+        }
+        else
+        {
+            //Hold
+            openCharacterScreen();
+        }
+    }*/
+
+    private void openCharacterScreen()
+    {
         if (combatManager.Instance.state != BattleState.PLAYER || combatManager.Instance.isShowDiscard == true)
             return;
 
         Sprite pic = this.transform.parent.parent.GetComponentInChildren<SpriteRenderer>().sprite;
         combatManager.Instance.showCharacterWindow(this.transform.parent.parent.gameObject.GetComponent<Character>(), pic);
     }
-
     public void updateBuffIconUI(List<buff> allBuff)
     {
         foreach (Transform child in containBox.transform)
