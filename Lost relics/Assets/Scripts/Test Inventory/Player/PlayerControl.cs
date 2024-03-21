@@ -27,6 +27,7 @@ public class PlayerControl : MonoBehaviour
     private int move =0;
     private bool isOpenOtherTab = false;
     private Rigidbody rb;
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         
@@ -35,6 +36,7 @@ public class PlayerControl : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rb = GetComponent<Rigidbody>();
         if (currentScene.name != "TestRoom")
         {
@@ -90,9 +92,15 @@ public class PlayerControl : MonoBehaviour
             {
                 animator.SetFloat("Run", Math.Abs(movement.x)+ Math.Abs(movement.z));
                 if (movement.x < 0)
-                    transform.eulerAngles = new Vector3(0, 180, 0);
+                {
+                    //transform.eulerAngles = new Vector3(0, 180, 0);
+                    spriteRenderer.flipX = true;
+                }
                 else if (movement.x > 0)
-                    transform.eulerAngles = new Vector3(0, 0, 0);
+                {
+                    //transform.eulerAngles = new Vector3(0, 0, 0);
+                    spriteRenderer.flipX = false;
+                }
             }
 
             //this.transform.position = position;

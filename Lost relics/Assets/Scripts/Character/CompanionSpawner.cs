@@ -19,6 +19,7 @@ public class CompanionSpawner : MonoBehaviour
     private bool isOpen = false;
     private GameObject player;
     public Transform comLocation;
+
     // Start is called before the first frame update
     void Start()
     {

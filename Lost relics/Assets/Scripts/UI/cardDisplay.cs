@@ -10,7 +10,7 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public Card card;
 
     [SerializeField]
-    private TextMeshProUGUI _cardName, _sta;
+    private TextMeshProUGUI _cardName, _sta, _stance, _des;
 
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -23,6 +23,8 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
        // Button myButton = GetComponent<Button>();
         _cardName.text = card.cardName;
         _sta.text = card.cardCost.ToString();
+        _stance.text = card.effect.intoStance.ToString();
+        _des.text = card.effectString;
         rectTransform = GetComponent<RectTransform>();
         canvas = transform.parent.GetComponent<Canvas>();
         originalPosition = rectTransform.localPosition;

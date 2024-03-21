@@ -64,7 +64,8 @@ public class getCardManager : MonoBehaviour
         int i = 0;
         foreach (Button button in buttonList)
         {
-            button.GetComponentInChildren<TextMeshProUGUI>().text = choosedCardList[i].cardName;
+            int dummy = i;
+            button.GetComponent<pritnCardDetail>().assignDetail(choosedCardList[dummy]);
             i++;
         }
         string characterName = pCha.gameObject.GetComponent<Character>().characterName;

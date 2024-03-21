@@ -248,7 +248,8 @@ public class trainingGround : MonoBehaviour
         for (int i =0; i < cardGOList.Count; i++)
         {
             int dummy = i;
-            cardGOList[i].GetComponentInChildren<TextMeshProUGUI>().text = chooseCardList[i].cardName;
+            //cardGOList[i].GetComponentInChildren<TextMeshProUGUI>().text = chooseCardList[i].cardName;
+            cardGOList[i].GetComponent<pritnCardDetail>().assignDetail(chooseCardList[dummy]);
             Button button = cardGOList[i].GetComponent<Button>();
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => chooseThisCard(chooseCardList[dummy]));
