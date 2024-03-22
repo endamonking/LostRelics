@@ -49,7 +49,7 @@ public class CompanionSpawner : MonoBehaviour
         if (other.tag == "Player")
         {
             isPlayerNear = false;
-            player = null;
+            //player = null;
         }
     }
     private void openWindow()

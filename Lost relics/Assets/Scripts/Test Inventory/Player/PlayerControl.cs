@@ -41,13 +41,14 @@ public class PlayerControl : MonoBehaviour
         if (currentScene.name != "TestRoom")
         {
             this.enabled = false;
-            footCollider.center = new Vector3(0, -1.7f, 0);
+            footCollider.center = new Vector3(0, -0.4f, -0.4f);
+            spriteRenderer.flipX = false;
             Destroy(rb);
         }
         else
         {
             animator.SetBool("IsTown", true);
-            footCollider.center = new Vector3(0, -1.4f, 0);
+            footCollider.center = new Vector3(0, -0.2f, -0.3f);
             
         }
 

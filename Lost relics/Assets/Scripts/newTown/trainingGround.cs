@@ -116,28 +116,42 @@ public class trainingGround : MonoBehaviour
 
     public void nextDeck(int number)
     {
+        Debug.Log(characterIndex);
         characterIndex += number;
+        Debug.Log(characterIndex);
         if (characterIndex >= playerList.Length)
+        {
             characterIndex = 0;
+            Debug.Log(playerList.Length);
+            Debug.Log(playerList.Length - 1);
+            Debug.Log(characterIndex);
+        }
         else if (characterIndex < 0)
+        {
             characterIndex = playerList.Length - 1;
+            Debug.Log(playerList.Length);
+            Debug.Log(playerList.Length - 1);
+            Debug.Log(characterIndex);
+        }
+
         opendeleteCard();
     }
 
     public void opendeleteCard()
     {
+        Debug.Log("d");
         mainTab.SetActive(false);
         deleteCardTab.SetActive(true);
         //Reset value
         selectedCard = null;
         //UI
-        characterDeckPortrait.sprite = playerList[characterIndex].GetComponentInChildren<SpriteRenderer>().sprite;
+        Debug.Log(characterIndex);
+        characterDeckPortrait.sprite = playerList[characterIndex].GetComponentInChildren<Unit>().portrait;
         generateCard();
     }
 
     private void generateCard()
     {
-        characterIndex = 0;
         clearDeckBox();
         Character player = playerList[characterIndex].GetComponent<Character>();
         //Generate card

@@ -127,8 +127,9 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   nextNode: []
   linePrefab: {fileID: 4884272530443238322, guid: e5fe689a9df66dc4e917ea32b4e921cf, type: 3}
-  nodeName: HealNode
-  description: DDDDDDDDDDDDDDDDDDDD
+  nodeName: Healing fountain.
+  description: You found a healing fountain. You can either share this with your
+    friends or keep them to yourself.
   answerList:
   - Heal 15hp to all allies
   - Heal 30hp to one ally
