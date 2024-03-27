@@ -15,7 +15,8 @@ MonoBehaviour:
   cardName: 'Stance : Take aim'
   description: "\u201CI won\u2019t miss\u201D"
   effectString: "change stance to \u201CTake aim\u201D, draw 1 card"
-  cardCost: 1
+  cardCost: 2
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
   delayAction: 1
   effect: {fileID: 509824571743264035, guid: dc8a4f5bafd2f8141b29ceb11494c914, type: 3}
+  isToken: 0

@@ -30,6 +30,8 @@ public class Character : MonoBehaviour
     private buffContainer buffContainer;
     private TextMeshProUGUI stanceText;
     [Header("Passive skill")]
+    public uniquePassSkill characterPassiveSkillPrefab;
+    [HideInInspector]
     public uniquePassSkill characterPassiveSkill;
     //Script
     private CharacterBar hpBar;
@@ -357,8 +359,11 @@ public class Character : MonoBehaviour
         List<buff> startBuff = getAllBuffs();
         buffContainer.updateBuffIconUI(startBuff);
         //Passive
-        if (characterPassiveSkill != null)
+        if (characterPassiveSkillPrefab != null)
+        {
+            characterPassiveSkill = Instantiate(characterPassiveSkillPrefab,transform);
             characterPassiveSkill.initPassive(this.gameObject);
+        }
     }
     
     public void changingStance(stance inTo, bool isForce)
@@ -797,6 +802,8 @@ public class Character : MonoBehaviour
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         if (damage > 0) // hit
         {
+            int dmgDummy = damage;
+            damage = doOnHitEffectWithDMG(dmgDummy);
             currentHP = currentHP - damage;
             doOnHitEffect();
             hpBar.updateHPBar(inComMaxHP, currentHP);
@@ -843,6 +850,8 @@ public class Character : MonoBehaviour
         int damage = calcualteDamage(enemyATK, enemyArmorPen, enemyDamageBonus, skillMutiplier, enemyCritRate, enemyCritDMG);
         if (damage > 0) // hit
         {
+            int dmgDummy = damage;
+            damage = doOnHitEffectWithDMG(dmgDummy);
             currentHP = currentHP - damage;
             doOnHitEffect();
             hpBar.updateHPBar(inComMaxHP, currentHP);
@@ -893,7 +902,6 @@ public class Character : MonoBehaviour
         if (damage > 0) // hit
         {
             currentHP = currentHP - damage;
-            doOnHitEffect();
             hpBar.updateHPBar(inComMaxHP, currentHP);
             Debug.Log(this.gameObject.name + "take " + damage + " " + currentHP);
             //Play animation and sound
@@ -931,6 +939,12 @@ public class Character : MonoBehaviour
         if (characterAudio != null)
             characterAudio.playHurtSound();
 
+        int dmgDummy = damageAmount;
+        damageAmount = doOnHitEffectWithDMG(dmgDummy);
+        currentHP = currentHP - damageAmount;
+        doOnHitEffect();
+        hpBar.updateHPBar(inComMaxHP, currentHP);
+        Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);
         //Show dmg popup
         if (dmgPopupPrefab != null)
         {
@@ -938,11 +952,6 @@ public class Character : MonoBehaviour
             popup.GetComponent<popUpDMG>().popUpDamage(damageAmount);
 
         }
-
-        currentHP = currentHP - damageAmount;
-        doOnHitEffect();
-        hpBar.updateHPBar(inComMaxHP, currentHP);
-        Debug.Log(this.gameObject.name + "take " + damageAmount + " " + currentHP);
         if (currentHP <= 0)
             died();
     }
@@ -1014,6 +1023,19 @@ public class Character : MonoBehaviour
                 a.doOnHitFuntion(this);
             }
         }
+    }
+    private int doOnHitEffectWithDMG(int DMG)
+    {
+        int returnDMG = DMG;
+        if (characterPassiveSkill != null)
+        {
+            if (characterPassiveSkill is IOnTakeHitWithDMG)
+            {
+                IOnTakeHitWithDMG passiveSkill = characterPassiveSkill as IOnTakeHitWithDMG;
+                returnDMG = passiveSkill.onTakeHit(this, DMG);
+            }
+        }
+        return returnDMG;
     }
 
     public void getHeal(int healPower, float skillMutiplier)

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4289621139271024523}
   - component: {fileID: 4289621139271024520}
-  - component: {fileID: 521080260756489727}
   m_Layer: 0
   m_Name: stanceDefence
   m_TagString: Untagged
@@ -46,16 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 1
---- !u!114 &521080260756489727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4289621139271024521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9425e442f7197e44a68e9eb00a35a0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intoStance: 0
+  skillMuliplier: 20

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
+  m_Name: M_Spilling
+  m_EditorClassIdentifier: 
+  cardName: Spilling
+  description: "\u201CSpill hot fluid to the target\u201D"
+  effectString: "Deal 30% atk to a selected target, inflict \u201Cburn\u201D (deal
+    50% atk to the target at the start of turn) for 2 turns"
+  cardCost: 2
+  artwork: {fileID: 0}
+  delayAction: 1
+  effect: {fileID: 3033756685095864001, guid: 6791bfcd01537944483500c46575e332, type: 3}
+  isToken: 0

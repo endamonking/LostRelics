@@ -54,7 +54,7 @@ public class Companion : MonoBehaviour
         character.maxHP = unit.MaxHP;
         character.baseResistance = unit.Resistance;
         character.maxMana = unit.maxMana;
-        character.characterPassiveSkill = unit.passivSkill;
+        character.characterPassiveSkillPrefab = unit.passivSkill;
         character.isMelee = unit.isMelee;
     }
 }

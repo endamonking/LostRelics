@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'All out strike '
   description: "\u201CHit them hard\u201D"
-  effectString: "deal 200% atk to a selected target, after attacking change stance
-    to \u201CExhausted\u201D Stance change : Exhausted (SPD -25%, DEF -30%, ATK -20%)
-    changing from Exhausted stance to other stance will debuff self for Def -20%,SPD
-    -10%,ATK -10% for 2 turns "
+  effectString: "Deal 120% atk to a selected target, after attacking change stance
+    to \u201CExhausted\u201D"
   cardCost: 2
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
   delayAction: 1
   effect: {fileID: 2206762015141597561, guid: 6098d2c63ad208843a8b048de247d2c8, type: 3}
+  isToken: 0

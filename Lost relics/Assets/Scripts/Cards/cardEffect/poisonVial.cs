@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class poisonVial : cardEffect
 {
+    [SerializeField]
+    private int skillDMGMultiplier = 70;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,7 @@ public class poisonVial : cardEffect
     {
         string des = "Receive true damage at the start of the turn";
         buff deBuff = new buff("Poison vial", 3, "Poison", des);
-        int damageAmount = user.inComATK;
+        int damageAmount = Mathf.FloorToInt(user.inComATK * (skillDMGMultiplier /100.0f));
 
         deBuff.AddBuff("Poison", damageAmount);
 

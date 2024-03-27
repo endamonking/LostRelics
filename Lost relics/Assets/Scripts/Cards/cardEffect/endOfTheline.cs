@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class endOfTheline : cardEffect
 {
-
-    int skillMultiplier = 170; //Percent unit
+    [SerializeField]
+    int skillMultiplier = 70; //Percent unit
     // Start is called before the first frame update
     void Start()
     {

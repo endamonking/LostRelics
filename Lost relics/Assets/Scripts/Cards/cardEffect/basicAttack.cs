@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class basicAttack : cardEffect
 {
-    int skillMultiplier = 120; //Percent unit
+    [SerializeField]
+    int skillMultiplier = 50; //Percent unit
 
     // Start is called before the first frame update
     void Start()

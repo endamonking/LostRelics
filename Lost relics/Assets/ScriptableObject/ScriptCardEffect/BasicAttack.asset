@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Basic attack
   description: "\u201CAttack  an enemy\u201D"
-  effectString: Deal 120% atk to a selected target
+  effectString: Deal 50% atk to a selected target
   cardCost: 1
   artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
-  delayAction: 2
+  delayAction: 1
   effect: {fileID: 8369395569777840966, guid: 038e2f21c3a49a4439eadf823fb4d2e1, type: 3}
+  isToken: 0

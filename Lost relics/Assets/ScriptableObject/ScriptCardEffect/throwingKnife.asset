@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'Throwing knife '
   description: "\u201Canyway I start throwing\u201D"
-  effectString: "Deal 100% atk to a selected target, deal additional 20% atk to a
+  effectString: "Deal 40% atk to a selected target, deal additional 20% atk to a
     selected target based on the number of \u201CThrowing knife\u201D in hand and
     using queue."
   cardCost: 1

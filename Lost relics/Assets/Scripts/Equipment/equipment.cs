@@ -29,6 +29,10 @@ public interface IOnTakeHit
 {
     void onTakeHit(Character target);
 }
+public interface IOnTakeHitWithDMG
+{
+    int onTakeHit(Character user, int DMG);
+}
 
 public abstract class equipment : MonoBehaviour
 {

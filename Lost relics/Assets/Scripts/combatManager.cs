@@ -153,8 +153,11 @@ public class combatManager : MonoBehaviour
         //Character passive
         if (thisChara.characterPassiveSkill != null)
         {
-            IStartturnEffect passiveSkill = newGO.GetComponent<Character>().characterPassiveSkill.GetComponent<IStartturnEffect>();
-            passiveSkill.onStartTurn();
+            if (thisChara.characterPassiveSkill is IStartturnEffect)
+            {
+                IStartturnEffect passiveSkill = newGO.GetComponent<Character>().characterPassiveSkill.GetComponent<IStartturnEffect>();
+                passiveSkill.onStartTurn();
+            }
         }
         //Equipment
         characterEquipment characterEQ = newGO.GetComponent<characterEquipment>();
