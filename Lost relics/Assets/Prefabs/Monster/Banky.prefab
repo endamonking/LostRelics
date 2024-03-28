@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 2811751758122764413}
   - component: {fileID: 7212583910382967942}
   m_Layer: 0
-  m_Name: Nike Tiger
+  m_Name: Banky
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,25 +388,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec795366bffda554288a3a2283200fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basedefPoint: 10
-  maxHP: 30
-  baseSPD: 40
-  characterName: Nike Tiger
+  basedefPoint: 35
+  maxHP: 120
+  baseSPD: 20
+  characterName: Banky
   maxPlayerHand: 3
-  maxMana: 4
+  maxMana: 2
   currentDefpoint: 0
-  currentHP: 30
+  currentHP: 120
   currentSPD: 0
   baseArmorPen: 0
-  baseCritRate: 25
-  baseCritDMG: 175
-  baseATK: 40
+  baseCritRate: 0
+  baseCritDMG: 150
+  baseATK: 10
   baseHeal: 5
-  baseEvade: 10
-  baseResistance: 10
+  baseEvade: 2
+  baseResistance: 15
   myStance: 0
   myPreviousStance: 0
-  characterPassiveSkillPrefab: {fileID: 6505629575601647046, guid: 2473db3dd216b564ba854c2224d30873, type: 3}
+  characterPassiveSkillPrefab: {fileID: 399271557419655921, guid: 0db0a3eed4c4e2e4096a3432bf814992, type: 3}
   characterPassiveSkill: {fileID: 0}
   animController: {fileID: 0}
   characterAudio: {fileID: 0}
@@ -428,12 +428,13 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
-  - {fileID: 11400000, guid: 9a667c475df9a0747aeee7c2263f4540, type: 2}
-  - {fileID: 11400000, guid: 9a667c475df9a0747aeee7c2263f4540, type: 2}
-  - {fileID: 11400000, guid: 9a667c475df9a0747aeee7c2263f4540, type: 2}
-  - {fileID: 11400000, guid: 4266df3ab9897ec4cb3ded4ba5e895ff, type: 2}
-  - {fileID: 11400000, guid: 4266df3ab9897ec4cb3ded4ba5e895ff, type: 2}
-  - {fileID: 11400000, guid: 8a6c15c9a725f6343b36cc3d98f6654e, type: 2}
+  - {fileID: 11400000, guid: 065e90b93e1ee38448860618818b6bf8, type: 2}
+  - {fileID: 11400000, guid: 065e90b93e1ee38448860618818b6bf8, type: 2}
+  - {fileID: 11400000, guid: 065e90b93e1ee38448860618818b6bf8, type: 2}
+  - {fileID: 11400000, guid: 851d840c5c10288488adca9b74a99240, type: 2}
+  - {fileID: 11400000, guid: 851d840c5c10288488adca9b74a99240, type: 2}
+  - {fileID: 11400000, guid: 8ac1ed2cbed6cbe42abe66a463d66718, type: 2}
+  - {fileID: 11400000, guid: 8ac1ed2cbed6cbe42abe66a463d66718, type: 2}
   discardedDeck: []
   _currentDeck: []
   cardInHand: []

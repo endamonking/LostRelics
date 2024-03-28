@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
+  m_Name: M_Hot Air
+  m_EditorClassIdentifier: 
+  cardName: Hot Air
+  description: "\u201CHit an enemy with hot Air\u201D"
+  effectString: "Deal 150% atk to an enemy, inflict \u201CDEF-20%\u201D for 2 turns"
+  cardCost: 2
+  artwork: {fileID: 0}
+  delayAction: 1
+  effect: {fileID: 6527786364775750636, guid: f5e29fe03c0b70345ab68eef422ee307, type: 3}
+  isToken: 0

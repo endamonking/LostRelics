@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
+  m_Name: M_Healing wind
+  m_EditorClassIdentifier: 
+  cardName: 'Healing wind '
+  description: "\u201CHeal allies with power of wind\u201D"
+  effectString: heal all allies by 100% of healing
+  cardCost: 2
+  artwork: {fileID: 0}
+  delayAction: 1
+  effect: {fileID: 5211565974536053787, guid: 0a541cdcc10b5574da804baa73ff06cc, type: 3}
+  isToken: 0

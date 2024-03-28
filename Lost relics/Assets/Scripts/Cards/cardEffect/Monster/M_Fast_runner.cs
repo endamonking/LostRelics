@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class M_Acid_splash : cardEffect
+public class M_Fast_runner : cardEffect
 {
     [SerializeField]
-    int skillMultiplier = 80; //Percent unit
+    int skillMultiplier = 30; //Percent unit
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +29,6 @@ public class M_Acid_splash : cardEffect
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         //play animation and sound
         user.doCharacterAnimationAndSound(target.gameObject);
-        //Apply debuf
-        string des = "Decrease DEF by 25%";
-        buff deBuff = new buff("Acid splash", 2, "DEF_Down", des);
-        deBuff.AddBuff("DEF", -25);
-
-        target.applyActiveDeBuff(deBuff, false);
         return true;
     }
 }

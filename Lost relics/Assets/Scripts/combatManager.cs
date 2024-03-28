@@ -234,6 +234,16 @@ public class combatManager : MonoBehaviour
                 }
             }
         }
+        //Effect
+        uniquePassSkill passive = character.characterPassiveSkill;
+        if (passive != null)
+        {
+            if (passive is IEndturnEffect)
+            {
+                IEndturnEffect passiveSkill = passive as IEndturnEffect;
+                passiveSkill.onEndTurn();
+            }
+        }
         
 
 

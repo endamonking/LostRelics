@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c70cba8613e1e0439b3fc2d5276b97e, type: 3}
+  m_Name: M_Fast runner
+  m_EditorClassIdentifier: 
+  cardName: Fast runner
+  description: "\u201CTackle the enemy\u201D"
+  effectString: Deal 30% atk to a selected target
+  cardCost: 2
+  artwork: {fileID: 0}
+  delayAction: 1
+  effect: {fileID: 5446688602771356286, guid: 9294ee6b27c30e841818bda001857cb6, type: 3}
+  isToken: 0

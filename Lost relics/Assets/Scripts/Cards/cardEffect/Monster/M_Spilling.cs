@@ -28,6 +28,8 @@ public class M_Spilling : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         //Apply debuf
         string des = "Receive true damage at the start of the turn";
         buff deBuff = new buff("Spilling", 2, "Burn", des);
