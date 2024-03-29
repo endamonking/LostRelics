@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 2811751758122764413}
   - component: {fileID: 7212583910382967942}
   m_Layer: 0
-  m_Name: Bagky
+  m_Name: Evildoers
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,25 +388,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec795366bffda554288a3a2283200fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basedefPoint: 35
-  maxHP: 120
-  baseSPD: 20
-  characterName: Bagky
+  basedefPoint: 30
+  maxHP: 150
+  baseSPD: 30
+  characterName: 'Evildoers '
   maxPlayerHand: 3
   maxMana: 2
   currentDefpoint: 0
-  currentHP: 120
+  currentHP: 150
   currentSPD: 0
   baseArmorPen: 0
   baseCritRate: 0
   baseCritDMG: 150
-  baseATK: 10
+  baseATK: 2
   baseHeal: 5
-  baseEvade: 2
-  baseResistance: 15
+  baseEvade: 4
+  baseResistance: 10
   myStance: 0
   myPreviousStance: 0
-  characterPassiveSkillPrefab: {fileID: 399271557419655921, guid: 0db0a3eed4c4e2e4096a3432bf814992, type: 3}
+  characterPassiveSkillPrefab: {fileID: 8091608002385530222, guid: 536637b4c3d82fc468e9bd5b6957611d, type: 3}
   characterPassiveSkill: {fileID: 0}
   animController: {fileID: 0}
   characterAudio: {fileID: 0}
@@ -428,10 +428,11 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
-  - {fileID: 11400000, guid: 065e90b93e1ee38448860618818b6bf8, type: 2}
-  - {fileID: 11400000, guid: 7a608ab7239b86740bc15f46d6f51d07, type: 2}
-  - {fileID: 11400000, guid: 7a608ab7239b86740bc15f46d6f51d07, type: 2}
-  - {fileID: 11400000, guid: 92fd5c6d60f90854db3d2e30a73c1045, type: 2}
+  - {fileID: 11400000, guid: 9a667c475df9a0747aeee7c2263f4540, type: 2}
+  - {fileID: 11400000, guid: cd25fc24742e0144ca41a2a8087b9a95, type: 2}
+  - {fileID: 11400000, guid: cd25fc24742e0144ca41a2a8087b9a95, type: 2}
+  - {fileID: 11400000, guid: fc17a924c33a89240bfba42f31685212, type: 2}
+  - {fileID: 11400000, guid: fc17a924c33a89240bfba42f31685212, type: 2}
   discardedDeck: []
   _currentDeck: []
   cardInHand: []

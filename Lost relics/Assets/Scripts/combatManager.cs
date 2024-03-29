@@ -15,6 +15,17 @@ public class usingCardQ
     public Character cardTarget { get; set; }
 }
 
+public class enemyPositionSlot
+{
+    public GameObject enemy { get; set; }
+    public Vector3 position { get; set; }
+    public enemyPositionSlot(GameObject obj, Vector3 pos)
+    {
+        enemy = obj;
+        position = pos;
+    }
+}
+
 public enum stance
 {
     None, Defence, Disarm, Exhausted, Sprinting, Take_aim, Panic, Preparation, Exposed, Flow, Temporal, Ethereal, Rage,
@@ -63,6 +74,8 @@ public class combatManager : MonoBehaviour
     private List<GameObject> playersInitPool = new List<GameObject>();
     private List<GameObject> remainingEnemies = new List<GameObject>();
     private List<GameObject> enemiesPool;
+    [SerializeField]
+    private enemyPositionSlot[] enemiesSlots = new enemyPositionSlot[3];
 
     public bool isShowDiscard = false;
 
@@ -81,6 +94,10 @@ public class combatManager : MonoBehaviour
         _stateText.text = state.ToString();
         _selectedEffectPostion = new Vector3(0, -20f, 0);
         _selectedEffect = Instantiate(selectedEffectPrefabe, _selectedEffectPostion, Quaternion.identity);
+        for (int i = 0; i < enemiesSlots.Length; i++)
+        {
+            enemiesSlots[i] = new enemyPositionSlot(null, new Vector3(3, 0, -2 + (i * 2)));
+        }
         initPlayers();
         initEnemies();
         StartCoroutine(startGame());
@@ -132,7 +149,24 @@ public class combatManager : MonoBehaviour
             enemyObj.transform.position = new Vector3(3, 0, -2 + (i * 2));
             enemyObj.SetActive(true);
             remainingEnemies.Add(enemyObj);
+            //add to slot
+            enemiesSlots[i].enemy = enemyObj;
             i++;
+        }
+    }
+    public void initMoreEnemy(GameObject prefab, Transform spawnerTranform)
+    {
+        Vector3 spawnPosition = new Vector3(0,0,0);
+        for (int i =0; i < enemiesSlots.Length; i++)
+        {
+            if (enemiesSlots[i].enemy == null)
+            {
+                spawnPosition = enemiesSlots[i].position;
+                GameObject enemyObj = Instantiate(prefab, spawnPosition, Quaternion.identity);
+                enemiesSlots[i].enemy = enemyObj;
+                remainingEnemies.Add(enemyObj);
+                break;
+            }
         }
     }
 
@@ -489,6 +523,14 @@ public class combatManager : MonoBehaviour
         if (remainingEnemies.Contains(character))
         {
             remainingEnemies.Remove(character);
+            for (int i =0; i < 3; i++)
+            {
+                if (enemiesSlots[i].enemy == character)
+                {
+                    enemiesSlots[i].enemy = null;
+                }
+            }
+    
         }
         if (remainingPlayers.Contains(character))
         {
@@ -733,6 +775,7 @@ public class combatManager : MonoBehaviour
             return null;
 
     }
+
     //Get all funtion should create new list first then call the funtion to get list
     //It prevent bug when gameobject get destroy while using the list
     //Example        
@@ -748,5 +791,7 @@ public class combatManager : MonoBehaviour
 
         return remainingPlayers;
     }
+
+
 }
 

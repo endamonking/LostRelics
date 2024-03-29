@@ -36,18 +36,20 @@ public abstract class cardHandler : MonoBehaviour
         comIns = combatManager.Instance;
         if (comIns == null)
             return;
-
         cardParent = GameObject.FindGameObjectWithTag("MainCanvas").gameObject.transform;
         player = this.gameObject.GetComponent<Character>();
         currentMana = player.maxMana;
-
+        turnGuageUI = Instantiate(turnGuagePrefab, cardParent);
+        initCard();
+        turnGuageUI.name = this.gameObject.name + " Bar";
+        turnGuageUI.value = 1.0f;
+        /*
         if (comIns.state == BattleState.START)
         {
             initCard();
-            turnGuageUI = Instantiate(turnGuagePrefab, cardParent);
             turnGuageUI.name = this.gameObject.name + " Bar";
             turnGuageUI.value = 1.0f;
-        }
+        }*/
 
     }
 
@@ -66,6 +68,7 @@ public abstract class cardHandler : MonoBehaviour
         {
             turnGauge = turnGauge -  10 * player.inComSPD * Time.deltaTime;
             turnGuageUI.value = Mathf.InverseLerp(0f, 100f, turnGauge);
+            
         }
     } 
 
