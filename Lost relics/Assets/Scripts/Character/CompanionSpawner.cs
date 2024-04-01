@@ -24,7 +24,7 @@ public class CompanionSpawner : MonoBehaviour
     void Start()
     {
         canvas.SetActive(false);
-        spriteRender = GetComponent<SpriteRenderer>();
+        spriteRender = GetComponentInChildren<SpriteRenderer>();
         spriteRender.sprite = standingPic[companionNumber-1];
     }
 

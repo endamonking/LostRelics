@@ -25,6 +25,9 @@ public class EvildoersPassive : uniquePassSkill, IStartturnEffect
         if (allies.Count < 3)
         {
             combatManager.Instance.initMoreEnemy(windyPrefab, this.gameObject.transform.parent);
+            //Play animation
+            Character chara = characterGO.GetComponent<Character>();
+            chara.doCharacterAnimationAndSound();
         }
     }
 }

@@ -37,7 +37,7 @@ public class enemyCardHandler : cardHandler
             {
                 if (currentMana >= card.cardCost)
                 {
-                    GameObject target = GameObject.FindWithTag("Player");
+                    GameObject target = combatManager.Instance.getRandomPlayer();
                     if (target == null)
                         continue;
                     currentMana = currentMana - card.cardCost;

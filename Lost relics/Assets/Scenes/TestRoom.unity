@@ -26650,7 +26650,6 @@ GameObject:
   - component: {fileID: 2070290011}
   - component: {fileID: 2070290010}
   - component: {fileID: 2070290009}
-  - component: {fileID: 2070290008}
   m_Layer: 0
   m_Name: Companion
   m_TagString: Untagged
@@ -26658,58 +26657,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!212 &2070290008
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070290007}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: cb6800851a0d56641a8d76d15a331d98, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: -1940214471, guid: be75d83743a4dd146b2390c490e9c715, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 8.48, y: 11.84}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!114 &2070290009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26729,7 +26676,7 @@ MonoBehaviour:
   - {fileID: -1654865136, guid: 7c0dedcdc5eafff49927a1fbab3db777, type: 3}
   - {fileID: -1940214471, guid: be75d83743a4dd146b2390c490e9c715, type: 3}
   - {fileID: 43205001, guid: 2ae202c06868f604f9ca15020dc56fed, type: 3}
-  companionNumber: 3
+  companionNumber: 1
   comLocation: {fileID: 868235485}
 --- !u!54 &2070290010
 Rigidbody:

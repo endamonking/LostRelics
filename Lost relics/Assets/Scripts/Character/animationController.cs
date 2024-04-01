@@ -43,7 +43,11 @@ public class animationController : MonoBehaviour
     {
         Transform character = this.transform.parent.gameObject.transform;
         Vector3 original = this.transform.parent.gameObject.transform.position;
-        character.position = targetTransform.position + new Vector3 (-1,0,0);
+        //Target position
+        if (gameObject.transform.parent.tag == "Player")
+            character.position = targetTransform.position + new Vector3 (-1,0,0);
+        else
+            character.position = targetTransform.position + new Vector3(1, 0, 0);
         string animName = "Atk";
         animator.SetTrigger(animName);
         GameObject effectSprite;

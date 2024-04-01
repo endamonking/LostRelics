@@ -411,7 +411,7 @@ MonoBehaviour:
   animController: {fileID: 0}
   characterAudio: {fileID: 0}
   dmgPopupPrefab: {fileID: 1190771094348605403, guid: 56e0cf5830e267041a3e7b8071922fb9, type: 3}
-  isMelee: 0
+  isMelee: 1
 --- !u!114 &2811751758122764413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 3504743674989903493}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2811751758122764354}
@@ -538,7 +538,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1392426625, guid: f93e6edc1bacc52418a5a33f4426f89a, type: 3}
+  m_Sprite: {fileID: -611835819, guid: ac9f91db8c5c4a84dabd639ceda61c81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -559,7 +559,7 @@ Animator:
   m_GameObject: {fileID: 3504743674989903493}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 64d0971c56fa669439bbdd3d25a0503c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 79d44fac5c4adf34f83105d718baf823, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

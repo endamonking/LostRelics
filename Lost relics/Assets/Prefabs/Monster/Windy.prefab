@@ -411,7 +411,7 @@ MonoBehaviour:
   animController: {fileID: 0}
   characterAudio: {fileID: 0}
   dmgPopupPrefab: {fileID: 1190771094348605403, guid: 56e0cf5830e267041a3e7b8071922fb9, type: 3}
-  isMelee: 0
+  isMelee: 1
 --- !u!114 &2811751758122764413
 MonoBehaviour:
   m_ObjectHideFlags: 0
