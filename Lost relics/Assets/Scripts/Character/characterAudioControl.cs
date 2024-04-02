@@ -14,6 +14,8 @@ public class characterAudioControl : MonoBehaviour
     void Start()
     {
         audioSorce = GetComponent<AudioSource>();
+        float audioVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        audioSorce.volume = audioVolume;
     }
 
     // Update is called once per frame
@@ -27,8 +29,7 @@ public class characterAudioControl : MonoBehaviour
         if (audioSorce == null || attackSound == null)
             return;
 
-        audioSorce.clip = attackSound[0];
-        audioSorce.Play();
+        audioSorce.PlayOneShot(attackSound[0]);
 
     }
     public void playHurtSound()
@@ -36,8 +37,7 @@ public class characterAudioControl : MonoBehaviour
         if (audioSorce == null || hurtSound == null)
             return;
 
-        audioSorce.clip = hurtSound[0];
-        audioSorce.Play();
+        audioSorce.PlayOneShot(hurtSound[0]);
 
     }
     public void playDodgeSound()
@@ -45,8 +45,7 @@ public class characterAudioControl : MonoBehaviour
         if (audioSorce == null || dodgeSound == null)
             return;
 
-        audioSorce.clip = dodgeSound[0];
-        audioSorce.Play();
+        audioSorce.PlayOneShot(dodgeSound[0]);
 
     }
     //Will use when player press end turn and dont want the sound to overlap the other part

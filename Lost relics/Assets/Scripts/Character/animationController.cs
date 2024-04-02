@@ -39,10 +39,9 @@ public class animationController : MonoBehaviour
         if (hitEffectSpritePrefab != null)
             effectSprite = Instantiate(hitEffectSpritePrefab, targetTransform.position, Quaternion.identity);
     }
-    public void playMeleeAttackAnim(Transform targetTransform)
+    public void playMeleeAttackAnim(Transform targetTransform, Vector3 originalPosition)
     {
         Transform character = this.transform.parent.gameObject.transform;
-        Vector3 original = this.transform.parent.gameObject.transform.position;
         //Target position
         if (gameObject.transform.parent.tag == "Player")
             character.position = targetTransform.position + new Vector3 (-1,0,0);
@@ -53,7 +52,7 @@ public class animationController : MonoBehaviour
         GameObject effectSprite;
         if (hitEffectSpritePrefab != null)
             effectSprite = Instantiate(hitEffectSpritePrefab, targetTransform.position, Quaternion.identity);
-        StartCoroutine(delayReturn(character, original));
+        StartCoroutine(delayReturn(character, originalPosition));
     }
     IEnumerator delayReturn(Transform character, Vector3 original)
     {

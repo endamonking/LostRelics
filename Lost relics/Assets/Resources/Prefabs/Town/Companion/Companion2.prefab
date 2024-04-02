@@ -282,11 +282,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSound:
-  - {fileID: 8300000, guid: 8c8258c8719d03440b7532dccedf9ecc, type: 3}
+  - {fileID: 8300000, guid: 533c0f0607b1c8b46ac4ae5daa8e3e92, type: 3}
   dodgeSound:
-  - {fileID: 8300000, guid: f9a06c061378d684e98d496a196123e9, type: 3}
+  - {fileID: 8300000, guid: ca22b1ecdd124e34dac945ccc93e740e, type: 3}
   hurtSound:
-  - {fileID: 8300000, guid: dbd13f855af27bd4a909ae57778fcc08, type: 3}
+  - {fileID: 8300000, guid: 8250fe187ee9d8541b3023d18e57cd4a, type: 3}
 --- !u!1 &7104277297742536201
 GameObject:
   m_ObjectHideFlags: 0

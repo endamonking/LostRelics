@@ -115,6 +115,7 @@ public class combatManager : MonoBehaviour
         {
             GameObject playerObj = Instantiate(player, transform.position, Quaternion.identity);
             playerObj.transform.position = new Vector3(-3, 0, -2 + (i * 2));
+            playerObj.GetComponent<Character>().originalPosition = playerObj.transform.position;
             playerObj.SetActive(true);
             remainingPlayers.Add(playerObj);
             //Add explo buff and debuff
@@ -147,6 +148,7 @@ public class combatManager : MonoBehaviour
         {
             GameObject enemyObj = Instantiate(enemy, transform.position, Quaternion.identity);
             enemyObj.transform.position = new Vector3(3, 0, -2 + (i * 2));
+            enemyObj.GetComponent<Character>().originalPosition = enemyObj.transform.position;
             enemyObj.SetActive(true);
             remainingEnemies.Add(enemyObj);
             //add to slot
