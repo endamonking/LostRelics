@@ -15,19 +15,19 @@ public class playerCanvasController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && !InGameMenu.Instance.Menu.activeSelf)
         {
             showInventoryTab(0);
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && !InGameMenu.Instance.Menu.activeSelf)
         {
             showInventoryTab(1);
         }
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V) && !InGameMenu.Instance.Menu.activeSelf)
         {
             showInventoryTab(2);
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && !InGameMenu.Instance.Menu.activeSelf)
         {
             showInventoryTab(3);
         }
@@ -40,5 +40,12 @@ public class playerCanvasController : MonoBehaviour
             exploration_sceneManager.Instance.isEvent = false;
         else
             exploration_sceneManager.Instance.isEvent = true;
+    }
+    private void openMenu()
+    {
+        if (InGameMenu.Instance.gameObject.activeSelf)
+            InGameMenu.Instance.closeMenu();
+        else
+            InGameMenu.Instance.openMenu();
     }
 }

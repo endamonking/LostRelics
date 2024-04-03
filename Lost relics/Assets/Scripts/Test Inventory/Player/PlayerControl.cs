@@ -58,19 +58,19 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && !InGameMenu.Instance.Menu.activeSelf)
         {
             showInventoryTab(0);
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && !InGameMenu.Instance.Menu.activeSelf)
         {
             showInventoryTab(1);
         }
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V) && !InGameMenu.Instance.Menu.activeSelf)
         {
             showInventoryTab(2);
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && !InGameMenu.Instance.Menu.activeSelf)
         {
             showInventoryTab(3);
         }
@@ -120,6 +120,13 @@ public class PlayerControl : MonoBehaviour
     {
         if (isOpenOtherTab != true)
             move = inventoryManager.Instance.playerCanvas.GetComponent<inventoryCanvas>().openTab(tabIndex);
+    }
+    private void openMenu()
+    {
+        if (InGameMenu.Instance.gameObject.activeSelf)
+            InGameMenu.Instance.closeMenu();
+        else
+            InGameMenu.Instance.openMenu();
     }
 
     public void stopPlaterMovement()

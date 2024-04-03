@@ -14,8 +14,6 @@ public class characterAudioControl : MonoBehaviour
     void Start()
     {
         audioSorce = GetComponent<AudioSource>();
-        float audioVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
-        audioSorce.volume = audioVolume;
     }
 
     // Update is called once per frame
