@@ -29,9 +29,9 @@ public class TransitionToExploration : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Player entered trigger.");
-        // Load the "Exploration" scene without additive loading
-        SceneManager.LoadScene("Exploration", LoadSceneMode.Single);
+        if (other.tag == "Player")
+            // Load the "Exploration" scene without additive loading
+            SceneManager.LoadScene("Exploration", LoadSceneMode.Single);
 
         // Subscribe to the scene loaded event to enable objects when the scene is fully loaded
         //SceneManager.sceneLoaded += OnSceneLoaded; 

@@ -173,6 +173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffectSpritePrefab: {fileID: 8590918826956873087, guid: a82b35e977aac6847a292b611dcb5bc9, type: 3}
+  healParticleEffect: {fileID: 4945432701994368786, guid: 4405b216e5639384faf6c54f3e6fbff0, type: 3}
+  buffParticleEffect: {fileID: 4232355232621897089, guid: 5aed5824e56de594b8b2f254983d2934, type: 3}
+  debuffParticleEffect: {fileID: 8532200500789218247, guid: bd7af4da5c441c942a689766f0ee85cb, type: 3}
 --- !u!82 &6458812455483262727
 AudioSource:
   m_ObjectHideFlags: 0

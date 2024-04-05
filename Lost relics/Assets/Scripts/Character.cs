@@ -525,6 +525,8 @@ public class Character : MonoBehaviour
         if (buffContainer == null) // In case of apply buff in exploration
             return;
         buffContainer.updateBuffIconUI(allBuff);
+        if (animController != null)
+            animController.startBuffParticleEff(this.gameObject.transform);
     }
 
     public void applyActiveDeBuff(buff activeDeBuff, bool isUnclear)
@@ -554,6 +556,8 @@ public class Character : MonoBehaviour
         if (buffContainer == null) // In case of apply buff in exploration
             return;
         buffContainer.updateBuffIconUI(allBuff);
+        if (animController != null)
+            animController.startDebuffParticleEff(this.gameObject.transform);
     }
 
     public void removeActiveBuff(int number)
@@ -1053,6 +1057,8 @@ public class Character : MonoBehaviour
         if (currentHP >= inComMaxHP)
             currentHP = inComMaxHP;
         hpBar.updateHPBar(inComMaxHP, currentHP);
+        if (animController != null)
+            animController.startHealParticleEff(this.gameObject.transform);
         Debug.Log(this.gameObject.name + "Heal " + finalValue + " " + currentHP);
         if (currentHP <= 0)
             died();

@@ -6,8 +6,13 @@ public class animationController : MonoBehaviour
 {
     /*[Header("Animation numbers")]
     public int attackAnims = 2;*/
-    public GameObject hitEffectSpritePrefab;
 
+    public GameObject hitEffectSpritePrefab;
+    [Header("Particle")]
+    [SerializeField]
+    private GameObject healParticleEffect;
+    [SerializeField]
+    private GameObject buffParticleEffect, debuffParticleEffect;
     private Animator animator;
 
     // Start is called before the first frame update
@@ -80,5 +85,20 @@ public class animationController : MonoBehaviour
     public void playEvadeAnim()
     {
         animator.SetTrigger("Evade");
+    }
+
+    public void startHealParticleEff(Transform character)
+    {
+        GameObject healparticle = Instantiate(healParticleEffect, character);
+    }
+    public void startBuffParticleEff(Transform character)
+    {
+        Debug.Log(character.gameObject.name);
+        GameObject buffparticle = Instantiate(buffParticleEffect, character);
+    }
+    public void startDebuffParticleEff(Transform character)
+    {
+        Debug.Log(character.gameObject.name);
+        GameObject debuffparticle = Instantiate(debuffParticleEffect, character);
     }
 }
