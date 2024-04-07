@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: 'Deal 40% atk to a selected target, SPD -10% to the target for 2
     turns '
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 54d97d47b19fac9478494315778f3791, type: 3}
   delayAction: 1
   effect: {fileID: 2121442899277344988, guid: e0a44e9bab2785142b3172f69da1b5b7, type: 3}
   isToken: 0

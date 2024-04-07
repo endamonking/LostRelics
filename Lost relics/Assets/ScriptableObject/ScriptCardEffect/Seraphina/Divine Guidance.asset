@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Provide guidance to allies, increasing their accuracy and evasion."'
   effectString: All allies Evasion +25%, Critical hit chance +20% for 2 turns
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: c6fc9d688af31bd459691dce4cc8ced1, type: 3}
   delayAction: 1
   effect: {fileID: 3869415223463372703, guid: 0c623b954cf37e946946afbe6bf353f2, type: 3}
   isToken: 0

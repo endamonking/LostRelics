@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Change target\u2019s stance to \u201CDisarmed\u201D (some stance
     cannot be change this way), deal 60% atk to a selected target,"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: eeac0adb63352584f90edac3f77bc66d, type: 3}
   delayAction: 1
   effect: {fileID: 7574156820269628109, guid: d4deafa79c0d79448af5a4ddd2c9da0f, type: 3}
   isToken: 0

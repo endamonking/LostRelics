@@ -18,7 +18,7 @@ MonoBehaviour:
     30% multiply by X (X = number of Indecipherable poem spent) ATK as damage to
     the target "
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: a2441b56c76fa114994f74981bc28197, type: 3}
   delayAction: 1
   effect: {fileID: 879928603040635487, guid: 89a234d74da4e0a4ba55322e3624aa66, type: 3}
   isToken: 0

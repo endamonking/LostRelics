@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 100% ATK to an enemy, if Krist is in \u201CFrenzy\u201D, this
     attack is guaranteed to crit and recover 20% of maxHP"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 4a7cd5cd907c816488ffc59cbe372dd2, type: 3}
   delayAction: 1
   effect: {fileID: 3894905804145531117, guid: 904428990c00b4e499ffa0857be5150d, type: 3}
   isToken: 0

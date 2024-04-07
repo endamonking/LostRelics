@@ -19,7 +19,7 @@ MonoBehaviour:
     refund mana used for this card, Inflict SPD -10% to self for 2 turns If Sylvia
     spd is equal or higher than 50, create another \u201CShadow step\u201D in hand "
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 291c6b8d5293abb46be4f2ac5c339c85, type: 3}
   delayAction: 1
   effect: {fileID: 6333736096489166192, guid: 0b4111ffd47780b47a0e7a23332b2931, type: 3}
   isToken: 0

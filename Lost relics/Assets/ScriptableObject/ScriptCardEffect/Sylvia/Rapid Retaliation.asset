@@ -18,7 +18,7 @@ MonoBehaviour:
   effectString: "immediately ends turns, draw 2 cards. Enter \u201Ccounter\u201D
     stance"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 2b8b655661845214cae2bc306d0eac1a, type: 3}
   delayAction: 1
   effect: {fileID: 3312123978721089064, guid: 55e98c5b191a7764a847685b6909ec3b, type: 3}
   isToken: 0

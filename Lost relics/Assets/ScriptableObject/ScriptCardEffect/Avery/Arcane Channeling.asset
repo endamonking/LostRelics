@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: 'Grant a selected ally 2 extra mana and increase their ATK by 30%
     for 1 turn. '
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: d687b81785531ac419e8086e4caf4633, type: 3}
   delayAction: 1
   effect: {fileID: 2828006229661526772, guid: 51b15bbcc8f25084b923c00ed4398b8e, type: 3}
   isToken: 0

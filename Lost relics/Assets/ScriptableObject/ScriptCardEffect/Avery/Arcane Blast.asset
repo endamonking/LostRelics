@@ -16,7 +16,7 @@ MonoBehaviour:
   description: ' "Unleash a surge of magical energy."'
   effectString: Deal 70% ATK as damage to a target enemy.
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 5fdc57c11c70eb94d83d21191b7784d0, type: 3}
   delayAction: 1
   effect: {fileID: 7420270281958641939, guid: e201921d0f80b17438d82987688de1ff, type: 3}
   isToken: 0

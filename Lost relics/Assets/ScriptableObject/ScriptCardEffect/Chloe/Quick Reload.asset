@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Use 4 stacks of Lock\u2019n loaded to Recover 3 mana. (Nothing happens
     if no stacks)"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 6858f6dc28c19464db6f81f0ede87326, type: 3}
   delayAction: 1
   effect: {fileID: 5708076934364363734, guid: dfd6ef27466342c4abbb1d22c5cd3144, type: 3}
   isToken: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: Deal 80% ATK as damage to a single enemy. If Sylvia is in Blade Dance
     Stance, multiplier changed to 100%
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: bdaec8caab0f0e5468c479ce17f1870a, type: 3}
   delayAction: 1
   effect: {fileID: 144908557559849703, guid: 9ff1a1693ef156b4e9845f1f7a301e8b, type: 3}
   isToken: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"the last thing they will see is me."'
   effectString: Enter Blade dance stance
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 3d8be3935320b57458696b0646a09773, type: 3}
   delayAction: 1
   effect: {fileID: 2398411371493226941, guid: 931055144638ea64bb85b3075721e47f, type: 3}
   isToken: 0

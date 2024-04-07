@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Sacrifices 30% of Current HP to heal a target equal to the HP cost. 
     (target can\u2019t be self) "
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: e75229433f15e4f498a7f30754800c0a, type: 3}
   delayAction: 1
   effect: {fileID: 3925042906392827904, guid: ced3aa222b468d64a92ae182c8b68a4d, type: 3}
   isToken: 0

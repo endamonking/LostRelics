@@ -18,7 +18,7 @@ MonoBehaviour:
     shoot again and deal 50% ATK as damage to an enemy, the 2nd shot always results
     in a critical hit. Increase Lock\u2019n Loaded stacks by 2"
   cardCost: 3
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: ac30b7599d00e7a489a10525f8ef4d25, type: 3}
   delayAction: 1
   effect: {fileID: 376484116769471724, guid: 7456a69ecf265d54f918ca223be7a7da, type: 3}
   isToken: 0

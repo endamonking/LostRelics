@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Transcend the physical realm."'
   effectString: Enter "Ethereal" stance
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 586e368299985f74bab4d2862648c3cd, type: 3}
   delayAction: 1
   effect: {fileID: 7992596195490495487, guid: 96a0fc7f96f38b74fb3f51fc6d33c161, type: 3}
   isToken: 0

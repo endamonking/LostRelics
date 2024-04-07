@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: Deal 20% ATK to all enemies, inflict SPD -10% for 2 turns to all
     enemies
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: b59a4f84d04c25340947e61f99faf2b2, type: 3}
   delayAction: 1
   effect: {fileID: 5098187141866215959, guid: 4c26da87954563542978e553ba791200, type: 3}
   isToken: 0

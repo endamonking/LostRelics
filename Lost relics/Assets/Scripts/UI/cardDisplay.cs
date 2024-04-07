@@ -11,7 +11,8 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     [SerializeField]
     private TextMeshProUGUI _cardName, _sta, _stance, _des;
-
+    [SerializeField]
+    private Image artImage;
     private RectTransform rectTransform;
     private Canvas canvas;
     public Vector2 originalPosition;
@@ -25,6 +26,8 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         _sta.text = card.cardCost.ToString();
         _stance.text = card.effect.intoStance.ToString();
         _des.text = card.effectString;
+        if (card.artwork != null)
+            artImage.sprite = card.artwork;
         rectTransform = GetComponent<RectTransform>();
         canvas = transform.parent.GetComponent<Canvas>();
         originalPosition = rectTransform.localPosition;

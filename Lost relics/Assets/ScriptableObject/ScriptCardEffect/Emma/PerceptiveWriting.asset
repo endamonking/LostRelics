@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "\u201CHolds in perfection but a little moment\u201D"
   effectString: "Create 2 \u201CIndecipherable Poem\u201D into your hands "
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: e79bf4d43e64d674f93808f0cba56da1, type: 3}
   delayAction: 1
   effect: {fileID: 7614631997929487520, guid: 191080091d217df46b38400881e80320, type: 3}
   isToken: 0

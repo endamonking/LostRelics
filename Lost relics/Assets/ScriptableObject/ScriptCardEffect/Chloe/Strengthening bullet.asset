@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 10% ATK as damage to a target, target gain \u201CATK+30%\u201D
     for 2 turns"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 8b05bbd7bd352214b82d2640941b40da, type: 3}
   delayAction: 1
   effect: {fileID: 480285467416884160, guid: ca4a88e5223b2c94b990d6b8ce7bf855, type: 3}
   isToken: 0

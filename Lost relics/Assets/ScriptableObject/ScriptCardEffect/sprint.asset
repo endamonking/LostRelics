@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "\u201CFaster, like a wind.\u201D"
   effectString: "change stance to \u201CSprinting\u201D, draw 1 card"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 47f5ebcf9bd704d4d8faa9adaabea1e9, type: 3}
   delayAction: 1
   effect: {fileID: 226925884017285371, guid: ce61f9ca1b3acbd48a41b4778ad1c59c, type: 3}
   isToken: 0

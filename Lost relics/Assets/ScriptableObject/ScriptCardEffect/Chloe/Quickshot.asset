@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: 'Deal 60% ATK as damage to a target enemy. If this attack lands a
     critical hit, draw 1 card. '
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 8b22e85e6a7080c4da6048cefd329ac9, type: 3}
   delayAction: 1
   effect: {fileID: 5398550781613378731, guid: 57dfe86d9ca1e5f4e87f3a13746d78c1, type: 3}
   isToken: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
     Poem\u201D to inflict \u201Cburn\u201D to the enemy (100% ATK as true damage
     for 3 turns)"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 2373ccb3f8018c742848a2ad0bf75b02, type: 3}
   delayAction: 1
   effect: {fileID: 319328111435732672, guid: d806b279ac6acda43ba0dec315acaf58, type: 3}
   isToken: 0

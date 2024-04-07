@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Empty your mind, focus on the present."'
   effectString: "Ends turn immediately, Enter \u201CZan\u201D stance, draw 1 card"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 7ff530a967185594f9b3e7e557d7259c, type: 3}
   delayAction: 1
   effect: {fileID: 442884702024885902, guid: e9db1f7d7e0d70c4a907251ff39ff246, type: 3}
   isToken: 0

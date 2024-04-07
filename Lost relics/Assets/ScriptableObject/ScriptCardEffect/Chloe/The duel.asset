@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Assume a duelist''s stance"'
   effectString: "Enter \u201CShowdown\u201D stance"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 3687b56064467114fb398edf7d27b088, type: 3}
   delayAction: 1
   effect: {fileID: 1576070574734783592, guid: 37cacfbc4c004ee4da47abc6bfa7dfea, type: 3}
   isToken: 0

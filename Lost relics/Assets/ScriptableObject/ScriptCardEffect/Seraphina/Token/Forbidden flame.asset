@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Use Life energy to deal damage"'
   effectString: Deal 20 true damage to an enemy.
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: c3f1707cfec7217468ed10bf22d865ed, type: 3}
   delayAction: 1
   effect: {fileID: 5849530087336053202, guid: 20a9c2f2422a41641ac030d7f61521ca, type: 3}
   isToken: 1

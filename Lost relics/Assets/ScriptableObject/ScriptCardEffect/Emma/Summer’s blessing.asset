@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "ATK +20% for all allies for 2 turns, spends 1 \u201CIndecipherable
     poem\u201D to also buff SPD +20% for all allies as well"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: b41549fd2db6ea44090812bf81a80a3f, type: 3}
   delayAction: 1
   effect: {fileID: 1231999608903503162, guid: 21034212c41babc47bab3d5a5cc63cf0, type: 3}
   isToken: 0

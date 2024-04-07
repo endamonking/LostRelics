@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Recover 1 mana for every 2 card played this turn, if the user is
     in \u201CFlow\u201D stance, draw 2 cards"
   cardCost: 1
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: 76f855c3827074848834e115fd2f484a, type: 3}
   delayAction: 1
   effect: {fileID: 955574838439554461, guid: 4411c7a0c3b8baf4f8771a820b7959bd, type: 3}
   isToken: 0

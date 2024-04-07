@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Pray for a better future"'
   effectString: "draw 2 card, draw 1 more card if Seraphina is in \u201CPurification\u201D"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 48e4b1660662b8e4e8031efc9d51522d, type: 3}
   delayAction: 1
   effect: {fileID: 5076480841065299064, guid: 67e41eef7f875a44d86e6768c396681e, type: 3}
   isToken: 0

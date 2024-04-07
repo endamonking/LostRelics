@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: Deal 60% ATK as damage to a target enemy,  If in "Temporal" stance,
     heal 50% of damage dealt
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: d408113b7ee5512478023503b65529b4, type: 3}
   delayAction: 1
   effect: {fileID: 1397717519995922880, guid: 0e1cbfcb459a221449b9fc189e78663e, type: 3}
   isToken: 0

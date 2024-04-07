@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Drain life energy
   effectString: "Deal 15 true damage to a selected ally, create \u201CForbidden flame\u201D"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 82f60dc64ec82874897912522ebd67fc, type: 3}
   delayAction: 1
   effect: {fileID: 4702023655185938764, guid: a79a764b8acb0be4abbef3e17e621699, type: 3}
   isToken: 0

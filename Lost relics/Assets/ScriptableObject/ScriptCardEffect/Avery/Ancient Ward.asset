@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Ward against dark forces."'
   effectString: Increase resistance of all allies by 20% for 2 turns.
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: eea5ddfe61ff0ba449362d5ec08ed90b, type: 3}
   delayAction: 1
   effect: {fileID: 1911343009181658194, guid: 6c8a264a6825f13488fab8c03643ad72, type: 3}
   isToken: 0

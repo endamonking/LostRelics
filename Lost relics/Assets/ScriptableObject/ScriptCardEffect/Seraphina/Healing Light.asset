@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Channel divine energy to heal allies."'
   effectString: ' Heal target for 60% of Seraphina''s Heal.'
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: fdddb71d695152143b85459e768170bc, type: 3}
   delayAction: 1
   effect: {fileID: 4942331612766686200, guid: 0a4feae3addfffb44ac6fddcfaa5564a, type: 3}
   isToken: 0

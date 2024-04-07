@@ -17,6 +17,7 @@ MonoBehaviour:
   effectString: "Change stance to \u201CPreparation\u201D, immediately ends caster\u2019s
     turn upon use"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 19aec531ec509e84691105e841c29c83, type: 3}
   delayAction: 1
   effect: {fileID: 4733229651562229148, guid: 71b8589a608c0a54895a56c170d306b7, type: 3}
+  isToken: 0

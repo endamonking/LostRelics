@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "\u201Cyou\u2019re going to be alright\u201D"
   effectString: Cure one negative status on a selected ally
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 7235cefe367e79442ba71e9e53e4656c, type: 3}
   delayAction: 1
   effect: {fileID: 8917119791160423951, guid: d522a383afa50af4a9cc2d47da993607, type: 3}
   isToken: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: if Krist HP is higher than 50%. Gain 1 mana.  Sacrifices half of
     current HP to deal the same amount of true damage as HP cost
   cardCost: 3
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 2c8f1e4ccea745d4ba72d3a4d90ff739, type: 3}
   delayAction: 1
   effect: {fileID: 1957356646594125935, guid: 67545e1a3fa5b9a40a5f08fd96543e61, type: 3}
   isToken: 0

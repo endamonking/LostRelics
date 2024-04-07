@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "inflict \u201CRaindrops\u201D debuff to all enemy for 1 turn [Non-stackable]
     (raindrops = when receive damage, receive 2 more damage)"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 1a61ff6829c464e4e93606c9f8a0c2f6, type: 3}
   delayAction: 1
   effect: {fileID: 5705634697528666564, guid: 2381033e37972074fa367f235736f795, type: 3}
   isToken: 0

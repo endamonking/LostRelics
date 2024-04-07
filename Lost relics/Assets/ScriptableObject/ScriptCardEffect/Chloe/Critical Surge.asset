@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Channel critical energy to amplify damage."'
   effectString: 'Increase user critical damage by 30% for 2 turns. '
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: a578c59b6e46e7b44bee99d460c76bde, type: 3}
   delayAction: 1
   effect: {fileID: 1113941161600557668, guid: 70f0eb52806443f4783871ac0dea8e1d, type: 3}
   isToken: 0

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: "\u201CI hope this works out.\u201D"
   effectString: Discard 2 cards (random), draw 3 cards
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 24fac97000d08e64b8e6ae4a587288f5, type: 3}
   delayAction: 1
   effect: {fileID: 5925824719300830678, guid: 47c59e9541fe41f42a17bdfb6d242607, type: 3}
+  isToken: 0

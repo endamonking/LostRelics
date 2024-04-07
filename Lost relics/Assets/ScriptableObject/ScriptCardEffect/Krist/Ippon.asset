@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 40% ATK to a target, if Krist is in \u201CFrenzy\u201D, this
     attack is guaranteed to crit "
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 19c22b7a70516c942aa1885ae9ae2b71, type: 3}
   delayAction: 1
   effect: {fileID: 4076003882993754444, guid: bb5466d1883cf08468fbf6670c35934c, type: 3}
   isToken: 0

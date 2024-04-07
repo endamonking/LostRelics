@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Grants all allies buff based on Avery\u2019s stance (None = ATK+20%,
     Temporal =SPD+20%, Ethereal = Evade +20%, Others = DEF+10%) for 2 turns"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: ab7ad804803f05348b304e05bfd09162, type: 3}
   delayAction: 1
   effect: {fileID: 6390792959240428463, guid: b341de76834e1bf4d90f62b35117d0cb, type: 3}
   isToken: 0

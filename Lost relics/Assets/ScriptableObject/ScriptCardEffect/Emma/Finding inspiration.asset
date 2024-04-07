@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Draw 2 cards, Enter \u201CExposed\u201D stance at the end of this
     turn"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 2f4b65b09b421644c85de7bb9a941cff, type: 3}
   delayAction: 1
   effect: {fileID: 5356908309802849931, guid: 85d4db117fe41ee40be3547d379c3c8c, type: 3}
   isToken: 0

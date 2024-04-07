@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Summon a celestial guardian to help ally"'
   effectString: Grant target 50% armor penetration and 30% damage bonus for 2 turns
   cardCost: 3
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: c4323f825df07ed49a27afa476612264, type: 3}
   delayAction: 1
   effect: {fileID: 3867303952714527972, guid: 241cddddf2bf6c34f991be165db1f5fc, type: 3}
   isToken: 0

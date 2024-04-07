@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: Deal 30% ATK as damage to an enemy and inflict "Bomb" (explodes after
     2 turns, dealing true damage to all enemies for 50% of Chloe ATK) for 2 turns.
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 5e19a51c8fb67014fbe91889cdbc6992, type: 3}
   delayAction: 1
   effect: {fileID: 6946161248819143962, guid: f87325c11b2172949b40d5a6838a4106, type: 3}
   isToken: 0

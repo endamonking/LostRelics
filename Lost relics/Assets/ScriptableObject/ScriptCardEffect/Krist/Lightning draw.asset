@@ -18,7 +18,7 @@ MonoBehaviour:
     deal 20% of Lost HP as true damage to all enemies, if Krist is in \u201CZan\u201D
     multiplier change to 40%"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 80c126b818a83ae4f9a9c503c1341afd, type: 3}
   delayAction: 1
   effect: {fileID: 2942410209449408091, guid: f4620c7c72ca11a42849e9a1ef111e46, type: 3}
   isToken: 0

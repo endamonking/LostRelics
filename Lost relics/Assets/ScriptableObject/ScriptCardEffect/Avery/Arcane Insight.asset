@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Unlock the secrets of the arcane."'
   effectString: Draw 2 cards.
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 31de246ae0cb7be4cad9730c57091247, type: 3}
   delayAction: 1
   effect: {fileID: 1749854657692254770, guid: 7179ce0f4d80ee74f862fb93a89e01de, type: 3}
   isToken: 0

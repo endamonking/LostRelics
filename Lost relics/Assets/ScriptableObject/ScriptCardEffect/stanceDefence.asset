@@ -17,6 +17,7 @@ MonoBehaviour:
   effectString: "change stance to \u201CDefence\u201D, Buff Def+20% to self for 1
     turn"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: aaee719b2267f4f4e9555f50ef80670d, type: 3}
   delayAction: 1
   effect: {fileID: 4289621139271024520, guid: ffc6a05fb11b02c45aa0b65b24409114, type: 3}
+  isToken: 0

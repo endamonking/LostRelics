@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Enter \u201CDefence\u201D stance, spends 1 \u201CIndecipherable
     Poem\u201D to Heal 100% of Healing to all allies  "
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: a4be38febbf6bbc4889d06197e117775, type: 3}
   delayAction: 1
   effect: {fileID: 2613582922275738403, guid: da67e7e4c66d7634a83ac319a84c5b24, type: 3}
   isToken: 0

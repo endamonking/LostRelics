@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: Grant all allies a protective ward, damage reduction by 20% for 2
     turns.
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: b7a9f5fc8f7211346a9de0b89a950ba4, type: 3}
   delayAction: 1
   effect: {fileID: 4850561458309343059, guid: 406b553bbb323084bb2c69e76b78fe42, type: 3}
   isToken: 0

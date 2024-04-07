@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: Heal all allies for 50% of Avery's Healing. If in "Ethereal" stance,
     also remove all debuffs from allies.
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 32e0651a37bbd8846a73c780b2a98f0c, type: 3}
   delayAction: 1
   effect: {fileID: 7521815000180074730, guid: 096e3b5625ea513469ade3bc9705674a, type: 3}
   isToken: 0

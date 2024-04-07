@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: 'Deal damage 11 times randomly, each hit deal 20% of maxHP as true
     damage '
   cardCost: 3
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 57039f33c05d1424698f5c91d79bb6b4, type: 3}
   delayAction: 1
   effect: {fileID: 4828588955790416604, guid: de81726eb184bc74ebc4ecb894c6e023, type: 3}
   isToken: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 50% of healing stats to all enemies. If Seraphina is in \u201CPurification\u201D,
     deal additional 50% healing stats to all enemies"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: f4abfc0f8709eef43a784d05a66645ce, type: 3}
   delayAction: 1
   effect: {fileID: 7530665563367400340, guid: a5f8e0a6db47e0a4298d9935f3effe52, type: 3}
   isToken: 0

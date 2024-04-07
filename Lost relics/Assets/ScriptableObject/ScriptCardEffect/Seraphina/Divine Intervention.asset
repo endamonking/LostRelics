@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Call upon divine aid"'
   effectString: All allies def +30% for 2 turns
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 87f64f9949c5cbf48ab1434b3e0dfce4, type: 3}
   delayAction: 1
   effect: {fileID: 8311475065247987481, guid: 994596555d319ea479e02563373e4b88, type: 3}
   isToken: 0

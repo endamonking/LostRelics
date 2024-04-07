@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 30% ATK to the target, if the target HP is at max. Created
     another \u201COpen wound\u201D in hands "
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 37e0ed05f8fb61f4e92ddc0f8e4cc60a, type: 3}
   delayAction: 1
   effect: {fileID: 570603064637523778, guid: f3a9ed2cdc27b7a41bcd51931cecd80b, type: 3}
   isToken: 0

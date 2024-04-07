@@ -18,7 +18,7 @@ MonoBehaviour:
     drawn this turn\u201D), if the user is in \u201CFlow\u201D stance Effect changes
     to 60% damage"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: a8ba45c8d24941942ab56a5494b54ff0, type: 3}
   delayAction: 1
   effect: {fileID: 606349352532188317, guid: 52b1124413be9894e83e0a5446731682, type: 3}
   isToken: 0

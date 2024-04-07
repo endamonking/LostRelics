@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"may god sooth your suffering "'
   effectString: 'Choose a target, that target gain ATK+20% for 2 turns '
   cardCost: 0
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: a5caf67e34b46e44087dac8691dfe4c4, type: 3}
   delayAction: 1
   effect: {fileID: 756968106685121098, guid: 16febfc47c5d1af428905170e4cf670b, type: 3}
   isToken: 1

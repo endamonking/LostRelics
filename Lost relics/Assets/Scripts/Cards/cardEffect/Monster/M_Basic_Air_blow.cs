@@ -36,7 +36,14 @@ public class M_Basic_Air_blow : cardEffect
         {
             Character targetPlayer = enemy.GetComponent<Character>();
             targetPlayer.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
-            targetPlayer.applyActiveDeBuff(deBuff, false);
+            buff currentBuff = targetPlayer.findBuffContainByName(deBuff.buffName);
+            if (currentBuff != null)
+            {
+                targetPlayer.removeBuff(currentBuff);
+                targetPlayer.applyActiveDeBuff(deBuff, false);
+            }
+            else
+                targetPlayer.applyActiveDeBuff(deBuff, false);
         }
         //play animation and sound
         user.doCharacterAnimationAndSound(target.gameObject);

@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 80% ATK as damage to all enemies. If Chloe is in \u201CShowdown\u201D,
     deal additional 80% damage"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: ac4b886e21fdeab42bedf3e82a45a187, type: 3}
   delayAction: 1
   effect: {fileID: 7938238009688145523, guid: 8200183130a276d4199ce6c782a2a7bc, type: 3}
   isToken: 0

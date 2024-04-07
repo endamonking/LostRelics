@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: Stun a target enemy for 1 turn, preventing them from acting. If in
     "Temporal" stance, also decrease their Resistance by 30% for 2 turn.
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: fd3482c8df5fb4544ba068561313584d, type: 3}
   delayAction: 1
   effect: {fileID: 5825153510654998251, guid: 5a67ed724187c1242861556c0ca51e5f, type: 3}
   isToken: 0

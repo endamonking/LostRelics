@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"React swiftly to incoming threats."'
   effectString: Grant all allies +20% Evade for 1 turn
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 158c99c7de28ff240babdf24f52ba54c, type: 3}
   delayAction: 1
   effect: {fileID: 2700787675546639762, guid: e386d07284d71b74694e09224ee11173, type: 3}
   isToken: 0

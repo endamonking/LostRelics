@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 100% ATK to an enemy, if lock\u2019n loaded is at 2 stack,
     multiplier changed to 140%"
   cardCost: 3
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: a4169992f1406e847bad434535858b72, type: 3}
   delayAction: 1
   effect: {fileID: 347723942202849513, guid: 52d7cf6781a25084c9964abcae6cffe3, type: 3}
   isToken: 0

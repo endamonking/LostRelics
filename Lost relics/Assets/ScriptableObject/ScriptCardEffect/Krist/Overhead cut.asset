@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 60% ATK to a target, if Krist is in \u201CFrenzy\u201D, sacrifices
     10% of maxHP to change multiplier to 100%"
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: ddfead8a5bd4f9247ada0a50a3712f43, type: 3}
   delayAction: 1
   effect: {fileID: 6650420854056522133, guid: 9b2c9563998fb6546aee097ecf574251, type: 3}
   isToken: 0

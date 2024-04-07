@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   effectString: "Enters \u201CFlow\u201D stance "
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 1fe9f613fe947f443be624c270cc8a7e, type: 3}
   delayAction: 1
   effect: {fileID: 2656837154302967341, guid: 9f840c71d03cc6149804dd2301e4e8fa, type: 3}
   isToken: 0

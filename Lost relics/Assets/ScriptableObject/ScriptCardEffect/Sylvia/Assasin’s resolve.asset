@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Curtain call"'
   effectString: Ends turn immediately, gain 2 extra mana next turn
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: e07f326af0b179a4ab69c5cbe44c6c6c, type: 3}
   delayAction: 1
   effect: {fileID: 4574264393994200637, guid: 0514cd298d10a3f4087dbdf7e238d00e, type: 3}
   isToken: 0

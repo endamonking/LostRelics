@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Deal 70% of Seraphina\u2019s Heal to an enemy. If Seraphina is in
     \u201CPurification\u201D, this attack ignore armor"
   cardCost: 2
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: 083dfe40a2221e042995b5233cb2a924, type: 3}
   delayAction: 1
   effect: {fileID: 7796957781560333108, guid: c3940a433872cb649b84a75bd047e4df, type: 3}
   isToken: 0

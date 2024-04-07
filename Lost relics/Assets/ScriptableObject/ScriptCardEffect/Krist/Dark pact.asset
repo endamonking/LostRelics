@@ -17,7 +17,7 @@ MonoBehaviour:
   effectString: "Sacrifice 20% of Krist\u2019s Maxhp(can\u2019t be used if not enough
     HP), gain ATK+50%,DEF+50%, SPD+20% for 3 turns."
   cardCost: 1
-  artwork: {fileID: 21300000, guid: 519cee0dd3ae9ba44897d680ec4dfcca, type: 3}
+  artwork: {fileID: 21300000, guid: da08a45821039464c84a01d4d729af15, type: 3}
   delayAction: 1
   effect: {fileID: 6995264624793413129, guid: 1d479adfbadb1e349b80609622bceacd, type: 3}
   isToken: 0
