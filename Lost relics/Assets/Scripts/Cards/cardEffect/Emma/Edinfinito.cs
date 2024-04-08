@@ -41,7 +41,7 @@ public class Edinfinito : cardEffect, IBeforeUseCard
         drawedCard = cardUser.drawCardWithReturnDrawCard();
         //Buff
         string des = "If drawn card is used, cast again on a random target";
-        buff newBuff = new buff("Ed infinito", 1, "Before_Use_Card", this.gameObject.GetComponent<IBeforeUseCard>(),des);
+        buff newBuff = new buff("Ed infinito", 1, "Special", this.gameObject.GetComponent<IBeforeUseCard>(),des);
         thisUser.applyActiveBuff(newBuff, true);
 
         //Do damage

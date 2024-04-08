@@ -40,6 +40,7 @@ public abstract class cardHandler : MonoBehaviour
         player = this.gameObject.GetComponent<Character>();
         currentMana = player.maxMana;
         turnGuageUI = Instantiate(turnGuagePrefab, cardParent);
+        turnGuageUI.GetComponentInChildren<GuagePic>().changeCharacterImage(player.characterName);
         initCard();
         turnGuageUI.name = this.gameObject.name + " Bar";
         turnGuageUI.value = 1.0f;

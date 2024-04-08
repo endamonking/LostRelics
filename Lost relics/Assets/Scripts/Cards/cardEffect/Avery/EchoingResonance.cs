@@ -23,7 +23,7 @@ public class EchoingResonance : cardEffect, IBeforeUseCard
         string des2 = "Refund the next mana cost of next card used";
         buff newBuff = new buff("Echoing Resonance", 1, "SPECAIL", this.gameObject.GetComponent<IBeforeUseCard>(),des2);
         string des = "Increase AP by 50%";
-        buff APBuff = new buff("Echoing Resonance: AP", 2, "AP_Up", des);
+        buff APBuff = new buff("Echoing Resonance: AP", 2, "ATK_Up", des);
         APBuff.AddBuff("AP", 50);
         user.applyActiveBuff(newBuff, true);
         user.applyActiveBuff(APBuff, true);

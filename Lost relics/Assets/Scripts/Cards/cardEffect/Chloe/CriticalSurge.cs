@@ -19,7 +19,7 @@ public class CriticalSurge : cardEffect
     {
         //Add buff
         string des1 = "Increase Critical damage by 30%";
-        buff newBuff = new buff("Strengthening bullet", 2, "CRIT_Up", des1);
+        buff newBuff = new buff("Critical Surge", 2, "Critdmg_Up", des1);
         newBuff.AddBuff("CRITDMG", 30);
         user.applyActiveBuff(newBuff, false);
         user.doCharacterSound();

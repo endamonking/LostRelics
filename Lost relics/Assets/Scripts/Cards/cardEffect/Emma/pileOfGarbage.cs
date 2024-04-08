@@ -34,7 +34,7 @@ public class pileOfGarbage : cardEffect
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
         string des = "Receive true damage at the start of the turn";
-        buff deBuff = new buff("Pile of garbage", 3, "Burn", des);
+        buff deBuff = new buff("Pile of garbage", 3, "Poison", des);
         int damageAmount = user.inComATK;
         deBuff.AddBuff("Burn", damageAmount);
 

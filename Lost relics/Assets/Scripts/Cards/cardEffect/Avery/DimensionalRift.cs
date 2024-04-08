@@ -19,7 +19,7 @@ public class DimensionalRift : cardEffect
     {
         //Add stun
         string des = "Can't action";
-        buff deBuff = new buff("Dimensional Rift", 1, "Stun", des);
+        buff deBuff = new buff("Dimensional Rift", 1, "Special", des);
         deBuff.AddBuff("Stun", 1);
         target.applyActiveDeBuff(deBuff, false);
         //Add debuf Resis
