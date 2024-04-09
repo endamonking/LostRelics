@@ -150,6 +150,7 @@ public class combatManager : MonoBehaviour
             enemyObj.transform.position = new Vector3(3, 0, -2 + (i * 2));
             enemyObj.GetComponent<Character>().originalPosition = enemyObj.transform.position;
             enemyObj.SetActive(true);
+            StageCounter.instance.increaseMonsterStat(enemyObj.GetComponent<Character>());
             remainingEnemies.Add(enemyObj);
             //add to slot
             enemiesSlots[i].enemy = enemyObj;

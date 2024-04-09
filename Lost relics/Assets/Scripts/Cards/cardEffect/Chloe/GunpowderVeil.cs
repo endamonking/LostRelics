@@ -27,9 +27,6 @@ public class GunpowderVeil : cardEffect
         float skillMulti = skillMultiplier / 100.0f;
         int addSkillMulti = Mathf.FloorToInt(userDamage * (addskillMultiplier / 100.0f));
 
-        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
-        //play animation and sound
-        user.doCharacterAnimationAndSound(target.gameObject);
         //Apply debuf
         string des1 = "Explodes after 2 turns, dealing true damage to all enemies for 50% of ATK, " +
             "Bomb explode immediately if the target dies";
@@ -37,6 +34,11 @@ public class GunpowderVeil : cardEffect
         deBuff.AddBuff("Bomb", addSkillMulti);
 
         target.applyActiveDeBuff(deBuff, false);
+
+        //Dealdamage
+        target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+        //play animation and sound
+        user.doCharacterAnimationAndSound(target.gameObject);
         return true;
     }
 

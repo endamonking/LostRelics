@@ -80,6 +80,8 @@ public class exploration_sceneManager : MonoBehaviour
         {
             player.SetActive(true);
         }
+        if (StageCounter.instance != null)
+            StageCounter.instance.increaseStage();
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 

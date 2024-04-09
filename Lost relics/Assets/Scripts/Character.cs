@@ -12,7 +12,6 @@ public class Character : MonoBehaviour
     public string characterName;
     public int maxPlayerHand = 7;
     public int maxMana = 10;
-    public int currentDefpoint;
     public int currentHP, currentSPD;
     //New evade and resis(Get debuff rate)
     public int baseArmorPen = 0, baseCritRate = 20, baseCritDMG = 0, baseATK = 30, baseHeal = 10, baseEvade = 0, 

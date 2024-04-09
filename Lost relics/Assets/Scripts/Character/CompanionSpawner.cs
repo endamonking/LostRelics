@@ -23,6 +23,16 @@ public class CompanionSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (StageCounter.instance != null)
+        {
+            if (StageCounter.instance.stageCounter != 2)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+        }
+        companionNumber = Random.Range(1, 4);
+
         canvas.SetActive(false);
         spriteRender = GetComponentInChildren<SpriteRenderer>();
         spriteRender.sprite = standingPic[companionNumber-1];
