@@ -18570,15 +18570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf194a1192893ac4aaaa35029bea645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 1000
-  eqListPRefab:
-  - {fileID: 8726145279859662147, guid: 38a18d9fbfeda24448c747082459af26, type: 3}
-  - {fileID: 8726145279859662147, guid: 38a18d9fbfeda24448c747082459af26, type: 3}
-  - {fileID: 7444360181684797394, guid: 441a31da81e191544b1461dde0621596, type: 3}
-  - {fileID: 7444360181684797394, guid: 441a31da81e191544b1461dde0621596, type: 3}
-  - {fileID: 3292838450487307666, guid: 00808b797dd2e764abfba8cba153b5aa, type: 3}
-  - {fileID: 4177447943656681649, guid: fd81fc32b67af3e42a4c75bcc45016e1, type: 3}
-  - {fileID: 2907513113465176265, guid: 9835778ae0c67b04cbc6986bc394babd, type: 3}
+  money: 0
+  eqListPRefab: []
   equipmentList: []
   equipementPrefab: {fileID: 7444360181684797394, guid: 441a31da81e191544b1461dde0621596, type: 3}
   headGO: {fileID: 0}

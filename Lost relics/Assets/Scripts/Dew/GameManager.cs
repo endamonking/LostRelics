@@ -67,4 +67,9 @@ public class GameManager : MonoBehaviour
        
     }
 
+    public void destroyGM()
+    {
+        Destroy(gameObject);
+    }
+
 }

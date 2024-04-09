@@ -156,6 +156,7 @@ public class combatManager : MonoBehaviour
             enemiesSlots[i].enemy = enemyObj;
             i++;
         }
+        StageCounter.instance.resetIsBossNode();
     }
     public void initMoreEnemy(GameObject prefab, Transform spawnerTranform)
     {
@@ -746,6 +747,7 @@ public class combatManager : MonoBehaviour
         {
             Destroy(player);
         }
+        GameManager.Instance.destroyGM();
         yield return new WaitForSeconds(2.0f);
         bactToMainScreen();
     }
@@ -780,7 +782,7 @@ public class combatManager : MonoBehaviour
     }
     public GameObject getRandomPlayer()
     {
-        if (remainingEnemies.Count > 0)
+        if (remainingPlayers.Count > 0)
         {
             GameObject randTarget = remainingPlayers[Random.Range(0, remainingPlayers.Count)];
             return randTarget;

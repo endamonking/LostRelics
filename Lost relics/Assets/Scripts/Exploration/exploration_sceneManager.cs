@@ -254,11 +254,15 @@ public class exploration_sceneManager : MonoBehaviour
     public void getRewardAfterCombat()
     {
         //Card
-        GameObject choosedCharacter = playerPool[Random.Range(0,playerPool.Count)];
-        List<Card> cards = cardPool.Instance.getCharactCardList(choosedCharacter.GetComponent<Character>().characterName);
-        List<Card> natural = cardPool.Instance.getCharactCardList("Natural");
-        cards.AddRange(natural);
-        getCardManager.Instance.startChooseCardEvent(cards, choosedCharacter.GetComponent<cardHandler>());
+        float randomNumber = Random.value;
+        if (randomNumber < 30.0f / 100.0f) //Critical hit
+        {
+            GameObject choosedCharacter = playerPool[Random.Range(0, playerPool.Count)];
+            List<Card> cards = cardPool.Instance.getCharactCardList(choosedCharacter.GetComponent<Character>().characterName);
+            List<Card> natural = cardPool.Instance.getCharactCardList("Natural");
+            cards.AddRange(natural);
+            getCardManager.Instance.startChooseCardEvent(cards, choosedCharacter.GetComponent<cardHandler>());
+        }
         //Get Item
         List<GameObject> items = new List<GameObject>();
         items.Add(itemSpawnList[Random.Range(0, itemSpawnList.Count)]);

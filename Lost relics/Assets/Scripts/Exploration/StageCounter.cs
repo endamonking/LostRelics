@@ -6,6 +6,9 @@ public class StageCounter : MonoBehaviour
 {
     public static StageCounter instance;
     public int stageCounter = 1;
+    [HideInInspector]
+    public bool isGotCompanion = false;
+
     private bool isBossNode = false;
     // Start is called before the first frame update
     void Start()
@@ -54,6 +57,12 @@ public class StageCounter : MonoBehaviour
                 monster.maxMana = monster.maxMana + 1;
                 break;
         }
+        increaseBossStat(monster);
+
+    }
+
+    private void increaseBossStat(Character monster)
+    {
         if (isBossNode)
         {
             monster.maxHP = Mathf.FloorToInt(monster.maxHP * 3);
@@ -65,14 +74,18 @@ public class StageCounter : MonoBehaviour
             List<Card> addedDeck = new List<Card>();
             addedDeck.AddRange(CH.playerDeck);
             CH.playerDeck.AddRange(addedDeck);
-            isBossNode = false;
         }
-
     }
 
     public void thisIsBossNode()
     {
         isBossNode = true;
+    }
+
+    public void resetIsBossNode()
+    {
+        if (isBossNode)
+            isBossNode = false;
     }
 
 

@@ -25,7 +25,13 @@ public class CompanionSpawner : MonoBehaviour
     {
         if (StageCounter.instance != null)
         {
-            if (StageCounter.instance.stageCounter != 2)
+            if (StageCounter.instance.isGotCompanion)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+
+            if (StageCounter.instance.stageCounter < 2)
             {
                 Destroy(this.gameObject);
                 return;
@@ -90,6 +96,8 @@ public class CompanionSpawner : MonoBehaviour
         GameManager.Instance.spawnCompanion(companionNumber, comLocation);
         closeRecruit();
         this.gameObject.SetActive(false);
+        if (StageCounter.instance != null)
+            StageCounter.instance.isGotCompanion = true;
     }
     //use to show Companion anme and dialog
     private void printText()
