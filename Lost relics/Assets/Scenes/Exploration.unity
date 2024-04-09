@@ -3113,7 +3113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48246ddc0b4eb734e8a84a6f3ab6325a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNodeLayer: 1
+  maxNodeLayer: 10
   eventNodePrefab:
   - {fileID: 2724576845780458930, guid: a3d8c5e5463f16d4fa1f2c4d0711d460, type: 3}
   - {fileID: 6587583746170735598, guid: cd8890d06f121d541a2fc913c4f50451, type: 3}

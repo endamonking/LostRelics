@@ -648,9 +648,11 @@ MonoBehaviour:
   cardParent: {fileID: 0}
   cardTemplate: {fileID: 2407097319502983400, guid: 032cab92895eb614c9e3f67179a5ee5c, type: 3}
   playerDeck:
-  - {fileID: 11400000, guid: c37cd5ff8ef5075489a0fb80e8a75cd3, type: 2}
-  - {fileID: 11400000, guid: 791287377dd26434c87a45e056c3bcda, type: 2}
-  - {fileID: 11400000, guid: 14f8c83f6062bec4190b8c478a27259e, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
+  - {fileID: 11400000, guid: 4f247d3279ff70241893dacbadf116d1, type: 2}
+  - {fileID: 11400000, guid: c7a380feba0a4fc438a00fcbeed354fa, type: 2}
   discardedDeck: []
   _currentDeck: []
   cardInHand: []
@@ -694,7 +696,6 @@ MonoBehaviour:
   characterName: Test
   maxPlayerHand: 7
   maxMana: 10
-  currentDefpoint: 0
   currentHP: 100
   currentSPD: 20
   baseArmorPen: 0
