@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 8142424949879169981, guid: 893afe3816621fb418980d336b86b6eb, type: 3}
-  nodeName: sellNode
+  nodeName: Traveling merchant
   description: I have no item. whatever.
   amount: 3
+  moneyGetPerItem: 500

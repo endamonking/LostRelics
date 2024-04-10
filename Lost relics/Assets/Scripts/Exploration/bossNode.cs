@@ -5,6 +5,7 @@ using UnityEngine;
 public class bossNode : node
 {
     [SerializeField]
+    private List<GameObject> allEnemyPrefabs = new List<GameObject>();
     private List<GameObject> enemies = new List<GameObject>();
     public bool isLastNode = false;
 
@@ -12,6 +13,8 @@ public class bossNode : node
     protected override void Start()
     {
         base.Start();
+
+        randomBossMonsters();
         foreach (GameObject enemy in enemies)
         {
             enemy.GetComponent<Character>().characterSetup();
@@ -23,6 +26,15 @@ public class bossNode : node
     void Update()
     {
         
+    }
+
+    private void randomBossMonsters()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            int randNum = Random.Range(0, allEnemyPrefabs.Count);
+            enemies.Add(allEnemyPrefabs[randNum]);
+        }
     }
 
     protected override void OnMouseDown()
@@ -48,5 +60,7 @@ public class bossNode : node
         exploration_sceneManager.Instance.loadCombatScene();
 
     }
+
+
 
 }

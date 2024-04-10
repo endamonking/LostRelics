@@ -1529,6 +1529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageCounter: 1
+  isGotCompanion: 0
 --- !u!4 &1691728407
 Transform:
   m_ObjectHideFlags: 0

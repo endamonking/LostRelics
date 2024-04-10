@@ -1848,7 +1848,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 300}
+  m_CellSize: {x: 280, y: 300}
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 4
@@ -6075,12 +6075,18 @@ MonoBehaviour:
   questDescription: {fileID: 346816280}
   moneyText: {fileID: 1571007077}
   questsPrefab:
-  - {fileID: 4804100346460335620, guid: 422846edf6a14a74097488f3118b89c8, type: 3}
-  - {fileID: 4804100346460335620, guid: 422846edf6a14a74097488f3118b89c8, type: 3}
   - {fileID: 2069615280974538824, guid: 8fa286c2afe574741b0a4164a26fa8ca, type: 3}
-  - {fileID: 2069615280974538824, guid: 8fa286c2afe574741b0a4164a26fa8ca, type: 3}
+  - {fileID: 7728421066785103197, guid: 14f976ecc777b054baad15931efbbf37, type: 3}
+  - {fileID: 3506940301444587092, guid: 3da0b6d7f973e104c96cd0f95589a3e4, type: 3}
+  - {fileID: 3126061170724348245, guid: e3b5439c809a9654692c1dc190c942af, type: 3}
+  - {fileID: 2050636607851959011, guid: c39529d7cc1507441b37eca737ee3182, type: 3}
+  - {fileID: 7892115794218186521, guid: a3d8f6a7dae348d498917da5815fb411, type: 3}
+  - {fileID: 6244507900715020260, guid: df0e47fb348c5d046a1ddf453d6abbda, type: 3}
+  - {fileID: 2140080283733527348, guid: bc0ab59dab94cff41a95264e6a5074f1, type: 3}
+  - {fileID: 711603816272688893, guid: 2e3e893363af57642b900b8116d98f1f, type: 3}
+  - {fileID: 6086023864542825151, guid: 6b019c3064b8a544a9e18b2e14685be7, type: 3}
   maxQuest: 3
-  questFee: 100
+  questFee: 250
   openSendTab: {fileID: 1152982484}
   completeTab: {fileID: 1696079530}
   questCompleteDetail: {fileID: 393928627}
@@ -18570,10 +18576,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf194a1192893ac4aaaa35029bea645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  money: 1500
   eqListPRefab: []
   equipmentList: []
-  equipementPrefab: {fileID: 7444360181684797394, guid: 441a31da81e191544b1461dde0621596, type: 3}
   headGO: {fileID: 0}
   armorGO: {fileID: 0}
   accGO: {fileID: 0}
@@ -27754,8 +27759,8 @@ MonoBehaviour:
   descriptionGo: {fileID: 35696410}
   moneyTextGo: {fileID: 1224657665}
   buyCardDescription: {fileID: 35696412}
-  baseCost: 200
-  costTobuy: 200
+  baseCost: 500
+  costTobuy: 500
 --- !u!212 &1608967868
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28678,9 +28683,54 @@ MonoBehaviour:
   itemStatText: {fileID: 898016698}
   itemPrice: {fileID: 1366687679}
   totalItemsInshop: 10
-  allItem:
-  - {fileID: 8726145279859662147, guid: 38a18d9fbfeda24448c747082459af26, type: 3}
-  - {fileID: 7444360181684797394, guid: 441a31da81e191544b1461dde0621596, type: 3}
+  bronzeItem:
+  - {fileID: 4982039501698963310, guid: c2247477cac725e43a17a6ee91240ddc, type: 3}
+  - {fileID: 30196990420456471, guid: 24ca4e01aa7f6ac419bfafb1f689ab02, type: 3}
+  - {fileID: 969146426591845963, guid: 8f50a257f7565644b9953ee93a96ea42, type: 3}
+  - {fileID: 1486667587254810485, guid: 9e0512454af4edc4fb00052874ed7579, type: 3}
+  - {fileID: 3372659998634680777, guid: 16888d367eb2ded47b7510307d51e8b3, type: 3}
+  - {fileID: 5324539070541221960, guid: 571497efb769e1c4a8e28b769e28398a, type: 3}
+  - {fileID: 9179783800336495537, guid: 685508be1cae0024cbdd9d38de4eb8f8, type: 3}
+  - {fileID: 5028150026555111840, guid: d190bb69dcbc39a4db8b8fc7c93ac67b, type: 3}
+  - {fileID: 3372073379741615796, guid: 9969a2a6474d48d438a42020978d62f9, type: 3}
+  - {fileID: 4855143566689302531, guid: f90b9d3fcaed51845b5c1b6a77bbd01b, type: 3}
+  - {fileID: 5620965407984157053, guid: 01cf685d334fc1f4aa6aa0c127cdd43f, type: 3}
+  - {fileID: 575777030335319968, guid: ccd47cf40c2a9294fb0c1a5c08e02787, type: 3}
+  - {fileID: 6779113709294849528, guid: d193b36ad82b71546912178176b42937, type: 3}
+  - {fileID: 4177447943656681649, guid: fd81fc32b67af3e42a4c75bcc45016e1, type: 3}
+  - {fileID: 3292838450487307666, guid: 00808b797dd2e764abfba8cba153b5aa, type: 3}
+  silverItem:
+  - {fileID: 1021068320300570573, guid: 1136fce02964929468c12815698cde0d, type: 3}
+  - {fileID: 8905642439411019898, guid: 11261f2ea9e6d1c479e2c656dd999d86, type: 3}
+  - {fileID: 7939452349662689741, guid: aad8239530245614ab5cbe1183b775b0, type: 3}
+  - {fileID: 7969141282658953268, guid: 09b5d50bb55213d4b8695bb7363c6ed0, type: 3}
+  - {fileID: 442844843101051257, guid: 0154185298283cf4daec5903e7d90427, type: 3}
+  - {fileID: 4406760442677599176, guid: 9622d7cb3c8650e4b9ae67f5c1f60b32, type: 3}
+  - {fileID: 8788754607542951878, guid: 50cc294d673c227449b673b53823d0b0, type: 3}
+  - {fileID: 3062292778347028289, guid: fd801f4129023004ebaea0353f168775, type: 3}
+  - {fileID: 6838855209240216278, guid: 66afa134cc1434847b8d382081b29091, type: 3}
+  - {fileID: 8999528556749715472, guid: c28aa78aecbe8164c88e261eac1f375b, type: 3}
+  - {fileID: 2886980485301597096, guid: 70252ffead1a3db49b5dff40107f43e8, type: 3}
+  - {fileID: 774905830489039498, guid: 70c0142c87c6eca4b83a792b2d136b76, type: 3}
+  - {fileID: 3325248951987607193, guid: 8e966097e033143499d14c0b8761f431, type: 3}
+  - {fileID: 7003763791476116166, guid: 8370d0f2f98dc2a4ba3dab07c0f3912d, type: 3}
+  - {fileID: 5446519703733835566, guid: 6a7ee5107af3c984c9d779a32fa5f1a8, type: 3}
+  goldItem:
+  - {fileID: 1006455913317204094, guid: 9377f96c242fce94490b6b9190cb3a41, type: 3}
+  - {fileID: 2026957401233906424, guid: 3654b411ac68a3646922cb70106966ee, type: 3}
+  - {fileID: 1098597921273952776, guid: 856b386bf0ed69e40a1508d49b1dd6c8, type: 3}
+  - {fileID: 703891921938486842, guid: 6f98c416d78dd7b4abf3ba3bc5edef1b, type: 3}
+  - {fileID: 4951012405196183298, guid: 576f5ee5f58065d4faee357518d37d24, type: 3}
+  - {fileID: 334921670984804119, guid: 5813d63c65c4ca843992314e783cfb70, type: 3}
+  - {fileID: 7218846160410948040, guid: 8f5497a4243bae24b893ed91c0093a20, type: 3}
+  - {fileID: 4331952433676780864, guid: f8b0b2afc62ea1d4ea5166bde27d276b, type: 3}
+  - {fileID: 3196353552995888022, guid: 25bf9e51392d87c4aa53ef37f35c2049, type: 3}
+  - {fileID: 392943782058127996, guid: 5a5847b7715a67347a2d5edfa3da2b81, type: 3}
+  - {fileID: 8286344686115175918, guid: a1b434e0c09a70a4faae4446502dd3fb, type: 3}
+  - {fileID: 8126604727914230616, guid: de16c0d0768bb084ebe4c950dc37a6f7, type: 3}
+  - {fileID: 3909524293996377762, guid: dfef4104550500e4588229dc6ca8efef, type: 3}
+  - {fileID: 677003466711810184, guid: eeb834693f235584fb7759d98691402f, type: 3}
+  - {fileID: 886312239408805798, guid: b9c6ae301f8f6bf45b62b9b215bdb8c3, type: 3}
   itemsInShop: []
   selectedItem: {fileID: 0}
   itemIndexInList: -1

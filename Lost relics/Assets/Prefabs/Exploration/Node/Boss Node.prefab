@@ -127,8 +127,12 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   nextNode: []
   linePrefab: {fileID: 4884272530443238322, guid: e5fe689a9df66dc4e917ea32b4e921cf, type: 3}
-  enemies:
-  - {fileID: 9149397430665950210, guid: 3d3e2a9248e100648ba08bafe15b4b75, type: 3}
-  - {fileID: 9149397430665950210, guid: b020a9aedf4aace4ab3a8e9966159b47, type: 3}
-  - {fileID: 9149397430665950210, guid: b020a9aedf4aace4ab3a8e9966159b47, type: 3}
+  allEnemyPrefabs:
+  - {fileID: 2811751758122764356, guid: e477b2cf76603844aacba199b89416f5, type: 3}
+  - {fileID: 2811751758122764356, guid: 9e50f34a375cff7489b4e2437d46a907, type: 3}
+  - {fileID: 2811751758122764356, guid: 994887e14fe151b40afb810e6fdb9cc7, type: 3}
+  - {fileID: 2811751758122764356, guid: 042d8b09a94379d4ca4b2dad2f4f1dfc, type: 3}
+  - {fileID: 2811751758122764356, guid: d447054f6035fb342a738cc07638835b, type: 3}
+  - {fileID: 2811751758122764356, guid: 610eb4b779f2e1b46b0fbcc7443a85c3, type: 3}
+  - {fileID: 2811751758122764356, guid: e9bd53123698d1242b5192674c82d9f2, type: 3}
   isLastNode: 1

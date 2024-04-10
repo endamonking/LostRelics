@@ -13,7 +13,7 @@ public class randomSellItem : nodeEfffect
     [SerializeField]
     private int amount = 1;
     [SerializeField]
-    private int moneyGetPerItem = 200;
+    private int moneyGetPerItem = 500;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +56,7 @@ public class randomSellItem : nodeEfffect
     private void removeItemAndGetMoney()
     {
         inventoryManager im = inventoryManager.Instance;
+        int bonusMoney = 0;
         for (int i = 0; i < amount; i++)
         {
             bool loopflag = true;

@@ -11,7 +11,7 @@ public class addSpdIfSpd : nodeEfffect
     [SerializeField]
     private string nodeName, description;
     [SerializeField]
-    private int speedAmount = 5, speedCondition = 20;
+    private int speedAmount = 5, speedCondition = 30;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,7 @@ public class addSpdIfSpd : nodeEfffect
         List<GameObject> playersCha = exploration_sceneManager.Instance.playerPool;
         foreach (GameObject character in playersCha)
         {
-            if (character.GetComponent<Character>().baseSPD >= speedCondition)
+            if (character.GetComponent<Character>().inComSPD >= speedCondition)
                 characterMetCon.Add(character);
         }
         int i = 0;

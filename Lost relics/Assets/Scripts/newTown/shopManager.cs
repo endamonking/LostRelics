@@ -17,8 +17,10 @@ public class shopManager : MonoBehaviour
     public TextMeshProUGUI itemPrice;
 
     [Header("Item")]
-    public int totalItemsInshop = 10; //Note that this can be randomize but rn make it static
-    public List<GameObject> allItem;
+    public int totalItemsInshop = 9; //Note that this can be randomize but rn make it static
+    public List<GameObject> bronzeItem;
+    public List<GameObject> silverItem;
+    public List<GameObject> goldItem;
     public List<GameObject> itemsInShop;
     public GameObject selectedItem;
     public int itemIndexInList = -1;
@@ -31,13 +33,7 @@ public class shopManager : MonoBehaviour
     {
         shopCanvas.SetActive(false);
         itemDescriptionTab.SetActive(false);
-        int i = 0;
-        while (i < totalItemsInshop)
-        {
-            int randomIndex = Random.Range(0, allItem.Count);
-            itemsInShop.Add(allItem[randomIndex]);
-            i++;
-        }
+        addItemToShop();
     }
 
     // Update is called once per frame
@@ -49,6 +45,30 @@ public class shopManager : MonoBehaviour
             doShop();
         }
 
+    }
+    // bronze = 5
+    // Silver = 3
+    // gold = 1;
+    private void addItemToShop()
+    {
+        //For nice looking if not 3 loop it will not nice looking
+        int i = 0;
+        while (i < 5) // Bronze
+        {
+            int randomIndex1 = Random.Range(0, bronzeItem.Count);
+            itemsInShop.Add(bronzeItem[randomIndex1]);
+            i++;
+        }
+        i = 0;
+        while (i < 3) // Bronze
+        {
+            int randomIndex2 = Random.Range(0, silverItem.Count);
+            itemsInShop.Add(silverItem[randomIndex2]);
+            i++;
+        }
+        //Gold
+        int randomIndex = Random.Range(0, goldItem.Count);
+        itemsInShop.Add(goldItem[randomIndex]);
     }
 
     private void OnTriggerEnter(Collider other)

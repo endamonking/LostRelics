@@ -278,7 +278,7 @@ public class questManager : MonoBehaviour
         {
             if (selectedCompleteQuest.isComplete)
             {
-                inventoryManager.Instance.addMoney(selectedCompleteQuest.moneyReward);
+                inventoryManager.Instance.addMoney(selectedCompleteQuest.moneyReward + questFee);
                 inventoryManager.Instance.removeQuest(selectedCompleteQuest);
                 generateCompleteQuest();
             }
@@ -288,7 +288,7 @@ public class questManager : MonoBehaviour
             giveItemQuest sendingQuest = (giveItemQuest)selectedCompleteQuest;
             if (sendingQuest.fullfillCondition(selectSendingEquipment))
             {
-                inventoryManager.Instance.addMoney(selectedCompleteQuest.moneyReward);
+                inventoryManager.Instance.addMoney(selectedCompleteQuest.moneyReward + questFee);
                 inventoryManager.Instance.removeQuest(selectedCompleteQuest);
                 List<int> eqIndexList = new List<int>();
                 foreach (equipment eq in selectSendingEquipment)

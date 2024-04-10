@@ -11,7 +11,6 @@ public class inventoryManager : MonoBehaviour
     public List<GameObject> eqListPRefab;
     public List<GameObject> equipmentList = new List<GameObject>();
     [Header("Equipment")]
-    public GameObject equipementPrefab;
     public GameObject headGO;
     public GameObject armorGO;
     public GameObject accGO;

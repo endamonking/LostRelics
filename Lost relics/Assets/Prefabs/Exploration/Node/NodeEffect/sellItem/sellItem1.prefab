@@ -48,3 +48,4 @@ MonoBehaviour:
   nodeName: sellNode
   description: I have no item. whatever.
   amount: 1
+  moneyGetPerItem: 500

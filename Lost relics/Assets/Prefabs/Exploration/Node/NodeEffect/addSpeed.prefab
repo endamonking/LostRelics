@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 8142424949879169981, guid: 893afe3816621fb418980d336b86b6eb, type: 3}
-  nodeName: speedNode
+  nodeName: Sacred Pork party
   description: Choose one
   speedAmount: 2

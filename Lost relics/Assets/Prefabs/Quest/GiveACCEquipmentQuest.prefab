@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e445a496e860e4990b3af32463ea6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questName: 'Give 2 accessory '
-  questDescription: Give 2 accessory equipment
+  questName: 'Give 4 accessory '
+  questDescription: Give 4 accessory equipment
   isComplete: 0
-  moneyReward: 200
+  moneyReward: 1000
   targetEquipmentType: 2
-  numberOfItem: 2
+  numberOfItem: 4
