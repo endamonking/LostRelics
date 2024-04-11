@@ -64,7 +64,7 @@ MonoBehaviour:
   equipmentName: "Assassin\u2019s muffler"
   equipmentType: 1
   isEquiped: 0
-  pic: {fileID: 21300000, guid: d92322fae3f2ec44c925028e5b9f07ff, type: 3}
+  pic: {fileID: 21300000, guid: 1bf563ed825e1aa428a8a822e4f35c60, type: 3}
   equipmentIndexInList: 0
 --- !u!222 &2654168968910460357
 CanvasRenderer:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d92322fae3f2ec44c925028e5b9f07ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bf563ed825e1aa428a8a822e4f35c60, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

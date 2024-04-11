@@ -64,7 +64,7 @@ MonoBehaviour:
   equipmentName: Tower guardian headpiece
   equipmentType: 0
   isEquiped: 0
-  pic: {fileID: 21300000, guid: 864d20a5fa9c74848905ae5985478207, type: 3}
+  pic: {fileID: 21300000, guid: 6cdede47de620fe4da426988ecc5396c, type: 3}
   equipmentIndexInList: 0
 --- !u!222 &7229442469666571525
 CanvasRenderer:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 864d20a5fa9c74848905ae5985478207, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cdede47de620fe4da426988ecc5396c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

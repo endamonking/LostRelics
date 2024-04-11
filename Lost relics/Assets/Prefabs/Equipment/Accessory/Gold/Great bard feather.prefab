@@ -61,10 +61,10 @@ MonoBehaviour:
   RESISTANCE: 0
   value: 1500
   equipmentDes: 
-  equipmentName: .reat bard feather
+  equipmentName: Great bard feather
   equipmentType: 2
   isEquiped: 0
-  pic: {fileID: 21300000, guid: b18732bef90ff6a409e2b56017fa335a, type: 3}
+  pic: {fileID: 21300000, guid: a4944451a8450cd459209eba2c98aca9, type: 3}
   equipmentIndexInList: 0
 --- !u!222 &8147050809896263541
 CanvasRenderer:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b18732bef90ff6a409e2b56017fa335a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4944451a8450cd459209eba2c98aca9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

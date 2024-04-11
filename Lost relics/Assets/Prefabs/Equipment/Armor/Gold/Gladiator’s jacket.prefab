@@ -64,7 +64,7 @@ MonoBehaviour:
   equipmentName: "Gladiator\u2019s jacket"
   equipmentType: 1
   isEquiped: 0
-  pic: {fileID: 21300000, guid: d92322fae3f2ec44c925028e5b9f07ff, type: 3}
+  pic: {fileID: 21300000, guid: ad23594b2d759ab4a9a90934da9dde50, type: 3}
   equipmentIndexInList: 0
 --- !u!222 &5849964015030632653
 CanvasRenderer:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d92322fae3f2ec44c925028e5b9f07ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad23594b2d759ab4a9a90934da9dde50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

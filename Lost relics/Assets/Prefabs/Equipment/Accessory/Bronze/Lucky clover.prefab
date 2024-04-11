@@ -64,7 +64,7 @@ MonoBehaviour:
   equipmentName: Lucky clover
   equipmentType: 2
   isEquiped: 0
-  pic: {fileID: 21300000, guid: b18732bef90ff6a409e2b56017fa335a, type: 3}
+  pic: {fileID: 21300000, guid: d853e9feef7af384cbabe8990b36eb4c, type: 3}
   equipmentIndexInList: 0
 --- !u!222 &6936116296904940486
 CanvasRenderer:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b18732bef90ff6a409e2b56017fa335a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d853e9feef7af384cbabe8990b36eb4c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

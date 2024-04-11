@@ -64,7 +64,7 @@ MonoBehaviour:
   equipmentName: Tricksters effects
   equipmentType: 0
   isEquiped: 0
-  pic: {fileID: 21300000, guid: 864d20a5fa9c74848905ae5985478207, type: 3}
+  pic: {fileID: 21300000, guid: cf85a4a264cb3ed4d8af759ea58e4149, type: 3}
   equipmentIndexInList: 0
 --- !u!222 &7024982953616962091
 CanvasRenderer:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 864d20a5fa9c74848905ae5985478207, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf85a4a264cb3ed4d8af759ea58e4149, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
