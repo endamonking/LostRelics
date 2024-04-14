@@ -156,7 +156,7 @@ public class combatManager : MonoBehaviour
             enemiesSlots[i].enemy = enemyObj;
             i++;
         }
-        StageCounter.instance.resetIsBossNode();
+        
     }
     public void initMoreEnemy(GameObject prefab, Transform spawnerTranform)
     {
@@ -552,6 +552,11 @@ public class combatManager : MonoBehaviour
             {
                 inventoryManager.Instance.doKillQuest(enemy.GetComponent<Character>().characterName);
             }
+            if (StageCounter.instance.isBossNode)
+                StageCounter.instance.passBossNode();
+            else
+                StageCounter.instance.passMonsterNode();
+            StageCounter.instance.
             StartCoroutine(delay());
             return;
         }
@@ -726,7 +731,7 @@ public class combatManager : MonoBehaviour
         showCharacterScreen.SetActive(false);
     }
 
-
+    //Wind
     [System.Obsolete]
     IEnumerator delay()
     {
@@ -738,6 +743,8 @@ public class combatManager : MonoBehaviour
             Destroy(player);
         }
         yield return new WaitForSeconds(2.0f);
+        if (StageCounter.instance.isBossNode)
+            StageCounter.instance.resetIsBossNode();
         exploration_sceneManager.Instance.getRewardAfterCombat();
         exploration_sceneManager.Instance.ReturnToExplorationScene();
     }
@@ -747,8 +754,11 @@ public class combatManager : MonoBehaviour
         {
             Destroy(player);
         }
+        if (StageCounter.instance.isBossNode)
+            StageCounter.instance.resetIsBossNode();
         GameManager.Instance.destroyGM();
         yield return new WaitForSeconds(2.0f);
+        exploration_sceneManager.Instance.showRunResult();
         bactToMainScreen();
     }
 

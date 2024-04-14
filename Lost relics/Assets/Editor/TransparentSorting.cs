@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEditor;
+
 [InitializeOnLoad]
-class SpriteSorter
+class TransparentSorting
 {
-    static SpriteSorter()
+    static TransparentSorting()
     {
         Initialize();
     }

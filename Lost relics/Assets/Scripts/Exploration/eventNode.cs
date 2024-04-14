@@ -59,6 +59,7 @@ public class eventNode : node
             exploration_sceneManager.Instance.answerButtonList.Add(ansBut);
             effectIndex++;
         }
+        StageCounter.instance.passEventNode();
         exploration_sceneManager.Instance.updateEventCanvas(nodeName, description);
     }
 

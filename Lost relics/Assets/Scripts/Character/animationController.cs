@@ -61,7 +61,7 @@ public class animationController : MonoBehaviour
     }
     IEnumerator delayReturn(Transform character, Vector3 original)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.7f);
         character.position = original;
     }
     public void playAttackAnim()

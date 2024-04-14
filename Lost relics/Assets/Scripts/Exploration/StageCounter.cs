@@ -9,7 +9,10 @@ public class StageCounter : MonoBehaviour
     [HideInInspector]
     public bool isGotCompanion = false;
 
-    private bool isBossNode = false;
+    public bool isBossNode = false;
+    public int eventNodePassed = 0;
+    public int monsterNodePassed = 0;
+    public int bossNodePassed = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +90,17 @@ public class StageCounter : MonoBehaviour
         if (isBossNode)
             isBossNode = false;
     }
-
+    public void passEventNode()
+    {
+        eventNodePassed++;
+    }
+    public void passMonsterNode()
+    {
+        monsterNodePassed++;
+    }
+    public void passBossNode()
+    {
+        bossNodePassed++;
+    }
 
 }

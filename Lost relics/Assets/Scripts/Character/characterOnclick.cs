@@ -21,7 +21,7 @@ public class characterOnclick : MonoBehaviour
     private void OnMouseDown()
     {
         Scene thisScene = SceneManager.GetActiveScene();
-
+        Debug.Log("ads");
         if (thisScene.name != "Exploration")
             return;
 

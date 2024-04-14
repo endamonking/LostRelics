@@ -275,5 +275,13 @@ public class exploration_sceneManager : MonoBehaviour
         int moneyAmount = 250;
         inventoryManager.Instance.addMoney(moneyAmount);
     }
+    //Need to make button to back to main screen
+    public void showRunResult()
+    {
+        Debug.Log(StageCounter.instance.eventNodePassed);
+        Debug.Log(StageCounter.instance.monsterNodePassed);
+        Debug.Log(StageCounter.instance.bossNodePassed);
+    }
+
 
 }

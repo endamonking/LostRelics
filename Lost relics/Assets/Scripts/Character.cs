@@ -561,6 +561,8 @@ public class Character : MonoBehaviour
 
     public void removeActiveBuff(int number)
     {
+        if (activeBuffs.Count == 0)
+            return;
         for (int i = 0; i < number; i++)
         {
             Debug.Log("remove " + activeBuffs[0].buffName);
@@ -572,6 +574,8 @@ public class Character : MonoBehaviour
 
     public void removeActiveDeBuff(int number)
     {
+        if (activeDeBuffs.Count == 0)
+            return;
         for (int i = 0; i < number; i++)
         {
             Debug.Log("remove " + activeDeBuffs[0].buffName);

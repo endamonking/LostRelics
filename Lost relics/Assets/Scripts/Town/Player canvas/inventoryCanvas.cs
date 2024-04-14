@@ -319,6 +319,8 @@ public class inventoryCanvas : MonoBehaviour
         itemStat = itemStat + ((item.DEF != 0) ? "DEF " + ((item.DEF > 0) ? "+ " : "- ") + Mathf.Abs(item.DEF).ToString() + "\n" : "");
         itemStat = itemStat + ((item.SPD != 0) ? "ATK " + ((item.SPD > 0) ? "+ " : "- ") + Mathf.Abs(item.SPD).ToString() + "\n" : "");
         itemStat = itemStat + ((item.CRITChance != 0) ? "Crit rate " + ((item.CRITChance > 0) ? "+ " : "- ") + Mathf.Abs(item.CRITChance).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.HEAL != 0) ? "HEAL " + ((item.HEAL > 0) ? "+ " : "- ") + Mathf.Abs(item.HEAL).ToString() + "\n" : "");
+        itemStat = itemStat + ((item.RESISTANCE != 0) ? "RES " + ((item.HEAL > 0) ? "+ " : "- ") + Mathf.Abs(item.RESISTANCE).ToString() + "\n" : "");
 
         outputString = itemStat;
         return outputString;
