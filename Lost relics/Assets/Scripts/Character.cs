@@ -755,7 +755,9 @@ public class Character : MonoBehaviour
         allBuff.AddRange(activeDeBuffs);
         allBuff.AddRange(activeUnClearBuffs);
         allBuff.AddRange(activeUnClearDeBuffs);
-        buffContainer.updateBuffIconUI(allBuff);
+        //
+        if (buffContainer != null)
+            buffContainer.updateBuffIconUI(allBuff);
     }
     public buff GetBuffByName(string BuffName)
     {

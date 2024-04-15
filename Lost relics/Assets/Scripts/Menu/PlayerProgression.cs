@@ -26,6 +26,7 @@ public class PlayerProgression : MonoBehaviour
     {
         printStatDetail();
         relicFragment.text = "Relic fragment : " + PlayerPrefs.GetInt("relicFragment", 0);
+
         if (canvas.activeSelf)
             canvas.SetActive(false);
     }
@@ -38,6 +39,7 @@ public class PlayerProgression : MonoBehaviour
 
     private void printStatDetail()
     {
+
         maxHP.text = PlayerPrefs.GetInt("PPMAXHP", 0).ToString();
         ATK.text = PlayerPrefs.GetInt("PPATK", 0).ToString();
         HEAL.text = PlayerPrefs.GetInt("PPHEAL", 0).ToString();
@@ -50,13 +52,25 @@ public class PlayerProgression : MonoBehaviour
         //LV
         lvHP.text = (PlayerPrefs.GetInt("PPMAXHP", 0) / 10).ToString();
         lvATK.text = (PlayerPrefs.GetInt("PPATK", 0) / 5).ToString();
-        lvHEAL.text = (PlayerPrefs.GetInt("PPHEAL", 0) / 5).ToString();
-        lvDEF.text = (PlayerPrefs.GetInt("PPDEF", 0) / 2).ToString();
+        lvHEAL.text = (PlayerPrefs.GetInt("PPHEAL", 0) / 3).ToString();
+        lvDEF.text = (PlayerPrefs.GetInt("PPDEF", 0) / 3).ToString();
         lvSPD.text = (PlayerPrefs.GetInt("PPSPD", 0) / 1).ToString();
         lvCRATE.text = (PlayerPrefs.GetInt("PPCRATE", 0) / 2).ToString();
-        lvCDMG.text = (PlayerPrefs.GetInt("PPCDMG", 0) / 3).ToString();
+        lvCDMG.text = (PlayerPrefs.GetInt("PPCDMG", 0) / 5).ToString();
         lvEVADE.text = (PlayerPrefs.GetInt("PPEVADE", 0)/ 1).ToString();
         lvRES.text = (PlayerPrefs.GetInt("PPRES", 0) / 1).ToString();
+        //Price
+        //price = 50 + (count * 25);
+        pHP.text = (PlayerPrefs.GetInt("PPMAXHP", 0) / 10) < 10  ? (50 + (((PlayerPrefs.GetInt("PPMAXHP", 0) / 10)) * 25)).ToString() : "MAX";
+
+        pATK.text = (PlayerPrefs.GetInt("PPATK", 0) / 5) < 10 ? (50 + (((PlayerPrefs.GetInt("PPATK", 0) / 5) ) * 25)).ToString() : "MAX";
+        pHEAL.text = (PlayerPrefs.GetInt("PPHEAL", 0) / 3) < 10 ? (50 + (((PlayerPrefs.GetInt("PPHEAL", 0) / 3)) * 25)).ToString() : "MAX";
+        pDEF.text = (PlayerPrefs.GetInt("PPDEF", 0) / 3) < 10 ? (50 + (((PlayerPrefs.GetInt("PPDEF", 0) / 3)) * 25)).ToString() : "MAX";
+        pSPD.text = (PlayerPrefs.GetInt("PPSPD", 0) / 1) < 10 ? (50 + (((PlayerPrefs.GetInt("PPSPD", 0) / 1)) * 25)).ToString() : "MAX";
+        pCRATE.text = (PlayerPrefs.GetInt("PPCRATE", 0) / 10) < 10 ? (50 + (((PlayerPrefs.GetInt("PPCRATE", 0) / 2)) * 25)).ToString() : "MAX";
+        pCDMG.text = (PlayerPrefs.GetInt("PPCDMG", 0) / 5) < 10 ? (50 + (((PlayerPrefs.GetInt("PPCDMG", 0) / 5)) * 25)).ToString() : "MAX";
+        pEVADE.text = (PlayerPrefs.GetInt("PPEVADE", 0) / 1) < 10 ? (50 + (((PlayerPrefs.GetInt("PPEVADE", 0) / 1)) * 25)).ToString() : "MAX";
+        pRES.text = (PlayerPrefs.GetInt("PPRES", 0) / 10) < 10 ? (50 + (((PlayerPrefs.GetInt("PPRES", 0) / 1)) * 25)).ToString() : "MAX";
     }
 
     // count come from the amount of stat / by the amount of stat.
@@ -66,6 +80,7 @@ public class PlayerProgression : MonoBehaviour
         int stat;
         int count;
         int price;
+        int nextPrice;
         int RF = PlayerPrefs.GetInt("relicFragment", 0);
 
         switch (statName)
@@ -73,7 +88,7 @@ public class PlayerProgression : MonoBehaviour
             case "HP":
                 stat = PlayerPrefs.GetInt("PPMAXHP", 0);
                 count = stat / 10;
-                price = 50 + (count * 25);
+                price = 50 + ((count) * 25);
 
                 if (count >= maximumStatusLV || (RF < price))
                     return;
@@ -83,8 +98,10 @@ public class PlayerProgression : MonoBehaviour
                 maxHP.text = stat.ToString();
                 lvHP.text = (stat / 10).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count+1) * 25);
+                pHP.text = (count + 1) >= 10 ? "MAX" : nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
             case "ATK":
                 stat = PlayerPrefs.GetInt("PPATK", 0);
@@ -100,41 +117,47 @@ public class PlayerProgression : MonoBehaviour
                 ATK.text = stat.ToString();
                 lvATK.text = (stat / 5).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count + 1) * 25);
+                pATK.text = nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
             case "HEAL":
                 stat = PlayerPrefs.GetInt("PPHEAL", 0);
-                count = stat / 5;
+                count = stat / 3;
 
                 price = 50 + (count * 25);
 
                 if (count >= maximumStatusLV || (RF < price))
                     return;
 
-                stat += 5;
+                stat += 3;
                 PlayerPrefs.SetInt("PPHEAL", stat);
                 HEAL.text = stat.ToString();
                 lvHEAL.text = (stat / 5).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count + 1) * 25);
+                pHEAL.text = nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
             case "DEF":
                 stat = PlayerPrefs.GetInt("PPDEF", 0);
-                count = stat / 2;
+                count = stat / 3;
                 price = 50 + (count * 25);
 
                 if (count >= maximumStatusLV || (RF < price))
                     return;
 
-                stat += 2;
+                stat += 3;
                 PlayerPrefs.SetInt("PPDEF", stat);
                 DEF.text = stat.ToString();
                 lvDEF.text = (stat / 2).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count + 1) * 25);
+                pDEF.text = nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
             case "SPD":
                 stat = PlayerPrefs.GetInt("PPSPD", 0);
@@ -150,8 +173,10 @@ public class PlayerProgression : MonoBehaviour
                 SPD.text = stat.ToString();
                 lvSPD.text = (stat / 1).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count + 1) * 25);
+                pSPD.text = nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
             case "CRATE":
                 stat = PlayerPrefs.GetInt("PPCRATE", 0);
@@ -166,24 +191,28 @@ public class PlayerProgression : MonoBehaviour
                 CRATE.text = stat.ToString();
                 lvCRATE.text = (stat / 2).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count + 1) * 25);
+                pCRATE.text = nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
             case "CDMG":
                 stat = PlayerPrefs.GetInt("PPCDMG", 0);
-                count = stat / 3;
+                count = stat / 5;
                 price = 50 + (count * 25);
 
                 if (count >= maximumStatusLV || (RF < price))
                     return;
 
-                stat += 3;
+                stat += 5;
                 PlayerPrefs.SetInt("PPCDMG", stat);
                 CDMG.text = stat.ToString();
                 lvCDMG.text = (stat / 3).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count + 1) * 25);
+                pCDMG.text = nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
             case "EVADE":
                 stat = PlayerPrefs.GetInt("PPEVADE", 0);
@@ -199,8 +228,10 @@ public class PlayerProgression : MonoBehaviour
                 EVADE.text = stat.ToString();
                 lvEVADE.text = (stat / 1).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count + 1) * 25);
+                pEVADE.text = nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
             case "RES":
                 stat = PlayerPrefs.GetInt("PPRES", 0);
@@ -215,8 +246,10 @@ public class PlayerProgression : MonoBehaviour
                 RES.text = stat.ToString();
                 lvRES.text = (stat / 1).ToString();
                 RF -= price;
+                nextPrice = 50 + ((count + 1) * 25);
+                pRES.text = nextPrice.ToString();
                 PlayerPrefs.SetInt("relicFragment", RF);
-                relicFragment.text = "Relic fragment : " + price.ToString();
+                relicFragment.text = "Relic fragment : " + RF.ToString();
                 break;
         }
     }

@@ -48,4 +48,5 @@ public class playerCanvasController : MonoBehaviour
         else
             InGameMenu.Instance.openMenu();
     }
+
 }

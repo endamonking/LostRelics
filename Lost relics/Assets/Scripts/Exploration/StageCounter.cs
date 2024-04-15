@@ -102,5 +102,9 @@ public class StageCounter : MonoBehaviour
     {
         bossNodePassed++;
     }
-
+    
+    public void destroyME()
+    {
+        Destroy(gameObject); 
+    }
 }

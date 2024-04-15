@@ -40,6 +40,17 @@ public class exploration_sceneManager : MonoBehaviour
     public GameObject getItemContainer;
     public List<GameObject> itemSpawnList = new List<GameObject>();
 
+    [Header("Result")]
+    public GameObject resultTab;
+    public TextMeshProUGUI eventText;
+    public TextMeshProUGUI battleText;
+    public TextMeshProUGUI bossText;
+    public TextMeshProUGUI totalText;
+    public TextMeshProUGUI eRFText;
+    public TextMeshProUGUI batRFText;
+    public TextMeshProUGUI bosRFText;
+    public TextMeshProUGUI totalRFText;
+
     public bool isLerping = false;
     public bool isEvent = false;
 
@@ -62,6 +73,7 @@ public class exploration_sceneManager : MonoBehaviour
         }
         getItemTab.SetActive(false);
         EventCanvas.SetActive(false);
+        resultTab.SetActive(false);
 
     }
 
@@ -278,10 +290,36 @@ public class exploration_sceneManager : MonoBehaviour
     //Need to make button to back to main screen
     public void showRunResult()
     {
-        Debug.Log(StageCounter.instance.eventNodePassed);
-        Debug.Log(StageCounter.instance.monsterNodePassed);
-        Debug.Log(StageCounter.instance.bossNodePassed);
+        isEvent = true;
+        resultTab.SetActive(true);
+        int eventCount = StageCounter.instance.eventNodePassed;
+        int monsterCount = StageCounter.instance.monsterNodePassed;
+        int bossCount = StageCounter.instance.bossNodePassed;
+        int eRF = eventCount * 5;
+        int mRF = monsterCount * 10;
+        int bRF = bossCount * 20;
+        eventText.text = eventCount.ToString();
+        battleText.text = monsterCount.ToString();
+        bossText.text = bossCount.ToString();
+        totalText.text = (eventCount + monsterCount + bossCount).ToString();
+        eRFText.text = eRF.ToString();
+        batRFText.text = mRF.ToString();
+        bosRFText.text = bRF.ToString();
+        totalRFText.text = (eRF + mRF + bRF).ToString();
+        int RF = PlayerPrefs.GetInt("relicFragment", 0);
+        PlayerPrefs.SetInt("relicFragment", (eRF + mRF + bRF + RF));
+
+
     }
 
+    public void bactToMainScreen()
+    {
+        //destroy all dontonload
+        StageCounter.instance.destroyME();
+        InGameMenu.Instance.destroyME();
+        inventoryManager.Instance.destroyME();
+        inventoryCanvas.Instance.destroyME();
 
+        SceneManager.LoadScene("MainMenu");
+    }
 }

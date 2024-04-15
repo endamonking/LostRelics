@@ -1530,6 +1530,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageCounter: 1
   isGotCompanion: 0
+  isBossNode: 0
+  eventNodePassed: 0
+  monsterNodePassed: 0
+  bossNodePassed: 0
 --- !u!4 &1691728407
 Transform:
   m_ObjectHideFlags: 0

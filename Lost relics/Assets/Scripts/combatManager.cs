@@ -167,6 +167,8 @@ public class combatManager : MonoBehaviour
             {
                 spawnPosition = enemiesSlots[i].position;
                 GameObject enemyObj = Instantiate(prefab, spawnPosition, Quaternion.identity);
+                enemyObj.GetComponent<Character>().originalPosition = enemyObj.transform.position;
+                StageCounter.instance.increaseMonsterStat(enemyObj.GetComponent<Character>());
                 enemiesSlots[i].enemy = enemyObj;
                 remainingEnemies.Add(enemyObj);
                 break;
@@ -176,6 +178,8 @@ public class combatManager : MonoBehaviour
 
     public void changeTurn(BattleState newState)
     {
+        if (state == BattleState.WON || state == BattleState.LOST)
+            return;
         state = newState;
         _stateText.text = state.ToString();
     }
@@ -533,6 +537,11 @@ public class combatManager : MonoBehaviour
                 {
                     enemiesSlots[i].enemy = null;
                 }
+                else if (enemiesSlots[i].enemy != null)
+                {
+                    enemiesSlots[i].enemy.GetComponentInChildren<characterOnclick>().reActivateCollider();
+                }
+           
             }
     
         }
@@ -556,7 +565,7 @@ public class combatManager : MonoBehaviour
                 StageCounter.instance.passBossNode();
             else
                 StageCounter.instance.passMonsterNode();
-            StageCounter.instance.
+
             StartCoroutine(delay());
             return;
         }
@@ -759,7 +768,7 @@ public class combatManager : MonoBehaviour
         GameManager.Instance.destroyGM();
         yield return new WaitForSeconds(2.0f);
         exploration_sceneManager.Instance.showRunResult();
-        bactToMainScreen();
+        exploration_sceneManager.Instance.ReturnToExplorationScene();
     }
 
     public void updatePlayerUI(int deckCount, Sprite pic)

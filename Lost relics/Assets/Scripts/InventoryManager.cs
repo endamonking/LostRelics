@@ -147,4 +147,8 @@ public class inventoryManager : MonoBehaviour
     {
         playerCanvas.GetComponent<inventoryCanvas>().forceClose();
     }
+    public void destroyME()
+    {
+        Destroy(gameObject);
+    }
 }

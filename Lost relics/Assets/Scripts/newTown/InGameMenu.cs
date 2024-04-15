@@ -82,4 +82,9 @@ public class InGameMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void destroyME()
+    {
+        Destroy(gameObject);
+    }
 }

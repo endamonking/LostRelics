@@ -527,5 +527,9 @@ public class inventoryCanvas : MonoBehaviour
             i++;
         }
     }
+    public void destroyME()
+    {
+        Destroy(gameObject);
+    }
 
 }

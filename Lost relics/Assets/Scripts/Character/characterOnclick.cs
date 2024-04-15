@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class characterOnclick : MonoBehaviour
 {
+    private CapsuleCollider characterCollider;
     // Start is called before the first frame update
     void Start()
     {
-        
+        characterCollider = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -21,7 +22,6 @@ public class characterOnclick : MonoBehaviour
     private void OnMouseDown()
     {
         Scene thisScene = SceneManager.GetActiveScene();
-        Debug.Log("ads");
         if (thisScene.name != "Exploration")
             return;
 
@@ -30,5 +30,18 @@ public class characterOnclick : MonoBehaviour
 
         Debug.Log(this.gameObject.name + "Clicked");
         combatManager.Instance.selectedTarget(this.transform.parent.gameObject);
+    }
+    //Some how it need to re enable to make the third character can click (need to remain last)
+    public void reActivateCollider()
+    {
+        StartCoroutine(delayEnable());
+
+    }
+
+    IEnumerator delayEnable()
+    {
+        characterCollider.enabled = false;
+        yield return new WaitForSeconds(0.2f);
+        characterCollider.enabled = true;
     }
 }
