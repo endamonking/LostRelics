@@ -151,4 +151,22 @@ public class inventoryManager : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    
+    public List<GameObject> getNonEquipedLsit()
+    {
+        List<GameObject> eqList = new List<GameObject>();
+        eqList.AddRange(equipmentList);
+        for (int i = 0; i < eqList.Count; i++)
+        {
+            equipment item = eqList[i].GetComponent<equipment>();
+            if (item.isEquiped == true)
+            {
+                eqList.RemoveAt(i);
+            }
+        }
+
+
+        return eqList;
+    }
+
 }

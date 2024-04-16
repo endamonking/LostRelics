@@ -29,7 +29,9 @@ public class randomSellItem : nodeEfffect
     {
         //if (Not met requirment item)
         inventoryManager playerInventory = GameObject.FindObjectOfType<inventoryManager>();
-        if (playerInventory.equipmentList.Count < amount)
+        List<GameObject> eqList = new List<GameObject>();
+        eqList = playerInventory.getNonEquipedLsit();
+        if (eqList.Count < amount)
         {
             exploration_sceneManager.Instance.clearEventButton();
             Button ansBut = Instantiate(buttonPrefab, exploration_sceneManager.Instance.answerContainer);
@@ -68,10 +70,13 @@ public class randomSellItem : nodeEfffect
                 {
                     im.removeItem(ranIndex);
                     im.addMoney(moneyGetPerItem);
+                    if (i > 0)
+                        bonusMoney += 100;
                     loopflag = false;
                 }
             }
         }
+        im.addMoney(bonusMoney);
         base.closeEvenCanvas();
         
     }
