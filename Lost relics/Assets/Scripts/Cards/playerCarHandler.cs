@@ -28,7 +28,8 @@ public class playerCarHandler : cardHandler
         base.displayInhandCard();
         GameObject picGobj = transform.Find("Character").gameObject;
         Sprite pic = picGobj.GetComponentInChildren<Unit>().portrait;
-        comIns.updatePlayerUI(_currentDeck.Count, pic);
+        if (pic != null)
+            comIns.updatePlayerUI(_currentDeck.Count, pic);
     }
 
 

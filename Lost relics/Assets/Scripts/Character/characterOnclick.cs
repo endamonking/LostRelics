@@ -7,10 +7,15 @@ using UnityEngine.SceneManagement;
 public class characterOnclick : MonoBehaviour
 {
     private CapsuleCollider characterCollider;
+    private void Awake()
+    {
+        characterCollider = GetComponent<CapsuleCollider>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        characterCollider = GetComponent<CapsuleCollider>();
+        
     }
 
     // Update is called once per frame
@@ -35,6 +40,11 @@ public class characterOnclick : MonoBehaviour
     public void reActivateCollider()
     {
         StartCoroutine(delayEnable());
+
+    }
+    public void activateCollider()
+    {
+        characterCollider.enabled = true;
 
     }
 

@@ -98,6 +98,7 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     //To make card look invisible by setActive false image and collider
     private void deactivatedComponent()
     {
+        /*
         GetComponent<Image>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         
@@ -106,11 +107,13 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             Transform child = gameObject.transform.GetChild(i);
             child.gameObject.SetActive(false);
         }
-
+        */
+        gameObject.SetActive(false);
     }
 
     private void activatedComponent()
     {
+        /*
         GetComponent<Image>().enabled = true;
         GetComponent<Collider2D>().enabled = true;
 
@@ -119,7 +122,8 @@ public class cardDisplay : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             Transform child = gameObject.transform.GetChild(i);
             child.gameObject.SetActive(true);
         }
-
+        */
+        gameObject.SetActive(true);
     }
 
     public void undoCard()
