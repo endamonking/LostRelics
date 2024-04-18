@@ -308,7 +308,11 @@ public class exploration_sceneManager : MonoBehaviour
         totalRFText.text = (eRF + mRF + bRF).ToString();
         int RF = PlayerPrefs.GetInt("relicFragment", 0);
         PlayerPrefs.SetInt("relicFragment", (eRF + mRF + bRF + RF));
-
+        //put file
+        if (playerPool.Count == 1)
+            Backend.instance.createJson(playerPool[0]);
+        else
+            Backend.instance.createJson(playerPool[0], playerPool[1]);
 
     }
 
@@ -319,7 +323,11 @@ public class exploration_sceneManager : MonoBehaviour
         InGameMenu.Instance.destroyME();
         inventoryManager.Instance.destroyME();
         inventoryCanvas.Instance.destroyME();
-
+        //Destroy player
+        foreach (GameObject player in playerPool)
+        {
+            Destroy(player);
+        }
         SceneManager.LoadScene("MainMenu");
     }
 }

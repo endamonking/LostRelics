@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitID: 1
   UnitName: Emma
-  ATK: 20
+  ATK: 35
   Healing: 5
   DEF: 20
   SPD: 25
@@ -66,8 +66,8 @@ MonoBehaviour:
   Evade: 2
   CritDamage: 150
   Resistance: 10
-  MaxHP: 30
-  CurrentHP: 30
+  MaxHP: 50
+  CurrentHP: 50
   maxMana: 5
   passivSkill: {fileID: 3227317821961898870, guid: ab1ce1953f3c1c047b25b6983861cc21, type: 3}
   portrait: {fileID: 21300000, guid: 2550cf3ab5e22ee469e2d4bb3c507bd5, type: 3}

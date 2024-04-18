@@ -58,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitID: 4
   UnitName: Krist
-  ATK: 15
+  ATK: 25
   Healing: 2
   DEF: 10
   SPD: 25
@@ -66,8 +66,8 @@ MonoBehaviour:
   Evade: 5
   CritDamage: 150
   Resistance: 25
-  MaxHP: 50
-  CurrentHP: 50
+  MaxHP: 65
+  CurrentHP: 65
   maxMana: 4
   passivSkill: {fileID: 7172980700059708246, guid: 49d4c33ae51190d41b16a833518d8e6d, type: 3}
   portrait: {fileID: 21300000, guid: 440362065a6925c42b8ecb9b8c8f4673, type: 3}

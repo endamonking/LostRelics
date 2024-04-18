@@ -392,7 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basedefPoint: 10
   maxHP: 30
-  baseSPD: 40
+  baseSPD: 30
   characterName: Nike Tiger
   maxPlayerHand: 3
   maxMana: 4
@@ -401,7 +401,7 @@ MonoBehaviour:
   baseArmorPen: 0
   baseCritRate: 25
   baseCritDMG: 175
-  baseATK: 40
+  baseATK: 30
   baseHeal: 5
   baseEvade: 10
   baseResistance: 10

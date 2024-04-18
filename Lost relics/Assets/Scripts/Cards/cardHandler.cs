@@ -79,7 +79,7 @@ public abstract class cardHandler : MonoBehaviour
         {
             GameObject pCard = Instantiate(cardTemplate, cardParent);
             pCard.transform.position = new Vector3(0, 0, 0);
-            pCard.transform.position = pCard.transform.position + new Vector3(1000, 0, 0);
+            pCard.transform.position = pCard.transform.position + new Vector3(1300, 0, 0);
             pCard.transform.position = pCard.transform.position + new Vector3(-i*130, 0,0);
             pCard.GetComponent<cardDisplay>().card = cardInHand[i];
             pCard.name = pCard.name + " " + i.ToString();

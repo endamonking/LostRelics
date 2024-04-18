@@ -53,5 +53,44 @@ public class web : MonoBehaviour
             }
         }
     }
+    public IEnumerator sendJson(string jsonString)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("json", jsonString);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/lost_relics/createRunLog.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+            }
+        }
+    }
+    public IEnumerator sendJson(string jsonString, string jsonString2)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("json", jsonString);
+        form.AddField("json2", jsonString2);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/lost_relics/createRunLog2.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+            }
+        }
+    }
 
 }

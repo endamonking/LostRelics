@@ -760,10 +760,6 @@ public class combatManager : MonoBehaviour
     }
     IEnumerator delayLosing()
     {
-        foreach (GameObject player in exploration_sceneManager.Instance.playerPool)
-        {
-            Destroy(player);
-        }
         if (StageCounter.instance.isBossNode)
             StageCounter.instance.resetIsBossNode();
         GameManager.Instance.destroyGM();
@@ -777,9 +773,11 @@ public class combatManager : MonoBehaviour
         endTurnButton.SetActive(true);
         showDiscardButton.SetActive(true);
         CurrentTurnPic.SetActive(true);
-        CurrentTurnPic.GetComponent<Image>().sprite = pic;
+        if (pic != null)
+            CurrentTurnPic.GetComponent<Image>().sprite = pic;
         Button picBut = CurrentTurnPic.GetComponent<Button>();
-        picBut.onClick.AddListener(() => showCharacterWindow(currentObjTurn.GetComponent<Character>(), pic));
+        if (currentObjTurn != null)
+            picBut.onClick.AddListener(() => showCharacterWindow(currentObjTurn.GetComponent<Character>(), pic));
         updateManaText();
         updateCardRemaining(deckCount);
     }
