@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Quickshot
   description: '"Fire a rapid shot at the enemy."'
-  effectString: 'Deal 60% ATK as damage to a target enemy. If this attack lands a
-    critical hit, draw 1 card. '
+  effectString: 'Deal 100% ATK as damage to a target enemy. If this attack lands
+    a critical hit, draw 1 card. '
   cardCost: 1
   artwork: {fileID: 21300000, guid: 8b22e85e6a7080c4da6048cefd329ac9, type: 3}
   delayAction: 1

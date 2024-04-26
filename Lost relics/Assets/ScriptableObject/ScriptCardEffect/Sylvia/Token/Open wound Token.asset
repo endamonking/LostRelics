@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'Open wound '
   description: '"the show has started" '
-  effectString: "Deal 30% ATK to the target, if the target HP is at max. Created
+  effectString: "Deal 80% ATK to the target, if the target HP is at max. Created
     another \u201COpen wound\u201D in hands "
   cardCost: 1
   artwork: {fileID: 21300000, guid: 37e0ed05f8fb61f4e92ddc0f8e4cc60a, type: 3}

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class manaConcentration : cardEffect
 {
-    int skillMultiplier = 50; //Percent unit
+    [SerializeField]
+    int skillMultiplier = 100; //Percent unit
+    [SerializeField]
     int additionalDMGMultiplier = 10;
     // Start is called before the first frame update
     void Start()

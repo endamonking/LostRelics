@@ -54,8 +54,8 @@ MonoBehaviour:
   ATK: 0
   HP: 0
   DEF: 0
-  SPD: 2
-  CRITChance: 7
+  SPD: 5
+  CRITChance: 15
   HEAL: 0
   EVADE: 0
   RESISTANCE: 0

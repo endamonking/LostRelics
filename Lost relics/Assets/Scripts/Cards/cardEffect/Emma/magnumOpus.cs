@@ -5,7 +5,7 @@ using UnityEngine;
 public class magnumOpus : cardEffect
 {
     [SerializeField]
-    private int baseSkillMultiplier = 30;
+    private int baseSkillMultiplier = 50;
     [SerializeField]
     private Card EmmaToken;
     // Start is called before the first frame update

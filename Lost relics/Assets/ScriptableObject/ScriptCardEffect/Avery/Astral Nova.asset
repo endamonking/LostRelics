@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'Astral Nova '
   description: '"Illuminate the battlefield with celestial energy."'
-  effectString: Deal 70% ATK as damage to all enemies and grant all allies +1 Mana
+  effectString: Deal 200% ATK as damage to all enemies and grant all allies +1 Mana
     for 1 turn.
   cardCost: 3
   artwork: {fileID: 21300000, guid: 18b8ae2619f0b7b4ea67175c4a66dce0, type: 3}

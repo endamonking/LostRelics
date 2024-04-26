@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'Poison vial '
   description: "\u201CI prepared this, just in case\u201D"
-  effectString: 'poison a target for 3 turns (100% hit rate) (poison does 100% atk
-    as true '
+  effectString: 'poison a target for 3 turns (poison does 70% atk as true '
   cardCost: 1
   artwork: {fileID: 21300000, guid: 6be8aed4a7e429140bb5e160f082a2bd, type: 3}
   delayAction: 1

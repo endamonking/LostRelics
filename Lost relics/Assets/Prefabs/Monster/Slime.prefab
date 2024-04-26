@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec795366bffda554288a3a2283200fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basedefPoint: 15
+  basedefPoint: 10
   maxHP: 80
   baseSPD: 25
   characterName: Slime

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Thou shall halt
   description: 
-  effectString: "deal 50% ATK as damage to an enemy, change enemy stance to \u201Cdisarm\u201D,
+  effectString: "deal 100% ATK as damage to an enemy, change enemy stance to \u201Cdisarm\u201D,
     spends 2 \u201CIndecipherable Poem\u201D to change enemy stance to \u201CExhausted\u201D
     instead"
   cardCost: 2

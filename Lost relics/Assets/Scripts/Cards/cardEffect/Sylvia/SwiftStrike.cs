@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwiftStrike : cardEffect
 {
     [SerializeField]
-    private int baseSkillMultiplier = 80;
+    private int baseSkillMultiplier = 100, bonusSKillMult = 150;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class SwiftStrike : cardEffect
         float skillMulti = baseSkillMultiplier;
         if (user.myStance == stance.Blade_Dance)
         {
-            skillMulti = 100.0f;
+            skillMulti = bonusSKillMult;
         }
         skillMulti = skillMulti / 100.0f;
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);

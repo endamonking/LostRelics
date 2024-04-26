@@ -20,7 +20,7 @@ public class EtherealEvasion : cardEffect
         //Add buff
         string des = "Increase Evade by 50%";
         buff newBuff = new buff("Ethereal Evasion", 2, "EVADE_Up", des);
-        newBuff.AddBuff("EVADE", 50);
+        newBuff.AddBuff("EVADE", 60);
         user.applyActiveBuff(newBuff, false);
         //Draw
         GameObject player = combatManager.Instance.currentObjTurn;

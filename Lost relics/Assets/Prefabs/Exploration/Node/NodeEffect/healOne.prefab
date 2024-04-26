@@ -47,4 +47,4 @@ MonoBehaviour:
   buttonPrefab: {fileID: 8142424949879169981, guid: 893afe3816621fb418980d336b86b6eb, type: 3}
   nodeName: Healing fountain
   description: Choose your character
-  amount: 30
+  amount: 80

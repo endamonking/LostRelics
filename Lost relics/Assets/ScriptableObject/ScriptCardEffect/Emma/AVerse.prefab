@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 0
-  baseSkillMultiplier: 40
-  flowSkillMultiplier: 60
+  baseSkillMultiplier: 100
+  flowSkillMultiplier: 150

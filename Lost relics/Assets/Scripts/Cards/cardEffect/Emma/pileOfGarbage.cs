@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class pileOfGarbage : cardEffect
 {
-    int skillMultiplier = 30; //Percent unit
+    public int skillMultiplier = 70; //Percent unit
     [SerializeField]
     private Card EmmaToken;
     // Start is called before the first frame update

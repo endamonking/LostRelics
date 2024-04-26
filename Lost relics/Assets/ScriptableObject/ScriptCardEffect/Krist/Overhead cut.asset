@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'Overhead cut '
   description: '"Without hesitation"'
-  effectString: "Deal 60% ATK to a target, if Krist is in \u201CFrenzy\u201D, sacrifices
-    10% of maxHP to change multiplier to 100%"
+  effectString: "Deal 100% ATK to a target, if Krist is in \u201CFrenzy\u201D, sacrifices
+    10% of maxHP to change multiplier to 150%"
   cardCost: 1
   artwork: {fileID: 21300000, guid: ddfead8a5bd4f9247ada0a50a3712f43, type: 3}
   delayAction: 1

@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 12
-  skillMultiplier: 40
+  skillMultiplier: 100

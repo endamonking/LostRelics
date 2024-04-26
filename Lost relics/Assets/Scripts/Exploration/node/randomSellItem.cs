@@ -58,17 +58,19 @@ public class randomSellItem : nodeEfffect
     private void removeItemAndGetMoney()
     {
         inventoryManager im = inventoryManager.Instance;
+        List<GameObject> eqList = new List<GameObject>();
+        eqList = im.getNonEquipedLsit();
         int bonusMoney = 0;
         for (int i = 0; i < amount; i++)
         {
             bool loopflag = true;
             while (loopflag)
             {
-                int ranIndex = Random.Range(0, im.equipmentList.Count);
-                equipment eq = im.equipmentList[ranIndex].GetComponent<equipment>();
+                int ranIndex = Random.Range(0, eqList.Count);
+                equipment eq = eqList[ranIndex].GetComponent<equipment>();
                 if (eq.isEquiped == false) //Not equiped
                 {
-                    im.removeItem(ranIndex);
+                    im.removeItem(eq.equipmentIndexInList);
                     im.addMoney(moneyGetPerItem);
                     if (i > 0)
                         bonusMoney += 100;

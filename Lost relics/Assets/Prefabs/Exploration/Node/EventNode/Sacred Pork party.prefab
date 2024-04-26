@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5793873, g: 0.9528302, b: 0.28315237, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   answerList:
   - Base speed of 1 character + 2
   - In the next battle, all allies receive +20% speed buff for 2 turns
-  - '(selectable for character with 50 or more speed) Base speed of that character
+  - '(selectable for character with 35 or more speed) Base speed of that character
     + 5 '
   asnwerEffectList:
   - {fileID: 7007651820864445459, guid: 6d8005a2cf8c817459b484233c96fd87, type: 3}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Empty the storage
   description: "\u201CFire rapidly, pretty simple I\u2019d say\u201D"
-  effectString: "Deal 30% of ATK to an enemy X times \u2190 X = current stacks of
+  effectString: "Deal 80% of ATK to an enemy X times \u2190 X = current stacks of
     lock\u2019n loaded. Lock\u2019n loaded immediately goes to 0 stacks"
   cardCost: 2
   artwork: {fileID: 21300000, guid: 264b3809e779ca84d8bb1489e04f1aa2, type: 3}

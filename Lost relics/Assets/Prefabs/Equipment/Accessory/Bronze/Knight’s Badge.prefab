@@ -54,7 +54,7 @@ MonoBehaviour:
   ATK: 0
   HP: 0
   DEF: 5
-  SPD: 1
+  SPD: 4
   CRITChance: 0
   HEAL: 0
   EVADE: 0

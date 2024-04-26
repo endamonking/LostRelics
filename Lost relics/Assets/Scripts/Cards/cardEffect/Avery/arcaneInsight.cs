@@ -20,7 +20,7 @@ public class arcaneInsight : cardEffect
         GameObject player = combatManager.Instance.currentObjTurn;
         cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             playerCardHanlder.drawCard();
         }

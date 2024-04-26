@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Mana concentration
   description: '"Imagine, Concentrate, Fire"'
-  effectString: ' deal 50% ATK as damage to a target enemy, deal additional damage
-    based on current mana (10% ATK x current mana)'
+  effectString: Deal 100% ATK as damage to a target enemy, deal additional damage
+    based on current mana (10% ATK x current mana)
   cardCost: 1
   artwork: {fileID: 21300000, guid: 35d60ab3581d7e7468107ada49571815, type: 3}
   delayAction: 1

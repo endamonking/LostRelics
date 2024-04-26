@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 0
-  baseSkillMultiplier: 30
+  baseSkillMultiplier: 80
   tokenCard: {fileID: 11400000, guid: 97c1c7eb25b94264eae3b7ee7707dead, type: 2}

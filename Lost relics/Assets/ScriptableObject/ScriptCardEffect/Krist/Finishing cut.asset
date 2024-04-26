@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Finishing cut
   description: "\"it doesn\u2019t matter anymore\""
-  effectString: "Deal 100% ATK to an enemy, if Krist is in \u201CFrenzy\u201D, this
+  effectString: "Deal 150% ATK to an enemy, if Krist is in \u201CFrenzy\u201D, this
     attack is guaranteed to crit and recover 20% of maxHP"
   cardCost: 2
   artwork: {fileID: 21300000, guid: 4a7cd5cd907c816488ffc59cbe372dd2, type: 3}

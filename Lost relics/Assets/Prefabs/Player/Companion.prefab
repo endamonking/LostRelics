@@ -636,9 +636,8 @@ MonoBehaviour:
   playerDeck:
   - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
   - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
-  - {fileID: 11400000, guid: ca83c6a4d236ee446b75a905ac5e6677, type: 2}
-  - {fileID: 11400000, guid: 4f247d3279ff70241893dacbadf116d1, type: 2}
-  - {fileID: 11400000, guid: c7a380feba0a4fc438a00fcbeed354fa, type: 2}
+  - {fileID: 11400000, guid: 92b8cf55fd12a7c46a8546bbc523509f, type: 2}
+  - {fileID: 11400000, guid: 371ac3b6be2ba904b87e2cf2a7f0d8c9, type: 2}
   discardedDeck: []
   _currentDeck: []
   cardInHand: []

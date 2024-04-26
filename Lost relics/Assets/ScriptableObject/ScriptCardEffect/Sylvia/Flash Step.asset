@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: 'Flash Step '
   description: '"Blink across the battlefield with unmatched speed, striking your
     foes from unexpected angles." '
-  effectString: "Deal 30% ATK as damage. If Sylvia\u2019s speed is higher than the
+  effectString: "Deal 100% ATK as damage. If Sylvia\u2019s speed is higher than the
     target's, ignore defense"
   cardCost: 1
   artwork: {fileID: 21300000, guid: 8df44a8428027e1408cd7d6245cc3e52, type: 3}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Arcane Eruption
   description: '"Unleash a torrent of magical energy."'
-  effectString: "Deal 80% ATK as damage to a target enemy. If in \"Ethereal\" stance,
+  effectString: "Deal 100% ATK as damage to a target enemy. If in \"Ethereal\" stance,
     inflict \u201CRestraint\u201D to enemy (Restraint = ATK-20%, can\u2019t change
     stance)"
   cardCost: 2

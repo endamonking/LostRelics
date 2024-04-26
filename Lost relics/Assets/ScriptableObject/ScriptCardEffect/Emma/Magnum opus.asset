@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Magnum opus
   description: 
   effectString: "spends all \u201CIndecipherable poem\u201D in your hands and deal
-    30% multiply by X (X = number of Indecipherable poem spent) ATK as damage to
+    50% multiply by X (X = number of Indecipherable poem spent) ATK as damage to
     the target "
   cardCost: 2
   artwork: {fileID: 21300000, guid: a2441b56c76fa114994f74981bc28197, type: 3}

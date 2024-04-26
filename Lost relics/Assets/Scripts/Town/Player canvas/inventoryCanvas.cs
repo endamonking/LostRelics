@@ -36,6 +36,7 @@ public class inventoryCanvas : MonoBehaviour
     public Image accPic;
     private equipment selectedEquipment = null;
     private GameObject selectedEquipmentGO = null;
+    private equipmentType eqTypeTab;
     [Header("Character deck")]
     public GameObject deckBox;
     public Image characterDeckPortrait;
@@ -216,7 +217,28 @@ public class inventoryCanvas : MonoBehaviour
         portrait.sprite = playerList[characterIndex].GetComponentInChildren<Unit>().portrait;
         characterName.text = player.characterName;
         printCharacterStat(player, playerList[characterIndex].GetComponent<characterEquipment>());
+        //Print character equipment image
+        showImageCharacterEquipment();
 
+    }
+
+    private void showImageCharacterEquipment()
+    {
+        characterEquipment CE = playerList[characterIndex].GetComponent<characterEquipment>();
+        if (CE.head)
+            headPic.sprite = CE.head.pic;
+        else
+            headPic.sprite = null;
+
+        if (CE.armor)
+            armorPic.sprite = CE.armor.pic;
+        else
+            armorPic.sprite = null;
+
+        if (CE.accessory)
+            accPic.sprite = CE.accessory.pic;
+        else
+            accPic.sprite = null;
     }
 
     private void printCharacterStat(Character player, characterEquipment playerEquipment)
@@ -255,6 +277,7 @@ public class inventoryCanvas : MonoBehaviour
                 break;
 
         }
+        eqTypeTab = eqType;
         clearEquipmentBox();
         List<GameObject> eqList = new List<GameObject>();
         eqList.AddRange(inventoryManager.Instance.equipmentList);
@@ -350,6 +373,29 @@ public class inventoryCanvas : MonoBehaviour
                 openEquipmentBox(2);
                 break;
 
+        }
+    }
+
+    public void unequipItem()
+    {
+        characterEquipment playerEquiped = playerList[characterIndex].GetComponent<characterEquipment>();
+        switch (eqTypeTab)
+        {
+            case equipmentType.HEAD: //head
+                playerEquiped.unEquipItem(equipmentType.HEAD);
+                headPic.sprite = null;
+                openEquipmentBox(0);
+                break;
+            case equipmentType.ARMORE: //armor
+                playerEquiped.unEquipItem(equipmentType.ARMORE);
+                armorPic.sprite = null;
+                openEquipmentBox(1);
+                break;
+            case equipmentType.ACCESSORY: //acc
+                playerEquiped.unEquipItem(equipmentType.ACCESSORY);
+                accPic.sprite = null;
+                openEquipmentBox(2);
+                break;
         }
     }
 

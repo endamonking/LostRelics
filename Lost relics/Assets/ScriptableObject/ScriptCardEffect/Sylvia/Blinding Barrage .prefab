@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 4
-  skillMultiplier: 60
-  additionalDMG: 10
+  skillMultiplier: 80
+  additionalDMG: 20

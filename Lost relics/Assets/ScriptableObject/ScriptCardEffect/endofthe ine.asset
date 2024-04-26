@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'End of the line '
   description: "\u201Cit\u2019s me or them.\u201D"
-  effectString: Deal 70% atk to a selected target, deal 50% more damage when self
+  effectString: Deal 120% atk to a selected target, deal 80% more damage when self
     HP is below 35%
   cardCost: 2
   artwork: {fileID: 21300000, guid: bcd5cbbf140cc244680b47c1d9632bd8, type: 3}

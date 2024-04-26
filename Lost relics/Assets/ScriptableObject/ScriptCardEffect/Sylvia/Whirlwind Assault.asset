@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Whirlwind Assault
   description: '"Spin with incredible speed, striking all enemies in your path." '
-  effectString: 'Deal 30% ATK as damage to all enemies. If Sylvia is in Phantom Assault
+  effectString: 'Deal 80% ATK as damage to all enemies. If Sylvia is in Phantom Assault
     Stance, inflict Poison(poison does 100% atk as true damage every turn to the
     target)  on all enemies for 2 turns. '
   cardCost: 2

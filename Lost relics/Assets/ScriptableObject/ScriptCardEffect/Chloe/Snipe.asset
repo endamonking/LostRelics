@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Snipe
   description: "\"You don\u2019t need a sniper to do this\""
-  effectString: "Deal 100% ATK to an enemy, if lock\u2019n loaded is at 2 stack,
-    multiplier changed to 140%"
+  effectString: "Deal 150% ATK to an enemy, if lock\u2019n loaded is at 2 stack,
+    multiplier changed to 200%"
   cardCost: 3
   artwork: {fileID: 21300000, guid: a4169992f1406e847bad434535858b72, type: 3}
   delayAction: 1

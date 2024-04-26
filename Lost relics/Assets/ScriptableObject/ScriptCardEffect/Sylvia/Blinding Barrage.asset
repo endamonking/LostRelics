@@ -15,8 +15,8 @@ MonoBehaviour:
   cardName: 'Blinding Barrage '
   description: '"Unleash a barrage of strikes with incredible speed, overwhelming
     your enemies." '
-  effectString: ' Deal 60% ATK as damage to a target. Deal additional 10 damage per
-    10 point of spd higher than 30. '
+  effectString: ' Deal 80% ATK as damage to a target. Deal additional 10 damage per
+    20 point of spd higher than 30. '
   cardCost: 2
   artwork: {fileID: 21300000, guid: 11a08b85a6b23ba44830fc5b738e5d16, type: 3}
   delayAction: 1

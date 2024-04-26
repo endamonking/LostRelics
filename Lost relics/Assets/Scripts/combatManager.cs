@@ -762,7 +762,6 @@ public class combatManager : MonoBehaviour
     {
         if (StageCounter.instance.isBossNode)
             StageCounter.instance.resetIsBossNode();
-        GameManager.Instance.destroyGM();
         yield return new WaitForSeconds(2.0f);
         exploration_sceneManager.Instance.showRunResult();
         exploration_sceneManager.Instance.ReturnToExplorationScene();

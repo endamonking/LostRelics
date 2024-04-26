@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Eternal sorrow
   description: '"why did I get to live?"'
-  effectString: 'Deal damage 11 times randomly, each hit deal 20% of maxHP as true
+  effectString: 'Deal damage 11 times randomly, each hit deal 40% of maxHP as true
     damage '
   cardCost: 3
   artwork: {fileID: 21300000, guid: 57039f33c05d1424698f5c91d79bb6b4, type: 3}

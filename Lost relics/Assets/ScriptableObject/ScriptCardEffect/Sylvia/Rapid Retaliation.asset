@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Counter with lightning speed, striking back at your foes before
     they can react." '
   effectString: "immediately ends turns, draw 2 cards. Enter \u201Ccounter\u201D
-    stance"
+    stance, gain ATK +20% for 1 turn "
   cardCost: 2
   artwork: {fileID: 21300000, guid: 2b8b655661845214cae2bc306d0eac1a, type: 3}
   delayAction: 1

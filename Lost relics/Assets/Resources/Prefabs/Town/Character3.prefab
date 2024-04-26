@@ -58,15 +58,15 @@ MonoBehaviour:
   UnitID: 3
   UnitName: Sylvia
   ATK: 40
-  Healing: 2
-  DEF: 5
+  Healing: 5
+  DEF: 10
   SPD: 35
-  CritChance: 2
+  CritChance: 10
   Evade: 10
   CritDamage: 150
   Resistance: 5
-  MaxHP: 35
-  CurrentHP: 35
+  MaxHP: 40
+  CurrentHP: 40
   maxMana: 4
   passivSkill: {fileID: 1061143586150523828, guid: 09511589e5bdda04592bf0d102ca4916, type: 3}
   portrait: {fileID: 21300000, guid: 2a04937c77b49c14c97aa2e035971862, type: 3}

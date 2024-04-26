@@ -1010,7 +1010,7 @@ public class Character : MonoBehaviour
                     int userDMGBonus = inComDMGBonus;
                     int userCritRate = inComCritRate;
                     int userCritDMG = inComCritDMG;
-                    float skillMulti = 20 / 100.0f;
+                    float skillMulti = 80 / 100.0f;
                     target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
                     changingStance(stance.None, false);
                 }

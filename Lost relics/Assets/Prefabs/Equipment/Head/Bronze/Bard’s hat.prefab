@@ -51,12 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846745bcb79fbb74da58f45c08f0c92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATK: 2
+  ATK: 0
   HP: 0
   DEF: 0
-  SPD: 2
+  SPD: 4
   CRITChance: 0
-  HEAL: 2
+  HEAL: 4
   EVADE: 0
   RESISTANCE: 0
   value: 500

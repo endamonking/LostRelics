@@ -52,11 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ATK: 0
-  HP: 10
+  HP: 20
   DEF: 0
   SPD: 0
   CRITChance: 0
-  HEAL: 5
+  HEAL: 15
   EVADE: 0
   RESISTANCE: 10
   value: 1500

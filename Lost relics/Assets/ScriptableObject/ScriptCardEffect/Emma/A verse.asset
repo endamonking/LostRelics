@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: A verse
   description: 
-  effectString: "Deal 40% ATK as damage X time to an enemy (X equals to \u201CCard
+  effectString: "Deal 100% ATK as damage X time to an enemy (X equals to \u201CCard
     drawn this turn\u201D), if the user is in \u201CFlow\u201D stance Effect changes
-    to 60% damage"
+    to 150% damage"
   cardCost: 1
   artwork: {fileID: 21300000, guid: a8ba45c8d24941942ab56a5494b54ff0, type: 3}
   delayAction: 1

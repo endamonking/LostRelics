@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 0
+  baseSkillMultiplier: 50
   drawedCard: {fileID: 0}

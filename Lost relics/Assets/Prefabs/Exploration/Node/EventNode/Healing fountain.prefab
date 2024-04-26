@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5793873, g: 0.9528302, b: 0.28315237, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -131,8 +131,8 @@ MonoBehaviour:
   description: You found a healing fountain. You can either share this with your
     friends or keep them to yourself.
   answerList:
-  - Heal 15hp to all allies
-  - Heal 30hp to one ally
+  - Heal 30hp to all allies
+  - Heal 80hp to one ally
   asnwerEffectList:
   - {fileID: 8785069738830808861, guid: b48f92f6de71b56428c5dc7c82fc0551, type: 3}
   - {fileID: 3363055091520927744, guid: a20bae35ea634b54b8ab4ee0e551d0b0, type: 3}

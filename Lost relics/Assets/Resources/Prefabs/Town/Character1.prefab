@@ -62,7 +62,7 @@ MonoBehaviour:
   Healing: 5
   DEF: 20
   SPD: 25
-  CritChance: 0
+  CritChance: 5
   Evade: 2
   CritDamage: 150
   Resistance: 10

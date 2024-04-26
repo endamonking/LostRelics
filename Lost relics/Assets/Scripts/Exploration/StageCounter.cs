@@ -57,7 +57,7 @@ public class StageCounter : MonoBehaviour
                 monster.basedefPoint = Mathf.FloorToInt(monster.basedefPoint * 1.5f);
                 monster.baseATK = Mathf.FloorToInt(monster.baseATK * 1.2f);
                 monster.baseSPD = monster.baseSPD + 5;
-                monster.maxMana = monster.maxMana + 1;
+                //monster.maxMana = monster.maxMana + 1;
                 break;
         }
         increaseBossStat(monster);
@@ -68,15 +68,16 @@ public class StageCounter : MonoBehaviour
     {
         if (isBossNode)
         {
-            monster.maxHP = Mathf.FloorToInt(monster.maxHP * 3);
+            monster.maxHP = Mathf.FloorToInt(monster.maxHP * 1.5f);
             monster.currentHP = monster.maxHP;
-            monster.maxMana = Mathf.FloorToInt(monster.maxMana * 1.5f);
+            //monster.maxMana = Mathf.FloorToInt(monster.maxMana * 1.5f);
             monster.baseEvade += 5;
+            /*
             //add card
             cardHandler CH = monster.gameObject.GetComponent<cardHandler>();
             List<Card> addedDeck = new List<Card>();
             addedDeck.AddRange(CH.playerDeck);
-            CH.playerDeck.AddRange(addedDeck);
+            CH.playerDeck.AddRange(addedDeck);*/
         }
     }
 

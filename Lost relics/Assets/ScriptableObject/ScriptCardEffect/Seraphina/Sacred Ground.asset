@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Sanctify the battlefield, granting healing over time."'
   effectString: "Create an area of consecrated ground that Buff continuous healing
     to all allies for 3 turn (continuous healing = at the start of turn, regenerate
-    30% of Seraphina\u2019s Heal)"
+    70% of Seraphina\u2019s Heal)"
   cardCost: 2
   artwork: {fileID: 21300000, guid: ae77736fa06440b44855cce6413eaf18, type: 3}
   delayAction: 1

@@ -38,17 +38,17 @@ public class TownPlayerSystem : MonoBehaviour
     {
         Character character = GetComponentInParent<Character>();
         character.characterName = unit.UnitName;
-        character.baseATK = unit.ATK + PlayerPrefs.GetInt("PPATK", 0);
-        character.baseHeal = unit.Healing + PlayerPrefs.GetInt("PPHEAL", 0);
-        character.basedefPoint = unit.DEF + PlayerPrefs.GetInt("PPDEF", 0);
-        character.baseSPD = unit.SPD + PlayerPrefs.GetInt("PPSPD", 0);
-        character.baseCritRate = unit.CritChance + PlayerPrefs.GetInt("PPCRATE", 0);
-        character.baseCritDMG = unit.CritDamage + PlayerPrefs.GetInt("PPCDMG", 0);
-        character.baseEvade = unit.Evade + PlayerPrefs.GetInt("PPEVADE", 0);
-        character.maxHP = unit.MaxHP + PlayerPrefs.GetInt("PPMAXHP", 0);
+        character.baseATK = unit.ATK;
+        character.baseHeal = unit.Healing;
+        character.basedefPoint = unit.DEF;
+        character.baseSPD = unit.SPD;
+        character.baseCritRate = unit.CritChance;
+        character.baseCritDMG = unit.CritDamage;
+        character.baseEvade = unit.Evade;
+        character.maxHP = unit.MaxHP;
         character.currentHP = character.maxHP;
-        character.baseResistance = unit.Resistance + PlayerPrefs.GetInt("PPRES", 0);
-        character.maxMana = unit.maxMana + PlayerPrefs.GetInt("PPMANA", 0);
+        character.baseResistance = unit.Resistance;
+        character.maxMana = unit.maxMana;
         character.characterPassiveSkillPrefab = unit.passivSkill;
         character.isMelee = unit.isMelee;
     }

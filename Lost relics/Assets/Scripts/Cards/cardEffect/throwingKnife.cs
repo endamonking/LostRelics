@@ -5,7 +5,7 @@ using UnityEngine;
 public class throwingKnife : cardEffect
 {
     [SerializeField]
-    int skillMultiplier = 100;
+    int skillMultiplier = 100, addkillMulti = 40;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +36,7 @@ public class throwingKnife : cardEffect
         {
             if (obj.card.GetComponent<cardDisplay>().card.effect == this)
             {
-                float additiveskillMulti = 20 / 100.0f; ;
+                float additiveskillMulti = addkillMulti / 100.0f; ;
                 target.takeDamage(userDamage, userAP, userDMGBonus, additiveskillMulti, userCritRate, userCritDMG);
             }
         }
@@ -44,7 +44,7 @@ public class throwingKnife : cardEffect
         {
             if (card.effect == this)
             {
-                float additiveskillMulti = 20 / 100.0f; ;
+                float additiveskillMulti = addkillMulti / 100.0f; ;
                 target.takeDamage(userDamage, userAP, userDMGBonus, additiveskillMulti, userCritRate, userCritDMG);
             }
         }

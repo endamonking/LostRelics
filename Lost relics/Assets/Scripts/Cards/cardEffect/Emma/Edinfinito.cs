@@ -5,7 +5,7 @@ using UnityEngine;
 public class Edinfinito : cardEffect, IBeforeUseCard
 {
     [SerializeField]
-    private int baseSkillMultiplier = 20;
+    private int baseSkillMultiplier = 50;
     public Card drawedCard;
     private Character thisUser;
     // Start is called before the first frame update

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Ed infinito
   description: 
-  effectString: "Deal 20% ATK as damage to a random enemy, draw 1 card. If drawn
+  effectString: "Deal 50% ATK as damage to a random enemy, draw 1 card. If drawn
     card is used, cast \u201CEd infinito\u201D again on a random target "
   cardCost: 1
   artwork: {fileID: 21300000, guid: ab5481ec59bf0134ab682202e68125be, type: 3}

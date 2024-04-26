@@ -73,8 +73,9 @@ public class inventoryManager : MonoBehaviour
 
     public void removeItem(int Index)
     {
-        Destroy(equipmentList[Index]);
+        GameObject go = equipmentList[Index];
         equipmentList.RemoveAt(Index);
+        Destroy(go);
         updatelistIndex();
     }
 

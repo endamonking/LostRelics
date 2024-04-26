@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Pile of garbage
   description: 
-  effectString: "deal 30% ATK as damage to an enemy, spends 1 \u201CIndecipherable
+  effectString: "deal 70% ATK as damage to an enemy, spends 1 \u201CIndecipherable
     Poem\u201D to inflict \u201Cburn\u201D to the enemy (100% ATK as true damage
     for 3 turns)"
   cardCost: 1

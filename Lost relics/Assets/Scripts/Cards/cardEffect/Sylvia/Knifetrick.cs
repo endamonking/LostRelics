@@ -17,6 +17,13 @@ public class Knifetrick : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
+        GameObject player = combatManager.Instance.currentObjTurn;
+        cardHandler playerCardHanlder = player.GetComponent<cardHandler>();
+
+        for (int i = 0; i < 1; i++)
+        {
+            playerCardHanlder.drawCard();
+        }
         user.doCharacterSound();
         return true;
     }

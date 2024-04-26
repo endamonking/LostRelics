@@ -221,5 +221,22 @@ public class characterEquipment : MonoBehaviour
                 break;
         }
     }
-
+    public void unEquipItem(equipmentType equipment)
+    {
+        switch (equipment)
+        {
+            case equipmentType.HEAD:
+                if (head != null)
+                    head.removeEquiped();
+                break;
+            case equipmentType.ARMORE:
+                if (armor != null)
+                    armor.removeEquiped();
+                break;
+            case equipmentType.ACCESSORY:
+                if (accessory != null)
+                    accessory.removeEquiped();
+                break;
+        }
+    }
 }

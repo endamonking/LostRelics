@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Swift Strike
   description: '"Unleash a lightning-fast strike, capitalizing on your speed."'
-  effectString: Deal 80% ATK as damage to a single enemy. If Sylvia is in Blade Dance
-    Stance, multiplier changed to 100%
+  effectString: Deal 100% ATK as damage to a single enemy. If Sylvia is in Blade
+    Dance Stance, multiplier changed to 150%
   cardCost: 1
   artwork: {fileID: 21300000, guid: bdaec8caab0f0e5468c479ce17f1870a, type: 3}
   delayAction: 1

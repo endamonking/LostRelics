@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "NEWPASSWORD";
-$dbname = "lost_relics";
+$servername = "sql6.freesqldatabase.com";
+$username = "sql6700298";
+$password = "nPnP4RUE52";
+$dbname = "sql6700298";
 
 //Content
 $jsonContent = $_POST["json"];

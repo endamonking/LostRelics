@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 0
-  baseSkillMultiplier: 60
-  flowSkillMultiplier: 80
+  baseSkillMultiplier: 100
+  flowSkillMultiplier: 150
   EmmaToken: {fileID: 11400000, guid: c8eada366f134e74188c8689366d7a56, type: 2}

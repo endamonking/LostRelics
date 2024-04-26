@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealingLight : cardEffect
 {
     [SerializeField]
-    private int skillMultiplier = 60;
+    private int skillMultiplier = 150;
     // Start is called before the first frame update
     void Start()
     {

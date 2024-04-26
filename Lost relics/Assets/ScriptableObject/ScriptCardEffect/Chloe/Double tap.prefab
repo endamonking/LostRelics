@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 0
-  baseSkillMultiplier: 60
-  addSkillMultiplier: 50
+  baseSkillMultiplier: 100
+  addSkillMultiplier: 100
   buffName: "Lock\u2019n loaded"

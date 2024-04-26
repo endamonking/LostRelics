@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Arcane Blast
   description: ' "Unleash a surge of magical energy."'
-  effectString: Deal 70% ATK as damage to a target enemy.
+  effectString: Deal 90% ATK as damage to a target enemy.
   cardCost: 1
   artwork: {fileID: 21300000, guid: 5fdc57c11c70eb94d83d21191b7784d0, type: 3}
   delayAction: 1

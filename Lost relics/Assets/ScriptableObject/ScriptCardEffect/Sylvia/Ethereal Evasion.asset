@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Ethereal Evasion
   description: '"Disappear from harm''s way with unmatched speed and agility." '
-  effectString: 'Gain 50% Evasion for 1 turn. If there are equal or less than 2 cards
+  effectString: 'Gain 60% Evasion for 1 turn. If there are equal or less than 2 cards
     in hands. Draw 1 card '
   cardCost: 1
   artwork: {fileID: 21300000, guid: ad075aabcc7e50145a695a428d065c5b, type: 3}

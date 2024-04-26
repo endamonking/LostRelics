@@ -216,7 +216,8 @@ public class trainingGround : MonoBehaviour
         chooseCharacter.SetActive(true);
         descriptionGo.SetActive(true);
         moneyTextGo.SetActive(true);
-        costTobuy = Mathf.FloorToInt(baseCost + (baseCost * (0.5f * buyCardCount)));
+        //costTobuy = Mathf.FloorToInt(baseCost + (baseCost * (0.5f * buyCardCount)));
+        costTobuy = baseCost;
         if (inventoryManager.Instance.money >= costTobuy)
             buyCardDescription.text = "Who do you want to train?(Cost: " + costTobuy.ToString() + ")";
         else

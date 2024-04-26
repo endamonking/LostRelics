@@ -5,7 +5,9 @@ using UnityEngine;
 public class LastStand : cardEffect
 {
     [SerializeField]
-    private int baseSkillMultiplier = 80;
+    private int baseSkillMultiplier = 100;
+    [SerializeField]
+    private int addSkillMultiplier = 80;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,8 @@ public class LastStand : cardEffect
         user.doCharacterAnimationAndSound(target.gameObject);
         if (user.myStance == stance.Showdown)
         {
-            target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
+            float addskillMulti = addSkillMultiplier / 100.0f;
+            target.takeDamage(userDamage, userAP, userDMGBonus, addskillMulti, userCritRate, userCritDMG);
             //play animation and sound
             user.doCharacterAnimationAndSound(target.gameObject);
         }

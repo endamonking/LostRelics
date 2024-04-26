@@ -22,6 +22,7 @@ public class TigerPassive : uniquePassSkill, IOnTakeHitWithDMG
         if (DMG >= user.inComMaxHP * 0.5f)
         {
             returnDMG = Mathf.FloorToInt(user.inComMaxHP * 0.5f);
+            returnDMG += 1;
         }
         return returnDMG;
     }

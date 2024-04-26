@@ -34,7 +34,7 @@ public class FlashStrike : cardEffect
         {
             string des = "Increase Evade by 20%";
             buff newbuff = new buff("Flash Strike", 3, "EVADE_Up", des);
-            newbuff.AddBuff("EVADE", 20);
+            newbuff.AddBuff("EVADE", 40);
             user.applyActiveBuff(newbuff, false);
         }
         return true;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Essence Drain
   description: '"Siphon the life force of your foes."'
-  effectString: Deal 60% ATK as damage to a target enemy,  If in "Temporal" stance,
+  effectString: Deal 100% ATK as damage to a target enemy,  If in "Temporal" stance,
     heal 50% of damage dealt
   cardCost: 1
   artwork: {fileID: 21300000, guid: d408113b7ee5512478023503b65529b4, type: 3}

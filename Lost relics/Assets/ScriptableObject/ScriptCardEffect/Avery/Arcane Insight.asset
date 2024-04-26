@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Arcane Insight
   description: '"Unlock the secrets of the arcane."'
-  effectString: Draw 2 cards.
+  effectString: Draw 3 cards.
   cardCost: 1
   artwork: {fileID: 21300000, guid: 31de246ae0cb7be4cad9730c57091247, type: 3}
   delayAction: 1

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ATK: 0
-  HP: 30
+  HP: 40
   DEF: 10
   SPD: 5
   CRITChance: 0

@@ -53,8 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ATK: 15
   HP: 0
-  DEF: 3
-  SPD: 4
+  DEF: 10
+  SPD: 5
   CRITChance: 0
   HEAL: 0
   EVADE: 0

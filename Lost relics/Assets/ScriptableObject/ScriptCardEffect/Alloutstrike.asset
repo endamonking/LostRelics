@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: 'All out strike '
   description: "\u201CHit them hard\u201D"
-  effectString: "Deal 120% atk to a selected target, after attacking change stance
+  effectString: "Deal 220% atk to a selected target, after attacking change stance
     to \u201CExhausted\u201D"
   cardCost: 2
   artwork: {fileID: 21300000, guid: cc931a2e16904f946893f29f6eec616b, type: 3}

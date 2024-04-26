@@ -5,7 +5,7 @@ using UnityEngine;
 public class M_Spilling : cardEffect
 {
     [SerializeField]
-    int skillMultiplier = 30, burnMultiplier = 50; //Percent unit
+    int skillMultiplier = 30, burnMultiplier = 30; //Percent unit
     
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class M_Spilling : cardEffect
         user.doCharacterAnimationAndSound(target.gameObject);
         //Apply debuf
         string des = "Receive true damage at the start of the turn";
-        buff deBuff = new buff("Spilling", 2, "Burn", des);
+        buff deBuff = new buff("Spilling", 1, "Burn", des);
         int damageAmount = Mathf.FloorToInt(user.inComATK * (burnMultiplier / 100.0f));
 
         deBuff.AddBuff("Burn", damageAmount);

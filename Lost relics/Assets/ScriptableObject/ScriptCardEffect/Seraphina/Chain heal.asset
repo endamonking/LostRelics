@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Chain heal
   description: '"Healing ally and self at once"'
-  effectString: Heal target with 50% heal, heal self for 30% heal
+  effectString: Heal target with 120% heal, heal self for 50% heal
   cardCost: 1
   artwork: {fileID: 21300000, guid: 1994a26332fcc3a40afa9f93d987a1fd, type: 3}
   delayAction: 1

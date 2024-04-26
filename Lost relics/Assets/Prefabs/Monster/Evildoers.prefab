@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec795366bffda554288a3a2283200fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basedefPoint: 30
+  basedefPoint: 15
   maxHP: 150
   baseSPD: 30
   characterName: Evildoers

@@ -16,7 +16,7 @@ MonoBehaviour:
   description: '"Surge forward with unmatched speed, leaving your enemies in your
     wake." '
   effectString: Increase Sylva's speed by 30% for 2 turns. If Sylvia is in Blade
-    Dance Stance, deal 50% ATK as damage to a random enemy.
+    Dance Stance, deal 100% ATK as damage to a random enemy.
   cardCost: 2
   artwork: {fileID: 21300000, guid: 99be404b654b0fe478d48619d3ce5239, type: 3}
   delayAction: 1

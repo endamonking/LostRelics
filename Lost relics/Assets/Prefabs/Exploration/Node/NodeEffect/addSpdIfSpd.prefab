@@ -48,4 +48,4 @@ MonoBehaviour:
   nodeName: Sacred Pork party
   description: Choose one
   speedAmount: 5
-  speedCondition: 30
+  speedCondition: 35

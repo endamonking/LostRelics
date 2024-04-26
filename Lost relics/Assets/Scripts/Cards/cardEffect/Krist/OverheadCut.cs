@@ -5,7 +5,9 @@ using UnityEngine;
 public class OverheadCut : cardEffect
 {
     [SerializeField]
-    int skillMultiplier = 60; //Percent unit
+    int skillMultiplier = 100; //Percent unit
+    [SerializeField]
+    int bonusSkillMultiplier = 150; //Percent unit
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class OverheadCut : cardEffect
         {
             int dmg = Mathf.FloorToInt(user.inComMaxHP * 0.1f);
             user.takeTrueDamageIgnoreOnHit(dmg);
-            skillMulti = 100.0f / 100.0f;
+            skillMulti = bonusSkillMultiplier / 100.0f;
             target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);
         }
         else

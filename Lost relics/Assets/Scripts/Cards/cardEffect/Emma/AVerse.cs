@@ -5,7 +5,7 @@ using UnityEngine;
 public class AVerse : cardEffect
 {
     [SerializeField]
-    private int baseSkillMultiplier = 40, flowSkillMultiplier = 60;
+    private int baseSkillMultiplier = 100, flowSkillMultiplier = 150;
 
     private int cardDrawed;
     // Start is called before the first frame update

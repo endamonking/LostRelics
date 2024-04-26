@@ -25,6 +25,11 @@ public class RapidRetaliation : cardEffect
         {
             playerCardHanlder.drawCard();
         }
+        //Add buf
+        string des = "Increase ATK by 20%";
+        buff newbuff = new buff("Rapid Retaliation", 2, "ATK_Up", des);
+        newbuff.AddBuff("ATK", 20);
+        user.applyActiveBuff(newbuff, false);
 
         combatManager.Instance.isForceEndturn = true;
         return true;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Healing Light
   description: '"Channel divine energy to heal allies."'
-  effectString: ' Heal target for 60% of Seraphina''s Heal.'
+  effectString: ' Heal target for 150% of Seraphina''s Heal.'
   cardCost: 1
   artwork: {fileID: 21300000, guid: fdddb71d695152143b85459e768170bc, type: 3}
   delayAction: 1

@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intoStance: 0
-  baseSkillMultiplier: 80
+  baseSkillMultiplier: 100
+  bonusSKillMult: 150

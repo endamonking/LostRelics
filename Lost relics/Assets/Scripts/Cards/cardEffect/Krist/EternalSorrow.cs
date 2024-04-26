@@ -19,7 +19,7 @@ public class EternalSorrow : cardEffect
     }
     public override bool applyEffect(Character target, Character user)
     {
-        int dmg = Mathf.FloorToInt(user.inComMaxHP * 0.2f);
+        int dmg = Mathf.FloorToInt(user.inComMaxHP * 0.4f);
         for (int i = 0; i < hitCount; i++)
         {
             GameObject go = combatManager.Instance.getRandomEnemy();

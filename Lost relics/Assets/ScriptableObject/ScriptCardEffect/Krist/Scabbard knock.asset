@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Scabbard knock
   description: '"Every hit counts"'
-  effectString: 'Deal 30% ATK to an enemy, inflict Healing reduction -20% to the
+  effectString: 'Deal 90% ATK to an enemy, inflict Healing reduction -20% to the
     enemy for 3 turns '
   cardCost: 1
   artwork: {fileID: 21300000, guid: 2ccd4090168305c4f82c7e112fc7f742, type: 3}

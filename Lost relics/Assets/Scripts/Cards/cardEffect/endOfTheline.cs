@@ -5,7 +5,7 @@ using UnityEngine;
 public class endOfTheline : cardEffect
 {
     [SerializeField]
-    int skillMultiplier = 70; //Percent unit
+    int skillMultiplier = 120; //Percent unit
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class endOfTheline : cardEffect
         }
         else
         {
-            skillMulti = (skillMultiplier + 50) / 100.0f;
+            skillMulti = (skillMultiplier + 80) / 100.0f;
         }
 
         target.takeDamage(userDamage, userAP, userDMGBonus, skillMulti, userCritRate, userCritDMG);

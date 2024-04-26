@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Gunpowder Vei
   description: '"Surround enemies with explosive gunpowder."'
   effectString: Deal 30% ATK as damage to an enemy and inflict "Bomb" (explodes after
-    2 turns, dealing true damage to all enemies for 50% of Chloe ATK) for 2 turns.
+    2 turns, dealing true damage to all enemies for 100% of Chloe ATK) for 2 turns.
   cardCost: 2
   artwork: {fileID: 21300000, guid: 5e19a51c8fb67014fbe91889cdbc6992, type: 3}
   delayAction: 1

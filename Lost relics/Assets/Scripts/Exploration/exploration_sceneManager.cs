@@ -42,6 +42,7 @@ public class exploration_sceneManager : MonoBehaviour
 
     [Header("Result")]
     public GameObject resultTab;
+    public TextMeshProUGUI titleText;
     public TextMeshProUGUI eventText;
     public TextMeshProUGUI battleText;
     public TextMeshProUGUI bossText;
@@ -80,10 +81,14 @@ public class exploration_sceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isBackToTown && isEvent != true)
+        if (isBackToTown && isEvent != true && StageCounter.instance.stageCounter < 3)
         {
             SceneManager.LoadScene("TestRoom");
             SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else if (isBackToTown && isEvent != true && StageCounter.instance.stageCounter >= 3)
+        {
+            showWINResult();
         }
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -315,6 +320,18 @@ public class exploration_sceneManager : MonoBehaviour
             Backend.instance.createJson(playerPool[0], playerPool[1]);
 
     }
+    public void showWINResult()
+    {
+        isEvent = true;
+        resultTab.SetActive(true);
+        titleText.text = "YOU WIN";
+        //put file
+        if (playerPool.Count == 1)
+            Backend.instance.createJson(playerPool[0]);
+        else
+            Backend.instance.createJson(playerPool[0], playerPool[1]);
+
+    }
 
     public void bactToMainScreen()
     {
@@ -323,6 +340,7 @@ public class exploration_sceneManager : MonoBehaviour
         InGameMenu.Instance.destroyME();
         inventoryManager.Instance.destroyME();
         inventoryCanvas.Instance.destroyME();
+        GameManager.Instance.destroyGM();
         //Destroy player
         foreach (GameObject player in playerPool)
         {
