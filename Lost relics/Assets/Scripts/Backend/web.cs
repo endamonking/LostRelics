@@ -94,5 +94,25 @@ public class web : MonoBehaviour
             }
         }
     }
+    public IEnumerator sendCharacter(string characterName)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("name", characterName);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("https://lostrelics.cpekmutt.com/dataBase/selectedCharacter.php", form))
+        {
+            www.certificateHandler = new CertificateWhore();
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+            }
+        }
+    }
 
 }

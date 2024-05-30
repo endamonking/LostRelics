@@ -72,4 +72,11 @@ public class Backend : MonoBehaviour
             gameObject.SetActive(true);
         StartCoroutine(web.sendJson(content, content2));
     }
+    public void sendCharacter(string characterName)
+    {
+        if (!gameObject.activeSelf)
+            gameObject.SetActive(true);
+
+        StartCoroutine(web.sendCharacter(characterName));
+    }
 }

@@ -14,8 +14,29 @@ public class CharChoose : MonoBehaviour
 
         // Log the character ID to the console
         Debug.Log("Selected Character ID: " + characterID);
-
+        sendCharacterName(characterID);
         // Load the next scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+   
+    private void sendCharacterName(int index)
+    {
+        string characterName = "Test";
+
+        switch (index)
+        {
+            case 1:
+                characterName = "Emma";
+                break;
+            case 2:
+                characterName = "Avery";
+                break;
+            case 3:
+                characterName = "Sylvia";
+                break;
+
+        }
+
+        Backend.instance.sendCharacter(characterName);
     }
 }
